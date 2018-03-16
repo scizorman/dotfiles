@@ -1,0 +1,72 @@
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+on_cmd = ['IndentLinesToggle']
+hook_add = '''
+    let g:loaded_indentLine = 1
+    nmap <Space>i <C-u>:IndentLinesToggle<CR>
+'''
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+depends = ['vimproc.vim']
+on_ft = ['python']
+hook_source = '''
+    source '~/.config/nvim/rc/pugins/vimquickrun.rc.vim'
+'''
+
+[[plugins]]
+repo = 'w0rp/ale'
+on_ft = ['python', 'javascript', 'html', 'css', 'markdown', 'make', 'vim']
+hook_source = '''
+    source '~/.config/nvim/rc/plugins/ale.rc.vim'
+'''
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+on_cmd = ['NERDTreeToggle']
+on_map = ['<plug>NERDTreeToggle', '<plug>NERDTreeTabsFind']
+depends = ['nerdtree-git-plugin', 'vim-nerdtree-tabs']
+hook_add = '''
+    let NERDTreeShowHidden=1
+    let NERDTreeIgnore=['\.pyc$', '__pycache__']
+'''
+
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+hook_add = '''
+    let g:nerdtree_tabs_autofind = 0
+    nmap <Space>f <plug>NERDTreeTabsToggle<CR>
+    nmap <Space>t <plug>NERDTreeTabsFind<CR>
+'''
+
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+depends = ['vim-fugitive']
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+on_cmd = [
+    'Git',
+    'Gcommit',
+    'Gstatus',
+    'Gdiff',
+    'Gblame',
+    'Glog'
+]
+hook_add = '''
+    nmap [figitive] <Nop>
+    map <Leader>g [figitive]
+    nmap <silent> [figitive]c :<C-u>Gcommit<CR>
+    nmap <silent> [figitive]d :<C-u>Gdiff<CR>
+    nmap <silent> [figitive]b :<C-u>Gblame<CR>
+    nmap <silent> [figitive]l :<C-u>Glog<CR>
+'''
+
+# Syntax

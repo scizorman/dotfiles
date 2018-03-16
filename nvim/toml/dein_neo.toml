@@ -1,0 +1,76 @@
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if = "has('nvim')"
+on_i = 1
+build = ':UpdateRemotePlugins'
+depends = ['neosnippet.vim']
+hook_source = '''
+    let g:deoplete#enable_at_startup = 1
+    source ~/.config/nvim/rc/plugins/deoplete.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets']
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+if = "has('nvim')"
+on_cmd = 'Denite'
+depends = ['neomru.vim, neoinclude.vim, denite-lab']
+build = ':UpdateRemotePlugins'
+hook_source = 'source ~/.config/nvim/rc/plugins/denite.rc.vim'
+hook_add = '''
+    " Prefix key
+    nmap [denite] <Nop>
+    map <C-j> [denite]
+    " Keymap
+    nmap <silent> [denite]<C-p> :<C-u>Denite file_rec -highlight-mode-insert=Search<CR>
+    nmap <silent> [denite]<C-b> :<C-u>Denite buffer -highlight-mode-insert=Search<CR>
+    nmap <silent> [denite]<C-o> :<C-u>Denite outline -highlight-mode-insert=Search<CR>
+    nmap <silent> [denite]<C-r> :<C-u>Denite file_mru -highlight-mode-insert=Search<CR>
+    nmap <silent> [denite]<C-h> :<C-u>Denite help -highlight-mode-insert=Search<CR>
+'''
+
+[[plugins]]
+repo = 'lighttiger2505/denite-lab'
+hook_add = '''
+    nmap <silent> [denite]<C-i> :<C-u>Denite lab_issue -highlight-mode-insert=Search<CR>
+    nmap <silent> [denite]<C-m> :<C-u>Denite lab_merge_request -highlight-mode-insert=Search<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+
+[[plugins]]
+repo = 'kassio/neoterm'
+on_cmd = 'T'
+on_ft = ['python']
+if = "has('nvim')"
+hook_add = '''
+    " escape on terminal mode
+    tnoremap <silent> <ESC> <C-\><C-n>
+    " launch tig on terminal emurater
+    nnoremap <silent> <Leader>tg :T tig status<CR>
+    " repl on terminal
+    nnoremap <silent> <Leader>tl :TREPLSendLine<CR>
+    nnoremap <silent> <Leader>tv :TREPLSendSelection<CR>
+'''
+hook_source = '''
+    " neoterm options
+    let g:neoterm_autojump = 1
+    let g:neoterm_autoinsert = 1
+    let g:neoterm_autoscroll = 1
+    let g:neoterm_keep_term_open = 0
+    let g:neoterm_position = 'horizontal'
+'''
+
+[[plugins]]
+repo = 'zchee/deoplete-clang'
+on_ft = ['c', 'h']
