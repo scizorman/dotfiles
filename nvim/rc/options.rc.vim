@@ -1,5 +1,5 @@
 " File encoding
-if !exsits ('g:encoding_set') || !has('nvim')
+if !exists ('g:encoding_set') || !has('nvim')
     set encoding=utf-8
     set fileencodings=utf-8,sjis,iso-2022-jp,cp932,euc-jp
     set fileencoding=utf-8
@@ -46,7 +46,7 @@ set matchtime=3
 set backspace=indent,eol,start
 set virtualedit+=block
 set modeline
-set modeline=5
+set modelines=5
 
 " Search
 set ignorecase
@@ -61,17 +61,17 @@ set clipboard+=unnamedplus
 
 " Use extend grep
 if executable('rg')
-    let &grepprg = 'rg --vimgrep --hidden'
-    set grepformat=%f:%l:%c:%m
+  let &grepprg = 'rg --vimgrep --hidden'
+  set grepformat=%f:%l:%c:%m
 elseif executable('pt')
-    let &grepprg = 'pt --nocolor --nogroup --column'
-    set grepformat=%f:%l:%c:%m
+  let &grepprg = 'pt --nocolor --nogroup --column'
+  set grepformat=%f:%l:%c:%m
 endif
 
 " Show quickfix after grepcmd
 augroup GrepCmd
-    autocmd!
-    autocmd QuickFixCmdPost vim,grep,make if len(getqflist()) != 0 | cwindow | endif
+  autocmd!
+  autocmd QuickFixCmdPost vim,grep,make if len(getqflist()) != 0 | cwindow | endif
 augroup END
 
 " For input multibyte chars
@@ -90,12 +90,12 @@ endif
 " jq command
 command! -nargs=? Jq call s:Jq(<f-args>)
 function! s:Jq(...)
-    if 0 == a:0
-        let l:arg = "."
-    else
-        let l:arg = a:1
-    endif
-    execute "%! jq \"" . l:arg . "\""
+  if 0 == a:0
+    let l:arg = "."
+  else
+    let l:arg = a:1
+  endif
+  execute "%! jq \"" . l:arg . "\""
 endfunction
 
 " Number of characters to apply syntax per line

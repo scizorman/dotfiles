@@ -3,6 +3,9 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
+hook_add = '''
+  colorscheme iceberg
+'''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
