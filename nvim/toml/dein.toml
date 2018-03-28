@@ -3,14 +3,15 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
-hook_add = '''
-  colorscheme iceberg
-'''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 depends = ['iceberg.vim']
-hook_add = 'source ~/.config/nvim/rc/plugins/lightline.rc.vim'
+hook_add = 'source $XDG_CONFIG_HOME/nvim/rc/plugins/lightline.rc.vim'
+
+[[plugins]]
+repo = 'popkirby/lightline-iceberg'
+depends = ['iceberg.vim, lightline.vim']
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
