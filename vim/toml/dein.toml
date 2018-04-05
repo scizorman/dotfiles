@@ -1,0 +1,20 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+depends = ['iceberg.vim']
+hook_add = 'source $HOME/.vim/rc/plugins/lightline.rc.vim'
+
+[[plugins]]
+repo = 'popkirby/lightline-iceberg'
+depends = ['iceberg.vim, lightline.vim']
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'mattn/sonictemplate-vim'

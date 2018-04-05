@@ -1,0 +1,49 @@
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if = "has('nvim')"
+
+build = ':UpdateRemotePlugins'
+depends = ['neosnippet.vim']
+hook_source = '''
+  let g:deoplete#enable_at_startup = 1
+  source $HOME/.vim/rc/plugins/deoplete.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets']
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+if = "has('nvim')"
+on_cmd = 'Denite'
+build = ':UpdateRemotePlugins'
+depends = ['neomru.vim', 'neoinclude.vim']
+hook_source = 'source $HOME/.vim/rc/plugins/denite.rc.vim'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+
+[[plugins]]
+repo = 'kassio/neoterm'
+on_cmd = 'T'
+on_ft = ['python']
+if = "has('nvim')"
+hook_add = '''
+  let g:neoterm_autojump = 1
+  let g:neoterm_autoinsert = 1
+  let g:neoterm_autoscroll = 1
+  let g:neoterm_keep_term_open = 0
+  let g:neoterm_position = "vertical"
+'''
+
+[[plugins]]
+repo = 'zchee/deoplete-clang'
+on_ft = ['c', 'h']
+depends = ['deoplete.nvim']
