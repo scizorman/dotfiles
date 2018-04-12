@@ -1,28 +1,75 @@
 # Edit utils
 [[plugins]]
+repo = 'Shougo/denite.nvim'
+if = "has('nvim')"
+# on_cmd = 'Denite'
+build = ':UpdateRemotePlugins'
+depends = ['neomru.vim', 'neoinclude.vim']
+hook_source = 'source $HOME/.vim/rc/plugins/denite.rc.vim'
+
+[[plugins]]
 repo = 'Shougo/unite.vim'
 if = "!has('nvim')"
-on_cmd = 'Unite'
-depends = ['neomru.vim']
-# hook_source = 'source $HOME/.vim/rc/unite.rc.vim'
+# on_cmd = 'Unite'
+depends = ['neomru.vim', 'neoinclude.vim']
+hook_source = 'source $HOME/.vim/rc/unite.rc.vim'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+
+
+# Completions
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if = "has('nvim')"
+bulid = ':UpdateRemotePlugins'
+depends = ['neosnippet.vim']
+hook_source = '''
+  source $HOME/.vim/rc/plugins/deoplete.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+if = "!has('nvim') && has('lua')"
+depends = ['neosnippet.vim']
+hook_source = '''
+  let g:neosnippet#enable_at_startup = 1
+  source $HOME/.vim/rc/plugins/neocomplete.rc.vim
+''' 
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets']
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'zchee/deoplete-clang'
+on_ft = ['c', 'h']
+depends = ['deoplete.nvim']
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_i = 1
 
-[[plugins]]
-repo = 'Yggdroot/indentLine'
-on_cmd = ['IndentLinesToggle']
-hook_add = '''
-  let g:loaded_indentLine = 1
-  nmap <Space>i <C-u>:IndentLinesToggle<CR>
-'''
-
 
 # Programing utils
 [[plugins]]
-repo = 'tyru/caw.vim'
-on_map = ['<Plug>(caw:hatpos:toggle)', '<Plug>(caw:zeropos:toggle)']
+repo = 'kassio/neoterm'
+on_cmd = 'T'
+on_ft = ['python']
+if = "has('nvim')"
+hook_add = '''
+  let g:neoterm_autojump = 1
+  let g:neoterm_autoinsert = 1
+  let g:neoterm_augoscroll = 1
+  let g:neoterm_keep_term_open = 0
+  let g:neoterm_position = 'vertical'
+'''
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -33,11 +80,19 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/vimproc.vim'
+bulid = 'make'
+
+[[plugins]]
 repo = 'w0rp/ale'
 on_ft = ['python', 'javascript', 'html', 'css', 'markdown', 'make', 'vim']
 hook_source = '''
   source $HOME/.vim/rc/plugins/ale.rc.vim
 '''
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+on_map = ['<Plug>(caw:hatpos:toggle)', '<Plug>(caw:zeropos:toggle)']
 
 [[plugins]]
 repo = 'jsfaint/gen_tags.vim'
@@ -46,16 +101,6 @@ hook_source = '''
   let g:gen_tags#ctags_auto_gen = 1
   let g:gen_tags#gtags_auto_gen = 0
 '''
-
-[[plugins]]
-repo = 'janko-m/vim-test'
-depends = ['vim-dispatch']
-hook_source = '''
-  let g:test:strategy = 'dispatch'
-'''
-
-[[plugins]]
-repo = 'tpope/vim-dispatch'
 
 [[plugins]]
 repo = 'majutsushi/tagbar'
@@ -82,15 +127,6 @@ on_cmd = [
 
 
 # Other utils
-[[plugins]]
-repo = 'kannokanno/previm'
-depends = ['open-browser.vim']
-on_ft = ['markdown']
-
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-bulid = 'make'
-
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 on_cmd = ['NERDTreeToggle']
@@ -131,6 +167,19 @@ hook_add = '''
   let g:netrw_nogx = 1
 '''
 
+[[plugins]]
+repo = 'kannokanno/previm'
+depends = ['open-browser.vim']
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+on_cmd = ['IndentLinesToggle']
+hook_add = '''
+  let g:loaded_indentLine = 1
+  nmap <Space>i <C-u>:IndentLinesToggle<CR>
+'''
+
 
 # Syntax
 [[plugins]]
@@ -159,3 +208,5 @@ on_ft = ['markdown', 'toml', 'help']
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+
+

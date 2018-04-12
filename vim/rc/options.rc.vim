@@ -1,9 +1,9 @@
 " File encoding
 if !exists ('g:encoding_set') || !has('nvim')
-    set encoding=utf-8
-    set fileencodings=utf-8,sjis,iso-2022-jp,cp932,euc-jp
-    set fileencoding=utf-8
-    let g:encoding_set=1
+  set encoding=utf-8
+  set fileencodings=utf-8,sjis,iso-2022-jp,cp932,euc-jp
+  set fileencoding=utf-8
+  let g:encoding_set=1
 endif
 scriptencoding utf-8
 
@@ -32,11 +32,11 @@ set hidden
 set switchbuf=useopen
 
 " Tab
-set tabstop=4
-set shiftwidth=4
+" set tabstop=4
+" set shiftwidth=4
 set smarttab
 set expandtab
-set softtabstop=4
+" set softtabstop=4
 set autoindent
 
 " Edit
