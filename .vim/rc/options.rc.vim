@@ -1,13 +1,13 @@
 " File encoding
-if !exists ('g:encoding_set') || !has('nvim')
+if !exists ('g:encodin_set') || !has('nvim')
   set encoding=utf-8
   set fileencodings=utf-8,sjis,iso-2022-jp,cp932,euc-jp
   set fileencoding=utf-8
-  let g:encoding_set=1
+  let g:encoding_set = 1
 endif
 scriptencoding utf-8
 
-" Swap file (don't create)
+" Don't create swp file
 set writebackup
 set nobackup
 set noswapfile
@@ -15,6 +15,7 @@ set noundofile
 
 " Show column number
 set number
+set relativenumber
 
 " Long text
 set wrap
@@ -23,7 +24,7 @@ set colorcolumn=256
 
 " Invisible string
 set list
-set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:$,trail:~
+" set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:$,trail:~
 
 " Don't unload buffer when it is abandones
 set hidden
@@ -32,47 +33,60 @@ set hidden
 set switchbuf=useopen
 
 " Tab
-" set tabstop=4
-" set shiftwidth=4
 set smarttab
 set expandtab
-" set softtabstop=4
 set autoindent
 
-" Edit
-set smartindent
-set showmatch
-set matchtime=3
-set backspace=indent,eol,start
-set virtualedit+=block
-set modeline
-set modelines=5
+" Round indent
+set shiftwidth=4
+set shiftround
+
+" Space insert by autoindent
+set tabstop=4
+set scrolloff=3
+
+" Splitting a window will put the new window.
+set splitbelow
+set splitright
+
+" Current window
+set winwidth=30
+set winheight=1
+
+" Command line window
+set cmdwinheight=5
+
+" No equal wiindow size
+set noequalalways
+
+" Adjust window size
+set previewheight=8
+set helpheight=12
+
+" Show tab line
+set showtabline=2
 
 " Search
 set ignorecase
 set smartcase
 set incsearch
-set wrapscan
-set infercase
 set hlsearch
+" Replace incremental
+if exists('&inccommand')
+  set inccommand=split
+endif
 
-" Share clipborad with system
+" Show clipboard with system
 set clipboard+=unnamedplus
 
 " Use extend grep
 if executable('rg')
   let &grepprg = 'rg --vimgrep --hidden'
-  set grepformat=%f:%l:%c:%m
+  set grepformat=%f:%l%c:%m
 elseif executable('pt')
   let &grepprg = 'pt --nocolor --nogroup --column'
-  set grepformat=%f:%l:%c:%m
+  set grepformat=%f:%l%c:%m
 endif
-
-" Show quickfix after grepcmd
-augroup GrepCmd
-  autocmd!
-  autocmd QuickFixCmdPost vim,grep,make if len(getqflist()) != 0 | cwindow | endif
-augroup END
 
 " For input multibyte chars
 set ttimeout
@@ -80,7 +94,7 @@ set ttimeoutlen=50
 
 " Save undo history
 if has('persistent_undo')
-  set undodir=./.vimundo,~/.vimundo
+  set undodir=./.vimundo,$HOME/.vimundo
   augroup vimrc-undofile
     autocmd!
     autocmd BufReadPre ~/* setlocal undofile
@@ -91,7 +105,7 @@ endif
 command! -nargs=? Jq call s:Jq(<f-args>)
 function! s:Jq(...)
   if 0 == a:0
-    let l:arg = "."
+    let l:arg = ".
   else
     let l:arg = a:1
   endif

@@ -1,20 +1,27 @@
+# Plugins manager 'Dein'
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+# Colorscheme
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
 
+# Status bar
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 depends = ['iceberg.vim']
-hook_add = 'source $HOME/.vim/rc/plugins/lightline.rc.vim'
+hook_add = '''
+  if has('nvim')
+    source $XDG_CONFIG_HOME/nvim/rc/plugins/lightline.rc.vim
+  else
+    source $HOME/.vim/rc/plugins/lightline.rc.vim
+  endif
+'''
 
-[[plugins]]
-repo = 'popkirby/lightline-iceberg'
-depends = ['iceberg.vim, lightline.vim']
-
+# Git
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 
+# Other utils
 [[plugins]]
 repo = 'mattn/sonictemplate-vim'

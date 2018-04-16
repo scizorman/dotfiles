@@ -9,12 +9,18 @@ augroup MyTabStop
   autocmd BufNewFile,BufRead *.{c,h} setlocal tabstop=4 shiftwidth=4
   autocmd BufNewFile,BufRead *.py setlocal tabstop=4 shiftwidth=4
   autocmd BufNewFile,BufRead *.vim setlocal tabstop=2 shiftwidth=2
-  autocmd BufNewFile,BufRead Makefile setlocal noexpandtab
+  autocmd BufNewFile,BufRead Makefile setlocal noexpandtab 
+  autocmd BufNewFile,BufRead *.yaml setlocal tabstop=2 shiftwidth=2
   autocmd BufNewFile,BufRead *.toml setlocal tabstop=2 shiftwidth=2
-  autocmd BufNewFile,BufRead *.scss filetype=scss
+  autocmd BufNewFile,BufRead *.scss setlocal filetype=scss
 augroup END
 
 augroup MyGitSpellCheck
   autocmd!
   autocmd Filetype gitcommit setlocal spell
+augroup END
+
+augroup MyHelpRight
+  autocmd!
+  autocmd BufWinEnter *.{txt,jax} if &ft == 'help | wincmd L | endif'
 augroup END
