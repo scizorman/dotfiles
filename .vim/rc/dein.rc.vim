@@ -11,8 +11,12 @@ if dein#load_state(s:dein_dir)
   let s:index = 0
 
   for s:toml_file in split(s:toml_list, '\n')
-    let s:toml_lazy = s:index==0 ? 0 : 1
-    let s:index = s:index + 1
+    if s:index == 0
+      let s:toml_lazy = 0
+      let s:index = s:index + 1
+    else
+      let s:toml_lazy = 1
+    endif
 
     call dein#load_toml(s:toml_file, {'lazy': s:toml_lazy})
   endfor

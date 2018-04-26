@@ -1,11 +1,11 @@
 let g:lightline = {
   \ 'colorscheme': 'iceberg',
-  \ 'active': {
-  \   'left': [['mode', 'paste'], ['readonly', 'myfilename', 'modified'],],
+    \ 'active': {
+  \   'left': [['mode', 'paste'], ['readonly', 'filepath', 'modified'],],
   \   'right': [['lineinfo'], ['percent'], ['ale_ok', 'ale_warning', 'ale_error', 'char_code', 'fileformat', 'fileencoding', 'filetype'],],
   \ },
   \ 'component_function': {
-  \   'myfilename': 'LightlineFilename',
+  \   'filepath': 'LightlineFilepath',
   \ },
   \ 'component_expand': {
   \   'ale_error': 'LightlineAleError',
@@ -17,12 +17,14 @@ let g:lightline = {
   \   'ale_warning': 'warning',
   \   'ale_ok': 'ok',
   \ },
-  \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
-  \ 'subseparator': {'left': "\ue0b1", 'right': "\ue0b3"},
 \ }
 
-function! LightlineFilename()
-  return ('' != expand('%') ? expand('%') : '[No Name]')
+function! LightlineFilepath()
+  if winwidth(0) > 90
+    return expand('%:s')
+  else
+    return expand('%:t')
+  endif
 endfunction
 
 function! LightlineAleError() abort
@@ -61,3 +63,6 @@ augroup LightLineOnALE
   autocmd!
   autocmd User ALELint call lightline#update()
 augroup END
+
+set laststatus=2
+set noshowmode

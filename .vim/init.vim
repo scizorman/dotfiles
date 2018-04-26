@@ -1,1 +1,1 @@
-/Users/tetsu/dotfiles/.vimrc
+/Users/tetsu/.vimrc

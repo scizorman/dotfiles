@@ -1,7 +1,6 @@
 " File encoding
 if !exists ('g:encodin_set') || !has('nvim')
   set encoding=utf-8
-  set fileencodings=utf-8,sjis,iso-2022-jp,cp932,euc-jp
   set fileencoding=utf-8
   let g:encoding_set = 1
 endif
@@ -105,7 +104,7 @@ endif
 command! -nargs=? Jq call s:Jq(<f-args>)
 function! s:Jq(...)
   if 0 == a:0
-    let l:arg = ".
+    let l:arg = "."
   else
     let l:arg = a:1
   endif

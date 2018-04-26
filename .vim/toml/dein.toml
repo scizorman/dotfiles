@@ -6,10 +6,12 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
 
+[[plugins]]
+repo = 'romainl/Apprentice'
+
 # Status bar
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-depends = ['iceberg.vim']
 hook_add = '''
   if has('nvim')
     source $XDG_CONFIG_HOME/nvim/rc/plugins/lightline.rc.vim

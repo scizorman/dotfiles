@@ -9,12 +9,21 @@ depends = ['neomru.vim']
 hook_source = '''
   source $HOME/.vim/rc/plugins/unite.rc.vim
 '''
-
-[[plugins]]
-repo = 'Yggdroot/indentLine'
-on_cmd = ['IndentLinesToggle']
 hook_add = '''
-  let g:loaded_indentLine = 1
+  " Prefix key
+  nnoremap [unite] <Nop>
+  map <Space>u [unite]
+  " Keymap
+  " Current directory files
+  nnoremap <silent> [unite]<C-p> :<C-u>Unite<Space>file_rec/async:!<CR>
+  " Buffer files
+  nnoremap <silent> [unite]<C-b> :<C-u>Unite buffer<CR>
+  " Grep files
+  nnoremap <silent> [unite]<C-g> :<C-u>Unite<Space>grep -buffer-name=search -auto-previm -no-quit -no-empty -resume<CR>
+  " Recent files
+  nnoremap <silent> [unite]<C-r> :<C-u>Unite file_mru buffer<CR>
+  " Yank history
+  nnoremap <silent> [unite]<C-y> :<C-u>Unite history/yank<CR>
 '''
 
 ################################
@@ -23,6 +32,14 @@ hook_add = '''
 [[plugins]]
 repo = 'tyru/caw.vim'
 on_map = ['<Plug>(caw:hatpos:toggle)', '<Plug>(caw.zeropos:toggle)']
+hook_add = '''
+  " Add coment to beginning line (consider whitespace)
+  nmap <Leader>c <Plug>(caw:hatpos:toggle)
+  vmap <Leader>c <Plug>(caw:hatpos:toggle)
+  " Add coment to beginning line (ignore whitespace)
+  nmap <Leader>, <Plug>(caw:zeropos:toggle)
+  vmap <Leader>, <Plug>(caw:zeropos:toggle)
+'''
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -36,7 +53,6 @@ hook_source = '''
   endif
 '''
 
-
 [[plugins]]
 repo = 'w0rp/ale'
 on_ft = ['python', 'javascript', 'html', 'css', 'markdown', 'make', 'vim']
@@ -46,32 +62,6 @@ hook_source = '''
   else
     source $HOME/.vim/rc/plugins/ale.rc.vim
   endif
-'''
-
-[[plugins]]
-repo = 'jsfaint/gen_tags.vim'
-on_ft = ['python']
-hook_source = '''
-  let g:gen_tags#gtags_auto_gen = 1
-'''
-
-[[plugins]]
-repo = 'janko-m/vim-test'
-depends = ['vim-dispatch']
-hook_source = '''
-  let g:test#strategy = 'dispatch'
-'''
-
-[[plugins]]
-repo = 'tpope/vim-dispatch'
-
-[[plugins]]
-repo = 'majutsushi/tagbar'
-on_cmd = ['TagbarToggle']
-hook_add = '''
-  let g:tagbar_sort = 0
-  let g:tagbar_ase_insensitive = 1
-  let g:tagbar_compact = 1
 '''
 
 ################################
@@ -108,26 +98,6 @@ hook_add = '''
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 bulid = 'make'
-
-# NERDTree
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add = '''
-  let NERDTreeShowHidden=1
-  let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-  nmap <Leader>t <Plug>NERDTreetabsToggle<CR>
-'''
-
-[[plugins]]
-repo = 'jistr/vim-nerdtree-tabs'
-hook_add = '''
-  let g:nerdtree_tabs_autofind = 0
-  nmap <Leader>f <Plug>NERDTreeTabsFind<CR>
-'''
-
-[[plugins]]
-repo = 'Xuyuanp/nerdtree-git-plugin'
-depends = ['vim-fugitive']
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'

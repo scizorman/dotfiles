@@ -15,13 +15,13 @@ endif
 """"""""""""""""
 " Load Python
 function! s:pick_executable(pathspecs) abort
-  for pathspec in filter(a:pathspecs, '!empty(v:val)')
-    for path in reverse(glob(pathspec, 0, 1))
-      if executable(path)
-        return path
+  for s:pathspec in filter(a:pathspecs, '!empty(v:val)')
+    for s:path in reverse(glob(s:pathspec, 0, 1))
+      if executable(s:path)
+        return s:path
       endif
-        endfor
     endfor
+  endfor
   return ''
 endfunction
 

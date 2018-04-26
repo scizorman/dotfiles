@@ -1,1 +1,0 @@
-/Users/tetsu/dotfiles/.vim
