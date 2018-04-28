@@ -7,7 +7,7 @@ let s:dein_dir = expand('$CACHE/dein')
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  let s:toml_list = has('nvim') ? expand('$XDG_CONFIG_HOME/nvim/toml/**.toml') : expand('$HOME/.vim/toml/**.toml')
+  let s:toml_list = expand('$HOME/.vim/toml/**.toml')
   let s:index = 0
 
   for s:toml_file in split(s:toml_list, '\n')

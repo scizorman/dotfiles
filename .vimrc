@@ -49,7 +49,7 @@ endif
 
 """"""""""""""""
 " Load rc files
-let s:rc_path = has('nvim') ? expand('$XDG_CONFIG_HOME/nvim/rc/**.rc.vim') : expand('$HOME/.vim/rc/**.rc.vim')
+let s:rc_path = expand('$HOME/.vim/rc/**.rc.vim')
 
 for s:rc_file in split(s:rc_path, '\n')
   if filereadable(s:rc_file)

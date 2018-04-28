@@ -13,11 +13,7 @@ repo = 'romainl/Apprentice'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-  if has('nvim')
-    source $XDG_CONFIG_HOME/nvim/rc/plugins/lightline.rc.vim
-  else
-    source $HOME/.vim/rc/plugins/lightline.rc.vim
-  endif
+  source $HOME/.vim/rc/plugins/lightline.rc.vim
 '''
 
 # Git

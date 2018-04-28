@@ -6,7 +6,7 @@ build = ':UpdateRemotePlugins'
 depends = ['neosnippet.vim']
 hook_source = '''
   let g:deoplete#enable_at_startup = 1
-  source $XDG_CONFIG_HOME/nvim/rc/plugins/deoplete.rc.vim
+  source $HOME/.vim/rc/plugins/deoplete.rc.vim
 '''
 
 [[plugins]]
@@ -33,7 +33,7 @@ on_cmd = 'Denite'
 depends = ['neomru.vim', 'neoinclude.vim']
 build = ':UpdateRemotePlugins'
 hook_source = '''
-  source $XDG_CONFIG_HOME/nvim/rc/plugins/denite.rc.vim
+  source $HOME/.vim/rc/plugins/denite.rc.vim
 '''
 hook_add = '''
   " Prefix key

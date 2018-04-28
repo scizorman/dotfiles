@@ -46,22 +46,14 @@ repo = 'thinca/vim-quickrun'
 depends = ['vimproc.vim']
 on_ft = ['python']
 hook_source = '''
-  if has('nvim')
-    source $XDG_CONFIG_HOME/nvim/rc/plugins/vimquickrun.rc.vim
-  else
-    source $HOME/.vim/rc/plugins/vimquickrun.rc.vim
-  endif
+  source $HOME/.vim/rc/plugins/vimquickrun.rc.vim
 '''
 
 [[plugins]]
 repo = 'w0rp/ale'
 on_ft = ['python', 'javascript', 'html', 'css', 'markdown', 'make', 'vim']
 hook_source = '''
-  if has('nvim')
-    source $XDG_CONFIG_HOME/nvim/rc/plugins/ale.rc.vim
-  else
-    source $HOME/.vim/rc/plugins/ale.rc.vim
-  endif
+  source $HOME/.vim/rc/plugins/ale.rc.vim
 '''
 
 ################################
