@@ -1,30 +1,33 @@
-ROOT_PATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+DOTPATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+CANDIDATES := $(wildcard .??*) bin
+EXCLUSIONS := .DS_Store .git .gitmodules .gitignore
+DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
-help:
-	@echo "usage: make [COMMANDS]"
-	@echo
-	@echo "COMMANDS:"
-	@echo "    deploy    Deploy dotfiles"
-	@echo "    init      Install packages"
-	@echo "    install   Exec 'deploy' and 'init'"
-	@echo "    update    Update dotfiles (git pull)"
-	@echo "    clean     Remove dotfiles"
+all:
 
 deploy:
-	@echo '==> Start to deploy dotfiles and binfiles.'
-	@DOTPATH=$(ROOT_PATH) sh $(ROOT_PATH)/etc/deploy.sh
+	@echo '==> Start to deploy dotfiles to home directory.'
+	@echo ''
+	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
-install:
-	@echo '==> Start to install necessary packages.'
-	@DOTPATH=$(ROOT_PATH) sh $(ROOT_PATH)/etc/install.sh
-
-init: deploy install
-	@exec $$SHELL
+init:
+	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/init/init.sh
 
 update:
-	@echo '==> Start to update.'
-	@DOTPATH=$(ROOT_PATH) sh $(ROOT_PATH)/etc/update.sh
+	git pull origin master
+	git submodule init
+	git submodule update
+	git submodule foreach git pull origin master
+
+install: update deploy init
+	@exec $$SHELL
 
 clean:
-	@echo '==> Start to clean .dotfiles.'
-	@DOTPATH=$(ROOT_PATH) sh $(ROOT_PATH)/etc/clean.sh
+	@echo 'Remove dot files in your home directory...'
+	@-$(foreach val, $(DOTFILES), unlink $(HOME)/$(val);)
+	-rm -rf $(DOTPATH)
+
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+		| sort \
+		| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
