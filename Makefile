@@ -10,8 +10,8 @@ deploy:
 	@echo ''
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
-init:
-	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/init/init.sh
+install:
+	@DOTPATH=$(DOTPATH) sh $(DOTPATH)/etc/install.sh
 
 update:
 	git pull origin master
@@ -19,7 +19,7 @@ update:
 	git submodule update
 	git submodule foreach git pull origin master
 
-install: update deploy init
+init: update deploy install
 	@exec $$SHELL
 
 clean:
