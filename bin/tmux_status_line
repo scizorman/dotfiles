@@ -104,7 +104,8 @@ function main(){
   local airport=$(get_airport_state)
   local battery=$(get_battery_state)
 
-  echo "${load_avg}${airport}${sound} ${battery}"
+  # echo "${load_avg}${airport}${sound} ${battery}"
+  echo "${load_avg}${airport} ${battery}"
 }
 
 main $@

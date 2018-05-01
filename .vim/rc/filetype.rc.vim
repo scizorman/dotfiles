@@ -7,7 +7,7 @@ augroup MyTabStop
   autocmd BufNewFile,BufRead *.scss setlocal tabstop=2 shiftwidth=2
   autocmd BufNewFile,BufRead *.md setlocal tabstop=2 shiftwidth=2
   autocmd BufNewFile,BufRead Makefile setlocal noexpandtab 
-  autocmd BufNewFile,BufRead *.sh setlocal tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.sh setlocal tabstop=4 shiftwidth=4
   autocmd BufNewFile,BufRead *.{c,h} setlocal tabstop=4 shiftwidth=4
   autocmd BufNewFile,BufRead *.py setlocal tabstop=4 shiftwidth=4
   autocmd BufNewFile,BufRead *.vim setlocal tabstop=2 shiftwidth=2
