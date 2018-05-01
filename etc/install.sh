@@ -1,27 +1,14 @@
 #!/bin/sh
-if [ ! -e $HOME/.dotfiles ]; then
-  if type git >/dev/null 2>&1; then
-    echo "Downloading .dotfiles with git ..."
-    git clone https://github.com/Scizor-master/.dotfiles $HOME/
-  else
-    tarball="https://github.com/Scizor-master/.dotfiles/archive/master.tar.gz"
-    if type curl >/dev/null 2>&1; then
-      echo "Downloading .dotfiles with curl ..."
-      curl -L "$tarball" | tar zx
-    elif type wget >/dev/null 2>&1; then
-      echo "Downloading .dotfiles with wget ..."
-      wget -O - "$tarball" | tar zx
-    fi
-    mv -f .dotfiles-master $HOME/.dotfiles
-  fi
-fi
+OSTYPE="$(uname -s)"
+DOT_DIR="$HOME/.dotfiles"
 
-if [ "$(uname)" == 'Darwin' ]; then
-  echo "    Install 'brew' packages ...\n"
-  $HOME/.dotfiles/etc/osx/brew_install.sh
+if [[ $OSTYPE =~ (D|d)arwin* ]]; then
+  SETUP_OSX_DIR=$DOT_DIR/osx
 
-  echo "\n    Install python3 packages ...\n"
-  pip3 install -r $HOME/.dotfiles/etc/neovim_requirements.txt
+  ./$SETUP_OSX_DIR/brew_install.sh
+
+  pip install -r $SETUP_OSX_DIR/neovim_2_requirements.txt
+  pip3 install -r $SETUP_OSX_DIR/neovim_3_requirements.txt
 
 else
   echo "Your platform ($(uname -a)) is not supported."
