@@ -1,21 +1,19 @@
+#!/usr/local/bin/zsh
 umask 022
 limit coredumpsize 0
 bindkey -d
 
 # Return if zsh is called from vim
-if [[ -n $VIMRUNTIME ]]; then
-    return 0
-fi
+[[ -n $VIMRUNTIME ]] && return 0
 
+# tmux_automaticcaly_attach attaches tmux session
+# automatically when you are in zsh
+[[ -x $HOME/bin/tmuxx ]] && $HOME/bin/tmuxx
 
-# Automatically attach tmux session when you are in zsh
-if [[ -x $HOME/bin/tmuxx ]]; then
-    $HOME/bin/tmuxx
-fi
-
-if [[ -f $HOME/.zplug/init.zsh ]]; then
+# zplug
+if [[ -f $HOME/.zplug.init.zsh ]]; then
     export ZPLUG_LOADFILE=$HOME/.zsh/zplug.zsh
-    source $HOME/.zplug/init.sh
+    source $HOME/.zplug/init.zsh
 
     if ! zplug check --verbose; then
         printf "Install? [y/n]: "
@@ -27,6 +25,20 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
     zplug load
 fi
 
-if [[ -f $HOME/.zshrc.local ]]; then
-    source $HOME/.zshrc.local
-fi
+[[ -f $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
+
+# Detect OS
+case "${(L):-$(uname)}" in
+    darwin* )
+        alias ls='ls -G' ;;
+    linux* )
+        [[ $TERM == 'xterm' ]] && export TERM='xterm-256color'
+        alias ls='ls -color=auto' ;;
+esac
+
+
+# Benchmark
+alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
