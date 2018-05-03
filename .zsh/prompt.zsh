@@ -1,5 +1,5 @@
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
-autoload -Uz colors; colors
+autoload -Uz colors && colors
 autoload -Uz add-zsh-hook
 autoload -Uz terminfo
 
