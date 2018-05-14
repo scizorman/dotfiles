@@ -21,7 +21,7 @@ setopt sh_word_split
 # Case of multi redirection and pipe,
 # use 'tee' and 'cat', if needed
 # ~$ < file1                           # cat
-# ~$ < file1 < file2                   # cat 2files
+# ~$ < file1 < file2                   # cat 2 files
 # ~$ < file1 > file3                   # copy file1 to file3
 # ~$ < file1 > file3 | cat             # Copy and put stdout
 # ~$ cat file1 > file3 > /dev/stdin    # tee

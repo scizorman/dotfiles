@@ -86,7 +86,7 @@ function get_battery_state(){
       if [[ ! $battery_info =~ "discharging" ]]; then
         battery="#[bg=colour002,fg=black] ⚡ $battery_quantity% #[default]"
       elif (( $battery_quantity < 16 )); then
-        battery="#[bg=red,fg=white] $battery_quantity% #[default]"
+        battery="#[bg=red,fg=black] $battery_quantity% #[default]"
       else
         battery="#[bg=colour002,fg=black] $battery_quantity% #[default]"
       fi

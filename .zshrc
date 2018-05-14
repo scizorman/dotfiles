@@ -4,14 +4,22 @@ limit coredumpsize 0
 bindkey -d
 
 # Return if zsh is called from vim
-[[ -n $VIMRUNTIME ]] && return 0
+if [[ -n $VIMRUNTIME ]]; then
+    return 0
+fi
 
 # tmux_automaticcaly_attach attaches tmux session
 # automatically when you are in zsh
-[[ -x $HOME/bin/tmuxx ]] && $HOME/bin/tmuxx
+if [[ -x $HOME/bin/tmux_automatically_attach ]]; then
+    $HOME/bin/tmux_automatically_attach
+fi
 
 # zplug
-if [[ -f $HOME/.zplug.init.zsh ]]; then
+if [ ! -e $HOME/.zplug ]; then
+    git clone https://github.com/zplug/zplug $HOME/.zplug
+fi
+
+if [[ -f $HOME/.zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=$HOME/.zsh/zplug.zsh
     source $HOME/.zplug/init.zsh
 
@@ -22,23 +30,13 @@ if [[ -f $HOME/.zplug.init.zsh ]]; then
         fi
         echo
     fi
-    zplug load
+    zplug load --verbose
 fi
 
 [[ -f $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
 
-# Detect OS
-case "${(L):-$(uname)}" in
-    darwin* )
-        alias ls='ls -G' ;;
-    linux* )
-        [[ $TERM == 'xterm' ]] && export TERM='xterm-256color'
-        alias ls='ls -color=auto' ;;
-esac
-
-
 # Benchmark
-alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
-
+# alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
+#
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

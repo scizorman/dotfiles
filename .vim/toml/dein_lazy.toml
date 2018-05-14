@@ -147,6 +147,10 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'aklt/plantuml-syntax'
+on_ft = ['plantuml', 'pu', 'uml']
+
+[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = ['toml']
 

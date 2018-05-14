@@ -5,7 +5,6 @@ path=( \
     /usr/local/{bin,sbin}(N-/) \
     $HOME/bin(N-/) \
     $HOME/.zplug/bin(N-/) \
-    $HOME/.tmux/bin(N-/) \
     "$path[@]" \
 )
 
@@ -13,8 +12,8 @@ path=( \
 # NOTE: set fpath before compinit
 typeset -gx -U fpath
 fpath=( \
-    $HOME/.zsh/Completion(N-/) \
-    $HOME/.zsh/functions(N-/) \
+    $HOME/.zsh/completion(N-/) \
+    # $HOME/.zsh/functions(N-/) \
     $HOME/.zsh/plugins/zsh-completions(N-/) \
     /usr/local/share/zsh/site-functions(N-/) \
     $fpath \
@@ -32,6 +31,15 @@ export LANGUAGE=en_US.UTF-8
 export LANG=$LANGUAGE
 export LC_ALL=$LANGUAGE
 export LC_CTYPE=$LANGUAGE
+
+# OS
+export PLATFORM
+case "${(L):-$(uname)}" in
+    *'darwin'* ) PLATFORM='osx' ;;
+    *'linux'* ) PLATFORM='linux' ;;
+    *'bsd'* ) PLATFORM='bsd' ;;
+    * ) PLATFORM='unknown' ;;
+esac
 
 # Editor
 export EDITOR=vim

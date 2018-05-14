@@ -1,9 +1,9 @@
 ZPLUG_SUDO_PASSWORD=
 ZPLUG_PROTOCOL=ssh
 
-zplug "zplug/zplug", hook-build:'zplug --self-manage'
+# zplug "zplug/zplug", hook-build:'zplug --self-manage'
 
-zplug "$HOME/.zsh", from:local, use"<->_*.zsh"
+# zplug "$HOME/.zsh", from:local, use"<->_*.zsh"
 
 zplug "b4b4r07/enhancd", use:init.sh
 if zplug check "b4b4r07/enhancd"; then
@@ -24,7 +24,5 @@ zplug "junegunn/fzf", \
     as:command, \
     use:"bin/fzf-tmux"
 
-zplug "motemen/ghq", \
-    as:command, \
-    from:gh-r, \
-    rename-to:ghq
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
