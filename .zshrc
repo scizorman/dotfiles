@@ -1,4 +1,4 @@
-#!/usr/local/bin/zsh
+#!/usr/bin/env zsh
 umask 022
 limit coredumpsize 0
 bindkey -d
@@ -20,6 +20,7 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
     source $HOME/.zplug/init.zsh
 
     if ! zplug check --verbose; then
+    # if ! zplug check; then
         printf "Install? [y/n]: "
         if read -q; then
             echo; zplug install
@@ -27,12 +28,9 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
         echo
     fi
     zplug load --verbose
+    # zplug load
 fi
 
-[[ -f $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
-
-# Benchmark
-# alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
-#
-# fzf
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ -f $HOME/.zshrc.local ]]; then
+    source $HOME/.zshrc.local
+fi
