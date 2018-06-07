@@ -1,17 +1,20 @@
 DOTPATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-CANDIDATES := $(wildcard .??*) lib bin
+CANDIDATES := $(wildcard .??*) bin
 EXCLUSIONS := .DS_Store .git .gitmodules .gitignore
 DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
 all:
+
+list:
+	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
 
 deploy:
 	@echo '==> Start to deploy dotfiles to home directory.'
 	@echo ''
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
-install:
-	@DOTPATH=$(DOTPATH) sh $(DOTPATH)/etc/install.sh
+init:
+	@DOTPATH=$(DOTPATH) sh $(DOTPATH)/etc/init.sh
 
 update:
 	git pull origin master
@@ -19,13 +22,12 @@ update:
 	git submodule update
 	git submodule foreach git pull origin master
 
-init: update deploy install
+install: update deploy init
 	@exec $$SHELL
 
 clean:
 	@echo 'Remove dot files in your home directory...'
 	@-$(foreach val, $(DOTFILES), unlink $(HOME)/$(val);)
-	-rm -rf $(DOTPATH)
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
