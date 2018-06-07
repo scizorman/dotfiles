@@ -14,7 +14,7 @@ deploy:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
 init:
-	@DOTPATH=$(DOTPATH) sh $(DOTPATH)/etc/init.sh
+	@DOTPATH=$(DOTPATH) sh $(DOTPATH)/etc/init/init.sh
 
 update:
 	git pull origin master
