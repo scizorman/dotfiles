@@ -233,6 +233,7 @@ e_arrow() {
 }
 
 e_indent() {
+    local i
     for ((i=0; i<${1:-4}; i++)); do
         echon " "
     done
