@@ -1,8 +1,0 @@
-futures==3.2.0
-greenlet==0.4.13
-jedi==0.12.0
-msgpack==0.5.6
-neovim==0.2.5
-parso==0.2.0
-six==1.11.0
-trollius==2.2
