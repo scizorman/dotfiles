@@ -36,4 +36,6 @@ for f in "$DOTPATH"/etc/init/"$(get_os)"/*.sh; do
     fi
 done
 
+. "$DOTPATH"/etc/init/assets/Neovim/install_nvim_py_requirements.sh
+
 log_pass "$0: Finish!!" | sed "s $DOTPATH \$DOTPATH g"

@@ -17,11 +17,11 @@ if ! has "pip3"; then
 fi
 
 # Install Python2.7 packages
-log_echo "Install packages for Python2.7."
-pip2 install -r $DOTPATH/etc/init/common/neovim_py2_requirements.txt
+log_echo "Install packages (Python2.7) for Neovim."
+pip2 install -r $DOTPATH/etc/init/assets/Neovim/nvim_py2_requirements.txt
 
 # Install Python (the latest version) packages
-log_echo "Install packages for the latest version of Python."
-pip3 install -r $DOTPATH/etc/init/common/neovim_py3_requirements.txt
+log_echo "Install packages (the latest version of Python) for Neovim."
+pip3 install -r $DOTPATH/etc/init/assets/Neovim/nvim_py3_requirements.txt
 
-log_pass "Packages for Python: Installed successfully."
+log_pass "Packages (Python) for Neovim: Installed successfully."
