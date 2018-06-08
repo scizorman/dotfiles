@@ -16,7 +16,7 @@ deploy:
 	@echo 'Deploy: Complete!'
 
 init:
-	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/init/init.sh
+	@DOTPATH=$(DOTPATH) sh $(DOTPATH)/etc/init/init.sh
 	@echo ''
 	@echo 'Initalize: Complete!'
 
