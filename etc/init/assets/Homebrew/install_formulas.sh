@@ -7,8 +7,8 @@ set -eu
 . "$DOTPATH"/etc/vital.sh
 
 if ! has "brew"; then
-    log_info "'brew' is required."
-    . "$DOTPATH"/etc/init/osx/10_brew.sh
+    log_fail "Error: Homebrew is required."
+    exit 1
 fi
 
 formulas=(
