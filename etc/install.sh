@@ -8,9 +8,8 @@ fi
 DOTFILE_GITHUB="https://github.com/Scizor-master/dotfiles.git"
 export DOTFILE_GITHUB
 
-# Source utilities
+# Get utilities
 source $DOTPATH/etc/vital.sh
-
 
 # Download
 dotfiles_download(){
