@@ -1,6 +1,9 @@
 #!/bin/sh
 export SETUP_DIR
 
+# Get utilities
+source $DOTPATH/etc/vital.sh
+
 # Export SETUP_DIR variable to initialize.
 if is_osx; then
     export SETUP_DIR=$DOTPATH/etc/init/osx
@@ -19,7 +22,7 @@ fi
 
 # Initialize
 if [ -e $SETUP_DIR ]; then
-    for file in `ls $SETUP_DIR`; do
+    for file in `ls $SETUP_DIR/*.sh`; do
         source $file
     done
 fi
