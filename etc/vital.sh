@@ -60,7 +60,7 @@ is_at_least(){
 }
 
 # Export the PLATFORM variable as you see fit.
-os_detect(){
+detect_os(){
     export PLATFORM
     case "${(L):-$(uname)}" in
         *'linux'*)
@@ -80,7 +80,7 @@ os_detect(){
 
 # Returns true if running os is Linux.
 is_linux(){
-    os_detect
+    detect_os
     if [[ $PLATFORM == 'linux' ]]; then
         return 0
     else
@@ -90,7 +90,7 @@ is_linux(){
 
 # Returns true if running os is OSX.
 is_osx(){
-    os_detect
+    detect_os
     if [[ $PLATFORM == 'osx' ]]; then
         return 0
     else
@@ -100,7 +100,7 @@ is_osx(){
 
 # Returns true if running os is FreeBSD.
 is_bsd(){
-    os_detect
+    detect_os
     if [[ $PLATFORM == 'bsd' ]]; then
         return 0
     else
@@ -116,6 +116,39 @@ get_os(){
             echo $os
         fi
     done
+}
+
+# Export the DISTRIBUTION_TYPE variable if you use Linux.
+detect_distribution_type(){
+    if [[ $PLATFORM == 'linux' ]]; then
+        if [ -e /etc/debian_version ] || [ -e /etc/debian_release ]; then
+            distribution_type='debian'
+        elif [ -e /etc/redhat-release ]; then
+            distribution_type='redhat'
+        fi
+
+        export DISTRIBUTION_TYPE=$distribution_type
+    fi
+}
+
+# Returns true if the type of using distribution is 'Debian'
+is_debian(){
+    detect_distribution_type
+    if [[ $DISTRIBUTION_TYPE == 'debian' ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Returns true if the type of using distribution is 'Redhat'
+is_redhat(){
+    detect_distribution_type
+    if [[ $DISTRIBUTION_TYPE == 'redhat' ]]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 e_newline(){
