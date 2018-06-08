@@ -57,10 +57,15 @@ is_at_least(){
     fi
 }
 
+# Returns the lowercase OS name.
+ostype(){
+    uname | lower
+}
+
 # Export the PLATFORM variable as you see fit.
 detect_os(){
     export PLATFORM
-    case "${(L):-$(uname)}" in
+    case "$(ostype)" in
         *'linux'*)
             PLATFORM='linux'
             ;;
