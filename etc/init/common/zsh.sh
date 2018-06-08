@@ -41,7 +41,7 @@ if ! has "zsh"; then
     esac
 fi
 
-log_pass "zsh: Installed successfully"
+log_pass "zsh: Installed successfully."
 
 # Run the forced termination with a last exit code.
 exit $?
@@ -79,4 +79,4 @@ if ! contains "${SHELL:-}" "zsh"; then
     fi
 fi
 
-log_pass "zsh: Setted successfully"
+log_pass "zsh: Setted successfully."
