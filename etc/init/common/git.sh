@@ -13,11 +13,8 @@ if ! has "git"; then
             if has "brew"; then
                 log_echo "Install git with Homebrew."
                 brew install git
-            elif "port"; then
-                log_echo "Install git with MacPorts"
-                sudo port install git
             else
-                log_fail "Error: Homebrew or MacPorts is required."
+                log_fail "Error: Homebrew is required."
                 exit 1
             fi
             ;;
@@ -27,7 +24,7 @@ if ! has "git"; then
                 log_echo "Install git with Yellowdog Updater Modified (YUM)."
                 sudo yum -y install git
             elif has "apt"; then
-                log_echo "Install git with Advanced Packagint Tool (APT)."
+                log_echo "Install git with Advanced Packaging Tool (APT)."
                 sudo apt -y install git
             else
                 log_fail "Error: YUM or APT is required."

@@ -13,11 +13,8 @@ if ! has "zsh"; then
             if has "brew"; then
                 log_echo "Install zsh with Homebrew."
                 brew install zsh
-            elif "port"; then
-                log_echo "Install zsh with MacPorts"
-                sudo port install zsh-devel
             else
-                log_fail "Error: Homebrew or MacPorts is required."
+                log_fail "Error: Homebrew is required."
                 exit 1
             fi
             ;;
