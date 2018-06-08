@@ -28,16 +28,6 @@ install: update deploy init
 clean:
 	@echo 'Remove dot files in your home directory...'
 	@-$(foreach val, $(DOTFILES), unlink $(HOME)/$(val);)
-	@echo 'Remove this repository? [y/n]'
-	read ANSWER
-	case $(ANSWER) in \
-		"Y" | "y" | "yes" | "Yes" | "YES") \
-			-rm -rf $(DOTPATH) \
-			;;
-		*) \
-			echo "OK. Don't remove this repository." \
-			;;
-	esac
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
