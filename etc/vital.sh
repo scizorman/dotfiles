@@ -64,7 +64,7 @@ ostype(){
 
 # Export the PLATFORM variable as you see fit.
 detect_os(){
-    export PLATFORM
+        export PLATFORM
     case "$(ostype)" in
         *'linux'*)
             PLATFORM='linux'
