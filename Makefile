@@ -12,32 +12,22 @@ deploy:
 	@echo '==> Start to deploy dotfiles to home directory.'
 	@echo ''
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
-	@echo ''
-	@echo 'Deploy: Complete!'
 
 init:
 	@DOTPATH=$(DOTPATH) sh $(DOTPATH)/etc/init/init.sh
-	@echo ''
-	@echo 'Initalize: Complete!'
 
 update:
 	git pull origin master
 	git submodule init
 	git submodule update
 	git submodule foreach git pull origin master
-	@echo ''
-	@echo 'Update: Complete!'
 
 install: update deploy init
 	@exec $$SHELL
-	@echo ''
-	@echo 'Install: Complete!'
 
 clean:
 	@echo 'Remove dot files in your home directory...'
 	@-$(foreach val, $(DOTFILES), unlink $(HOME)/$(val);)
-	@echo ''
-	@echo 'Clean: Complete!'
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
