@@ -233,8 +233,9 @@ e_arrow(){
 }
 
 e_indent(){ 
-    for (( i=0; i<${1:-4}; i++ )); do
+    i=0; while [ $i -lt ${1:-4} ]; do
         echon " "
+        i=$(( i + 1 ))
     done
     if [ -n "$2" ]; then
         echo "$2"
