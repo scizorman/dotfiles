@@ -1,70 +1,42 @@
 #!/bin/sh
-cat << START
+# Stop script if errors occure.
+trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
+set -eu
 
-************************************************
-START TO INSTALL HOMEBREW AND FORMULAS!!
-************************************************
+# Get utilities
+. "$DOTPATH"/etc/vital.sh
 
-START
+if ! is_osx; then
+    log_fail "Error: This script is only supported OSX."
+    exit 1
+fi
 
+if has "brew"; then
+    log_pass "brew: Already installed."
+    exit
+fi
 
-#Install xcode
-printf "Installing \033[34mxcode-select\033[m...\n"
-if xcode-select --install > /dev/null 2>&1; then
+# Homebrew is dependent on 'xcode-select'.
+if xcode-select --install >/dev/null 2>&1; then
+    log_info "Install 'xcode-select'."
     xcode-select --install
+    log_pass "xcode-select: Installed successfully."
 else
-    echo "  Already 'xcode-select' installed."
+    log_pass "xcode-select: Already installed."
 fi
 
-
-# Install Homebrew
-printf "\nInstalling \033[34mHomebrew\033[m...\n"
-if which brew > /dev/null 2>&1; then
-    echo "  Already Homebrew installed."
-else
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if ! has "ruby"; then
+    log_fail "Error: 'ruby' is required."
+    exit 1
 fi
 
-echo "\nRun 'brew doctor'"
-brew doctor
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-echo "\nRun 'brew update'"
-brew update
+if has "brew"; then
+    brew doctor
+else
+    log_fail "Error: Failed to install Homebrew."
+    exit 1
+fi
 
-echo "\nRun 'brew upgrade'"
-brew upgrade
-
-# Install formulas
-formulas=(
-    git
-    tmux
-    "vim --with-lua"
-    neovim
-    python3
-)
-
-cask_formulas=(
-    docker
-)
-
-echo "\nInstalling formulas..."
-for cask_formula in "${cask_formulas}"; do
-    brew cask install $cask_formula || brew upgrade $cask_formula
-done
-
-for formula in "${formulas[@]}"; do
-  brew install $formula || brew upgrade $formula
-done
-
-echo ''
-echo "Run 'brew cleanup'"
-brew cleanup
-
-
-cat << END
-
-************************************************
-COMPLETE TO INSTALL HOMEBREW AND FORMULAS!!
-************************************************
-
-END
+log_pass "brew: Installed successfully."

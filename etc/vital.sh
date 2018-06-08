@@ -121,38 +121,6 @@ get_os(){
     done
 }
 
-# Export the DISTRIBUTION_TYPE variable if you use Linux.
-detect_distribution_type(){
-    if [[ $PLATFORM == 'linux' ]]; then
-        if [ -e /etc/debian_version ] || [ -e /etc/debian_release ]; then
-            distribution_type='debian'
-        elif [ -e /etc/redhat-release ]; then
-            distribution_type='redhat'
-        fi
-
-        export DISTRIBUTION_TYPE=$distribution_type
-    fi
-}
-
-# Returns true if the type of using distribution is 'Debian'
-is_debian(){
-    detect_distribution_type
-    if [[ $DISTRIBUTION_TYPE == 'debian' ]]; then
-        return 0
-    else
-        return 1
-    fi
-}
-
-# Returns true if the type of using distribution is 'Redhat'
-is_redhat(){
-    detect_distribution_type
-    if [[ $DISTRIBUTION_TYPE == 'redhat' ]]; then
-        return 0
-    else
-        return 1
-    fi
-}
 
 e_newline(){
     print "\n"
