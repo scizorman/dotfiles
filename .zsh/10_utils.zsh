@@ -105,35 +105,88 @@ get_os(){
     done
 }
 
-# Export the DISTRIBUTION_TYPE variable if you use Linux.
-detect_distribution_type(){
-    if [[ $PLATFORM == 'linux' ]]; then
-        if [ -e /etc/debian_version ] || [ -e /etc/debian_release ]; then
-            distribution_type='debian'
-        elif [ -e /etc/redhat-release ]; then
-            distribution_type='redhat'
+# Export DISTRIBUTION variable.
+detect_distribution(){
+    export DISTRIBUTION
+    if [ -e /etc/debian_version ] || [ -e /etc/debian_release ]; then
+        if [ -e /etc/lsb-release ]; then
+            DISTRIBUTION="ubuntu"
+        else
+            DISTRIBUTION="debian"
         fi
 
-        export DISTRIBUTION_TYPE=$distribution_type
+    elif [ -e /etc/fedora-release ]; then
+        DISTRIBUTION="fedora"
+
+    elif [ -e /etc/redhat-release ]; then
+        if [ -e /etc/oracle-relase ]; then
+            DISTRIBUTION="oracle"
+        else
+            DISTRIBUTION="redhat"
+        fi
+    else
+        DISTRIBUTION="unknown"
+    fi
+
+    echo ${DISTRIBUTION}
+}
+
+# Returns true if running distribution is Ubuntu.
+is_ubuntu(){
+    detect_distribution
+    if [[ $DISTRIBUTION == 'ubuntu' ]]; then
+        return 0
+    else
+        return 1
     fi
 }
 
-# Returns true if the type of using distribution is 'Debian'
+# Returns true if running distribution is Debian.
 is_debian(){
-    detect_distribution_type
-    if [[ $DISTRIBUTION_TYPE == 'debian' ]]; then
+    detect_distribution
+    if [[ $DISTRIBUTION == 'debian' ]]; then
         return 0
     else
         return 1
     fi
 }
 
-# Returns true if the type of using distribution is 'Redhat'
-is_redhat(){
-    detect_distribution_type
-    if [[ $DISTRIBUTION_TYPE == 'redhat' ]]; then
+# Returns true if running distribution is Fedora.
+is_fedora(){
+    detect_distribution
+    if [[ $DISTRIBUTION == 'fedora' ]]; then
         return 0
     else
         return 1
     fi
+}
+
+# Returns true if running distribution is Oracle.
+is_oracle(){
+    detect_distribution
+    if [[ $DISTRIBUTION == 'oracle' ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Returns true if running distribution is Redhat.
+is_redhat(){
+    detect_distribution
+    if [[ $DISTRIBUTION == 'redhat' ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Returns distribution name that is running.
+get_distribution(){
+    local distribution
+    for distribution in ubuntu debian fedora oracle redhat; do
+        if is_$distribution; then
+            echo $distribution
+        fi
+    done
 }

@@ -64,7 +64,7 @@ ostype(){
 
 # Export the PLATFORM variable as you see fit.
 detect_os(){
-        export PLATFORM
+    export PLATFORM
     case "$(ostype)" in
         *'linux'*)
             PLATFORM='linux'
@@ -117,6 +117,92 @@ get_os(){
     for os in osx linux bsd; do
         if is_$os; then
             echo $os
+        fi
+    done
+}
+
+# Export DISTRIBUTION variable.
+detect_distribution(){
+    export DISTRIBUTION
+    if [ -e /etc/debian_version ] || [ -e /etc/debian_release ]; then
+        if [ -e /etc/lsb-release ]; then
+            DISTRIBUTION="ubuntu"
+        else
+            DISTRIBUTION="debian"
+        fi
+
+    elif [ -e /etc/fedora-release ]; then
+        DISTRIBUTION="fedora"
+
+    elif [ -e /etc/redhat-release ]; then
+        if [ -e /etc/oracle-relase ]; then
+            DISTRIBUTION="oracle"
+        else
+            DISTRIBUTION="redhat"
+        fi
+    else
+        DISTRIBUTION="unknown"
+    fi
+
+    echo ${DISTRIBUTION}
+}
+
+# Returns true if running distribution is Ubuntu.
+is_ubuntu(){
+    detect_distribution
+    if [[ $DISTRIBUTION == 'ubuntu' ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Returns true if running distribution is Debian.
+is_debian(){
+    detect_distribution
+    if [[ $DISTRIBUTION == 'debian' ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Returns true if running distribution is Fedora.
+is_fedora(){
+    detect_distribution
+    if [[ $DISTRIBUTION == 'fedora' ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Returns true if running distribution is Oracle.
+is_oracle(){
+    detect_distribution
+    if [[ $DISTRIBUTION == 'oracle' ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Returns true if running distribution is Redhat.
+is_redhat(){
+    detect_distribution
+    if [[ $DISTRIBUTION == 'redhat' ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Returns distribution name that is running.
+get_distribution(){
+    local distribution
+    for distribution in ubuntu debian fedora oracle redhat; do
+        if is_$distribution; then
+            echo $distribution
         fi
     done
 }
