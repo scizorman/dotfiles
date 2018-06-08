@@ -1,7 +1,5 @@
 # PLATFORM is the environment variable that retrieves the name of the running
 # platform.
-export PLATFORM
-
 _TAB_="$(printf "\t")"
 _SPACE_=' '
 _BLANK_="${_SPACE_}${_TAB_}"
