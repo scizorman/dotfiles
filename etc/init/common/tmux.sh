@@ -13,38 +13,46 @@ if ! has "tmux"; then
             if has "brew"; then
                 log_echo "Install tmux with Homebrew."
                 brew install tmux
-            elif "port"; then
-                log_echo "Install tmux with MacPorts"
-                sudo port install tmux
             else
-                log_fail "Error: Homebrew or MacPorts is required."
+                log_fail "Error: Homebrew is required."
                 exit 1
             fi
             ;;
 
         linux)
-            if has "yum" || has "apt"; then
-                if has "yum"; then
-                    log_echo "Install tmux with Yellowdog Updater Modified (YUM)."
-                    sudo yum -y install ncuress-devel
-                elif has "apt"; then
-                    log_echo "Install tmux with Advanced Packagint Tool (APT)."
-                    sudo apt install -y build-essential automake libevent-dev ncurses-dev
+            if is_redhat || is_ubuntu; then
+                if is_redhat; then
+                    if has "yum"; then
+                        log_echo "Install tmux with Yellowdog Updater Modified (YUM)."
+                        sudo yum -y install ncuress-devel
+                    else
+                        log_fail "Error: YUM is required."
+                        exit 1
+                    fi
+
+                elif is_ubuntu; then
+                    if has "apt"; then
+                        log_echo "Install tmux with Advanced Packaging Tool (APT)."
+                        sudo apt install -y build-essential automake libevent-dev ncurses-dev
+                    else
+                        log_fail "Error: APT is required."
+                        exit 1
+                    fi
                 fi
 
                 if [ -e $HOME/src ]; then
-                    mkdir -p $HOME/src
+                    mddir -p $HOME/src
                 fi
 
                 if ! has "git"; then
-                    log_info "'git' is required."
-                    . "$DOTPATH"/etc/init/"$(get_os)"/git.sh
+                    log_fail "'git' is required."
+                    exit 1
+                else
+                    git clone git@github.com:tmux/tmux.git $HOME/src/tmux
+                    cd $HOME/src/tmux && sh autogen.sh && ./configure && make
+                    cp $HOME/src/tmux/tmux /usr/local/bin
                 fi
-
-                git clone git@github.com:tmux/tmux.git $HOME/src/tmux
-
-                cd $HOME/src/tmux && sh autogen.sh && ./configure && make
-                cp $HOME/src/tmux/tmux /usr/local/bin
+                
             else
                 log_fail "Error: YUM or APT is required."
                 exit 1
