@@ -66,7 +66,7 @@ To update later on, just run this command.
 All configuration files for setup is stored within the `etc/init` directory. By running the command below, you can interactively setup all preferences.
 
   ```console
-  $make init
+  $ make init
   ```
 
 ## Uninstall
