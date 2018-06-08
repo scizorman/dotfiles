@@ -23,7 +23,6 @@ formulas=(
     openssl
     optipng
     pkg-config
-    python3
     reattach-to-user-namespace
     tree
     "vim --with-lua" 
