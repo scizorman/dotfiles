@@ -84,7 +84,7 @@ detect_os(){
 # Returns true if running os is Linux.
 is_linux(){
     detect_os
-    if [[ $PLATFORM = 'linux' ]]; then
+    if [ $PLATFORM = 'linux' ]; then
         return 0
     else
         return 1
@@ -94,7 +94,7 @@ is_linux(){
 # Returns true if running os is OSX.
 is_osx(){
     detect_os
-    if [[ $PLATFORM = 'osx' ]]; then
+    if [ $PLATFORM = 'osx' ]; then
         return 0
     else
         return 1
@@ -104,7 +104,7 @@ is_osx(){
 # Returns true if running os is FreeBSD.
 is_bsd(){
     detect_os
-    if [[ $PLATFORM = 'bsd' ]]; then
+    if [ $PLATFORM = 'bsd' ]; then
         return 0
     else
         return 1
@@ -150,7 +150,7 @@ detect_distribution(){
 # Returns true if running distribution is Ubuntu.
 is_ubuntu(){
     detect_distribution
-    if [[ $DISTRIBUTION = 'ubuntu' ]]; then
+    if [ $DISTRIBUTION = 'ubuntu' ]; then
         return 0
     else
         return 1
@@ -160,7 +160,7 @@ is_ubuntu(){
 # Returns true if running distribution is Debian.
 is_debian(){
     detect_distribution
-    if [[ $DISTRIBUTION = 'debian' ]]; then
+    if [ $DISTRIBUTION = 'debian' ]; then
         return 0
     else
         return 1
@@ -170,7 +170,7 @@ is_debian(){
 # Returns true if running distribution is Fedora.
 is_fedora(){
     detect_distribution
-    if [[ $DISTRIBUTION = 'fedora' ]]; then
+    if [ $DISTRIBUTION = 'fedora' ]; then
         return 0
     else
         return 1
@@ -180,7 +180,7 @@ is_fedora(){
 # Returns true if running distribution is Oracle.
 is_oracle(){
     detect_distribution
-    if [[ $DISTRIBUTION = 'oracle' ]]; then
+    if [ $DISTRIBUTION = 'oracle' ]; then
         return 0
     else
         return 1
@@ -190,7 +190,7 @@ is_oracle(){
 # Returns true if running distribution is Redhat.
 is_redhat(){
     detect_distribution
-    if [[ $DISTRIBUTION = 'redhat' ]]; then
+    if [ $DISTRIBUTION = 'redhat' ]; then
         return 0
     else
         return 1
@@ -235,7 +235,7 @@ e_arrow(){
 e_indent(){ 
     i=0; while [ $i -lt ${1:-4} ]; do
         echon " "
-        i=$(( i + 1 ))
+        i=$((i + 1))
     done
     if [ -n "$2" ]; then
         echo "$2"
@@ -366,9 +366,8 @@ die(){
 
 # Returns true if current shell is first shell.
 is_login_shell(){
-    [[ $SHLVL = 1 ]]
+    [ $SHLVL = 1 ]
 }
-
 # Returns true if cwd is in git repository
 is_git_repo(){
     git rev-parse --is-inside-work-tree &>/dev/null
@@ -377,12 +376,12 @@ is_git_repo(){
 
 # Returns true if GNU screen is running.
 is_screen_running(){
-    [[ -n $STY ]]
+    [ ! -z $STY ]
 }
 
 # Returns true if tmux is running.
 is_tmux_running(){
-    [[ -n $TMUX ]]
+    [ ! -z $TMUX ]
 }
 
 # Returns true if GNU screen or tmux is running.
@@ -392,12 +391,12 @@ is_screen_or_tmux_running(){
 
 # Returns true if the current shell is running from command line.
 shell_has_started_interactively(){
-    [[ -n $PS1 ]]
+    [ ! -z $PS1 ]
 }
 
 # Returns true if the ssh daemon is available.
 is_ssh_running(){
-    [[ -n $SSH_CLIENT ]]
+    [ ! -z $SSH_CLIENT ]
 }
 
 # Returns true if $DEBUG is set.
@@ -477,7 +476,7 @@ contains(){
 len(){
     local length
     length="$(echo "$1" | wc -c | sed -e 's/ *//')"
-    echo $(( "$length" - 1 ))
+    echo $(("$length" - 1))
 }
 
 # Returns true if $1 consists of $_BLANK_.

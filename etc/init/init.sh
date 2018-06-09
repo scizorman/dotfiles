@@ -29,7 +29,7 @@ for f in "$DOTPATH"/etc/init/"$(get_os)"/*.sh; do
     if [ -f "$f" ]; then
         log_info "$(e_arrow "$(basename "$f")")"
         if [ "${DEBUG:-}" != 1 ]; then
-            . "$f"
+            sh "$f"
         fi
     else
         continue
