@@ -101,7 +101,7 @@ if echo "$-" | grep -q "i"; then
 
     : return
 else
-    if [[ "$0" == "${BASH_SOURCE:-}" ]]; then
+    if [ "$0" -eq "${BASH_SOURCE:-}" ]; then
         exit
     fi
 
