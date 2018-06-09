@@ -53,7 +53,11 @@ if ! has "tmux"; then
 
             if has "git"; then
                 log_echo "Install Tmux."
-                git clone https://github.com/tmux/tmux.git $HOME/src/tmux
+
+                if [ -e $HOME/src/tmux ]; then
+                    git clone https://github.com/tmux/tmux.git $HOME/src/tmux
+                fi
+
                 cd $HOME/src/tmux && sh autogen.sh && ./configure && make
                 cp $HOME/src/tmux/tmux /usr/local/bin
             else
