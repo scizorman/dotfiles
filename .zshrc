@@ -15,6 +15,10 @@ if [[ -x $HOME/bin/tmux_automatically_attach ]]; then
 fi
 
 # zplug
+if [[ ! -d $HOME/.zplug ]]; then
+    git clone https://github.com/zplug/zplug $HOME/zplug
+fi
+
 if [[ -f $HOME/.zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=$HOME/.zsh/zplug.zsh
     source $HOME/.zplug/init.zsh
