@@ -24,7 +24,7 @@ if ! has "tmux"; then
                 redhat)
                     if has "yum"; then
                         log_echo "Install packages required for Tmux with Yellowdog Updater Modified (YUM)."
-                        sudo yum -y install ncurses-devel libevent libevent-devel libevent-headers
+                        sudo yum -y install gcc libevent-devel ncurses-devel
                     else
                         log_fail "Error: YUM is required."
                         exit 1
