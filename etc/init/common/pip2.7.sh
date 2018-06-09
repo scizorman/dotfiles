@@ -6,13 +6,14 @@ set -eu
 # Get utilities
 . "$DOTPATH"/etc/vital.sh
 
-# Install Tmux
-if ! has "tmux"; then
+# Install 'pip2.7'
+if ! has "pip2.7"; then
     case "$(get_os)" in
         osx)
             if has "brew"; then
-                log_echo "Install Tmux with Homebrew."
-                brew install tmux
+                log_echo "Install Python2.7 with Homebrew."
+                # log_echo "Python2.7 installed by Homebrew has 'pip2.7'."
+                brew install python@2
             else
                 log_fail "Error: Homebrew is required."
                 exit 1
@@ -20,11 +21,16 @@ if ! has "tmux"; then
             ;;
 
         linux)
+            if ! has "python2.7"; then
+                log_fail "Error: Python2.7 is required."
+                exit 1
+            fi
+
             case "$(get_distribution)" in
                 centos)
                     if has "yum"; then
-                        log_echo "Install packages required for Tmux with Yellowdog Updater Modified (YUM)."
-                        sudo yum -y install ncuress-devel
+                        log_echo "Install 'pip2.7' with Yellowdog Updater Modified (YUM)."
+                        sudo yum -y install python2-devel python2-pip
                     else
                         log_fail "Error: YUM is required."
                         exit 1
@@ -33,8 +39,8 @@ if ! has "tmux"; then
 
                 ubuntu)
                     if has "apt"; then
-                        log_echo "Install packages required for Tmux with Advanced Packaging Tool (APT)."
-                        sudo apt -y install build-essential automake libevent-dev ncurses-dev
+                        log_echo "Install 'pip2.7' with Advanced Packaging Tool (APT)."
+                        sudo apt -y install python-pip python-dev
                     else
                         log_fail "Error: APT is required."
                         exit 1
@@ -42,24 +48,10 @@ if ! has "tmux"; then
                     ;;
 
                 *)
-                    log_fail "Error: This script is only supported OSX and Ubuntu."
+                    log_fail "Error: This script is only supported CentOS and Ubuntu."
                     exit 1
                     ;;
             esac
-
-            if [ -e $HOME/src ]; then
-                mkdir -p $HOME/src
-            fi
-
-            if has "git"; then
-                log_echo "Install Tmux."
-                git clone https://github.com/tmux/tmux.git $HOME/src/tmux
-                cd $HOME/src/tmux && sh autogen.sh && ./configure && make
-                cp $HOME/src/tmux/tmux /usr/local/bin
-            else
-                log_fail "'git' is required."
-                exit 1
-            fi
             ;;
 
         *)
@@ -69,4 +61,4 @@ if ! has "tmux"; then
     esac
 fi
 
-log_pass "Tmux: Installed successfully."
+log_pass "pip2.7: Installed successfully."

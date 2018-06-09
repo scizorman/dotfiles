@@ -49,11 +49,19 @@ brew tap caskroom/fonts
 brew update
 
 for formula in "${formulas[@]}"; do
-    brew install $formula
+    if [ ! -e /usr/local/Cellar/"$formula" ]; then
+        brew install $formula
+    else
+        log_pass "$formula: Already exists."
+    fi
 done
 
 for cask_formula in "${cask_formulas[@]}"; do
-    brew cask install $cask_formula
+    if [ ! -e /usr/local/Caskroom/"$cask_formula" ]; then
+        brew cask install $cask_formula
+    else
+        log_pass "$cask_formula: Already exists."
+    fi
 done
 
 # Upgrade and cleanup.

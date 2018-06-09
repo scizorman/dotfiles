@@ -19,11 +19,11 @@ if ! has "brew"; then
         xcode-select --install
         log_pass "xcode-select: Installed successfully."
     else
-        log_pass "xcode-select: Already installed."
+        log_pass "xcode-select: Already exists."
     fi
 
     if ! has "ruby"; then
-        log_fail "Error: 'ruby' is required."
+        log_fail "Error: Ruby is required."
         exit 1
     fi
 
@@ -37,4 +37,4 @@ if ! has "brew"; then
     fi
 fi
 
-log_pass "brew: Installed successfully."
+log_pass "Homebrew: Installed successfully."

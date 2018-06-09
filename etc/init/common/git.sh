@@ -6,12 +6,12 @@ set -eu
 # Get utilities
 . "$DOTPATH"/etc/vital.sh
 
-# Install 'git'
+# Install Git
 if ! has "git"; then
     case "$(get_os)" in
         osx)
             if has "brew"; then
-                log_echo "Install git with Homebrew."
+                log_echo "Install Git with Homebrew."
                 brew install git
             else
                 log_fail "Error: Homebrew is required."
@@ -20,16 +20,22 @@ if ! has "git"; then
             ;;
 
         linux)
-            if has "yum"; then
-                log_echo "Install git with Yellowdog Updater Modified (YUM)."
-                sudo yum -y install git
-            elif has "apt"; then
-                log_echo "Install git with Advanced Packaging Tool (APT)."
-                sudo apt -y install git
-            else
-                log_fail "Error: YUM or APT is required."
-                exit 1
-            fi
+            case "$(get_distribution)" in
+                centos)
+                    log_echo "Install Git with Yellowdog Updater Modified (YUM)."
+                    sudo yum -y install git
+                    ;;
+
+                ubuntu)
+                    log_echo "Install Git with Advanced Packaging Tool (APT)."
+                    sudo apt -y install git
+                    ;;
+
+                *)
+                    log_fail "Error: YUM or APT is required."
+                    exit 1
+                    ;;
+            esac
             ;;
 
         *)
@@ -39,4 +45,4 @@ if ! has "git"; then
     esac
 fi
 
-log_pass "git: Installed successfully."
+log_pass "Git: Installed successfully."

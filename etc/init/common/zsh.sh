@@ -6,12 +6,12 @@ set -eu
 # Get utilities
 . "$DOTPATH"/etc/vital.sh
 
-# Install 'zsh'
+# Install Z shell'
 if ! has "zsh"; then
     case "$(get_os)" in
         osx)
             if has "brew"; then
-                log_echo "Install zsh with Homebrew."
+                log_echo "Install Z shell with Homebrew."
                 brew install zsh
             else
                 log_fail "Error: Homebrew is required."
@@ -20,16 +20,22 @@ if ! has "zsh"; then
             ;;
 
         linux)
-            if has "yum"; then
-                log_echo "Install zsh with Yellowdog Updater Modified (YUM)."
-                sudo yum -y install zsh
-            elif has "apt"; then
-                log_echo "Install zsh with Advanced Packagint Tool (APT)."
-                sudo apt -y install zsh
-            else
-                log_fail "Error: YUM or APT is required."
-                exit 1
-            fi
+            case "$(get_distribution)" in
+                centos)
+                    log_echo "Install Z shell with Yellowdog Updater Modified (YUM)."
+                    sudo yum -y install zsh
+                    ;;
+
+                ubuntu)
+                    log_echo "Install Z shell with Advanced Packagint Tool (APT)."
+                    sudo apt -y install zsh
+                    ;;
+
+                *)
+                    log_fail "Error: YUM or APT is required."
+                    exit 1
+                    ;;
+            esac
             ;;
         *)
             log_fail "Error: This script is only supported OSX and Linux."
@@ -38,7 +44,7 @@ if ! has "zsh"; then
     esac
 fi
 
-log_pass "zsh: Installed successfully."
+log_pass "Z shell: Installed successfully."
 
 # Run the forced termination with a last exit code.
 exit $?
@@ -76,4 +82,4 @@ if ! contains "${SHELL:-}" "zsh"; then
     fi
 fi
 
-log_pass "zsh: Setted successfully."
+log_pass "Z shell: Setted successfully."
