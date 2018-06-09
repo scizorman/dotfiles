@@ -21,10 +21,9 @@ export XDG_DATA_HOME=$HOME/.local/share
 #
 # Language
 #
-export LANGUAGE='en_US.UTF-8'
-export LANG="${LANGUAGE}"
-export LC_ALL="${LANGUAGE}"
-export LC_CTYPE="${LANGUAGE}"
+if [[ -z "$LANG" ]]; then
+    export LANG='en_US.UTF-8'
+fi
 
 
 #
