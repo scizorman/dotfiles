@@ -353,7 +353,7 @@ is_exists() {
 
 # Wrapper function.
 has(){
-    type "${1:?too few arguments}" &>/dev/null
+    is_exists "$@"
 }
 
 # Returns exit code error and echo error message.
@@ -364,7 +364,7 @@ die(){
 
 # Returns true if current shell is first shell.
 is_login_shell(){
-    [ $SHLVL = 1 ]
+    [ "$SHLVL" = 1 ]
 }
 # Returns true if cwd is in git repository
 is_git_repo(){
@@ -374,12 +374,12 @@ is_git_repo(){
 
 # Returns true if GNU screen is running.
 is_screen_running(){
-    [ ! -z $STY ]
+    [ ! -z "$STY" ]
 }
 
 # Returns true if tmux is running.
 is_tmux_running(){
-    [ ! -z $TMUX ]
+    [ ! -z "$TMUX" ]
 }
 
 # Returns true if GNU screen or tmux is running.
@@ -389,12 +389,12 @@ is_screen_or_tmux_running(){
 
 # Returns true if the current shell is running from command line.
 shell_has_started_interactively(){
-    [ ! -z $PS1 ]
+    [ ! -z "$PS1" ]
 }
 
 # Returns true if the ssh daemon is available.
 is_ssh_running(){
-    [ ! -z $SSH_CLIENT ]
+    [ ! -z "$SSH_CLIENT" ]
 }
 
 # Returns true if $DEBUG is set.
