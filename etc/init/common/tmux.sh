@@ -41,7 +41,7 @@ if ! has "tmux"; then
                 fi
 
                 if [ -e $HOME/src ]; then
-                    mddir -p $HOME/src
+                    mkdir -p $HOME/src
                 fi
 
                 if ! has "git"; then
