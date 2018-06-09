@@ -143,8 +143,6 @@ detect_distribution(){
     else
         DISTRIBUTION="unknown"
     fi
-
-    echo ${DISTRIBUTION}
 }
 
 # Returns true if running distribution is Ubuntu.
