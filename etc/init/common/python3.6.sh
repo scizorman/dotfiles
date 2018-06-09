@@ -45,7 +45,7 @@ if ! has "python3.6" || ! has "pip3.6"; then
                             exit 1
                         fi
 
-                        curl -kL https://bootstrap.pypa.io/get-pip.py | python3.6
+                        sudo apt -y install python3-pip
                     else
                         log_fail "Error: APT is required."
                         exit 1
