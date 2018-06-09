@@ -48,7 +48,8 @@ if ! has "tmux"; then
                     log_fail "'git' is required."
                     exit 1
                 else
-                    git clone git@github.com:tmux/tmux.git $HOME/src/tmux
+                    # git clone git@github.com:tmux/tmux.git $HOME/src/tmux
+                    git clone https::/github.com/tmux/tmux.git $HOME/src/tmux
                     cd $HOME/src/tmux && sh autogen.sh && ./configure && make
                     cp $HOME/src/tmux/tmux /usr/local/bin
                 fi
