@@ -26,6 +26,10 @@ if ! has "python3.6" || ! has "pip3.6"; then
                         log_echo "Install Python3.6 and 'pip3.6' with Yellowdog Updater Modified (YUM)."
                         sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
                         sudo yum -y install python36u.x86_64 python36u-libs.x86_64 python36u-devel.x86_64 python36u-pip.noarch
+
+                        log_echo "Create the symlink 'python3.6 -> python3'."
+                        PYTHON_PATH=`which python3.6`
+                        ln -sfnv $PYTHON_PATH ${PYTHON_PATH%%.*}
                     else
                         log_fail "Error: YUM is required."
                         exit 1
@@ -35,13 +39,12 @@ if ! has "python3.6" || ! has "pip3.6"; then
                 ubuntu)
                     if has "apt"; then
                         log_echo "Install Python3.6 and 'pip3.6' with Advanced Packaging Tool (APT)."
-                        if ! has "add-apt-repository"; then
-                            sudo apt -y install software-properties-common
+
+                        if ! has "python3.6"; then
+                            log_fail "Error: Python3.6 is required."
+                            exit 1
                         fi
 
-                        sudo add-apt-repository ppa:jonathonf/python-3.6
-                        sudo apt update
-                        sudo apt -y install python3.6 python3.6-dev
                         curl -kL https://bootstrap.pypa.io/get-pip.py | python3.6
                     else
                         log_fail "Error: APT is required."
@@ -54,12 +57,6 @@ if ! has "python3.6" || ! has "pip3.6"; then
                     exit 1
                     ;;
             esac
-
-            if has "python3.6"; then
-                log_echo "Create the symlink 'python3.6 -> python3'."
-                PYTHON_PATH=`which python3.6`
-                ln -sfnv $PYTHON_PATH ${PYTHON_PATH%%.*}
-            fi
 
             if has "pip3.6"; then
                 log_echo "Create the symlink 'pip3.6 -> pip3'."
