@@ -16,7 +16,7 @@ fi
 
 # zplug
 if [[ ! -d $HOME/.zplug ]]; then
-    git clone https://github.com/zplug/zplug $HOME/zplug
+    git clone https://github.com/zplug/zplug $HOME/.zplug
 fi
 
 if [[ -f $HOME/.zplug/init.zsh ]]; then
