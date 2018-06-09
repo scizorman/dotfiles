@@ -39,7 +39,7 @@ if ! has "python3.6" || ! has "pip3.6"; then
                             sudo apt -y install software-properties-common
                         fi
 
-                        sudo add-apt-repository ppa:jonathonf/python3.6
+                        sudo add-apt-repository ppa:jonathonf/python-3.6
                         sudo apt update
                         sudo apt -y install python3.6 python3.6-dev
                         curl -kL https://bootstrap.pypa.io/get-pip.py | python3.6
