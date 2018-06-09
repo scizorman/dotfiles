@@ -327,23 +327,23 @@ logging() {
     timestamp; ink "$color" "$text"; echo
 }
 
-log_pass() {
+log_pass(){
     logging SUCCESS "$1"
 }
 
-log_fail() {
+log_fail(){
     logging ERROR "$1" 1>&2
 }
 
-log_warn() {
+log_warn(){
     logging WARN "$1"
 }
 
-log_info() {
+log_info(){
     logging INFO "$1"
 }
 
-log_echo() {
+log_echo(){
     logging TITLE "$1"
 }
 

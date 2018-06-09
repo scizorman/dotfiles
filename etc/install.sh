@@ -9,7 +9,7 @@ DOTFILE_GITHUB="https://github.com/Scizor-master/dotfiles.git"
 export DOTFILE_GITHUB
 
 # Get utilities
-source $DOTPATH/etc/vital.sh
+. $DOTPATH/etc/vital.sh
 
 # Download
 dotfiles_download(){
@@ -101,7 +101,7 @@ if echo "$-" | grep -q "i"; then
 
     : return
 else
-    if [ "$0" == "${BASH_SOURCE:-}" ]; then
+    if [[ "$0" == "${BASH_SOURCE:-}" ]]; then
         exit
     fi
 
