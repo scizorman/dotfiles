@@ -298,7 +298,7 @@ logging() {
 
     case "$1" in
         TITLE)
-            color=blue
+            color=cyan
             ;;
         ERROR)
             color=red

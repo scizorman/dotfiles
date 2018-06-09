@@ -12,7 +12,7 @@ if ! has "pip2"; then
 fi
 
 if ! has "pip3"; then
-    log_fail "Error: 'pip' (for the latest version of Python) is required."
+    log_fail "Error: 'pip' (for Python3.6) is required."
     exit 1
 fi
 
@@ -21,7 +21,7 @@ log_echo "Install packages (Python2.7) for Neovim."
 pip2 install -r $DOTPATH/etc/init/assets/Neovim/nvim_py2_requirements.txt
 
 # Install Python (the latest version) packages
-log_echo "Install packages (the latest version of Python) for Neovim."
+log_echo "Install packages (Python3.6) for Neovim."
 pip3 install -r $DOTPATH/etc/init/assets/Neovim/nvim_py3_requirements.txt
 
 log_pass "Packages (Python) for Neovim: Installed successfully."

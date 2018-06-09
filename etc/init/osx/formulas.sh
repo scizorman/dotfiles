@@ -52,7 +52,7 @@ for formula in "${formulas[@]}"; do
     if [ ! -e /usr/local/Cellar/"$formula" ]; then
         brew install $formula
     else
-        log_pass "$formula: Already exists."
+        log_info "Homebrew: $formula: Already exists."
     fi
 done
 
@@ -60,7 +60,7 @@ for cask_formula in "${cask_formulas[@]}"; do
     if [ ! -e /usr/local/Caskroom/"$cask_formula" ]; then
         brew cask install $cask_formula
     else
-        log_pass "$cask_formula: Already exists."
+        log_info "Homebrew: $cask_formula: Already exists."
     fi
 done
 

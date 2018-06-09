@@ -7,7 +7,7 @@ set -eu
 . "$DOTPATH"/etc/vital.sh
 
 # Install 'Python3.6'
-if ! has "python3.6"; then
+if ! has "python3.6" || ! has "pip3.6"; then
     case "$(get_os)" in
         osx)
             if has "brew"; then
