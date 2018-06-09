@@ -1,6 +1,6 @@
 #!bin/sh
 # Stop script if errors occure.
-trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
+trap 'echo Error: $0:$LINENO stopped; exit 1' HUP INT QUIT TERM
 set -eu
 
 # Get utilities
