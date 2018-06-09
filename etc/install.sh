@@ -69,7 +69,7 @@ dotfiles_deploy(){
 
 # Initialize
 dotfiles_initialize(){
-    if [ "$1" == "init" ]; then
+    if [ "$1" = "init" ]; then
         e_newline
         e_header "Initializing dotfiles..."
 
@@ -106,7 +106,7 @@ else
     fi
 
     if [ -n "${BASH_EXECUTION_STRING:-}" ] || [ -p /dev/stdin ]; then
-        if [ "${VITALIZED:=0}" == 1 ]; then
+        if [ "${VITALIZED:=0}" = 1 ]; then
             exit
         fi
 

@@ -84,7 +84,7 @@ detect_os(){
 # Returns true if running os is Linux.
 is_linux(){
     detect_os
-    if [[ $PLATFORM == 'linux' ]]; then
+    if [[ $PLATFORM = 'linux' ]]; then
         return 0
     else
         return 1
@@ -94,7 +94,7 @@ is_linux(){
 # Returns true if running os is OSX.
 is_osx(){
     detect_os
-    if [[ $PLATFORM == 'osx' ]]; then
+    if [[ $PLATFORM = 'osx' ]]; then
         return 0
     else
         return 1
@@ -104,7 +104,7 @@ is_osx(){
 # Returns true if running os is FreeBSD.
 is_bsd(){
     detect_os
-    if [[ $PLATFORM == 'bsd' ]]; then
+    if [[ $PLATFORM = 'bsd' ]]; then
         return 0
     else
         return 1
@@ -150,7 +150,7 @@ detect_distribution(){
 # Returns true if running distribution is Ubuntu.
 is_ubuntu(){
     detect_distribution
-    if [[ $DISTRIBUTION == 'ubuntu' ]]; then
+    if [[ $DISTRIBUTION = 'ubuntu' ]]; then
         return 0
     else
         return 1
@@ -160,7 +160,7 @@ is_ubuntu(){
 # Returns true if running distribution is Debian.
 is_debian(){
     detect_distribution
-    if [[ $DISTRIBUTION == 'debian' ]]; then
+    if [[ $DISTRIBUTION = 'debian' ]]; then
         return 0
     else
         return 1
@@ -170,7 +170,7 @@ is_debian(){
 # Returns true if running distribution is Fedora.
 is_fedora(){
     detect_distribution
-    if [[ $DISTRIBUTION == 'fedora' ]]; then
+    if [[ $DISTRIBUTION = 'fedora' ]]; then
         return 0
     else
         return 1
@@ -180,7 +180,7 @@ is_fedora(){
 # Returns true if running distribution is Oracle.
 is_oracle(){
     detect_distribution
-    if [[ $DISTRIBUTION == 'oracle' ]]; then
+    if [[ $DISTRIBUTION = 'oracle' ]]; then
         return 0
     else
         return 1
@@ -190,7 +190,7 @@ is_oracle(){
 # Returns true if running distribution is Redhat.
 is_redhat(){
     detect_distribution
-    if [[ $DISTRIBUTION == 'redhat' ]]; then
+    if [[ $DISTRIBUTION = 'redhat' ]]; then
         return 0
     else
         return 1
@@ -366,7 +366,7 @@ die(){
 
 # Returns true if current shell is first shell.
 is_login_shell(){
-    [[ $SHLVL == 1 ]]
+    [[ $SHLVL = 1 ]]
 }
 
 # Returns true if cwd is in git repository
@@ -402,7 +402,7 @@ is_ssh_running(){
 
 # Returns true if $DEBUG is set.
 is_debug(){
-    if [ "$DEBUG" == 1 ]; then
+    if [ "$DEBUG" = 1 ]; then
         return 0
     else
         return 1
