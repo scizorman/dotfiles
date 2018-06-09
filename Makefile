@@ -9,6 +9,7 @@ list:
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
 
 deploy:
+	@echo ''
 	@echo '==> Start to deploy dotfiles to home directory.'
 	@echo ''
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
