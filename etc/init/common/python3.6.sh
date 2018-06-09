@@ -45,7 +45,7 @@ if ! has "python3.6" || ! has "pip3.6"; then
                             exit 1
                         fi
 
-                        sudo apt -y install python3-pip
+                        sudo apt -y install python3.6-venv python3-pip
                     else
                         log_fail "Error: APT is required."
                         exit 1
