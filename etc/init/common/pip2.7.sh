@@ -27,7 +27,7 @@ if ! has "pip"; then
             fi
 
             case "$(get_distribution)" in
-                centos)
+                redhat)
                     if has "yum"; then
                         log_echo "Install 'pip' with Yellowdog Updater Modified (YUM)."
                         sudo yum -y install python2-devel python2-pip

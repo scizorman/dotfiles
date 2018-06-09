@@ -21,7 +21,7 @@ if ! has "tmux"; then
 
         linux)
             case "$(get_distribution)" in
-                centos)
+                redhat)
                     if has "yum"; then
                         log_echo "Install packages required for Tmux with Yellowdog Updater Modified (YUM)."
                         sudo yum -y install ncuress-devel

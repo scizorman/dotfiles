@@ -21,14 +21,24 @@ if ! has "git"; then
 
         linux)
             case "$(get_distribution)" in
-                centos)
-                    log_echo "Install Git with Yellowdog Updater Modified (YUM)."
-                    sudo yum -y install git
+                redhat)
+                    if has "yum"; then
+                        log_echo "Install Git with Yellowdog Updater Modified (YUM)."
+                        sudo yum -y install git
+                    else
+                        log_fail "Error: YUM is required."
+                        exit 1
+                    fi
                     ;;
 
                 ubuntu)
-                    log_echo "Install Git with Advanced Packaging Tool (APT)."
-                    sudo apt -y install git
+                    if has "apt"; then
+                        log_echo "Install Git with Advanced Packaging Tool (APT)."
+                        sudo apt -y install git
+                    else
+                        log_fail "Error: APT is required."
+                        exit 1
+                    fi
                     ;;
 
                 *)

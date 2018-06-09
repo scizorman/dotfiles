@@ -21,14 +21,24 @@ if ! has "zsh"; then
 
         linux)
             case "$(get_distribution)" in
-                centos)
-                    log_echo "Install Z shell with Yellowdog Updater Modified (YUM)."
-                    sudo yum -y install zsh
+                redhat)
+                    if has "yum"; then
+                        log_echo "Install Z shell with Yellowdog Updater Modified (YUM)."
+                        sudo yum -y install zsh
+                    else
+                        log_fail "Error: YUM is required."
+                        exit 1
+                    fi
                     ;;
 
                 ubuntu)
-                    log_echo "Install Z shell with Advanced Packagint Tool (APT)."
-                    sudo apt -y install zsh
+                    if has "apt"; then
+                        log_echo "Install Z shell with Advanced Packagint Tool (APT)."
+                        sudo apt -y install zsh
+                    else
+                        log_fail "Error: APT is required."
+                        exit 1
+                    fi
                     ;;
 
                 *)

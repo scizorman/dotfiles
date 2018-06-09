@@ -21,7 +21,7 @@ if ! has "python3.6" || ! has "pip3.6"; then
 
         linux)
             case "$(get_distribution)" in
-                centos)
+                redhat)
                     if has "yum"; then
                         log_echo "Install Python3.6 and 'pip3.6' with Yellowdog Updater Modified (YUM)."
                         sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
