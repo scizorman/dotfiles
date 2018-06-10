@@ -7,7 +7,7 @@ set -eu
 . "$DOTPATH"/etc/init/assets/vital.sh
 
 # Install 'pip2.7'
-if ! has "pip"; then
+if ! has "python2.7" || ! has "pip"; then
     case "$(get_os)" in
         osx)
             if has "brew"; then
@@ -29,7 +29,7 @@ if ! has "pip"; then
             case "$(get_distribution)" in
                 redhat)
                     if has "yum"; then
-                        log_echo "Install 'pip' with Yellowdog Updater Modified (YUM)."
+                        log_echo "Install Python2.7 and pip with Yellowdog Updater Modified (YUM)."
                         sudo yum -y install python2-devel python2-pip
                     else
                         log_fail "Error: YUM is required."
@@ -39,7 +39,7 @@ if ! has "pip"; then
 
                 ubuntu)
                     if has "apt"; then
-                        log_echo "Install 'pip' with Advanced Packaging Tool (APT)."
+                        log_echo "Install Python2.7 and pip with Advanced Packaging Tool (APT)."
                         sudo apt -y install python2.7 python-dev python-pip
                     else
                         log_fail "Error: APT is required."

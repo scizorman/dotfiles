@@ -23,7 +23,7 @@ if ! has "python3.6" || ! has "pip3.6"; then
             case "$(get_distribution)" in
                 redhat)
                     if has "yum"; then
-                        log_echo "Install Python3.6 and 'pip3.6' with Yellowdog Updater Modified (YUM)."
+                        log_echo "Install Python3.6 and pip3.6 with Yellowdog Updater Modified (YUM)."
                         sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
                         sudo yum -y install python36u.x86_64 python36u-libs.x86_64 python36u-devel.x86_64 python36u-pip.noarch
 
@@ -38,7 +38,7 @@ if ! has "python3.6" || ! has "pip3.6"; then
 
                 ubuntu)
                     if has "apt"; then
-                        log_echo "Install Python3.6 and 'pip3.6' with Advanced Packaging Tool (APT)."
+                        log_echo "Install Python3.6 and pip3.6 with Advanced Packaging Tool (APT)."
                         sudo apt -y install python3.6 python3.6-dev python3.6-venv python3-pip
                     else
                         log_fail "Error: APT is required."
