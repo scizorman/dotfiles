@@ -8,17 +8,12 @@ if [[ -n $VIMRUNTIME ]]; then
     return 0
 fi
 
-# tmux_automaticcaly_attach attaches tmux session
-# automatically when you are in zsh
+# Attaches tmux session automatically when you are in zsh
 if [[ -x $HOME/bin/tmux_automatically_attach ]]; then
     $HOME/bin/tmux_automatically_attach
 fi
 
 # zplug
-if [[ ! -d $HOME/.zplug ]]; then
-    git clone https://github.com/zplug/zplug $HOME/.zplug
-fi
-
 if [[ -f $HOME/.zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=$HOME/.zsh/zplug.zsh
     source $HOME/.zplug/init.zsh
