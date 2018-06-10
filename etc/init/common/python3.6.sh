@@ -7,7 +7,7 @@ set -eu
 . "$DOTPATH"/etc/init/assets/vital.sh
 
 # Install 'Python3.6'
-if ! has "python3.6" || ! has "pip3.6"; then
+if ! has "python3.6" || ! has "pip3"; then
     case "$(get_os)" in
         osx)
             if has "brew"; then
@@ -66,4 +66,4 @@ if ! has "python3.6" || ! has "pip3.6"; then
     esac
 fi
 
-log_pass "Python3.6 and 'pip3.6': Installed successfully."
+log_pass "Python3.6 and pip3.6: Installed successfully."

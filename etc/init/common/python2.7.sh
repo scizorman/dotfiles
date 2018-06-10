@@ -61,4 +61,4 @@ if ! has "python2.7" || ! has "pip"; then
     esac
 fi
 
-log_pass "pip: Installed successfully."
+log_pass "Python2.7 and pip: Installed successfully."
