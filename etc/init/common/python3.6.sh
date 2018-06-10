@@ -66,4 +66,4 @@ if ! has "python3.6" || ! has "pip3"; then
     esac
 fi
 
-log_pass "Python3.6 and pip3.6: Installed successfully."
+log_pass "Python3.6 and pip: Installed successfully."
