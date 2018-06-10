@@ -4,7 +4,7 @@ trap 'echo Error: $0:$LINENO stopped; exit 1' HUP INT QUIT TERM
 set -eu
 
 # Get utilities
-. "$DOTPATH"/etc/vital.sh
+. "$DOTPATH"/etc/init/assets/vital.sh
 
 if ! has "pip2"; then
     log_fail "Error: 'pip' (for Python2.7) is required."

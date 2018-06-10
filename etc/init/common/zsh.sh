@@ -4,14 +4,14 @@ trap 'echo Error: $0:$LINENO stopped; exit 1' HUP INT QUIT TERM
 set -eu
 
 # Get utilities
-. "$DOTPATH"/etc/vital.sh
+. "$DOTPATH"/etc/init/assets/vital.sh
 
-# Install Z shell'
+# Install Zsh'
 if ! has "zsh"; then
     case "$(get_os)" in
         osx)
             if has "brew"; then
-                log_echo "Install Z shell with Homebrew."
+                log_echo "Install Zsh with Homebrew."
                 brew install zsh
             else
                 log_fail "Error: Homebrew is required."
@@ -23,7 +23,7 @@ if ! has "zsh"; then
             case "$(get_distribution)" in
                 redhat)
                     if has "yum"; then
-                        log_echo "Install Z shell with Yellowdog Updater Modified (YUM)."
+                        log_echo "Install Zsh with Yellowdog Updater Modified (YUM)."
                         sudo yum -y install zsh
                     else
                         log_fail "Error: YUM is required."
@@ -33,7 +33,7 @@ if ! has "zsh"; then
 
                 ubuntu)
                     if has "apt"; then
-                        log_echo "Install Z shell with Advanced Packagint Tool (APT)."
+                        log_echo "Install Zsh with Advanced Packagint Tool (APT)."
                         sudo apt -y install zsh
                     else
                         log_fail "Error: APT is required."
@@ -54,7 +54,22 @@ if ! has "zsh"; then
     esac
 fi
 
-log_pass "Z shell: Installed successfully."
+log_pass "Zsh: Installed successfully."
+
+
+# Install zplug
+if ! has "zplug" && [ ! -d $HOME/.zplug ]; then
+    if has "git"; then
+        log_echo "Install zplug with Git."
+        git clone https://github.com/zplug/zplug $HOME/.zplug
+    else
+        log_fail "Error: Git is required."
+        exit 1
+    fi
+fi
+
+log_pass "zplug: Installed successfully."
+
 
 # Run the forced termination with a last exit code.
 exit $?
@@ -92,4 +107,4 @@ if ! contains "${SHELL:-}" "zsh"; then
     fi
 fi
 
-log_pass "Z shell: Setted successfully."
+log_pass "Zsh: Setted successfully."
