@@ -21,10 +21,10 @@ if ! has "pip"; then
             ;;
 
         linux)
-            if ! has "python2.7"; then
-                log_fail "Error: Python2.7 is required."
-                exit 1
-            fi
+            # if ! has "python2.7"; then
+            #     log_fail "Error: Python2.7 is required."
+            #     exit 1
+            # fi
 
             case "$(get_distribution)" in
                 redhat)
@@ -40,7 +40,7 @@ if ! has "pip"; then
                 ubuntu)
                     if has "apt"; then
                         log_echo "Install 'pip' with Advanced Packaging Tool (APT)."
-                        sudo apt -y install python-pip python-dev
+                        sudo apt -y install python2.7 python-dev python-pip
                     else
                         log_fail "Error: APT is required."
                         exit 1

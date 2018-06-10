@@ -1,1 +1,0 @@
-../common/pip2.7.sh

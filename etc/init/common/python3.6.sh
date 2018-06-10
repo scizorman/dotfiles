@@ -39,13 +39,7 @@ if ! has "python3.6" || ! has "pip3.6"; then
                 ubuntu)
                     if has "apt"; then
                         log_echo "Install Python3.6 and 'pip3.6' with Advanced Packaging Tool (APT)."
-
-                        if ! has "python3.6"; then
-                            log_fail "Error: Python3.6 is required."
-                            exit 1
-                        fi
-
-                        sudo apt -y install python3.6-venv python3-pip
+                        sudo apt -y install python3.6 python3.6-dev python3.6-venv python3-pip
                     else
                         log_fail "Error: APT is required."
                         exit 1
