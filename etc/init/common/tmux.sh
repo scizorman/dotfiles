@@ -36,7 +36,7 @@ if ! has "tmux"; then
                 ubuntu)
                     if has "apt"; then
                         log_echo "Install Tmux with Advanced Packaging Tool (APT)."
-                        sudo apt -y install tmux xsel
+                        sudo apt -y install tmux xsel xdg-utils
                     else
                         log_fail "Error: APT is required."
                         exit 1
