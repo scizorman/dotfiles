@@ -1,6 +1,6 @@
-################################
+#
 # Edit utils
-################################
+#
 [[plugins]]
 repo = 'Shougo/unite.vim'
 if = "!has('nvim')"
@@ -26,9 +26,10 @@ hook_add = '''
   nnoremap <silent> [unite]<C-y> :<C-u>Unite history/yank<CR>
 '''
 
-################################
+
+#
 # Programing utils
-################################
+#
 [[plugins]]
 repo = 'tyru/caw.vim'
 on_map = ['<Plug>(caw:hatpos:toggle)', '<Plug>(caw.zeropos:toggle)']
@@ -56,9 +57,10 @@ hook_source = '''
   source $HOME/.vim/rc/plugins/ale.rc.vim
 '''
 
-################################
+
+#
 # Fuzzy Finder
-################################
+#
 [[plugins]]
 repo = 'junegunn/fzf'
 build = './install --all'
@@ -72,9 +74,10 @@ on_cmd = [
   'Tags',
 ]
 
-################################
+
+#
 # Other utils
-################################
+#
 # Completion of the brackets
 repo = 'cohama/lexima.vim'
 on_i = 1
@@ -119,9 +122,10 @@ hook_add = '''
   vmap <Leader>b <Plug>(openbrowser-smart-search)
 '''
 
-################################
+
+#
 # Syntax
-################################
+#
 [[plugins]]
 repo = 'tpope/vim-markdown'
 on_ft = ['markdown']
@@ -145,10 +149,6 @@ hook_add = '''
     autocmd Filetype markdown nmap <silent><LocalLeader>t :<C-u>Tableize<CR>
   augroup END
 '''
-
-[[plugins]]
-repo = 'aklt/plantuml-syntax'
-on_ft = ['plantuml', 'pu', 'uml']
 
 [[plugins]]
 repo = 'cespare/vim-toml'
