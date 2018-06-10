@@ -44,7 +44,7 @@ if ! has "tmux"; then
                     ;;
 
                 *)
-                    log_fail "Error: This script is only supported OSX and Ubuntu."
+                    log_fail "Error: This script is only supported CentOS and Ubuntu."
                     exit 1
                     ;;
             esac

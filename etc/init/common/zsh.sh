@@ -42,7 +42,7 @@ if ! has "zsh"; then
                     ;;
 
                 *)
-                    log_fail "Error: YUM or APT is required."
+                    log_fail "Error: This script is only supported CentOS and Ubuntu."
                     exit 1
                     ;;
             esac
