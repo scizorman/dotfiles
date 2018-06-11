@@ -25,10 +25,20 @@ if ! has "tmux"; then
             case "$(get_distribution)" in
                 redhat)
                     if has "yum"; then
-                        log_echo "Install Tmux with Yellowdog Updater Modified (YUM)."
-                        sudo yum -y install tmux xsel
+                        log_echo "Install packages for Tmux with Yellowdog Updater Modified (YUM)."
+                        sudo yum -y install libevent libevent-devel libevent-headers ncurses-devel xsel
                     else
                         log_fail "Error: YUM is required."
+                        exit 1
+                    fi
+
+                    if has "git"; then
+                        log_echo "Install Tmux with Git."
+                        git clone https://github.com/tmux/tmux.git /usr/local
+                        cd /usr/local/tmux && sh autogen.sh && ./configure && make
+                        cp /usr/local/tmux/tmux /usr/local/bin
+                    else
+                        log_fail "Git is required."
                         exit 1
                     fi
                     ;;
