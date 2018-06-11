@@ -28,7 +28,8 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias vi="vim"
+alias vi="nvim"
+alias vim="nvim"
 
 alias sudo='sudo '
 if is_osx; then

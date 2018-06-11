@@ -10,7 +10,7 @@ fi
 #
 # Editors
 #
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Neovim
 export XDG_CACHE_HOME=$HOME/.cache
