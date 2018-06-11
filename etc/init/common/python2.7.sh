@@ -30,7 +30,7 @@ if ! has "python2.7" || ! has "pip"; then
                 redhat)
                     if has "yum"; then
                         log_echo "Install Python2.7 and pip with Yellowdog Updater Modified (YUM)."
-                        sudo yum -y install python2-devel python2-pip
+                        sudo yum -y install epel-release python-pip
                     else
                         log_fail "Error: YUM is required."
                         exit 1
