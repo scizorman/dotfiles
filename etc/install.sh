@@ -211,7 +211,7 @@ get_distribution(){
 
 
 e_newline(){
-    print "\n"
+    printf "\n"
 }
 
 e_header(){
@@ -524,7 +524,6 @@ if [ -z "${DOTPATH:-}" ]; then
     DOTPATH=$HOME/.dotfiles
     export DOTPATH
 fi
-
 DOTFILE_GITHUB="https://github.com/Scizor-master/dotfiles.git"
 export DOTFILE_GITHUB
 
@@ -558,7 +557,7 @@ dotfiles_download(){
             fi
             command mv -f dotfiles-master "$DOTPATH"
         else
-            log_fail "'curl' or 'wget' are required."
+            log_fail "'curl' or 'wget' is required."
             exit 1
         fi
     fi
