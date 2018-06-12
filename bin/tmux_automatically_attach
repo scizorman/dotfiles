@@ -14,8 +14,8 @@ else
             exit 1
         fi
 
-        if tmux has-session &> /dev/null && tmux list-sessions | grep -qE '.*]$'; then
-            tmux list-session | perl -pe 's/(^.*?):\033[31m$1:\033[m/'
+        if tmux has-session &>/dev/null && tmux list-sessions | grep -qE '.*]$'; then
+            tmux list-sessions | perl -pe 's/(^.*?):/\033[31m$1:\033[m/'
             printf "tmux: attach? (y/n num/session-name)"
             read
             if [[ $REPLY =~ ^[Yy]$ || $REPLY == '' ]]; then
@@ -32,7 +32,7 @@ else
         fi
 
         if [[ $PLATFORM == 'osx' ]] && (( $+commands[reattach-to-user-namespace] )); then
-            tmux_login_shell='/bin/zsh'
+            tmux_login_shell=`which zsh`
             tmux_config=$(cat $HOME/.tmux.conf < (echo 'set-option -g default-command "reattach-to-user-namespace -l' $tmux_login_shell'"'))
             tmux -f < (echo "tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
         else
