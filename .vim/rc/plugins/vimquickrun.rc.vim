@@ -2,12 +2,12 @@
 " Showing success is buffer and error is quickfix
 let g:quickrun_config = {
   \ '_': {
-  \   'runner': 'vimproc',
-  \   'runner/vimproc/updatetime': 40,
-  \   'outputter': 'error',
-  \   'outputter/error/success': 'buffer',
-  \   'outputter/error/error': 'quickfix',
-  \   'outputter/buffer/split': 'botright 8sp',
+    \ 'runner': 'vimproc',
+    \ 'runner/vimproc/updatetime': 40,
+    \ 'outputter': 'error',
+    \ 'outputter/error/success': 'buffer',
+    \ 'outputter/error/error': 'quickfix',
+    \ 'outputter/buffer/split': 'botright 8sp',
   \ }
 \ }
 

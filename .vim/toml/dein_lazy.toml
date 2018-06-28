@@ -26,6 +26,11 @@ hook_add = '''
   nnoremap <silent> [unite]<C-y> :<C-u>Unite history/yank<CR>
 '''
 
+# Completion of the brackets
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_i = 1
+
 
 #
 # Programing utils
@@ -57,6 +62,24 @@ hook_source = '''
   source $HOME/.vim/rc/plugins/ale.rc.vim
 '''
 
+[[plugins]]
+repo = 'jsfaint/gen_tags.vim'
+on_ft = ['python', 'vim']
+hook_souce = '''
+  let g:gen_tags#ctags_auto_gen = 1
+  let g:gen_tags#gtags_auto_gen = 0
+'''
+
+[[plugins]]
+repo = 'janko-m/vim-test'
+depends = ['vim-dispatch']
+hook_source = '''
+  let g:test#strategy = 'dispatch'
+'''
+
+[[plugins]]
+repo = 'tpope/vim-dispatch'
+
 
 #
 # Fuzzy Finder
@@ -73,15 +96,20 @@ on_cmd = [
   'Gfiles?',
   'Tags',
 ]
+hook_add = '''
+  " Keymap
+  " Gig change files
+  nnoremap <C-j><C-g> :<C-u>GFiles?<CR>
+  " Gtags index
+  nnoremap <C-j><C-]> :<C-u>Tags<CR>
+  " My cli setting
+  nnoremap <C-j><C-v> :<C-u>Files $HOME/.dotfiles<CR>
+'''
 
 
 #
 # Other utils
 #
-# Completion of the brackets
-repo = 'cohama/lexima.vim'
-on_i = 1
-
 [[plugins]]
 repo = 'kannokanno/previm'
 depends = ['open-browser.vim']
@@ -93,6 +121,29 @@ hook_add = '''
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 bulid = 'make'
+
+# NERDTree
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+on_cmd = ['NERDTreeToggle']
+on_map = ['<plug>NERDTreeTabsToggle', '<plug>NERDTreeTabsFind']
+depends = ['nerdtree-git-plugins', 'vim-nerdtree-tabs']
+hook_add = '''
+  let NERDTreeShowHidden=1
+  let NERDTreeIgnore=['\.pyc$', '__pycache__']
+  nmap <Leader>t <plug>NERDTreeTabsToggle<CR>
+'''
+
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+hook_add = '''
+  let g:nerdtree_tabs_autofind = 0
+  nmap <Leader>f <plug>NERDTreeTabsFind<CR>
+'''
+
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+depends = ['vim-fugitive']
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'

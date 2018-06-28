@@ -9,8 +9,7 @@ function! s:check_back_space() abort
 endfunction
 
 " <S-TAB>: completion back
-inoremap <expr><S-TAB>
-  \ pumvisible() ? "<C-p>" : "<C-h>"
+inoremap <expr><S-TAB> pumvisible() ? "<C-p>" : "<C-h>"
 
 " <C-h>, <BS>: close popup and delete backword char
 inoremap <expr><C-h> deoplete#smart_close_popup()."<C-h>"
@@ -36,7 +35,13 @@ call deoplete#custom#source('ghc', 'sorters', ['sorter_word'])
 call deoplete#custom#source(
   \ '_',
   \ 'converters',
-  \ ['converter_remove_paren', 'converter_remove_overlap', 'converter_truncate_abbr', 'converter_truncate_menu', 'converter_auto_delimiter'],
+  \ [
+    \ 'converter_remove_paren',
+    \ 'converter_remove_overlap',
+    \ 'converter_truncate_abbr',
+    \ 'converter_truncate_menu',
+    \ 'converter_auto_delimiter',
+  \ ],
 \ )
 
 " Prams of deoplete

@@ -9,6 +9,9 @@ repo = 'cocopon/iceberg.vim'
 [[plugins]]
 repo = 'romainl/Apprentice'
 
+[[plugins]]
+repo = 'dracula/vim'
+
 # Status bar
 [[plugins]]
 repo = 'itchyny/lightline.vim'

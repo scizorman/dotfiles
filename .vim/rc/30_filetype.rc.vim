@@ -1,4 +1,4 @@
-" Tab setting for file type
+" Tab setting for file type.
 augroup MyTabStop
   autocmd!
   autocmd BufNewFile,BufRead *.html setlocal tabstop=2 shiftwidth=2
@@ -8,7 +8,7 @@ augroup MyTabStop
   autocmd BufNewFile,BufRead *.md setlocal tabstop=2 shiftwidth=2
   autocmd BufNewFile,BufRead Makefile setlocal noexpandtab 
   autocmd BufNewFile,BufRead *.sh setlocal tabstop=4 shiftwidth=4
-  autocmd BufNewFile,BufRead *.{c,h} setlocal tabstop=4 shiftwidth=4
+  autocmd BufNewFile,BufRead *.{c,cpp,h} setlocal tabstop=4 shiftwidth=4
   autocmd BufNewFile,BufRead *.py setlocal tabstop=4 shiftwidth=4
   autocmd BufNewFile,BufRead *.vim setlocal tabstop=2 shiftwidth=2
   autocmd BufNewFile,BufRead *.yaml setlocal tabstop=2 shiftwidth=2
@@ -19,9 +19,4 @@ augroup END
 augroup MyGitSpellCheck
   autocmd!
   autocmd Filetype gitcommit setlocal spell
-augroup END
-
-augroup MyHelpRight
-  autocmd!
-  autocmd BufWinEnter *.{txt,jax} if &ft == 'help | wincmd L | endif'
 augroup END

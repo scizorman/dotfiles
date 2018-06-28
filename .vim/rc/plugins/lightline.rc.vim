@@ -1,21 +1,36 @@
 let g:lightline = {
   \ 'colorscheme': 'iceberg',
-    \ 'active': {
-  \   'left': [['mode', 'paste'], ['readonly', 'filepath', 'modified'],],
-  \   'right': [['lineinfo'], ['percent'], ['ale_ok', 'ale_warning', 'ale_error', 'char_code', 'fileformat', 'fileencoding', 'filetype'],],
+  \ 'active': {
+    \ 'left': [
+      \ ['mode', 'paste'],
+      \ ['readonly', 'filepath', 'modified'],
+    \ ],
+    \ 'right': [
+      \ ['lineinfo'],
+      \ ['percent'],
+      \ [
+        \ 'ale_ok',
+        \ 'ale_warning',
+        \ 'ale_error',
+        \ 'char_code',
+        \ 'fileformat',
+        \ 'fileencoding',
+        \ 'filetype',
+      \ ],
+    \ ],
   \ },
   \ 'component_function': {
-  \   'filepath': 'LightlineFilepath',
+  \ 'filepath': 'LightlineFilepath',
   \ },
   \ 'component_expand': {
-  \   'ale_error': 'LightlineAleError',
-  \   'ale_warning': 'LightlineAleWarning',
-  \   'ale_ok': 'LightlineAleOk',
+    \ 'ale_error': 'LightlineAleError',
+    \ 'ale_warning': 'LightlineAleWarning',
+    \ 'ale_ok': 'LightlineAleOk',
   \ },
   \ 'component_type': {
-  \   'ale_error': 'error',
-  \   'ale_warning': 'warning',
-  \   'ale_ok': 'ok',
+    \ 'ale_error': 'error',
+    \ 'ale_warning': 'warning',
+    \ 'ale_ok': 'ok',
   \ },
 \ }
 
@@ -63,6 +78,3 @@ augroup LightLineOnALE
   autocmd!
   autocmd User ALELint call lightline#update()
 augroup END
-
-set laststatus=2
-set noshowmode
