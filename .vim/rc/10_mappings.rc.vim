@@ -3,17 +3,18 @@ let g:mapleader = ','
 let g:maplocalleader = '\'
 
 " Editing .vimrc
-nnoremap <Space>e :tabnew $HOME/.vimrc<CR>
+nnoremap <LocalLeader>e :tabnew $HOME/.vimrc<CR>
 
 " Reload .vimrc
-nnoremap <Space>s :source $HOME/.vimrc<CR>
+nnoremap <LocalLeader>r :source $HOME/.vimrc<CR>
 
 " Exit from INSERT
 inoremap <silent> jj <ESC>
 
 " Highlight
-nnoremap <silent> <ESC> <ESC>:noh<CR>>
-nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+nnoremap <silent> <ESC> <ESC>:noh<CR>
+" NOTE: You must set 'hlsearch'
+nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>
 
 " Multi line move
 noremap <silent> k gk
@@ -22,6 +23,12 @@ noremap <silent> gk k
 noremap <silent> gj j
 noremap <silent> <Up> gk
 noremap <silent> <Down> gj
+
+" Skip move
+noremap H <nop>
+noremap L <Nop>
+noremap H ^
+noremap L $
 
 " Change tab width
 nnoremap <silent> ts2 :<C-u>setl shiftwidth=2 softtabstop=2<CR>

@@ -1,11 +1,11 @@
 if &compatible
-  set nocompatible
+    set nocompatible
 endif
 
 let s:dein_dir = expand('$CACHE/dein')
 
 if !dein#load_state(s:dein_dir)
-  finish
+    finish
 endif
 
 call dein#begin(s:dein_dir)
@@ -20,5 +20,5 @@ call dein#end()
 call dein#save_state()
 
 if !has('vim_starting') && dein#check_install()
-  call dein#install()
+    call dein#install()
 endif

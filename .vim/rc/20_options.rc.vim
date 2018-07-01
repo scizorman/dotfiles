@@ -1,16 +1,16 @@
 " 
-" 24. Multi-byte characters
+" Encoding
 "
-" NOTE: Write at the top.
+" NOTE: Write at the top. (These commands are in '24. Multi-byte characters'.)
 "
-" encode: Character encoding used in Vim: 'latin1', 'utf-8', 'euc-jp', 'big5', etc.
-" fileencoding: Character encoding for the current file.
-" fileencodings: Automatically detected character encodings.
 if !exists ('g:encoding_set') || !has('nvim')
-  set encoding=utf-8
-  set fileencoding=utf-8
-  set fileencodings=utf-8,sjis,iso2022-jp,cp932,euc-jp
-  let g:encoding_set=1
+    " encode: Character encoding used in Vim: 'latin1', 'utf-8', 'euc-jp', 'big5', etc.
+    set encoding=utf-8
+    " fileencoding: Character encoding for the current file.
+    set fileencoding=utf-8
+    " fileencodings: Automatically detected character encodings.
+    set fileencodings=utf-8,sjis,iso2022-jp,cp932,euc-jp
+    let g:encoding_set=1
 endif
 scriptencoding utf-8
 
@@ -34,7 +34,7 @@ set smartcase
 
 " Optional: Replace incremental.
 if exists('&inccommand')
-  set inccommand=split
+    set inccommand=split
 endif
 
 
@@ -74,8 +74,15 @@ set background=dark
 " Maximum column to look for syntax items
 set synmaxcol=256
 
-" Highlight all matches for the last used search pattern.
+" Highlight all matches for the last used search pattern
 set hlsearch
+
+" Use GUI colors for the terminal
+set termguicolors
+if has('nvim')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 
 " Columns to highlight.
 set colorcolumn=256
@@ -154,11 +161,11 @@ set noundofile " Disable
 
 " List of directoried for undo files.
 if has('persistent_undo')
-  set undodir=./.vimundo,~/.vimundo
-  augroup vimrc-undofile
-    autocmd!
-    autocmd BufReadPre ~/* setlocal undofile
-  augroup END
+    set undodir=./.vimundo,~/.vimundo
+    augroup vimrc-undofile
+        autocmd!
+        autocmd BufReadPre ~/* setlocal undofile
+    augroup END
 endif
 
 " Line length above which to break a line.
@@ -242,11 +249,11 @@ set cmdwinheight=5
 " grepprg: Program used for the ':grep' command.
 " grepformat: List of formats for output of 'grepprg'.
 if executable('rg')
-  let &grepprg = 'rg --vimgrep --hidden'
-  set grepformat=%f:%l%c:%m
+    let &grepprg = 'rg --vimgrep --hidden'
+    set grepformat=%f:%l%c:%m
 elseif executable('pt')
-  let &grepprg = 'pt --nocolor --nogroup --column'
-  set grepformat=%f:%l%c:%m
+    let &grepprg = 'pt --nocolor --nogroup --column'
+    set grepformat=%f:%l%c:%m
 endif
 
 
@@ -272,12 +279,12 @@ endif
 " jq command
 command! -nargs=? Jq call s:Jq(<f-args>)
 function! s:Jq(...)
-  if 0 == a:0
-      let l:arg = "."
-  else
-      let l:arg = a:1
-  endif
-  execute "%! jq \"" . l:arg . "\""
+    if 0 == a:0
+        let l:arg = "."
+    else
+        let l:arg = a:1
+    endif
+    execute "%! jq \"" . l:arg . "\""
 endfunction
 
 " Disable sql omni complete
