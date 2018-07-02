@@ -32,11 +32,7 @@ if [[ -f $HOME/.zshrc.local ]]; then
     source $HOME/.zshrc.local
 fi
 
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-
 # For tuning.
-# NOTE: Disable if you don't tune Zsh.
-# if (which zprof > /dev/null 2>&1) ;then
-#   zprof
-# fi
+if (which zprof > /dev/null 2>&1) ;then
+  zprof
+fi
