@@ -90,7 +90,7 @@ on_map = ['<plug>NERDTreeTabsToggle', '<plug>NERDTreeTabsFind']
 depends = ['nerdtree-git-plugin', 'vim-nerdtree-tabs']
 hook_add = '''
   let NERDTreeShowHidden=1
-  let NERDTreeIgnore=['\.pyc$', '__pycache__']
+  let NERDTreeIgnore=['\.pyc$', '__pycache__', '.DS_Store']
   nmap <Leader>tt <plug>NERDTreeTabsToggle<CR>
 '''
 
