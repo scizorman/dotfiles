@@ -24,7 +24,7 @@ on_ft = ['python']
 repo = 'aliev/vim-compiler-python'
 on_ft = ['python']
 
-[[plugins]]
-repo = 'davidhalter/jedi-vim'
-on_ft = ['python']
-depends = ['vim-virtualenv']
+# [[plugins]]
+# repo = 'davidhalter/jedi-vim'
+# on_ft = ['python']
+# depends = ['vim-virtualenv']

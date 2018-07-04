@@ -14,7 +14,7 @@ inoremap <silent> jj <ESC>
 " Highlight
 nnoremap <silent> <ESC> <ESC>:noh<CR>
 " NOTE: You must set 'hlsearch'
-nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>
+" nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>
 
 " Multi line move
 noremap <silent> k gk
@@ -27,8 +27,6 @@ noremap <silent> <Down> gj
 " Skip move
 noremap H <nop>
 noremap L <Nop>
-noremap H ^
-noremap L $
 
 " Change tab width
 nnoremap <silent> ts2 :<C-u>setl shiftwidth=2 softtabstop=2<CR>
@@ -46,8 +44,8 @@ nnoremap x "_x
 vnoremap x "_x
 nnoremap X "_X
 vnoremap X "_X
-nnoremap s "_s
-vnoremap s "_s
+" nnoremap s "_s
+" vnoremap s "_s
 nnoremap S "_S
 vnoremap S "_S
 

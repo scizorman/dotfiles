@@ -7,10 +7,7 @@ repo = 'Shougo/dein.vim'
 repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
-repo = 'romainl/Apprentice'
-
-[[plugins]]
-repo = 'dracula/vim'
+repo = 'jacoborus/tender.vim'
 
 # Status bar
 [[plugins]]
@@ -24,5 +21,15 @@ hook_add = '''
 repo = 'airblade/vim-gitgutter'
 
 # Other utils
+[[plugins]]
+repo = 'machakann/vim-sandwich'
+hook_add = '''
+  nmap s <Nop>
+  xmap s <Nop>
+
+  let g:textobj#sandwich#stimeoutlen = 10
+  let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
+'''
+
 [[plugins]]
 repo = 'mattn/sonictemplate-vim'

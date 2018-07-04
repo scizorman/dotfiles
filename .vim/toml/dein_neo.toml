@@ -36,21 +36,19 @@ hook_source = '''
   source $HOME/.vim/rc/plugins/denite.rc.vim
 '''
 hook_add = '''
+  " Keymap
   " Prefix key
   nmap [denite] <Nop>
-  map <C-j> [denite]
+  nmap <Leader>d [denite]
 
-  " Key-mappings
-  " Current directory files
-  nnoremap <silent> [denite]<C-p> :<C-u>Denite file_rec -highlight-mode-insert=search<CR>
-  " Buffer files
-  nnoremap <silent> [denite]<C-b> :<C-u>Denite buffer -highlight-mode-insert=search<CR>
-  " Outline current file
-  nnoremap <silent> [denite]<C-o> :<C-u>Denite outline -highlight-mode-insert=search<CR>
-  " Recent file
-  nnoremap <silent> [denite]<C-r> :<C-u>Denite file_mru -highlight-mode-insert=search<CR>
-  " Help tag
-  nnoremap <silent> [denite]<C-h> :<C-u>Denite help -highlight-mode-insert=search<CR>
+  " Mappings
+  nmap <silent> [denite]b :<C-u>Denite buffer -highlight-mode-insert=search<CR>
+  nmap <silent> [denite]fm :<C-u>Denite file_mru -highlight-mode-insert=search<CR>
+  nmap <silent> [denite]fr :<C-u>Denite file_rec -highlight-mode-insert=search<CR>
+  nmap <silent> [denite]dm :<C-u>Denite directory_mru -highlight-mode-insert=search<CR>
+  nmap <silent> [denite]dr :<C-u>Denite directory_rec -highlight-mode-insert=search<CR>
+  nmap <silent> [denite]o :<C-u>Denite outline -highlight-mode-insert=search<CR>
+  nmap <silent> [denite]r :<C-u>Denite register -highlight-mode-insert=search<CR>
 '''
 
 [[plugins]]
