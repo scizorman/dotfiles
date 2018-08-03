@@ -14,6 +14,7 @@ call dein#load_toml('$HOME/.vim/toml/dein.toml', {'lazy': 0})
 call dein#load_toml('$HOME/.vim/toml/dein_lazy.toml', {'lazy': 1})
 call dein#load_toml('$HOME/.vim/toml/dein_neo.toml', {'lazy': 1})
 call dein#load_toml('$HOME/.vim/toml/dein_python.toml', {'lazy': 1})
+call dein#load_toml('$HOME/.vim/toml/dein_go.toml', {'lazy': 1})
 call dein#load_toml('$HOME/.vim/toml/dein_frontend.toml', {'lazy': 1})
 
 call dein#end()
