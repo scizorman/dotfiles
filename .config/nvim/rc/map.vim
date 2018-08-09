@@ -26,20 +26,17 @@ noremap <silent> gj j
 noremap <silent> <Up> gk
 noremap <silent> <Down> gj
 
-" Skip move
-noremap H <nop>
-noremap L <Nop>
+" Cursor movement of command-line
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-a> <Home>
+cnoremap <C-d> <Del>
 
-" Change tab width
-nnoremap <silent> ts2 :<C-u>setl shiftwidth=2 softtabstop=2<CR>
-nnoremap <silent> ts4 :<C-u>setl shiftwidth=4 softtabstop=4<CR>
-nnoremap <silent> ts8 :<C-u>setl shiftwidth=8 softtabstop=8<CR>
-
-" Disable close window
-nnoremap <C-w>c <Nop>
 
 " Search yank string
-nnoremap <Space>sy /<C-r>"<CR>
+" nnoremap <Space>sy /<C-r>"<CR>
 
 " Register
 nnoremap x "_x

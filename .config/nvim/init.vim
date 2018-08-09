@@ -1,14 +1,9 @@
-" Tiny vim
-if 0 | endif
 "
-" Use plain vim when vim was invoked by 'sudo' command or invoked as 'git difftool'
-if exists('$SUDO_USER') || exists('$GIT_DIR')
-  finish
-endif
-
-" Set True = 1, False = 0
-let g:true = 1
-let g:false = 0
+" Environmental Variables
+"
+let $XDG_CACHE_HOME = expand('~/.cache')
+let $XDG_CONFIG_HOME = expand('~/.config')
+let $XDG_DATA_HOME = expand('~/.local/share')
 
 
 "
@@ -19,6 +14,16 @@ augroup GlobalAutoCmd
 augroup END
 command! -nargs=* Gautocmd autocmd GlobalAutoCmd <args>
 command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
+
+
+" Use plain vim when vim was invoked by 'sudo' command or invoked as 'git difftool'
+if exists('$SUDO_USER') || exists('$GIT_DIR')
+  finish
+endif
+
+" Set True = 1, False = 0
+let g:true = 1
+let g:false = 0
 
 
 "
@@ -41,11 +46,15 @@ function! s:config()
   " let config.hostname = hostname()
 
   " Neovim
-  let vimpath = expand($XDG_CONFIG_HOME . '/nvim')
+  let conf_path = expand($XDG_CONFIG_HOME . '/nvim')
+  let data_path = expand($XDG_DATA_HOME . '/nvim')
 
   let config.path = {
-    \ 'vim': vimpath,
-    \ 'rc': vimpath . '/rc',
+    \ 'vim': conf_path,
+    \ 'rc': conf_path . '/rc',
+    \ 'backup': data_path . '/backup',
+    \ 'swap': data_path . '/swap',
+    \ 'undo': data_path . '/undo',
   }
 
   let config.bin = {
@@ -153,35 +162,34 @@ let g:config.vimrc.plugin_on =
   \ : g:config.vimrc.plugin_on
 
 if g:config.is_starting
-    scriptencoding utf-8
-    set runtimepath&
+  scriptencoding utf-8
+  set runtimepath&
 
-    " Check if there are plugins not to be installed
-    augroup VimrcCheckPlug
-      autocmd!
-      if g:config.vimrc.check_plug_update == g:true
-        autocmd VimEnter * if !argc() | call g:plug.check_installation | endif
-      endif
-    augroup END
-
-    if has('reltime')
-      let g:startuptime = reltime()
-      augroup VimrcStartUpTime
-        autocmd!
-        autocmd VimEnter * g:startuptime = reltime(g:startuptime) | redraw
-          \ | echomsg 'startuptime: ' . reltimestr(g:startuptime)
-      augroup END
+  " Check if there are plugins not to be installed
+  augroup VimrcCheckPlug
+    autocmd!
+    if g:config.vimrc.check_plug_update == g:true
+      autocmd VimEnter * if !argc() | call g:plug.check_installation | endif
     endif
+  augroup END
+
+  if has('reltime')
+    let g:startuptime = reltime()
+    augroup VimrcStartUpTime
+      autocmd!
+      autocmd VimEnter * g:startuptime = reltime(g:startuptime) | redraw
+        \ | echomsg 'startuptime: ' . reltimestr(g:startuptime)
+    augroup END
+  endif
 endif
 
 execute 'set runtimepath^=' . fnameescape(g:config.path.rc)
 
 call s:load('plug.vim')
 
-call s:load('autocmd.vim')
 call s:load('options.vim')
 call s:load('command.vim')
-call s:load('keymapping.vim')
+call s:load('mapping.vim')
 
 call s:load('misc.vim')
 call s:load('app.vim')

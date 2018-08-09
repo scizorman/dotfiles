@@ -1,5 +1,5 @@
 " <Leader> mapping
-let g:mapleader = '<Space>'
+let g:mapleader = ','
 let g:maplocalleader = '\'
 
 " Editing .vimrc
@@ -37,7 +37,7 @@ nnoremap <silent> ts8 :<C-u>setl shiftwidth=8 softtabstop=8<CR>
 nnoremap <C-w>c <Nop>
 
 " Search yank string
-nnoremap <Space>sy /<C-r>"<CR>
+" nnoremap <Space>sy /<C-r>"<CR>
 
 " Register
 nnoremap x "_x

@@ -1,0 +1,4 @@
+setlocal nolist
+setlocal nonumber
+setlocal norelativenumber
+setlocal nofoldenable

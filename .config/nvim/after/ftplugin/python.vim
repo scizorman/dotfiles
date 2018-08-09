@@ -1,0 +1,10 @@
+setlocal cindent
+setlocal cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+setlocal colorcolumn=79
+setlocal copyindent
+setlocal tabstop=4
+setlocal shiftwidth=4
+setlocal expandtab
+setlocal autoindent
+setlocal nosmartindent
+setlocal formatoptions+=croq
