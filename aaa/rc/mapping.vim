@@ -1,12 +1,14 @@
-" <Leader> mapping
+" Define <Leader> and <LocalLeader>
 let g:mapleader = '<Space>'
 let g:maplocalleader = '\'
 
 " Editing .vimrc
-nnoremap <LocalLeader>e :tabnew $HOME/.vimrc<CR>
+" nnoremap <LocalLeader>e :tabnew $HOME/.vimrc<CR>
+nnoremap <LocalLeader>e :tabnew g:config.path.vimrc<CR>
 
 " Reload .vimrc
-nnoremap <LocalLeader>r :source $HOME/.vimrc<CR>
+" nnoremap <LocalLeader>r :source $HOME/.vimrc<CR>
+nnoremap <LocalLeader>r :source g:config.path.vimrc<CR>
 
 " Exit from INSERT
 inoremap <silent> jj <ESC>
