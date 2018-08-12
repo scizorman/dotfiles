@@ -42,7 +42,7 @@ let g:python3_host_prog = misc#PickExecutable(
 " Options
 " -----------------------------------------------------------------------------
 " What to do with Unicode chars of ambiguous width
-set ambiwidth
+set ambiwidth=single
 
 " Take indent for new line from previous line
 set autoindent
@@ -58,8 +58,7 @@ set backup
 
 " List of directories for the backup file
 call misc#Mkdir(g:nvim_path.backup)
-let &backupdir = g:nvim_path.backup
-set backupdir
+set backupdir& backupdir=g:nvim_path.backup
 
 " How to do indenting when 'cindent' is set
 " set cinoptions+=:0,g0,N-1,m1
@@ -75,8 +74,7 @@ set colorcolumn=79
 
 " List of directory names for the swap file
 call misc#Mkdir(g:nvim_path.swap)
-let &directory = g:nvim_path.swap
-set directory
+set directory& directory=g:nvim_path.swap
 
 " Use spaces when <Tab> is inserted
 set expandtab
@@ -227,8 +225,7 @@ set ttimeoutlen=5
 
 " Where to store undo files
 call misc#Mkdir(g:nvim_path.undo)
-let &undodir = g:nvim_path.undo
-set undodir
+set undodir& undodir=g:nvim_path.undo
 
 " Save undo information in a file
 set undofile
@@ -282,6 +279,9 @@ set nolazyredraw
 " Show (partial) command in status line
 set noshowcmd
 
+" Message on status line to show current mode
+set noshowmode
+
 " Commands move cursor to first non-blank in line
 set nostartofline
 
@@ -309,16 +309,16 @@ let g:mapleader = "\<SPACE>"
 let g:maplocalleader = "\\"
 
 " Exit from INSERT
-inoremap <SILENT>jj <ESC>
+inoremap <silent>jj <ESC>
 
 " Delete highlight
-nnoremap <SILENT><ESC> <ESC>:noh<CR>
+nnoremap <silent><ESC> <ESC>:noh<CR>
 
 " Multi line move
-noremap <SILENT>k gk
-noremap <SILENT>j gj
-noremap <SILENT>gk k
-noremap <SILENT>gj j
+noremap <silent>k gk
+noremap <silent>j gj
+noremap <silent>gk k
+noremap <silent>gj j
 
 " Cursor movement of command-line
 cnoremap <C-p> <UP>
