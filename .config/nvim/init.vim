@@ -58,7 +58,7 @@ set backup
 
 " List of directories for the backup file
 call misc#Mkdir(g:nvim_path.backup)
-set backupdir& backupdir=g:nvim_path.backup
+let &backupdir = g:nvim_path.backup
 
 " How to do indenting when 'cindent' is set
 " set cinoptions+=:0,g0,N-1,m1
@@ -74,7 +74,7 @@ set colorcolumn=79
 
 " List of directory names for the swap file
 call misc#Mkdir(g:nvim_path.swap)
-set directory& directory=g:nvim_path.swap
+let &directory = g:nvim_path.swap
 
 " Use spaces when <Tab> is inserted
 set expandtab
@@ -225,7 +225,7 @@ set ttimeoutlen=5
 
 " Where to store undo files
 call misc#Mkdir(g:nvim_path.undo)
-set undodir& undodir=g:nvim_path.undo
+let &undodir = g:nvim_path.undo
 
 " Save undo information in a file
 set undofile
@@ -340,7 +340,7 @@ let s:dein_path = {
   \ 'lazy_toml': g:nvim_path.nvim . '/dein/dein_lazy.toml',
   \ }
 
-if &runtimepath !~ '/dein.vim'
+if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_path.dein)
     execute '!git clone https://github.com/Shougo/dein.vim' . s:dein_path.dein
     execute '!git clone https://github.com/Shougo/vimproc.vim' . s:dein_path.vimproc
