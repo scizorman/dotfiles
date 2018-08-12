@@ -41,6 +41,5 @@ function plugs#ale#hook_source()
     \ 'bash': ['shellcheck'],
     \ 'zsh': ['shellcheck'],
     \ 'vim': ['vint'],
-    \ 'markdown': ['mdl'],
     \ }
 endfunction

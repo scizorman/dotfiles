@@ -111,7 +111,6 @@ on_ft = [
   'dockerfile',
   'sh', 'bash', 'zsh',
   'vim',
-  'markdown',
 ]
 hook_source = 'call plugs#ale#hook_source()'
 
