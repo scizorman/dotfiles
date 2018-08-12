@@ -1,5 +1,7 @@
 " <Leader> mapping
-let g:mapleader = ','
+nnoremap <Space> <Nop>
+
+let g:mapleader = "\<SPACE>"
 let g:maplocalleader = '\'
 
 " Editing .vimrc
@@ -9,7 +11,7 @@ nnoremap <LocalLeader>e :tabnew $HOME/.vimrc<CR>
 nnoremap <LocalLeader>r :source $HOME/.vimrc<CR>
 
 " Exit from INSERT
-inoremap <silent> jj <ESC>
+inoremap <silent>jj <ESC>
 
 " Highlight
 nnoremap <silent> <ESC> <ESC>:noh<CR>

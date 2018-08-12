@@ -1,0 +1,242 @@
+# -----------------------------------------------------------------------------
+# Deoplete
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+on_event = 'InsertCharPre'
+hook_add = 'call plugs#deoplete#hook_source()'
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_source = ['deoplete.nvim']
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets']
+on_event = 'InsertCharPre'
+
+# Sources
+[[plugins]]
+repo = 'zchee/deoplete-clang'
+depends = ['deoplete.nvim']
+on_ft = ['c', 'cpp', 'objc', 'objcpp']
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+depends = ['deoplete.nvim']
+on_ft = ['python']
+
+[[plugins]]
+repo = 'zchee/deoplete-go'
+depends = ['deoplete.nvim']
+on_ft = ['go']
+
+[[plugins]]
+repo = 'zchee/deoplete-docker'
+depends = ['deoplete.nvim']
+on_ft = ['dockerfile']
+
+[[plugins]]
+repo = 'zchee/deoplete-zsh'
+depends = ['deoplete.nvim']
+on_ft = ['sh', 'zsh']
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+depends = ['deoplete.nvim']
+on_ft = ['vim']
+
+
+# -----------------------------------------------------------------------------
+# Denite
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+depends = ['neomru.vim']
+on_cmd = 'Denite'
+build = ':UpdateRemotePlugins'
+hook_add = '''
+" Prefix key
+nmap [denite] <NOP>
+nmap <LEADER>d [denite]
+
+" Mappings
+nmap <SILENT>[denite]b :<C-u>Denite buffer -highlight-mode-insert=search<CR>
+nmap <SILENT>[denite]fm :<C-u>Denite file_mru -highlight-mode-insert=search<CR>
+nmap <SILENT>[denite]fr :<C-u>Denite file_rec -highlight-mode-insert=search<CR>
+nmap <SILENT>[denite]dm :<C-u>Denite directory_mru -highlight-mode-insert=search<CR>
+nmap <SILENT>[denite]dr :<C-u>Denite directory_rec -highlight-mode-insert=search<CR>
+nmap <SILENT>[denite]o :<C-u>Denite outline -highlight-mode-insert=search<CR>
+nmap <SILENT>[denite]r :<C-u>Denite register -highlight-mode-insert=search<CR>
+'''
+hook_source = 'call plugs#denite#hook_source()'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+
+# -----------------------------------------------------------------------------
+# Git
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+on_cmd = ['Gblame', 'Gcommit', 'Gdiff', 'Ggrep', 'Glog', 'Gstatus']
+hook_add = '''
+" Prefix key
+nmap [figitive] <NOP>
+nmap <LEADER>g [figitive]
+
+" Mappings
+nmap <SILENT>[figitive]b :<C-u>Gblame<CR>
+nmap <SILENT>[figitive]c :<C-u>Gcommit<CR>
+nmap <SILENT>[figitive]d :<C-u>Gdiff<CR>
+nmap <SILENT>[figitive]g :<C-u>Ggrep<CR>
+nmap <SILENT>[figitive]l :<C-u>Glog<CR>
+nmap <SILENT>[figitive]s :<C-u>Gstatus<CR>
+'''
+
+
+# -----------------------------------------------------------------------------
+# Linter
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'w0rp/ale'
+on_ft = [
+  'c', 'cpp', 'objc', 'objcpp',
+  'python',
+  'go',
+  'dockerfile',
+  'sh', 'bash', 'zsh',
+  'vim',
+  'markdown',
+]
+hook_source = 'call plugs#ale#hook_source()'
+
+
+# -----------------------------------------------------------------------------
+# Linter
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_i = 1
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+on_map = ['<Plug>(caw:hatpos:toggle)']
+hook_add = '''
+" Add comment to beginning line (consider whitespace)
+nmap <LEADER>c <Plug>(caw:hatpos:toggle)
+vmap <LEADER>c <Plug>(caw:hatpos:toggle)
+'''
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+depends = ['vimproc.vim']
+on_cmd = 'QuickRun'
+hook_source = 'call plugs#vim-quickrun#hook_source()'
+
+[[plugins]]
+repo = 'mattn/sonictemplate-vim'
+on_cmd = 'Template'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+on_ft = ['markdown', 'toml', 'help']
+hook_add = '''
+let g:precious_enable_switch_CursorMoved = {'*': 0, 'help': 1}
+Gautocmd InsertEnter * :PreciousSwitch
+Gautocmd InsertLeave * :PreciousReset
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_map = ['<Plug>(openbrowser-smart-search)']
+hook_add = '''
+let g:netrw_nogx = 1 " Disable netrw's gx mapping.
+nmap <LocalLeader>ob <Plug>(openbrowser-smart-search)
+vmap <LocalLeader>ob <Plug>(openbrowser-smart-search)
+'''
+
+
+# -----------------------------------------------------------------------------
+# Language plugins
+# -----------------------------------------------------------------------------
+# Python
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
+depends = ['vim-virtualenv']
+on_ft = ['python']
+
+[[plugins]]
+repo = 'jmcantrell/vim-virtualenv'
+on_ft = ['python']
+
+[[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
+on_ft = ['python']
+
+[[plugins]]
+repo = 'lambdalisue/vim-django-support'
+on_ft = ['python', 'djangohtml']
+
+# Go
+[[plugins]]
+repo = 'faith/vim-go'
+on_ft = ['go']
+build = ':GoUpdateBinaried'
+
+# Markdown
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = ['markdown']
+hook_add = '''
+let g:vim_markdown_folding_disabled = 0
+let g:vim_markdown_folding_level = 6
+let g:vim_markdown_nc_default_kwy_mappings = 0
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_math = 1
+let g:vim_markdown_autowrite = 0
+let g:vim_markdown_edit_url_in = 'hsplit'
+
+Gautocmdft markdown nnoremap <SILENT><LOCALLEADER>o :<C-u>Toc<CR>
+'''
+
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+on_ft = ['markdown']
+hook_add = '''
+let g:table_mode_corner = '|'
+let g:table_mode_always_active = 1
+let g:table_mode_syntax = 1
+let g:table_mode_auto_align = 1
+
+Gautocmdft markdown nnoremap <SILENT><LOCALLEADER>ra :<C-u>TableModeRealign<CR>
+Gautocmdft markdown nmap <SILENT><LOCALLEADER>t :<C-u>Tableize<CR>
+Gautocmdft markdown vnoremap <SILENT><LOCALLEADER> :<C-u>'<,'>Tableize<CR>
+'''
+
+[[plugins]]
+repo = 'kannokanno/previm'
+depends = ['open-browser.vim']
+on_ft = ['markdown']
+hook_add = '''
+nmap <LOCALLEADER>p :PrevimOpen<CR>
+'''
+
+# Toml
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+# Json
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = ['json']

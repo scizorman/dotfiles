@@ -1,0 +1,40 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+
+
+# -----------------------------------------------------------------------------
+# Git
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+
+# -----------------------------------------------------------------------------
+# Interface
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = 'call plugs#lightline#hook_add()'
+
+
+# -----------------------------------------------------------------------------
+# Colorscheme
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+hook_add = 'Gautocmd VimEnter * nested colorscheme iceberg'
+
+[[plugins]]
+repo = 'jacoborus/tender.vim'
+
+[[plugins]]
+repo = 'raphamorim/lucario'
+
+[[plugins]]
+repo = 'jonathanfilip/vim-lucius'
+
+[[plugins]]
+repo = 'dracula/vim'

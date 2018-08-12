@@ -1,5 +1,5 @@
 let g:lightline = {
-    \ 'colorscheme': 'iceberg',
+    \ 'colorscheme': 'powerline',
     \ 'active': {
         \ 'left': [
             \ ['mode', 'paste'],
@@ -32,6 +32,8 @@ let g:lightline = {
         \ 'ale_warning': 'warning',
         \ 'ale_ok': 'ok',
     \ },
+    \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
+    \ 'subseparator': {'left': "\ue0b1", 'right': "\ue0b3"},
 \ }
 
 function! LightlineFilepath()

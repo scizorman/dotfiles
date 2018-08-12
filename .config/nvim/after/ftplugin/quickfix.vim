@@ -1,3 +1,2 @@
-setlocal nolist
 setlocal nonumber
 setlocal norelativenumber
