@@ -6,6 +6,13 @@ repo = 'Shougo/vimproc.vim'
 
 
 # -----------------------------------------------------------------------------
+# Deoplete
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+
+# -----------------------------------------------------------------------------
 # Git
 # -----------------------------------------------------------------------------
 [[plugins]]
@@ -19,6 +26,16 @@ repo = 'airblade/vim-gitgutter'
 repo = 'itchyny/lightline.vim'
 hook_add = 'call plugs#lightline#hook_add()'
 
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+
+# -----------------------------------------------------------------------------
+# Utility
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'machakann/vim-sandwich'
+
 
 # -----------------------------------------------------------------------------
 # Colorscheme
@@ -31,10 +48,10 @@ hook_add = 'Gautocmd VimEnter * nested colorscheme iceberg'
 repo = 'jacoborus/tender.vim'
 
 [[plugins]]
-repo = 'raphamorim/lucario'
+repo = 'jonathanfilip/vim-lucius'
 
 [[plugins]]
-repo = 'jonathanfilip/vim-lucius'
+repo = 'raphamorim/lucario'
 
 [[plugins]]
 repo = 'dracula/vim'

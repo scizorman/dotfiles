@@ -7,37 +7,37 @@ function plugs#denite#hook_source()
   call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
 
   call denite#custom#source(
-    \ 'file_rec',
-    \ 'matchers',
-    \ ['matcher_fuzzy', 'matcher_project_files', 'matcher_ignore_globs'],
-    \ )
+  \ 'file_rec',
+  \ 'matchers',
+  \ ['matcher_fuzzy', 'matcher_project_files', 'matcher_ignore_globs'],
+  \ )
 
   call denite#custom#filter(
-    \ 'matcher_ignore_globs',
-    \ 'ignore_globs',
-    \ ['.git/', '.ropeproject/', '.__pycache__/', 'venv/', 'images/', '*.min.*',
-    \  'img/', 'fonts/', 'vendor/', 'node_modules/', '*pyc', '.DS_Store']
-    \ )
+  \ 'matcher_ignore_globs',
+  \ 'ignore_globs',
+  \ ['.git/', '.ropeproject/', '.__pycache__/', 'venv/', 'images/', '*.min.*',
+  \  'img/', 'fonts/', 'vendor/', 'node_modules/', '*pyc', '.DS_Store']
+  \ )
 
   call denite#custom#source(
-    \ 'fire_mru',
-    \ 'matchers',
-    \ ['matcher/fuzzy', 'matcher/project_files'],
-    \ )
+  \ 'fire_mru',
+  \ 'matchers',
+  \ ['matcher/fuzzy', 'matcher/project_files'],
+  \ )
 
   if executable('pt') || executable('ag')
     let l:grep_source = executable('pt') ? 'pt' : 'ag'
 
     call denite#custom#var(
-      \ 'file_rec',
-      \ 'command',
-      \ [s:grep_source, '--follow', '--nocolor', '--nogroup', '--hidden', '-g', ''],
-      \ )
+    \ 'file_rec',
+    \ 'command',
+    \ [l:grep_source, '--follow', '--nocolor', '--nogroup', '--hidden', '-g', ''],
+    \ )
     call denite#custom#var(
-      \ 'grep',
-      \ 'command',
-      \ [s:grep_source, '--nogroup', '--nocolor', '--smart-case', '-hidden'],
-      \ )
+    \ 'grep',
+    \ 'command',
+    \ [l:grep_source, '--nogroup', '--nocolor', '--smart-case', '-hidden'],
+    \ )
     call denite#custom#var('grep', 'default_opts', [])
     call denite#custom#var('grep', 'recursive_opts', [])
     call denite#custom#var('grep', 'separator', ['--'])

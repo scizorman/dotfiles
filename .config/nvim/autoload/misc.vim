@@ -14,7 +14,7 @@ endfunction
 
 
 function! misc#IsLinux()
-  return !execute(misc#IsMac()) && has('unix')
+  return !misc#IsMac() && has('unix')
 endfunction
 
 
@@ -57,10 +57,10 @@ endfunction
 
 
 function! misc#PickExecutable(pathspecs)
-  for s:pathspec in filter(a:pathspecs, '!empty(v:val)')
-    for s:path in reverse(glob(s:pathspec, 0, 1))
-      if executable(s:path)
-        return s:path
+  for l:pathspec in filter(a:pathspecs, '!empty(v:val)')
+    for l:path in reverse(glob(l:pathspec, 0, 1))
+      if executable(l:path)
+        return l:path
       endif
     endfor
   endfor

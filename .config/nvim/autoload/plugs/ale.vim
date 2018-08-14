@@ -26,20 +26,20 @@ function plugs#ale#hook_source()
 
   " Enable linter
   let g:ale_linter = {
-    \ 'c': ['clang'],
-    \ 'cpp': ['clang'],
-    \ 'objc': ['clang'],
-    \ 'objcpp': ['clang'],
-    \ 'python': ['flake8'],
-    \ 'go': ['gofmt'],
-    \ 'html': ['HTMLHint'],
-    \ 'css': ['stylelint'],
-    \ 'sass': ['stylelint'],
-    \ 'scss': ['stylelint'],
-    \ 'dockerfile': ['hadolint'],
-    \ 'sh': ['shellcheck'],
-    \ 'bash': ['shellcheck'],
-    \ 'zsh': ['shellcheck'],
-    \ 'vim': ['vint'],
-    \ }
+  \ 'c': ['clang'],
+  \ 'cpp': ['clang'],
+  \ 'objc': ['clang'],
+  \ 'objcpp': ['clang'],
+  \ 'python': ['flake8'],
+  \ 'go': ['gofmt'],
+  \ 'html': ['HTMLHint'],
+  \ 'css': ['stylelint'],
+  \ 'sass': ['stylelint'],
+  \ 'scss': ['stylelint'],
+  \ 'dockerfile': ['hadolint'],
+  \ 'sh': ['shellcheck'],
+  \ 'bash': ['shellcheck'],
+  \ 'zsh': ['shellcheck'],
+  \ 'vim': ['vint'],
+  \ }
 endfunction
