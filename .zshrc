@@ -5,31 +5,31 @@ bindkey -d
 
 # Return if zsh is called from vim
 if [[ -n $VIMRUNTIME ]]; then
-    return 0
+  return 0
 fi
 
 # Attaches tmux session automatically when you are in zsh
 if [[ -x $HOME/bin/tmux_automatically_attach ]]; then
-    $HOME/bin/tmux_automatically_attach
+  $HOME/bin/tmux_automatically_attach
 fi
 
 # zplug
 if [[ -f $HOME/.zplug/init.zsh ]]; then
-    export ZPLUG_LOADFILE=$HOME/.zsh/zplug.zsh
-    source $HOME/.zplug/init.zsh
+  export ZPLUG_LOADFILE=$HOME/.zsh/zplug.zsh
+  source $HOME/.zplug/init.zsh
 
-    if ! zplug check --verbose; then
-        printf "Install? [y/n]: "
-        if read -q; then
-            echo; zplug install
-        fi
-        echo
+  if ! zplug check --verbose; then
+    printf "Install? [y/n]: "
+    if read -q; then
+      echo; zplug install
     fi
-    zplug load
+    echo
+  fi
+  zplug load
 fi
 
 if [[ -f $HOME/.zshrc.local ]]; then
-    source $HOME/.zshrc.local
+  source $HOME/.zshrc.local
 fi
 
 # For tuning.
