@@ -11,26 +11,26 @@ function! s:head(str)
 endfunction
 
 for s:instruction in [
-  \ 'from',
-  \ 'maintainer',
-  \ 'run',
-  \ 'cmd',
-  \ 'label',
-  \ 'expose',
-  \ 'env',
-  \ 'add',
-  \ 'copy',
-  \ 'entrypoing',
-  \ 'volume',
-  \ 'user',
-  \ 'workdir',
-  \ 'arg',
-  \ 'onbuild',
-  \ 'stopsitnal',
-  \ 'healthcheck',
-  \ 'shell',
-  \ ]
+\ 'from',
+\ 'maintainer',
+\ 'run',
+\ 'cmd',
+\ 'label',
+\ 'expose',
+\ 'env',
+\ 'add',
+\ 'copy',
+\ 'entrypoing',
+\ 'volume',
+\ 'user',
+\ 'workdir',
+\ 'arg',
+\ 'onbuild',
+\ 'stopsitnal',
+\ 'healthcheck',
+\ 'shell',
+\ ]
   execute 'inoreabbrev <buffer> <expr>'
-    \ s:instruction
-    \ printf('<SID>head(%s)', string(s:instruction))
+  \ s:instruction
+  \ printf('<SID>head(%s)', string(s:instruction))
 endfor

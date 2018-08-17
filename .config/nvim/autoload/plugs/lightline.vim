@@ -1,22 +1,24 @@
 function plugs#lightline#hook_add()
   let g:lightline = {
-    \ 'colorscheme': 'powerline',
-    \ 'active': {
-    \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filepath', 'modified']],
-    \   'right': [['lineinfo'], ['percent'],
-    \             ['ale_ok', 'ale_warning', 'ale_error', 
-    \              'char_code', 'fileformat', 'fileencoding', 'filetype']],
-    \ },
-    \ 'component_function': {'filepath': 'LightlineFilepath'},
-    \ 'component_expand': {
-    \   'ale_ok': 'LightlineAleOk',
-    \   'ale_warning': 'LightlineAleWarning',
-    \   'ale_error': 'LightlineAleError',
-    \ },
-    \ 'component_type': {'ale_ok': 'ok', 'ale_warning': 'warning', 'ale_error': 'error'},
-    \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
-    \ 'subseparator': {'left': "\ue0b1", 'right': "\ue0b3"},
-    \ }
+  \ 'colorscheme': 'wombat',
+  \ 'active': {
+  \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filepath', 'modified']],
+  \   'right': [
+  \     ['lineinfo'], ['percent'],
+  \     ['ale_ok', 'ale_warning', 'ale_error', 
+  \      'char_code', 'fileformat', 'fileencoding', 'filetype']
+  \   ],
+  \ },
+  \ 'component_function': {'filepath': 'LightlineFilepath'},
+  \ 'component_expand': {
+  \   'ale_ok': 'LightlineAleOk',
+  \   'ale_warning': 'LightlineAleWarning',
+  \   'ale_error': 'LightlineAleError',
+  \ },
+  \ 'component_type': {'ale_ok': 'ok', 'ale_warning': 'warning', 'ale_error': 'error'},
+  \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
+  \ 'subseparator': {'left': "\ue0b1", 'right': "\ue0b3"},
+  \ }
 endfunction
 
 

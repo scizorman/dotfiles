@@ -14,7 +14,7 @@ on_source = ['deoplete.nvim']
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertCharPre'
-hook_source = 'call plugs#neosnippet#hook_source'
+hook_source = 'call plugs#neosnippet#hook_source()'
 
 # Sources
 [[plugins]]
@@ -181,11 +181,9 @@ let g:table_mode_auto_align = 1
 '''
 
 [[plugins]]
-repo = 'kannokanno/previm'
+repo = 'megascizor/previm'
 depends = ['open-browser.vim']
 on_ft = ['markdown']
-hook_add = '''
-'''
 
 # Toml
 [[plugins]]
