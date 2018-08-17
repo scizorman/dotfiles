@@ -9,8 +9,8 @@ set -eu
 . "$DOTPATH"/etc/init/assets/vital.sh
 
 if [ -z "$DOTPATH" ]; then
-    echo '$DOTPATH not set' >&2
-    exit 1
+  echo "$DOTPATH not set" >&2
+  exit 1
 fi
 
 # Ask for the administrator password upfront

@@ -1,48 +1,48 @@
 #!/bin/sh
-# 
+# ----------------------------------------------------------------------------
 # Define functions.
-#
+# ----------------------------------------------------------------------------
 # PLATFORM is the environment variable that retrieves the name of the running
 # platform.
-_TAB_="$(printf "\t")"
+_TAB_="$(printf "\\t")"
 _SPACE_=' '
 _BLANK_="${_SPACE_}${_TAB_}"
 _IFS_="$IFS"
 
 vitalize(){
-    return 0
+  return 0
 }
 
 # General utilities
 is_interactive(){
-    if [ "${-/i/}" != "$-" ]; then
-        return 0
-    fi
-    return 1
+  if [ "${-/i/}" != "$-" ]; then
+      return 0
+  fi
+  return 1
 }
 
 is_bash(){
-    [ -n "$BASH_VERSION" ]
+  [ -n "$BASH_VERSION" ]
 }
 
 is_zsh(){
-    [ -n "$ZSH_VERSION" ]
+  [ -n "$ZSH_VERSION" ]
 }
 
 is_at_least(){
-    if [ -z "$1" ]; then
-        return 1
-    fi
+  if [ -z "$1" ]; then
+      return 1
+  fi
 
-    # For Zsh
-    if is_zsh; then
-        autoload -Uz is-at-least
-        is-at-least "${1:-}"
-        return $?
-    fi
+  # For Zsh
+  if is_zsh; then
+    autoload -Uz is-at-least
+    is-at-least "${1:-}"
+    return $?
+  fi
 
-    at_least="$(echo $1 | sed -e 's/\.//g')"
-    version="$(echo ${BASH_VERSION:-0.0.0} | sed -e 's/^\([0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}\).*/\1/' | sed -e 's/\.//g')"
+  at_least="$(echo $1 | sed -e 's/\.//g')"
+  version="$(echo ${BASH_VERSION:-0.0.0} | sed -e 's/^\([0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}\).*/\1/' | sed -e 's/\.//g')"
 
     # Zero padding
     while [ ${#at_least} -ne 6 ]; do
