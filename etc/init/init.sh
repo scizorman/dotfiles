@@ -1,39 +1,46 @@
-#!/bin/sh
-export SETUP_DIR
+#!/bin/bash
+export DOTFILES_PATH="$HOME"/.dotfiles
 
 # Stop script if errors occure
-trap 'echo Error: $0:$LINENO stopped; exit 1' HUP INT QUIT TERM
+trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
 # Get utilities
-. "$DOTPATH"/etc/init/assets/vital.sh
-
-if [ -z "$DOTPATH" ]; then
-  echo "$DOTPATH not set" >&2
+if [ -z "$DOTFILES_PATH" ]; then
+  echo "$DOTFILES_PATH not set" >&2
   exit 1
 fi
+
+. "$DOTFILES_PATH"/etc/lib/vital.sh
 
 # Ask for the administrator password upfront
 sudo -v
 
 # Keep-alive
-# Update existing `sudo` time stamp until this script has finnished.
+# Update existing `sudo` time stamp until this script has finnished
 while true; do
-    sudo -n true
-    sleep 60;
-    kill -0 "$$" || exit
+  sudo -n true
+  sleep 60;
+  kill -0 "$$" || exit
 done 2>/dev/null &
 
 # Initialize
-for f in "$DOTPATH"/etc/init/"$(get_os)"/*.sh; do
-    if [ -f "$f" ]; then
-        log_info "$(e_arrow "$(basename "$f")")"
-        if [ "${DEBUG:-}" != 1 ]; then
-            sh "$f"
-        fi
-    else
-        continue
-    fi
-done
+init_dir="$DOTFILES_PATH"/etc/init/"$(get_os)"
 
-log_pass "$0: Finish!!" | sed "s $DOTPATH \$DOTPATH g"
+if [ -d "$init_dir" ]; then
+  for i in "$init_dir"/*.sh; do
+    if [ -f "$i" ]; then
+      log_info "$(e_arrow "$(basename "$i")")"
+      if [ "${DEBUG:-}" != 1 ]; then
+        bash "$i"
+      fi
+    else
+      continue
+    fi
+  done
+else
+  log_fail "Error: Not found '$init_dir'."
+  exit 1
+fi
+
+log_pass "$0: Finish!!" | sed "s $DOTFILES_PATH \$DOTFILES_PATH g"

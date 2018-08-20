@@ -1,1 +1,0 @@
-../common/python3.6.sh

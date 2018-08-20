@@ -1,79 +1,59 @@
-#!/bin/sh
+#!/bin/bash
 # Stop script if errors occure.
-trap 'echo Error: $0:$LINENO stopped; exit 1' HUP INT QUIT TERM
+trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
 # Get utilities
-. "$DOTPATH"/etc/init/assets/vital.sh
+. "$DOTFILES_PATH"/etc/lib/vital.sh
 
 # Install Neovim
-if ! has "nvim"; then
-    case "$(get_os)" in
-        osx)
-            if has "brew"; then
-                log_echo "Install Neovim with Homebrew."
-                brew install neovim
-            else
-                log_fail "Error: Homebrew is required."
-                exit 1
-            fi
-            ;;
-
-        linux)
-            case "$(get_distribution)" in
-                redhat)
-                    if has "yum"; then
-                        log_echo "Install Neovim with Yellowdog Updater Modified (YUM)."
-                        cp "$DOTPATH"/etc/init/assets/Neovim/neovim.repo /etc/yum.repos.d/neovim.repo
-                        sudo yum -y install neovim
-                    else
-                        log_fail "Error: YUM is required."
-                        exit 1
-                    fi
-                    ;;
-
-                ubuntu)
-                    if has "apt"; then
-                        log_echo "Install Neovim with Advanced Packaging Tool (APT)."
-                        sudo apt -y install neovim
-                    else
-                        log_fail "Error: APT is required."
-                        exit 1
-                    fi
-                    ;;
-
-                *)
-                    log_fail "Error: This script is only supported CentOS and Ubuntu."
-                    exit 1
-                    ;;
-            esac
-            ;;
-
-        *)
-            log_fail "Error: This script is only supported OSX and Linux."
-            exit 1
-            ;;
-    esac
-fi
-
-log_pass "Neovim: Install successfully."
-
-
-# Install python packages for Neovim
-if has "pip"; then
-    log_echo "Install packages (Python2.7) for Neovim."
-    pip install -r "$DOTPATH"/etc/init/assets/Neovim/nvim_py2_requirements.txt
+if has 'nvim'; then
+  log_pass 'Neovim: Already installed!'
 else
-    log_fail "Error: 'pip' (for Python2.7) is required."
-    exit 1
+  case "$(get_os)" in
+    osx)
+      if has 'brew'; then
+        log_echo "Install Neovim with Homebrew."
+        if brew install neovim; then
+          log_pass 'Neovim: Installed successfully!'
+        else
+          log_fail 'Neovim: Failed to install.'
+          exit 1
+        fi
+      else
+        log_fail "Error: Homebrew is required."
+        exit 1
+      fi
+      ;;
+    *)
+      log_fail "Error: This script is only supported OSX."
+      exit 1
+      ;;
+  esac
 fi
 
-if has "pip3"; then
-    log_echo "Install packages (Python3.6) for Neovim."
-    pip3 install -r "$DOTPATH"/etc/init/assets/Neovim/nvim_py3_requirements.txt
+# Install requirements for Neovim
+if has 'pip3' || [[ "$(pip -V 2>&1)" =~ ^pip.*python\ 3\.[0-9] ]]; then
+  req_path="$DOTFILES_PATH"/etc/lib/nvim/requirements.txt
+  if [ ! -f "$req_path" ]; then
+    log_fail "$req_path: Not found."
+    exit 1
+  fi
+
+  if has 'pip3'; then
+    pip_cmd="pip3 install -r $req_path"
+  else
+    pip_cmd="pip install -r $req_path"
+  fi
+
+  log_echo 'Install requirements of Python3 for Neovim with pip.'
+  if eval ${pip_cmd}; then
+    log_pass 'Python 3 provider (Neovim) and etc.: Install successfully!'
+  else
+    log_fail 'Python 3 provider (Neovim) and etc.: Failed to install.'
+    exit 1
+  fi
 else
-    log_fail "Error: 'pip3' (for Python3.6) is required."
-    exit 1
+  log_fail 'Error: pip (Python3) is required.'
+  exit 1
 fi
-
-log_pass "Packages (Python) for Neovim: Installed successfully."
