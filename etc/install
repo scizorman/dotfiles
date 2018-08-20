@@ -25,7 +25,7 @@ e_header() {
 }
 
 e_error() {
-  printf "\033[31m%s\033[m\n" "\U2717 $*" 1>&i
+  echo "\033[31m%s\033[m\n" "✗ $*" 1>&2 # U+2717
 }
 
 e_warning() {
@@ -33,15 +33,20 @@ e_warning() {
 }
 
 e_done() {
-  printf "\033[37;1m%s\033[m...\033[32mOK\033m\n" "\U2713 $*"
+  echo "\033[37;1m%s\033[m...\033[32mOK\033m\n" "✔ $*" # U+2714
 }
 
 e_arrow() {
-  printf "\033[37;1m%s\033[m\n" "\U2794 $*"
+  echo "\033[37;1m%s\033[m\n" "➔ $*" # U+2794
 }
 
 ink() {
-  if [ "$#" -eq 2 ]; then
+  if [ "$#" -ne 2 ]; then
+    echo 'Usage: ink <color> <text>'
+    echo 'Colors:'
+    echo '  black, red, green, yellow, blue, purple, cyan, gray'
+    return 1
+  else
     case "$1" in
       black)
         local color='0;30m'
@@ -73,13 +78,7 @@ ink() {
         ;;
     esac
 
-    echo "\033[${color}$2\033[0m"
-
-  else
-    echo 'Usage: ink <color> <text>'
-    echo 'Colors:'
-    echo '  black, red, green, yellow, blue, purple, cyan, gray'
-    return 1
+    printf "\033[${color}$2\033[0m"
   fi
 }
 

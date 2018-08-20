@@ -120,7 +120,12 @@ e_arrow() {
 }
 
 ink() {
-  if [ "$#" -eq 2 ]; then
+  if [ "$#" -ne 2 ]; then
+    echo 'Usage: ink <color> <text>'
+    echo 'Colors:'
+    echo '  black, red, green, yellow, blue, purple, cyan, gray'
+    return 1
+  else
     case "$1" in
       black)
         local color='0;30m'
@@ -153,12 +158,6 @@ ink() {
     esac
 
     printf "\033[${color}$2\033[0m"
-
-  else
-    echo 'Usage: ink <color> <text>'
-    echo 'Colors:'
-    echo '  black, red, green, yellow, blue, purple, cyan, gray'
-    return 1
   fi
 }
 
