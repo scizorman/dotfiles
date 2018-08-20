@@ -43,4 +43,6 @@ else
   exit 1
 fi
 
-log_pass "$0: Finish!!" | sed "s $DOTFILES_PATH \$DOTFILES_PATH g"
+# log_pass "$0: Finish!!" | sed "s $DOTFILES_PATH \$DOTFILES_PATH g"
+e_newline
+log_pass "Initialize: Finish!"
