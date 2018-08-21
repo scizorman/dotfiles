@@ -1,7 +1,8 @@
-# Scizor-master dotfiles
+# Dotfiles
+
 
 ## Overview
-This is dotfiles for **Zsh**, **Tmux**, and **Vim/Neovim**. 
+This is dotfiles for **Zsh**, **Tmux**, and **Neovim**. 
 
 
 ## Installation
@@ -17,11 +18,11 @@ The easist way to install this dotfiles is to open up a terminal, type the insta
   <tbody>
     <tr>
       <td><strong>cURL</strong></td>
-      <td>sh -c "$(curl -fsSL <a href="https://raw.githubusercontent.com/Scizor-master/dotfiles/master/etc/install.sh">https://raw.githubusercontent.com/Scizor-master/dotfiles/master/etc/install.sh</a>)"</td>
+      <td>bash -c "$(curl -fsSL <a href="https://raw.githubusercontent.com/megascizor/dotfiles/master/etc/install">https://raw.githubusercontent.com/megascizor/dotfiles/master/etc/install.sh</a>)"</td>
     </tr>
     <tr>
       <td><strong>Wget</strong></td>
-      <td>sh -c "$(wget -qO - <a href="https://raw.githubusercontent.com/Scizor-master/dotfiles/master/etc/install.sh">https://raw.githubusercontent.com/Scizor-master/dotfiles/master/etc/install.sh</a>)"</td>
+      <td>bash -c "$(wget -qO - <a href="https://raw.githubusercontent.com/megascizor/dotfiles/master/etc/install">https://raw.githubusercontent.com/megascizor/dotfiles/master/etc/install.sh</a>)"</td>
     </tr>
   </tbody>
 </table>
@@ -35,7 +36,7 @@ The easist way to install this dotfiles is to open up a terminal, type the insta
 - General download method using the git command:
 
   ```console
-  $ git clone https://github.com/Scizor-master/dotfiles.git ~/.dotfiles
+  $ git clone https://github.com/megascizor/dotfiles.git ~/.dotfiles
   $ cd ~/.dotfiles && make install
   ```
 
@@ -50,7 +51,7 @@ The easist way to install this dotfiles is to open up a terminal, type the insta
 1. Deploy (i.e. *copy* or *create symlink*) dot files to your home directory; `make deploy`
 1. Run all programs for setup in `./etc/init` directory; `make init` (**Optional**: when running the [installation command](#oneliner) specify `-s init` as an argument)
 
-When the [installation command](#onliner) format is not curl -L URL | sh but `sh -c "$(curl -L URL)"`, shell will be restart automatically. If this is not the case, it is necessary to restart your shell manually.
+When the [installation command](#onliner) format is not curl -L URL | bash but `bash -c "$(curl -L URL)"`, shell will be restart automatically. If this is not the case, it is necessary to restart your shell manually.
 
 
 ## Update
