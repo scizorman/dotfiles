@@ -19,7 +19,8 @@ alias lt='ls -ltr'
 alias lr='ls -lR'
 
 alias cp="${ZSH_VERSION:+nocorrect} cp -i"
-alias mv="${ZSH_VERSION:+nocorrect} mv -i"
+# alias mv="${ZSH_VERSION:+nocorrect} mv -i"
+alias mv='mv -i'
 alias mkdir="${ZSH_VERSION:+nocorrect} mkdir"
 
 alias du='du -h'

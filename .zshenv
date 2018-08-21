@@ -3,6 +3,7 @@
 # NOTE: Disable if you don't tune Zsh.
 # zmodload zsh/zprof && zprof
 
+zmodload zsh/zpty
 
 # -----------------------------------------------------------------------------
 # Paths
@@ -70,7 +71,7 @@ export LC_CTYPE="${LANGUAGE}"
 # -----------------------------------------------------------------------------
 # Golang
 # -----------------------------------------------------------------------------
-export GOPATH=$HOME/go
+export GOPATH=$HOME/.go
 export GOBIN=$GOPATH/bin
 export PATH=$GOPATH:$PATH
 
