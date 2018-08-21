@@ -30,9 +30,9 @@ command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
 " -----------------------------------------------------------------------------
 " Neovim configs
 " -----------------------------------------------------------------------------
-let g:python_host_prog = misc#PickExecutable(
-\ ['/usr/local/bin/python2', '/usr/bin/python2', '/bin/python2']
-\ )
+" let g:python_host_prog = misc#PickExecutable(
+" \ ['/usr/local/bin/python2', '/usr/bin/python2', '/bin/python2']
+" \ )
 let g:python3_host_prog = misc#PickExecutable(
 \ ['/usr/local/bin/python3', '/usr/bin/python3', '/bin/python3']
 \ )
@@ -311,8 +311,8 @@ let s:dein_path = {
 
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_path.dein)
-    execute '!git clone https://github.com/Shougo/dein.vim' . s:dein_path.dein
-    execute '!git clone https://github.com/Shougo/vimproc.vim' . s:dein_path.vimproc
+    execute '!git clone https://github.com/Shougo/dein.vim ' . s:dein_path.dein
+    execute '!git clone https://github.com/Shougo/vimproc.vim ' . s:dein_path.vimproc
     execute '!cd' . s:dein_path.vimproc '&& make'
   endif
   execute 'set runtimepath^=' . fnamemodify(s:dein_path.dein, ':p')

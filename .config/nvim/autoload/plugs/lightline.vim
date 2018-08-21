@@ -16,8 +16,6 @@ function plugs#lightline#hook_add()
   \   'ale_error': 'LightlineAleError',
   \ },
   \ 'component_type': {'ale_ok': 'ok', 'ale_warning': 'warning', 'ale_error': 'error'},
-  \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
-  \ 'subseparator': {'left': "\ue0b1", 'right': "\ue0b3"},
   \ }
 endfunction
 

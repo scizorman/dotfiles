@@ -25,13 +25,13 @@ function plugs#deoplete#hook_source()
   \ ]
 
   " omnifunc
-  let g:deoplete#omni#input_patterns = {}
-  let g:deoplete#omni#input_patterns.lua = ['\h\w*']
-  Gautocmdft python, go setlocal omnifunc=
+  " let g:deoplete#omni#input_patterns = {}
+  " let g:deoplete#omni#input_patterns.lua = ['\h\w*']
+  " Gautocmdft python, go setlocal omnifunc=
 
   " clang
-  let g:deoplete#clang#libclang_path = '/usr/local/Cellar/llvm/6.0.1/lib/libclang.dylib'
-  let g:deoplete#clang#clang_header = '/usr/local/Cellar/llvm/6.0.1/lib/clang'
+  let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+  let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
 
   " go
   let g:deoplete#sources#go#auto_goos = 1
