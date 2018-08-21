@@ -183,11 +183,11 @@ download_dotfiles() {
   if is_debug; then
     :
   else
-    if has 'git'; then
+    if is_exists 'git'; then
       git clone --recursive 'https://github.com/megascizor/dotfiles'
-    elif has 'curl' || has 'wget'; then
+    elif is_exists 'curl' || is_exists 'wget'; then
       local tarball='https://github.com/megascizor/dotfiles/archive/master.tar.gz'
-      if has 'curl'; then
+      if is_exists 'curl'; then
         curl -L "$tarball"
       else
         wget -O - "$tarball"
