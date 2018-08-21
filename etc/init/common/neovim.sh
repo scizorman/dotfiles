@@ -21,12 +21,12 @@ else
           exit 1
         fi
       else
-        log_fail "Error: Homebrew is required."
+        log_fail 'Error: Homebrew is required.'
         exit 1
       fi
       ;;
     *)
-      log_fail "Error: This script is only supported OSX."
+      log_fail 'Error: This script is only supported OSX.'
       exit 1
       ;;
   esac
@@ -45,7 +45,6 @@ if has 'pip3' || [[ "$(pip -V 2>&1)" =~ ^pip.*python\ 3\.[0-9] ]]; then
   else
     pip_cmd="pip install -r $req_path"
   fi
-
   log_echo 'Install requirements of Python3 for Neovim with pip.'
   if eval ${pip_cmd}; then
     log_pass 'Python 3 provider (Neovim) and etc.: Install successfully!'
@@ -57,3 +56,31 @@ else
   log_fail 'Error: pip (Python3) is required.'
   exit 1
 fi
+
+packages=(hadolint shellcheck)
+for package in "${packages[@]}"; do
+  if has "$package"; then
+    log_pass "$package: Already installed!"
+  else
+    case "$(get_os)" in
+      osx)
+        if has 'brew'; then
+          log_echo "Install $package with Homebrew."
+          if brew install "$package" > /dev/null 2>&1; then
+            log_pass "$package: Installed successfully!"
+          else
+            log_fail "$package: Failed to install."
+            exit 1
+          fi
+        else
+          log_fail 'Error: Homebrew is required.'
+          exit 1
+        fi
+        ;;
+      *)
+        log_fail 'Error: This script is only supported OSX.'
+        exit 1
+        ;;
+    esac
+  fi
+done
