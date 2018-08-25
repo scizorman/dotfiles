@@ -2,21 +2,52 @@ function plugs#lightline#hook_add()
   let g:lightline = {
   \ 'colorscheme': 'wombat',
   \ 'active': {
-  \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filepath', 'modified']],
+  \   'left': [
+  \     ['mode', 'paste'], ['readonly', 'filename', 'modified']
+  \   ],
   \   'right': [
   \     ['lineinfo'], ['percent'],
-  \     ['ale_ok', 'ale_warning', 'ale_error', 
-  \      'char_code', 'fileformat', 'fileencoding', 'filetype']
+  \     ['ale', 'fileformat', 'fileencoding', 'filetype']
   \   ],
   \ },
-  \ 'component_function': {'filepath': 'LightlineFilepath'},
-  \ 'component_expand': {
-  \   'ale_ok': 'LightlineAleOk',
-  \   'ale_warning': 'LightlineAleWarning',
-  \   'ale_error': 'LightlineAleError',
-  \ },
-  \ 'component_type': {'ale_ok': 'ok', 'ale_warning': 'warning', 'ale_error': 'error'},
+  \ 'component_function': {
+  \   'ale': 'LightlineAle',
+  \   'fileformat': 'LightlineFileformat',
+  \   'filetype': 'LightlineFiletype',
+  \   'modified': 'LightlineModified',
+  \   'readonly': 'LightlineReadonly',
   \ }
+  \ }
+endfunction
+
+
+function! LightlineAle()
+  let l:count = ale#statusline#Count(bufnr(''))
+  let l:errors = l:count.error + l:count.style_error
+  let l:warnings = l:count.warning + l:count.style_warning
+  return l:count.total == 0 ? "\uf058 " : "\uf057  " . l:errors . ' ' . "\uf06a  " . l:warnings
+endfunction
+
+
+function! LightlineFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' '. WebDevIconsGetFileFormatSymbol()) . ' ' : ''
+endfunction
+
+
+function! LightlineFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() . ' ' : 'no ft') : ''
+endfunction
+
+
+function! LighlineFilename()
+  return (
+    \ '' != LightlineReadonly() ? LightlineReadonly() . ' ' : ' ') .
+    \ (
+    \   &filetype == 'vimfiler' ? vimfiler#get_status_string() :
+    \   &filetype == 'denite' ? denite#get_status_string() :
+    \   &filetype == 'vimshell' ? vimshell#get_status_string() :
+    \   '' != expand('%:t') ? expand('%:t') : '[No name]'
+    \ ) . ('' != LightlineModified() ? ' ' . LightlineModified() : '')
 endfunction
 
 
@@ -29,39 +60,13 @@ function! LightlineFilepath()
 endfunction
 
 
-function! LightlineAleError() abort
-  return s:ale_string(0)
+function! LightlineModified()
+  return &filetype == 'help\|vimfiler\|gundo' ? '' : &modified ? "+" : &modifiable ? '' : '-'
 endfunction
 
 
-function! LightlineAleWarning() abort
-  return s:ale_string(1)
-endfunction
-
-
-function! LightlineAleOk() abort
-  return s:ale_string(2)
-endfunction
-
-
-function! s:ale_string(mode)
-  if !exists('g:ale_buffer_info')
-    return ''
-  endif
-
-  let l:buffer = bufnr('%')
-  let l:counts = ale#statusline#Count(l:buffer)
-  let [l:error_format, l:warning_format, l:no_errors] = g:ale_statusline_format
-
-  if a:mode == 0
-    let l:errors = l:counts.error + l:counts.style_error
-    return l:errors ? printf(l:error_format, l:errors) : ''
-  elseif a:mode == 1
-    let l:warnings = l:counts.warning + l:counts.style_warning
-    return l:warnings ? printf(l:warning_format, l:warnings) : ''
-  endif
-
-  return l:counts.total ? '' : l:no_errors
+function! LightlineReadonly()
+  return &filetype !~? 'help\|vimfiler\|gundo' && &readonly ? "\uf023" : ''
 endfunction
 
 
