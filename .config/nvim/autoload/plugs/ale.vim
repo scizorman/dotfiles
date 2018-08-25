@@ -22,7 +22,7 @@ function plugs#ale#hook_source()
   let g:ale_open_list = 0
   let g:ale_keep_list_window_open = 0
 
-  let g:ale_statusline_format = ['%d Error', '%d Warn', 'OK']
+  " let g:ale_statusline_format = ['%d Error', '%d Warn', 'OK']
 
   " Enable linter
   let g:ale_linter = {
@@ -39,7 +39,6 @@ function plugs#ale#hook_source()
   \ 'dockerfile': ['hadolint'],
   \ 'sh': ['shellcheck'],
   \ 'bash': ['shellcheck'],
-  \ 'zsh': ['shellcheck'],
   \ 'vim': ['vint'],
   \ }
 endfunction

@@ -36,7 +36,7 @@ function plugs#deoplete#hook_source()
   " go
   let g:deoplete#sources#go#auto_goos = 1
   let g:deoplete#sources#go#cgo = 1
-  let g:deoplete#sources#go#cgo#libclang_path = '/usr/local/Cellar/llvm/6.0.1/lib/libclang.dylib'
+  let g:deoplete#sources#go#cgo#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
   let g:deoplete#sources#go#cgo#sort_algo = 'priority'
   let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
   let g:deoplete#sources#go#package_dot = 0
