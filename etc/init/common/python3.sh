@@ -31,3 +31,28 @@ else
       ;;
   esac
 fi
+
+# Install Python packages
+if has 'pip3' || [[ "$(pip -V 2>&1)" =~ ^pip.*python\ 3\.[0-9] ]]; then
+  req_path="$DOTFILES_PATH"/etc/lib/neovim/requirements.txt
+  if [ ! -f "$req_path" ]; then
+    log_fail "$req_path: Not found."
+    exit 1
+  fi
+
+  if has 'pip3'; then
+    pip_cmd="pip3 install -r $req_path"
+  else
+    pip_cmd="pip install -r $req_path"
+  fi
+  log_echo 'Install requirements of Python3 for Neovim with pip.'
+  if eval ${pip_cmd}; then
+    log_pass 'Python 3 provider (Neovim) and etc.: Install successfully!'
+  else
+    log_fail 'Python 3 provider (Neovim) and etc.: Failed to install.'
+    exit 1
+  fi
+else
+  log_fail 'Error: pip (Python3) is required.'
+  exit 1
+fi

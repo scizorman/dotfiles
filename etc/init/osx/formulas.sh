@@ -10,29 +10,45 @@ set -eu
 # Install formulas
 if is_osx; then
   if has 'brew'; then
+    brew update
+
+    tapped_repos=$(brew tap)
+    installed_formulas=$(brew list)
+
+    # Tap
+    tap_repos=(
+      beeftornado/rmtree
+    )
+    for repo in "${tap_repos[@]}"; do
+      if echo "${tapped_repos[@]}" | grep -q "$repo"; then
+        log_pass "$repo: Already tapped!"
+      else
+        if brew tap "$repo"; then
+          log_pass "$repo: Tapped successfully!"
+        else
+          log_fail "$repo: Failed to tap."
+          exit 1
+        fi
+      fi
+    done
+
+    # Install formulas
     formulas=(
       autoconf
-      beeftornado/rmtree/brew-rmtree
+      brew-rmtree
+      hadolint
       mysql
       pkg-config
+      shellcheck
+      the_platinum_searcher
       tree
     )
 
-    # Tap
-    if brew tap beeftornado/rmtree >/dev/null 2>&1; then
-      log_pass 'beeftornado/rmtree: Tapped successfully!'
-    else
-      log_fail 'beeftornado/rmtree: Failed to tap.'
-      exit 1
-    fi
-
-    # Install formulas
-    brew update
     for formula in "${formulas[@]}"; do
-      if [ -e /usr/local/Cellar/"$formula" ]; then
+      if echo "${installed_formulas[@]}" | grep -q "$formula"; then
         log_pass "$formula: Already installed!"
       else
-        if brew install "$formula" >/dev/null 2>&1; then
+        if brew install "$formula"; then
           log_pass "$formula: Installed successfully!"
         else
           log_fail "$formula: Failed to install."
@@ -41,9 +57,8 @@ if is_osx; then
       fi
     done
 
-    # Upgrade and cleanup
-    brew upgrade
-    brew cleanup
+    # Update, Upgrade and cleanup
+    brew update && brew upgrade && brew cleanup
 
   else
     log_fail 'Error: Homebrew is required.'
