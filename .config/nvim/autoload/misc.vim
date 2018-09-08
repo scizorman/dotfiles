@@ -43,8 +43,8 @@ function! misc#Mkdir(dir)
     return g:false
   endif
 
-  let dir = expand(a:dir)
-  if isdirectory(dir)
+  let l:dir = expand(a:dir)
+  if isdirectory(l:dir)
     return g:true
   endif
 

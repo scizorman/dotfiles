@@ -1,23 +1,19 @@
 function plugs#lightline#hook_add()
   let g:lightline = {
-  \ 'colorscheme': 'wombat',
-  \ 'active': {
-  \   'left': [
-  \     ['mode', 'paste'], ['readonly', 'filename', 'modified']
-  \   ],
-  \   'right': [
-  \     ['lineinfo'], ['percent'],
-  \     ['ale', 'fileformat', 'fileencoding', 'filetype']
-  \   ],
-  \ },
-  \ 'component_function': {
-  \   'ale': 'LightlineAle',
-  \   'fileformat': 'LightlineFileformat',
-  \   'filetype': 'LightlineFiletype',
-  \   'modified': 'LightlineModified',
-  \   'readonly': 'LightlineReadonly',
-  \ }
-  \ }
+        \ 'colorscheme': 'tender',
+        \ 'active': {
+        \   'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
+        \   'right': [['lineinfo'], ['percent'],
+        \             ['ale', 'fileformat', 'fileencoding', 'filetype']],
+        \ },
+        \ 'component_function': {
+        \   'ale': 'LightlineAle',
+        \   'fileformat': 'LightlineFileformat',
+        \   'filetype': 'LightlineFiletype',
+        \   'modified': 'LightlineModified',
+        \   'readonly': 'LightlineReadonly',
+        \ }
+        \ }
 endfunction
 
 
@@ -36,27 +32,6 @@ endfunction
 
 function! LightlineFiletype()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() . ' ' : 'no ft') : ''
-endfunction
-
-
-function! LighlineFilename()
-  return (
-    \ '' != LightlineReadonly() ? LightlineReadonly() . ' ' : ' ') .
-    \ (
-    \   &filetype == 'vimfiler' ? vimfiler#get_status_string() :
-    \   &filetype == 'denite' ? denite#get_status_string() :
-    \   &filetype == 'vimshell' ? vimshell#get_status_string() :
-    \   '' != expand('%:t') ? expand('%:t') : '[No name]'
-    \ ) . ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-
-
-function! LightlineFilepath()
-  if winwidth(0) > 120
-    return expand('%:s')
-  else
-    return expand('%:t')
-  endif
 endfunction
 
 

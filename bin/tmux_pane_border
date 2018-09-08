@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # SSH info
 function get_ssh_info(){
   local current_pane_pid="$1"
@@ -48,14 +48,14 @@ function get_prompt_info(){
     case $git_status in
       *Changes\ not\ staged* ) state="#[bg=colour220,fg=black] ± #[fg=default]" ;;
       *Changes\ to\ be\ committed* ) state="#[bg=colour227,fg=black] + #[default]" ;;
-      * ) state="#[bg=green,fg=black]✔ #[default]" ;;
+      * ) state="#[bg=green,fg=black] ✔ #[default]" ;;
     esac
 
     local git_info
     if [[ $git_branch = "master" ]]; then
-      git_info="#[underscore]#[bg=colour235,fg=white]|#[bold] (${git_branch}) #[default]${state}"
+      git_info="#[underscore]#[bg=colour235,fg=white]|#[bold]  ${git_branch} #[default]${state}"
     else
-      git_info="#[underscore]#[bg=colour235,fg=white]| (${git_branch}) #[default]${state}"
+      git_info="#[underscore]#[bg=colour235,fg=white]|  ${git_branch} #[default]${state}"
     fi
 
   else
@@ -83,4 +83,4 @@ function main(){
   echo "$info"
 }
 
-main $@
+main "$@"

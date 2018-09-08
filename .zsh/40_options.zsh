@@ -7,7 +7,7 @@
 # commands are being read from standard input. The option is designed for
 # interactive use; it is recommended that cd be used explicitly in scripts to
 # avoid ambiguity.
-setopt auto_cd
+# setopt auto_cd
 
 # Make cd push the old directory onto the directory stack.
 setopt auto_pushd

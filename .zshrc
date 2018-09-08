@@ -32,9 +32,10 @@ if [[ -f $HOME/.zshrc.local ]]; then
   source $HOME/.zshrc.local
 fi
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # For tuning.
 if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi
-
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

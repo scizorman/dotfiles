@@ -6,11 +6,11 @@ let $XDG_CONFIG_HOME = empty($XDG_CONFIG_HOME) ? expand('~/.config') : $XDG_CONF
 let $XDG_DATA_HOME = empty($XDG_DATA_HOME) ? expand('~/.local/share') : $XDG_DATA_HOME
 
 let g:nvim_path = {
-\ 'nvim': expand($XDG_CONFIG_HOME . '/nvim'),
-\ 'backup': expand($XDG_DATA_HOME . '/nvim/backup'),
-\ 'swap': expand($XDG_DATA_HOME . '/nvim/swap'),
-\ 'undo': expand($XDG_DATA_HOME . '/nvim/undo'),
-\ }
+      \ 'nvim': expand($XDG_CONFIG_HOME . '/nvim'),
+      \ 'backup': expand($XDG_DATA_HOME . '/nvim/backup'),
+      \ 'swap': expand($XDG_DATA_HOME . '/nvim/swap'),
+      \ 'undo': expand($XDG_DATA_HOME . '/nvim/undo'),
+      \ }
 
 " Set True = 1, False = 0
 let g:true = 1
@@ -30,12 +30,11 @@ command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
 " -----------------------------------------------------------------------------
 " Neovim configs
 " -----------------------------------------------------------------------------
-" let g:python_host_prog = misc#PickExecutable(
-" \ ['/usr/local/bin/python2', '/usr/bin/python2', '/bin/python2']
-" \ )
-let g:python3_host_prog = misc#PickExecutable(
-\ ['/usr/local/bin/python3', '/usr/bin/python3', '/bin/python3']
-\ )
+let g:loaded_python_provider = 0
+" let g:python3_host_prog = exists("$VIRTUAL_ENV")
+"       \ ? $VIRTUAL_ENV . '/bin/python'
+"       \ : '/usr/local/bin/python3'
+let g:python3_host_prog = substitute(system('command -v python3'), '\n', '', 'g')
 
 
 " -----------------------------------------------------------------------------
@@ -241,7 +240,6 @@ set wildignore+=*.jpg,*.jpeg,*.bmp,*.gif,*.png           " image
 set wildignore+=*.manifest                               " gb
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.so,*.out,*.class " compiler
 set wildignore+=*.swp,*.swo,*.swn                        " vim
-set wildignore+=*.ycm_extra_conf.py,*.ycm_extra_conf.pyc " YCM
 set wildignore+=*/.git,*/.hg,*/.svn                      " vcs
 set wildignore+=tags,*.tags                              " tags
 
@@ -302,18 +300,18 @@ set nowritebackup
 " Dein
 " -----------------------------------------------------------------------------
 let s:dein_path = {
-\ 'cache': expand($XDG_CACHE_HOME . '/dein'),
-\ 'dein': expand($XDG_CACHE_HOME . '/dein/repos/github.com/Shougo/dein.vim'),
-\ 'vimproc': expand($XDG_CACHE_HOME . '/dein/repos/github.com/Shougo/vimproc.vim'),
-\ 'toml': g:nvim_path.nvim . '/dein/dein.toml',
-\ 'lazy_toml': g:nvim_path.nvim . '/dein/dein_lazy.toml',
-\ }
+      \ 'cache': expand($XDG_CACHE_HOME . '/dein'),
+      \ 'dein': expand($XDG_CACHE_HOME . '/dein/repos/github.com/Shougo/dein.vim'),
+      \ 'vimproc': expand($XDG_CACHE_HOME . '/dein/repos/github.com/Shougo/vimproc.vim'),
+      \ 'toml': g:nvim_path.nvim . '/dein/dein.toml',
+      \ 'lazy_toml': g:nvim_path.nvim . '/dein/dein_lazy.toml',
+      \ }
 
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_path.dein)
     execute '!git clone https://github.com/Shougo/dein.vim ' . s:dein_path.dein
     execute '!git clone https://github.com/Shougo/vimproc.vim ' . s:dein_path.vimproc
-    execute '!cd' . s:dein_path.vimproc '&& make'
+    execute '!cd ' . s:dein_path.vimproc ' && make'
   endif
   execute 'set runtimepath^=' . fnamemodify(s:dein_path.dein, ':p')
 endif
@@ -334,6 +332,27 @@ endif
 
 
 " -----------------------------------------------------------------------------
+" GlobalAutoCmd
+" -----------------------------------------------------------------------------
+" Global
+Gautocmd BufWinEnter *
+      \ if line("'\'") > 1 && line("'\'") <= line("$") && &filetype != 'gitcommit' |
+      \ execute "silent! keepjumps normal! g`\"zz"
+
+" Go
+Gautocmdft ia64 let b:caw_oneline_comment = '//' | let b:caw_wrap_oneline_comment = ['/*', '*/']
+
+" Vim
+Gautocmd BufWritePost $MYVIMRC,*.vim nested silent! source $MYVIMRC | setlocal colorcolumn=99
+
+" Neosnippet
+Gautocmd InsertLeave * NeoSnippetClearMarkers
+
+
+Gautocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+
+" -----------------------------------------------------------------------------
 " Key mappings
 " -----------------------------------------------------------------------------
 " Define Leader
@@ -343,8 +362,6 @@ let g:maplocalleader = "\\"
 
 inoremap <silent>jj <Esc>
 
-nnoremap <silent>k gk
-nnoremap <silent>j gj
 nnoremap <silent>gk k
 nnoremap <silent>gj j
 
@@ -357,6 +374,14 @@ cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-d> <Del>
 
+" accelerated-jk
+nmap j <Plug>(accelerated_jk_gj)
+nmap k <Plug>(accelerated_jk_gk)
+
+" ale
+nmap <silent>[a <Plug>(ale_next)
+nmap <silent>]a <Plug>(ale_previous)
+
 " caw.vim
 nmap <Leader>c <Plug>(caw:hatpos:toggle)
 vmap <Leader>c <Plug>(caw:hatpos:toggle)
@@ -365,11 +390,8 @@ vmap <Leader>c <Plug>(caw:hatpos:toggle)
 nmap [denite] <Nop>
 nmap <Leader>d [denite]
 nmap <silent>[denite]b :<C-u>Denite buffer -highlight-mode-insert=search<CR>
-nmap <silent>[denite]dm :<C-u>Denite directory_mru -highlight-mode-insert=search<CR>
-nmap <silent>[denite]dr :<C-u>Denite directory_rec -highlight-mode-insert=search<CR>
 nmap <silent>[denite]fm :<C-u>Denite file_mru -highlight-mode-insert=search<CR>
-nmap <silent>[denite]fn :<C-u>Denite file -highlight-mode-insert=search<CR>
-nmap <silent>[denite]fr :<C-u>Denite file_rec -highlight-mode-insert=search<CR>
+nmap <silent>[denite]fr :<C-u>Denite file/rec -highlight-mode-insert=search<CR>
 nmap <silent>[denite]l :<C-u>Denite line -highlight-mode-insert=search<CR>
 nmap <silent>[denite]o :<C-u>Denite outline -highlight-mode-insert=search<CR>
 nmap <silent>[denite]r :<C-u>Denite register -highlight-mode-insert=search<CR>
@@ -383,33 +405,19 @@ xmap <C-k> <Plug>(neosnippet_expand_target)
 nmap <Leader>ob <Plug>(openbrowser-smart-search)
 vmap <Leader>ob <Plug>(openbrowser-smart-search)
 
-" vim-fugitive
-nmap [figitive] <Nop>
-nmap <Leader>g [figitive]
-nmap <silent>[figitive]b :<C-u>Gblame<CR>
-nmap <silent>[figitive]c :<C-u>Gcommit<CR>
-nmap <silent>[figitive]d :<C-u>Gdiff<CR>
-nmap <silent>[figitive]g :<C-u>Ggrep<CR>
-nmap <silent>[figitive]l :<C-u>Glog<CR>
-nmap <silent>[figitive]s :<C-u>Gstatus<CR>
-
 " vim-sandwich
 nmap s <Nop>
 vmap s <Nop>
 
 " Go
 Gautocmdft go nmap <silent><buffer>K <Plug>(go-doc)
-Gautocmdft go nmap <silent><buffer><LocalLeader>b :GoBuild<CR>
-Gautocmdft go nmap <silent><buffer><LocalLeader>f :GoFmt<CR>
-Gautocmdft go nmap <silent><buffer><LocalLeader>r :GoRun<CR>
-Gautocmdft go nmap <silent><buffer><LocalLeader>t :GoTest<CR>
+Gautocmdft go nmap <silent><buffer><LocalLeader>b <Plug>(go-build)<CR>
+Gautocmdft go nmap <silent><buffer><LocalLeader>f <Plug>(go-fmt)<CR>
+Gautocmdft go nmap <silent><buffer><LocalLeader>r <Plug>(go-run)<CR>
+Gautocmdft go nmap <silent><buffer><LocalLeader>t <Plug>(go-test)<CR>
 
 " markdown
 Gautocmdft markdown nmap <LocalLeader>p :PrevimOpen<CR>
-Gautocmdft markdown nnoremap <silent><LocalLeader>o :<C-u>Toc<CR>
-Gautocmdft markdown nnoremap <silent><LocalLeader>ra :<C-u>TableModeRealign<CR>
-Gautocmdft markdown nmap <silent><LocalLeader>t :<C-u>Tableize<CR>
-Gautocmdft markdown vnoremap <silent><LocalLeader> :<C-u>'<,'>Tableize<CR>
 
 
 " Must be written at the last

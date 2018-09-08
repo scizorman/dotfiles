@@ -1,8 +1,8 @@
 # 'ls' color
 if is_osx; then
-    alias ls='ls -GF'
+  alias ls='ls -GF'
 else
-    alias ls='ls -F --color'
+  alias ls='ls -F --color'
 fi
 
 # Common aliases
@@ -19,7 +19,6 @@ alias lt='ls -ltr'
 alias lr='ls -lR'
 
 alias cp="${ZSH_VERSION:+nocorrect} cp -i"
-# alias mv="${ZSH_VERSION:+nocorrect} mv -i"
 alias mv='mv -i'
 alias mkdir="${ZSH_VERSION:+nocorrect} mkdir"
 
@@ -34,7 +33,7 @@ alias vim="nvim"
 
 alias sudo='sudo '
 if is_osx; then
-    alias sudo="${ZSH_VERSION:+nocorrect} sudo"
+  alias sudo="${ZSH_VERSION:+nocorrect} sudo"
 fi
 
 
@@ -51,35 +50,33 @@ alias -g N2='| 2>/dev/null'
 alias -g VI='| xargs -o nvim'
 
 multi_grep(){
-    local std_in="$(cat <& 0)" word
+  local std_in="$(cat <& 0)" word
 
-    for word in "$@"
-    do
-        std_in="$(echo "${std_in}" | command grep "$word")"
-    done
+  for word in "$@"; do
+    std_in="$(echo "${std_in}" | command grep "$word")"
+  done
 
-    echo "$(std_in)"
+  echo "$(std_in)"
 }
 
 (( $+galiases[H] )) || alias -g H='| head'
 (( $+galiases[T] )) || alias -g T='| tail'
 
 if is_osx; then
-    alias -g CP='| pbcopy'
-    alias -g CC='| tee /dev/tty | pbcopy'
+  alias -g CP='| pbcopy'
+  alias -g CC='| tee /dev/tty | pbcopy'
 fi
 
 cat_alias(){
-    local i stdin file=0
-    stdin=("${(@f)$(cat <& 0)}")
-    for i in "${stdin[@]}"
-    do
-        if [[ -f $i ]]; then
-            cat "$@" "$i"
-            file=1
-        fi
-    done
-    [[ $file -eq 0 ]] && echo "${(F)stdin}"
+  local i stdin file=0
+  stdin=("${(@f)$(cat <& 0)}")
+  for i in "${stdin[@]}"; do
+    if [[ -f $i ]]; then
+      cat "$@" "$i"
+      file=1
+    fi
+  done
+  [[ $file -eq 0 ]] && echo "${(F)stdin}"
 }
 alias -g C="| cat_alias"
 

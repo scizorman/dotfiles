@@ -35,8 +35,8 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 if [[ $UID == 0 ]]; then
-    unset HISTFILE
-    export SAVEHIST=0
+  unset HISTFILE
+  export SAVEHIST=0
 fi
 
 
@@ -65,13 +65,3 @@ autoload -Uz zmv
 autoload -Uz run-help-git
 autoload -Uz run-help-svk
 autoload -Uz run-help-svn
-
-# jeneguun/fzf
-export FZF_DEFAULT_OPTS='
-    --extended
-    --ansi
-    --multi
-    --bind=ctrl-u:page-up
-    --bind=ctrl-d:page-down
-    --bind=ctrl-z:toggle-all
-'

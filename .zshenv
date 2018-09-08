@@ -16,8 +16,7 @@ path=( \
   $HOME/bin(N-/) \
   $HOME/.zplug/bin(N-/) \
   "$path[@]" \
-)
-
+) 
 # FPATH
 # NOTE: Set fpath before compinit
 fpath=( \
@@ -69,11 +68,25 @@ export LC_CTYPE="${LANGUAGE}"
 
 
 # -----------------------------------------------------------------------------
+# Python
+# -----------------------------------------------------------------------------
+if [[ -n "${VIRTUAL_ENV}" && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
+  source "${VIRTUAL_ENV}/bin/activate"
+fi
+
+
+# -----------------------------------------------------------------------------
 # Golang
 # -----------------------------------------------------------------------------
-export GOPATH=$HOME/.go
-export GOBIN=$GOPATH/bin
-export PATH=$GOPATH:$PATH
+if [ -d "$HOME/.goenv" ]; then
+  export GOENV_ROOT="$HOME/.goenv"
+  export PATH="$GOENV_ROOT/bin:$PATH"
+  which goenv > /dev/null && eval "$(goenv init -)"
+fi
+
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+export GO15VENDOREXPERIMENT=1
 
 
 # -----------------------------------------------------------------------------

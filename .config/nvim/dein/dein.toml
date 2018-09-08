@@ -36,22 +36,25 @@ repo = 'ryanoasis/vim-devicons'
 [[plugins]]
 repo = 'machakann/vim-sandwich'
 
+[[plugins]]
+repo = 'rhysd/accelerated-jk'
+
 
 # -----------------------------------------------------------------------------
 # Colorscheme
 # -----------------------------------------------------------------------------
 [[plugins]]
+repo = 'dracula/vim'
+
+[[plugins]]
 repo = 'cocopon/iceberg.vim'
-hook_add = 'Gautocmd VimEnter * nested colorscheme iceberg'
-
-[[plugins]]
-repo = 'jacoborus/tender.vim'
-
-[[plugins]]
-repo = 'jonathanfilip/vim-lucius'
 
 [[plugins]]
 repo = 'raphamorim/lucario'
 
 [[plugins]]
-repo = 'dracula/vim'
+repo = 'jonathanfilip/vim-lucius'
+
+[[plugins]]
+repo = 'jacoborus/tender.vim'
+hook_add = 'Gautocmd VimEnter * nested colorscheme tender'

@@ -1,8 +1,4 @@
 function plugs#ale#hook_source()
-  " Mappings
-  nmap <SILENT> <LOCALLEADER>j <Plug>(ale_next)
-  nmap <SILENT> <LOCALLEADER>k <Plug>(ale_previous)
-
   " Disable at startup
   let g:ale_enabled = 1
 
@@ -26,19 +22,19 @@ function plugs#ale#hook_source()
 
   " Enable linter
   let g:ale_linter = {
-  \ 'c': ['clang'],
-  \ 'cpp': ['clang'],
-  \ 'objc': ['clang'],
-  \ 'objcpp': ['clang'],
-  \ 'python': ['flake8'],
-  \ 'go': ['gofmt'],
-  \ 'html': ['HTMLHint'],
-  \ 'css': ['stylelint'],
-  \ 'sass': ['stylelint'],
-  \ 'scss': ['stylelint'],
-  \ 'dockerfile': ['hadolint'],
-  \ 'sh': ['shellcheck'],
-  \ 'bash': ['shellcheck'],
-  \ 'vim': ['vint'],
-  \ }
+        \ 'c': ['clang'],
+        \ 'cpp': ['clang'],
+        \ 'objc': ['clang'],
+        \ 'objcpp': ['clang'],
+        \ 'python': ['flake8'],
+        \ 'go': ['gofmt'],
+        \ 'html': ['HTMLHint'],
+        \ 'css': ['stylelint'],
+        \ 'sass': ['stylelint'],
+        \ 'scss': ['stylelint'],
+        \ 'dockerfile': ['hadolint'],
+        \ 'sh': ['shellcheck'],
+        \ 'bash': ['shellcheck'],
+        \ 'vim': ['vint'],
+        \ }
 endfunction
