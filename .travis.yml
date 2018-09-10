@@ -1,0 +1,5 @@
+os: osx
+
+script:
+  - xcode-select --install
+  - bash -c "$(curl -fsSL https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install.sh)"
