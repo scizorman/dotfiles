@@ -34,7 +34,7 @@ fi
 
 # Install Python packages
 if has 'pip3' || [[ "$(pip -V 2>&1)" =~ ^pip.*python\ 3\.[0-9] ]]; then
-  req_path="$DOTFILES_PATH"/etc/lib/neovim/requirements.txt
+  req_path="$DOTFILES_PATH"/etc/lib/requirements.txt
   if [ ! -f "$req_path" ]; then
     log_fail "$req_path: Not found."
     exit 1
@@ -45,11 +45,11 @@ if has 'pip3' || [[ "$(pip -V 2>&1)" =~ ^pip.*python\ 3\.[0-9] ]]; then
   else
     pip_cmd="pip install -r $req_path"
   fi
-  log_echo 'Install requirements of Python3 for Neovim with pip.'
+  log_echo 'Install requirements of Python3 with pip.'
   if eval ${pip_cmd}; then
-    log_pass 'Python 3 provider (Neovim) and etc.: Install successfully!'
+    log_pass 'Packages of Python3: Install successfully!'
   else
-    log_fail 'Python 3 provider (Neovim) and etc.: Failed to install.'
+    log_fail 'Packages of Python3: Failed to install.'
     exit 1
   fi
 else

@@ -1,0 +1,7 @@
+certifi==2018.8.24
+greenlet==0.4.14
+msgpack==0.5.6
+neovim==0.2.6
+pipenv==2018.7.1
+virtualenv==16.0.0
+virtualenv-clone==0.3.0

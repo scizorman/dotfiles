@@ -1,3 +1,0 @@
-greenlet==0.4.14
-msgpack==0.5.6
-neovim==0.2.6

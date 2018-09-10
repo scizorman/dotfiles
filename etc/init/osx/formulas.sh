@@ -36,6 +36,7 @@ if is_osx; then
     formulas=(
       autoconf
       brew-rmtree
+      direnv
       hadolint
       mysql
       pkg-config
