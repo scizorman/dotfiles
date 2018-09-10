@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 # SSH info
 function get_ssh_info(){
   local current_pane_pid="$1"
@@ -34,7 +34,7 @@ function get_ssh_info(){
     done
   fi
 
-  echo "#[bg=colour002,fg=black] SSH: $user@$host #[default]"
+  echo "#[bg=green,fg=black] ssh: $user@$host #[default]"
 }
 
 
