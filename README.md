@@ -1,5 +1,7 @@
 # Dotfiles
 
+[![Build Status](https://travis-ci.org/scizorman/dotfiles.svg?branch=master)](https://travis-ci.org/scizorman/dotfiles)
+
 
 ## Overview
 This is dotfiles for **Zsh**, **Tmux**, and **Neovim**. 
