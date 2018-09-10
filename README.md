@@ -5,6 +5,14 @@
 This is dotfiles for **Zsh**, **Tmux**, and **Neovim**. 
 
 
+## Requirements
+- XCode-CLI (for OSX)
+
+    ```console
+    $ xcode-select --install
+    ```
+
+
 ## Installation
 The easist way to install this dotfiles is to open up a terminal, type the installation command below: Run the following command to setup a new machine:
 
@@ -18,11 +26,11 @@ The easist way to install this dotfiles is to open up a terminal, type the insta
   <tbody>
     <tr>
       <td><strong>cURL</strong></td>
-      <td>bash -c "$(curl -fsSL <a href="https://raw.githubusercontent.com/megascizor/dotfiles/master/etc/install">https://raw.githubusercontent.com/megascizor/dotfiles/master/etc/install.sh</a>)"</td>
+      <td>bash -c "$(curl -fsSL <a href="https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install">https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install.sh</a>)"</td>
     </tr>
     <tr>
       <td><strong>Wget</strong></td>
-      <td>bash -c "$(wget -qO - <a href="https://raw.githubusercontent.com/megascizor/dotfiles/master/etc/install">https://raw.githubusercontent.com/megascizor/dotfiles/master/etc/install.sh</a>)"</td>
+      <td>bash -c "$(wget -qO - <a href="https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install">https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install.sh</a>)"</td>
     </tr>
   </tbody>
 </table>
@@ -36,7 +44,7 @@ The easist way to install this dotfiles is to open up a terminal, type the insta
 - General download method using the git command:
 
   ```console
-  $ git clone https://github.com/megascizor/dotfiles.git ~/.dotfiles
+  $ git clone https://github.com/scizorman/dotfiles.git ~/.dotfiles
   $ cd ~/.dotfiles && make install
   ```
 
