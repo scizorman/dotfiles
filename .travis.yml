@@ -3,4 +3,4 @@ language: sh
 os: osx
 
 script:
-  - bash -c "$(curl -fsSL https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install.sh)"
+  - bash -c "$(curl -fsSL https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install)"
