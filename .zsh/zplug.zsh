@@ -22,7 +22,7 @@ zplug "junegunn/fzf-bin", \
   rename-to:"fzf", \
   frozen:1
 
-zplug "megascizor/zsh-garbage", as:command, use:bin/garbage
+zplug "scizorman/zsh-garbage", as:command, use:bin/garbage
 
 zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
