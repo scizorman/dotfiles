@@ -189,7 +189,7 @@ let g:table_mode_auto_align = 1
 '''
 
 [[plugins]]
-repo = 'megascizor/previm'
+repo = 'scizorman/previm'
 depends = ['open-browser.vim']
 on_ft = ['markdown']
 

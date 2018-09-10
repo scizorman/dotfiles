@@ -44,16 +44,7 @@ repo = 'rhysd/accelerated-jk'
 # Colorscheme
 # -----------------------------------------------------------------------------
 [[plugins]]
-repo = 'dracula/vim'
-
-[[plugins]]
 repo = 'cocopon/iceberg.vim'
-
-[[plugins]]
-repo = 'raphamorim/lucario'
-
-[[plugins]]
-repo = 'jonathanfilip/vim-lucius'
 
 [[plugins]]
 repo = 'jacoborus/tender.vim'
