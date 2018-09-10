@@ -28,11 +28,11 @@ The easist way to install this dotfiles is to open up a terminal, type the insta
   <tbody>
     <tr>
       <td><strong>cURL</strong></td>
-      <td>bash -c "$(curl -fsSL <a href="https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install">https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install.sh</a>)"</td>
+      <td>bash -c "$(curl -fsSL <a href="https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install">https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install</a>)"</td>
     </tr>
     <tr>
       <td><strong>Wget</strong></td>
-      <td>bash -c "$(wget -qO - <a href="https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install">https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install.sh</a>)"</td>
+      <td>bash -c "$(wget -qO - <a href="https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install">https://raw.githubusercontent.com/scizorman/dotfiles/master/etc/install</a>)"</td>
     </tr>
   </tbody>
 </table>
