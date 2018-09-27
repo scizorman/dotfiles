@@ -1,4 +1,4 @@
-language: sh
+language: c
 
 os: osx
 
