@@ -365,6 +365,8 @@ inoremap <silent>jj <Esc>
 nnoremap <silent>gk k
 nnoremap <silent>gj j
 
+nnoremap <C-]> g<C-]>
+
 nnoremap <silent><Esc> <Esc>:noh<CR> 
 
 cnoremap <C-p> <Up>
