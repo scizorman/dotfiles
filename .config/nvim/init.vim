@@ -202,7 +202,7 @@ set synmaxcol=0
 set tabstop=2
 
 " List of file names used by the tag command
-set tags=./tags;
+set tags=.tags;/
 
 " Uses 24-bit color
 set termguicolors
@@ -362,6 +362,8 @@ let g:maplocalleader = "\\"
 
 inoremap <silent>jj <Esc>
 
+nnoremap <silent>k gk
+nnoremap <silent>j gj
 nnoremap <silent>gk k
 nnoremap <silent>gj j
 
@@ -375,10 +377,6 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-d> <Del>
-
-" accelerated-jk
-nmap j <Plug>(accelerated_jk_gj)
-nmap k <Plug>(accelerated_jk_gk)
 
 " ale
 nmap <silent>]a <Plug>(ale_next)

@@ -36,9 +36,6 @@ repo = 'ryanoasis/vim-devicons'
 [[plugins]]
 repo = 'machakann/vim-sandwich'
 
-[[plugins]]
-repo = 'rhysd/accelerated-jk'
-
 
 # -----------------------------------------------------------------------------
 # Colorscheme
