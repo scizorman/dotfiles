@@ -16,6 +16,9 @@ repo = 'Shougo/neosnippet-snippets'
 # Git
 # -----------------------------------------------------------------------------
 [[plugins]]
+repo = 'lambdalisue/gina.vim'
+
+[[plugins]]
 repo = 'airblade/vim-gitgutter'
 
 

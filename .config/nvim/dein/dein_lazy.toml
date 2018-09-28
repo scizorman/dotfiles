@@ -32,7 +32,7 @@ on_ft = ['python']
 repo = 'zchee/deoplete-go'
 depends = ['deoplete.nvim']
 on_ft = ['go']
-# build = 'make'
+build = 'make'
 
 [[plugins]]
 repo = 'zchee/deoplete-docker'
@@ -62,14 +62,6 @@ hook_source = 'call plugs#denite#hook_source()'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-
-
-# -----------------------------------------------------------------------------
-# Git
-# -----------------------------------------------------------------------------
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-on_cmd = ['Gblame', 'Gcommit', 'Gdiff', 'Ggrep', 'Glog', 'Gstatus']
 
 
 # -----------------------------------------------------------------------------

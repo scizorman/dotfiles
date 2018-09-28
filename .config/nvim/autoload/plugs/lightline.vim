@@ -2,15 +2,15 @@ function plugs#lightline#hook_add()
   let g:lightline = {
         \ 'colorscheme': 'tender',
         \ 'active': {
-        \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']],
+        \   'left': [['mode', 'paste'], ['gitbranch', 'readonly', 'filename', 'modified']],
         \   'right': [['lineinfo'], ['percent'],
         \             ['ale', 'fileformat', 'fileencoding', 'filetype']],
         \ },
         \ 'component_function': {
         \   'ale': 'LightlineAle',
+        \   'gitbranch': 'LightlineGitbranch',
         \   'fileformat': 'LightlineFileformat',
         \   'filetype': 'LightlineFiletype',
-        \   'fugitive': 'LightlineFugitive',
         \   'modified': 'LightlineModified',
         \   'readonly': 'LightlineReadonly',
         \ }
@@ -26,6 +26,16 @@ function! LightlineAle()
 endfunction
 
 
+function! LightlineGitbranch()
+  let l:gitbranch = gina#component#repo#branch()
+  if &filetype !~? 'vimfiler\|gundo' && !empty(l:gitbranch)
+    return "\uf126 " . l:gitbranch
+  else
+    return ''
+  endif
+endfunction
+
+
 function! LightlineFileformat()
   return winwidth(0) > 70 ? (&fileformat . ' '. WebDevIconsGetFileFormatSymbol()) . ' ' : ''
 endfunction
@@ -33,15 +43,6 @@ endfunction
 
 function! LightlineFiletype()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() . ' ' : 'no ft') : ''
-endfunction
-
-
-function! LightlineFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-    return "\uf126 " . fugitive#head()
-  else
-    return ''
-  endif
 endfunction
 
 
