@@ -129,26 +129,20 @@ hook_add = '''
 let g:netrw_nogx = 1 " Disable netrw's gx mapping.
 '''
 
+[[plugins]]
+repo = 'majutsushi/tagbar'
+on_cmd = 'TagbarToggle'
 
 # -----------------------------------------------------------------------------
 # Language plugins
 # -----------------------------------------------------------------------------
-# Python
-# [[plugins]]
-# repo = 'davidhalter/jedi-vim'
-# depends = ['vim-virtualenv']
-# on_ft = ['python']
-# hook_source='''
-# let g:jedi#auto_vim_configuration = 0
-# let g:jedi#documentation_command = "<Shift>K"
-# let g:jedi#completions_enabled = 0
-# let g:jedi#force_py_version = 3
-# '''
-
+# Go
 [[plugins]]
-repo = 'jmcantrell/vim-virtualenv'
-on_ft = ['python']
+repo = 'fatih/vim-go'
+on_ft = ['go']
+hook_source = 'call plugs#go#hook_source()'
 
+# Python
 [[plugins]]
 repo = 'Vimjas/vim-python-pep8-indent'
 on_ft = ['python']
@@ -156,12 +150,6 @@ on_ft = ['python']
 [[plugins]]
 repo = 'lambdalisue/vim-django-support'
 on_ft = ['python', 'djangohtml']
-
-# Go
-[[plugins]]
-repo = 'fatih/vim-go'
-on_ft = ['go']
-hook_source = 'call plugs#go#hook_source()'
 
 # Markdown
 [[plugins]]

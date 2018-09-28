@@ -3,6 +3,7 @@ func plugs#go#hook_source()
   let g:go_info_mode = 'gocode'
   let g:go_fmt_autosave = 1
   let g:go_fmt_command = 'gofmt'
+  let g:go_textobj_include_function_doc = 0
 
   " Highlight
   let g:go_highlight_array_whitespace_error = 0    " default: 1

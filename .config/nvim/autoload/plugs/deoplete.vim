@@ -24,7 +24,7 @@ function plugs#deoplete#hook_source()
         \ ]
   let g:deoplete#ignore_sources.cpp = g:deoplete#ignore_sources.c
   let g:deoplete#ignore_sources.objc = g:deoplete#ignore_sources.c
-  let g:deoplete#ignore_sources.python = [
+  let g:deoplete#ignore_sources.go = [
         \ 'buffer',
         \ 'dictionary',
         \ 'member',
@@ -33,7 +33,7 @@ function plugs#deoplete#hook_source()
         \ 'syntax',
         \ 'around'
         \ ]
-  let g:deoplete#ignore_sources.go = [
+  let g:deoplete#ignore_sources.python = [
         \ 'buffer',
         \ 'dictionary',
         \ 'member',
@@ -44,20 +44,13 @@ function plugs#deoplete#hook_source()
         \ ]
 
   " omnifunc
-  " let g:deoplete#omni#input_patterns = {}
-  " let g:deoplete#omni#input_patterns.lua = ['\h\w*']
+  let g:deoplete#omni#input_patterns = {}
+  let g:deoplete#omni#input_patterns.go = '\h\w\.w*'
   " Gautocmdft python, go setlocal omnifunc=
 
   " clang
   let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
   let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
-
-  " jedi
-  let g:deoplete#sources#jedi#python_path = g:python3_host_prog
-  let g:deoplete#sources#jedi#short_types = 0
-  let g:deoplete#sources#jedi#show_docstring = 1
-  let g:deoplete#sources#jedi#statement_length = 0
-  let g:deoplete#sources#jedi#worker_threads = 2
 
   " go
   let g:deoplete#sources#go#auto_goos = 1
@@ -69,4 +62,11 @@ function plugs#deoplete#hook_source()
   let g:deoplete#sources#go#pointer = 1
   let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const', 'package']
   let g:deoplete#sources#go#use_cache = 0
+
+  " jedi
+  let g:deoplete#sources#jedi#python_path = g:python3_host_prog
+  let g:deoplete#sources#jedi#short_types = 0
+  let g:deoplete#sources#jedi#show_docstring = 1
+  let g:deoplete#sources#jedi#statement_length = 0
+  let g:deoplete#sources#jedi#worker_threads = 2
 endfunction
