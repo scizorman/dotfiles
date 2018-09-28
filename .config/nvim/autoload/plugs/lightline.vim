@@ -2,7 +2,7 @@ function plugs#lightline#hook_add()
   let g:lightline = {
         \ 'colorscheme': 'tender',
         \ 'active': {
-        \   'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
+        \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']],
         \   'right': [['lineinfo'], ['percent'],
         \             ['ale', 'fileformat', 'fileencoding', 'filetype']],
         \ },
@@ -10,6 +10,7 @@ function plugs#lightline#hook_add()
         \   'ale': 'LightlineAle',
         \   'fileformat': 'LightlineFileformat',
         \   'filetype': 'LightlineFiletype',
+        \   'fugitive': 'LightlineFugitive',
         \   'modified': 'LightlineModified',
         \   'readonly': 'LightlineReadonly',
         \ }
@@ -32,6 +33,15 @@ endfunction
 
 function! LightlineFiletype()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() . ' ' : 'no ft') : ''
+endfunction
+
+
+function! LightlineFugitive()
+  if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+    return "\uf126 " . fugitive#head()
+  else
+    return ''
+  endif
 endfunction
 
 
