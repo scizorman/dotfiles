@@ -5,7 +5,7 @@
 repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertCharPre'
 build=':UpdateRemotePlugins'
-hook_add = 'call plugs#deoplete#hook_source()'
+hook_source = 'call plugs#deoplete#hook_source()'
 
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
