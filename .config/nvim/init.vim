@@ -1,6 +1,6 @@
-" ------------------------------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 " Global variables
-" ------------------------------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 let $XDG_CACHE_HOME = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
 let $XDG_CONFIG_HOME = empty($XDG_CONFIG_HOME) ? expand('~/.config') : $XDG_CONFIG_HOME
 let $XDG_DATA_HOME = empty($XDG_DATA_HOME) ? expand('~/.local/share') : $XDG_DATA_HOME
@@ -17,9 +17,9 @@ let g:true = 1
 let g:false = 0
 
 
-" ------------------------------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 " GlobalAutoCmd
-" ------------------------------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 augroup GlobalAutoCmd
   autocmd!
 augroup END
@@ -27,9 +27,9 @@ command! -nargs=* Gautocmd autocmd GlobalAutoCmd <args>
 command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
 
 
-" ------------------------------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 " Neovim configs
-" ------------------------------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 let g:loaded_python_provider = 0
 " let g:python3_host_prog = exists("$VIRTUAL_ENV")
 "       \ ? $VIRTUAL_ENV . '/bin/python'
@@ -37,9 +37,9 @@ let g:loaded_python_provider = 0
 let g:python3_host_prog = substitute(system('command -v python3'), '\n', '', 'g')
 
 
-" ------------------------------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 " Options
-" ------------------------------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 " What to do with Unicode chars of ambiguous width
 set ambiwidth=single
 
@@ -296,9 +296,9 @@ set novisualbell
 set nowritebackup
 
 
-" ------------------------------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 " Dein
-" ------------------------------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 let s:dein_path = {
       \ 'cache': expand($XDG_CACHE_HOME . '/dein'),
       \ 'dein': expand($XDG_CACHE_HOME . '/dein/repos/github.com/Shougo/dein.vim'),
@@ -331,9 +331,9 @@ if !misc#IsStarting() && dein#check_install()
 endif
 
 
-" ------------------------------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 " GlobalAutoCmd
-" ------------------------------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 " Global
 Gautocmd BufWinEnter *
       \ if line("'\'") > 1 && line("'\'") <= line("$") && &filetype != 'gitcommit' |
@@ -343,7 +343,7 @@ Gautocmd BufWinEnter *
 Gautocmdft ia64 let b:caw_oneline_comment = '//' | let b:caw_wrap_oneline_comment = ['/*', '*/']
 
 " Vim
-Gautocmd BufWritePost $MYVIMRC,*.vim nested silent! source $MYVIMRC | setlocal colorcolumn=99
+Gautocmd BufWritePost $MYVIMRC,*.vim nested silent! source $MYVIMRC | setlocal colorcolumn=79
 
 " Neosnippet
 Gautocmd InsertLeave * NeoSnippetClearMarkers
@@ -352,9 +352,24 @@ Gautocmd InsertLeave * NeoSnippetClearMarkers
 Gautocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 
-" ------------------------------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
+" Plugin settings (not lazy)
+" -----------------------------------------------------------------------------
+" gina.vim
+call gina#custom#command#option('diff', '--opener', 'vsplit')
+call gina#custom#execute(
+      \ '/\%(commit\)',
+      \ 'setlocal colorcolumn=79 expandtab shiftwidth=2 softtabstop=2 tabstop=2 winheight=40',
+      \ )
+call gina#custom#execute(
+      \ '/\%(status\|branch\|ls\|grep\|changes\|tag\)',
+      \ 'setlocal winfixheight',
+      \ )
+
+
+" -----------------------------------------------------------------------------
 " Key mappings
-" ------------------------------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 " Define Leader
 noremap <Space> <Nop>
 let g:mapleader = "\<Space>"
@@ -395,6 +410,12 @@ nmap <silent>[denite]fr :<C-u>Denite file_rec -highlight-mode-insert=search<CR>
 nmap <silent>[denite]l :<C-u>Denite line -highlight-mode-insert=search<CR>
 nmap <silent>[denite]o :<C-u>Denite outline -highlight-mode-insert=search<CR>
 nmap <silent>[denite]r :<C-u>Denite register -highlight-mode-insert=search<CR>
+
+" gina.vim
+call gina#custom#mapping#nmap(
+      \ '/\%(commit\|status\|branch\|ls\|grep\|changes\|tag\)',
+      \ 'q', ':<C-u> q<CR>', {'noremap': 1, 'silent': 1},
+      \ )
 
 " neosnippet.vim
 imap <C-k> <Plug>(neosnippet_expand_or_jump)

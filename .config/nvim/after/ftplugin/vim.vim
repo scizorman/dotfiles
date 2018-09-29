@@ -1,4 +1,4 @@
-setlocal colorcolumn=99
+setlocal colorcolumn=79
 setlocal foldmethod=marker
 setlocal iskeyword+=:,#
 setlocal matchpairs+=<:>
