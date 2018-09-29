@@ -31,9 +31,6 @@ command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
 " Neovim configs
 " -----------------------------------------------------------------------------
 let g:loaded_python_provider = 0
-" let g:python3_host_prog = exists("$VIRTUAL_ENV")
-"       \ ? $VIRTUAL_ENV . '/bin/python'
-"       \ : '/usr/local/bin/python3'
 let g:python3_host_prog = substitute(system('command -v python3'), '\n', '', 'g')
 
 
