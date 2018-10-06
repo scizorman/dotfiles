@@ -5,21 +5,19 @@ name = "pypi"
 
 [packages]
 certifi = "*"
-"flake8" = "*"
+flake8 = "*"
 jedi = "*"
 neovim = "*"
 
 [dev-packages]
-pyserial = "*"
 bokeh = "*"
-tqdm = "*"
-xarray = "*"
 flask-sqlalchemy = "*"
 flask-script = "*"
-matplotlib = "*"
-jupyter = "*"
 fmflow = "*"
-"netcdf4" = "*"
+matplotlib = "*"
+netcdf4 = "*"
+pyserial = "*"
+xarray = "*"
 
 [requires]
 python_version = "3.7"
