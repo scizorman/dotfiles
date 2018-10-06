@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+certifi = "*"
+"flake8" = "*"
+jedi = "*"
+neovim = "*"
+
+[dev-packages]
+pyserial = "*"
+bokeh = "*"
+tqdm = "*"
+xarray = "*"
+flask-sqlalchemy = "*"
+flask-script = "*"
+matplotlib = "*"
+jupyter = "*"
+fmflow = "*"
+"netcdf4" = "*"
+
+[requires]
+python_version = "3.7"
