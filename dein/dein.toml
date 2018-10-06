@@ -1,0 +1,65 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+
+
+# -----------------------------------------------------------------------------
+# Deoplete
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+
+# -----------------------------------------------------------------------------
+# Git
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'lambdalisue/gina.vim'
+hook_add = '''
+call gina#custom#command#option('diff', '--opener', 'vsplit')
+call gina#custom#execute(
+      \ '/\%(commit\)',
+      \ 'setlocal colorcolumn=79 expandtab shiftwidth=2 softtabstop=2 tabstop=2 winheight=40',
+      \ )
+call gina#custom#execute(
+      \ '/\%(status\|branch\|ls\|grep\|changes\|tag\)',
+      \ 'setlocal winfixheight',
+      \ )
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+
+# -----------------------------------------------------------------------------
+# Interface
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = 'call plugs#lightline#hook_add()'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+
+# -----------------------------------------------------------------------------
+# Utility
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'machakann/vim-sandwich'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+
+# -----------------------------------------------------------------------------
+# Colorscheme
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
+repo = 'jacoborus/tender.vim'
+hook_add = 'Gautocmd VimEnter * nested colorscheme tender'
