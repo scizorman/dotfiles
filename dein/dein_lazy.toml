@@ -5,7 +5,7 @@
 repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertCharPre'
 build=':UpdateRemotePlugins'
-hook_source = 'call plugs#deoplete#hook_source()'
+hook_source = 'call hook#source#deoplete#rc()'
 
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
@@ -15,7 +15,7 @@ on_source = ['deoplete.nvim']
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertCharPre'
-hook_source = 'call plugs#neosnippet#hook_source()'
+hook_source = 'call hook#source#neosnippet#rc()'
 
 # Sources
 [[plugins]]
@@ -58,7 +58,7 @@ repo = 'Shougo/denite.nvim'
 depends = ['neomru.vim']
 on_cmd = 'Denite'
 build = ':UpdateRemotePlugins'
-hook_source = 'call plugs#denite#hook_source()'
+hook_source = 'call hook#source#denite#rc()'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
@@ -77,7 +77,7 @@ on_ft = [
   'sh', 'bash',
   'vim',
 ]
-hook_source = 'call plugs#ale#hook_source()'
+hook_source = 'call hook#source#ale#rc()'
 
 
 # -----------------------------------------------------------------------------
@@ -95,7 +95,7 @@ on_map = ['<Plug>(caw:hatpos:toggle)']
 repo = 'thinca/vim-quickrun'
 depends = ['vimproc.vim']
 on_cmd = 'QuickRun'
-hook_source = 'call plugs#quickrun#hook_source()'
+hook_source = 'call hook#source#quickrun#rc()'
 
 [[plugins]]
 repo = 'mattn/sonictemplate-vim'
@@ -132,7 +132,7 @@ on_cmd = 'TagbarToggle'
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = ['go']
-hook_source = 'call plugs#go#hook_source()'
+hook_source = 'call hook#source#go#rc()'
 
 # Python
 [[plugins]]

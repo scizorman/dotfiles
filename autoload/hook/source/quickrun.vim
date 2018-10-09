@@ -1,4 +1,4 @@
-function plugs#quickrun#hook_source()
+function hook#source#quickrun#rc()
   " let g:quickrun_config = get(g: 'quickrun_config', {})
   let g:quickrun_config = {}
   let g:quickrun_config._ = {

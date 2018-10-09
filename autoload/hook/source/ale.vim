@@ -1,4 +1,4 @@
-function plugs#ale#hook_source()
+function hook#source#ale#rc()
   " Disable at startup
   let g:ale_enabled = 1
 

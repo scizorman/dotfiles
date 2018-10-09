@@ -17,17 +17,7 @@ repo = 'Shougo/neosnippet-snippets'
 # -----------------------------------------------------------------------------
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
-hook_add = '''
-call gina#custom#command#option('diff', '--opener', 'vsplit')
-call gina#custom#execute(
-      \ '/\%(commit\)',
-      \ 'setlocal colorcolumn=79 expandtab shiftwidth=2 softtabstop=2 tabstop=2 winheight=40',
-      \ )
-call gina#custom#execute(
-      \ '/\%(status\|branch\|ls\|grep\|changes\|tag\)',
-      \ 'setlocal winfixheight',
-      \ )
-'''
+hook_add = 'call hook#add#gina#rc()'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
@@ -38,7 +28,7 @@ repo = 'airblade/vim-gitgutter'
 # -----------------------------------------------------------------------------
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-hook_add = 'call plugs#lightline#hook_add()'
+hook_add = 'call hook#add#lightline#rc()'
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'

@@ -1,4 +1,4 @@
-function plugs#deoplete#hook_source()
+function hook#source#deoplete#rc()
   " core
   let g:deoplete#enable_at_startup = 1
 
