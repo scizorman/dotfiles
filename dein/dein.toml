@@ -1,55 +1,55 @@
 [[plugins]]
-repo = 'Shougo/dein.vim'
+repo = "Shougo/dein.vim"
 
 [[plugins]]
-repo = 'Shougo/vimproc.vim'
+repo = "Shougo/vimproc.vim"
 
 
 # -----------------------------------------------------------------------------
 # Deoplete
 # -----------------------------------------------------------------------------
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = "Shougo/neosnippet-snippets"
 
 
 # -----------------------------------------------------------------------------
 # Git
 # -----------------------------------------------------------------------------
 [[plugins]]
-repo = 'lambdalisue/gina.vim'
-hook_add = 'call hook#add#gina#rc()'
+repo = "lambdalisue/gina.vim"
+hook_add = "call hook#add#gina#rc()"
 
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
+repo = "airblade/vim-gitgutter"
 
 
 # -----------------------------------------------------------------------------
 # Interface
 # -----------------------------------------------------------------------------
 [[plugins]]
-repo = 'itchyny/lightline.vim'
-hook_add = 'call hook#add#lightline#rc()'
+repo = "itchyny/lightline.vim"
+hook_add = "call hook#add#lightline#rc()"
 
 [[plugins]]
-repo = 'ryanoasis/vim-devicons'
+repo = "ryanoasis/vim-devicons"
 
 
 # -----------------------------------------------------------------------------
 # Utility
 # -----------------------------------------------------------------------------
 [[plugins]]
-repo = 'machakann/vim-sandwich'
+repo = "machakann/vim-sandwich"
 
 [[plugins]]
-repo = 'Yggdroot/indentLine'
+repo = "Yggdroot/indentLine"
 
 
 # -----------------------------------------------------------------------------
 # Colorscheme
 # -----------------------------------------------------------------------------
 [[plugins]]
-repo = 'cocopon/iceberg.vim'
+repo = "cocopon/iceberg.vim"
 
 [[plugins]]
-repo = 'jacoborus/tender.vim'
-hook_add = 'Gautocmd VimEnter * nested colorscheme tender'
+repo = "jacoborus/tender.vim"
+hook_add = "Gautocmd VimEnter * nested colorscheme tender"
