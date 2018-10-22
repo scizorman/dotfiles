@@ -67,13 +67,13 @@ function hook#source#deoplete#rc()
   " clang
   let g:deoplete#sources#clang#clang_header = s:llvm_library_path . '/clang'
   let g:deoplete#sources#clang#flag = [
-        \ '-I/usr/local/include',
-        \ '-I/' . s:llvm_library_path . '/clang/' . s:llvm_clang_version . '/include',
-        \ '-I/usr/include',
-        \ '-F/System/Library/Frameworks',
-        \ '-F/Library/Frameworks',
-        \ '-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk',
-        \ ]
+       \ '-I/usr/local/include',
+       \ '-I/' . s:llvm_library_path . '/clang/' . s:llvm_clang_version . '/include',
+       \ '-I/usr/include',
+       \ '-F/System/Library/Frameworks',
+       \ '-F/Library/Frameworks',
+       \ '-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk',
+       \ ]
   let g:deoplete#sources#clang#libclang_path = s:llvm_library_path . '/libclang.dylib'
 
   " go
@@ -82,9 +82,9 @@ function hook#source#deoplete#rc()
   let g:deoplete#sources#go#auto_goos = 1
   let g:deoplete#sources#go#pointer = 1
   let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const', 'package']
-  let g:deoplete#sources#go#cgo = 1
-  let g:deoplete#sources#go#cgo#libclang_path = s:llvm_library_path . '/clang'
-  let g:deoplete#sources#go#cgo#sort_algo = 'priority'
+  " let g:deoplete#sources#go#cgo = 1
+  " let g:deoplete#sources#go#cgo#libclang_path = s:llvm_library_path . '/clang'
+  " let g:deoplete#sources#go#cgo#sort_algo = 'priority'
 
   " jedi
   let g:deoplete#sources#jedi#python_path = g:python3_host_prog

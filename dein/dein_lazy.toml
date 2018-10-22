@@ -3,19 +3,13 @@
 # -----------------------------------------------------------------------------
 [[plugins]]
 repo = "Shougo/deoplete.nvim"
+build = "UpdateRemotePlugins"
 on_event = "InsertCharPre"
-build=":UpdateRemotePlugins"
 hook_source = "call hook#source#deoplete#rc()"
 
 [[plugins]]
 repo = "Shougo/neoinclude.vim"
 on_source = ["deoplete.nvim"]
-
-[[plugins]]
-repo = "Shougo/neosnippet.vim"
-depends = ["neosnippet-snippets", "context_filetype.vim"]
-on_event = "InsertCharPre"
-hook_source = "call hook#source#neosnippet#rc()"
 
 # Sources
 [[plugins]]
@@ -24,15 +18,15 @@ depends = ["deoplete.nvim"]
 on_ft = ["c", "cpp", "objc", "objcpp"]
 
 [[plugins]]
+repo = "zchee/deoplete-go"
+build = "make"
+depends = ["deoplete.nvim"]
+on_ft = ["go"]
+
+[[plugins]]
 repo = "zchee/deoplete-jedi"
 depends = ["deoplete.nvim"]
 on_ft = ["python"]
-
-[[plugins]]
-repo = "zchee/deoplete-go"
-depends = ["deoplete.nvim"]
-on_ft = ["go"]
-build = "make"
 
 [[plugins]]
 repo = "zchee/deoplete-docker"
@@ -51,13 +45,26 @@ on_ft = ["vim"]
 
 
 # -----------------------------------------------------------------------------
+# Neosnippet
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = "Shougo/neosnippet.vim"
+depends = ["neosnippet-snippets", "context_filetype.vim"]
+on_event = "InsertCharPre"
+hook_source = "call hook#source#neosnippet#rc()"
+
+[[plugins]]
+repo = "Shougo/context_filetype.vim"
+
+
+# -----------------------------------------------------------------------------
 # Denite
 # -----------------------------------------------------------------------------
 [[plugins]]
 repo = "Shougo/denite.nvim"
 depends = ["neomru.vim"]
 on_cmd = "Denite"
-build = ":UpdateRemotePlugins"
+build = "UpdateRemotePlugins"
 hook_source = "call hook#source#denite#rc()"
 
 [[plugins]]
@@ -100,9 +107,6 @@ hook_source = "call hook#source#quickrun#rc()"
 [[plugins]]
 repo = "mattn/sonictemplate-vim"
 on_cmd = "Template"
-
-[[plugins]]
-repo = "Shougo/context_filetype.vim"
 
 [[plugins]]
 repo = "osyo-manga/vim-precious"
@@ -177,8 +181,3 @@ on_ft = ["markdown"]
 [[plugins]]
 repo = "cespare/vim-toml"
 on_ft = ["toml"]
-
-# Json
-[[plugins]]
-repo = "elzr/vim-json"
-on_ft = ["json"]

@@ -6,7 +6,19 @@ repo = "Shougo/vimproc.vim"
 
 
 # -----------------------------------------------------------------------------
-# Deoplete
+# Language Server Protocol
+# -----------------------------------------------------------------------------
+[[plugins]]
+repo = "prabirshrestha/vim-lsp"
+depends = ["async.vim"]
+hook_add = "call hook#add#lsp#rc()"
+
+[[plugins]]
+repo = "prabirshrestha/async.vim"
+
+
+# -----------------------------------------------------------------------------
+# Neosnippet
 # -----------------------------------------------------------------------------
 [[plugins]]
 repo = "Shougo/neosnippet-snippets"
