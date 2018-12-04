@@ -64,7 +64,7 @@ else
 fi
 
 # Install Python package
-if [[ "$(pip -V 2>&1)"  =~ ^pip.*python\ $major.$minor$ ]]; then
+if [[ "$(pip -V 2>&1)"  =~ ^pip.*\(python\ $major.$minor\) ]]; then
   req_path="$DOTFILES_PATH"/etc/lib/requirements.txt
   if [ ! -f "$req_path" ]; then
     log_fail "$req_path: Not found."
