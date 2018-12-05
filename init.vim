@@ -31,8 +31,7 @@ command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
 " Neovim configs
 " -----------------------------------------------------------------------------
 let g:loaded_python_provider = 0
-" let s:user_name = substitute(system('whoami'), '\n', '', 'g')
-let g:python3_host_prog = substitute(system('command -v python3'), '\n', '', 'g')
+let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
 
 
 " -----------------------------------------------------------------------------
