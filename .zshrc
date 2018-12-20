@@ -34,9 +34,9 @@ fi
 # fi
 
 # Env family
-eval `$(goenv init -)`
-eval `$(pyenv init -)`
-eval `$(direnv hook zsh)`
+eval "$(goenv init -)"
+eval "$(pyenv init -)"
+eval "$(direnv hook zsh)"
 
 
 # -----------------------------------------------------------------------------
