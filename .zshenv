@@ -3,7 +3,7 @@
 # NOTE: Disable if you don't tune Zsh.
 # zmodload zsh/zprof && zprof
 
-zmodload zsh/zpty
+# zmodload zsh/zpty
 
 # -----------------------------------------------------------------------------
 # Paths
@@ -12,15 +12,16 @@ typeset -gx -U path fpath
 
 # PATH
 path=( \
-  /usr/local/{bin,sbin}(N-/) \
+  # /usr/local/bin(N-/) \
   $HOME/bin(N-/) \
   $HOME/.zplug/bin(N-/) \
   "$path[@]" \
 ) 
+
 # FPATH
 # NOTE: Set fpath before compinit
 fpath=( \
-  $HOME/.zsh/completion(N-/) \
+  $HOME/.zsh/completions(N-/) \
   $HOME/.zsh/plugins/zsh-completions(N-/) \
   /usr/local/share/zsh/site-functions(N-/) \
   $fpath \
@@ -31,7 +32,7 @@ fpath=( \
 # autoload
 # -----------------------------------------------------------------------------
 autoload -Uz run-help
-autoload -Uz add-zsh-hook
+# autoload -Uz add-zsh-hook
 autoload -Uz colors && colors
 autoload -Uz is-at-least
 
@@ -68,25 +69,19 @@ export LC_CTYPE="${LANGUAGE}"
 
 
 # -----------------------------------------------------------------------------
-# Python
+# Programming Languages
 # -----------------------------------------------------------------------------
-if [[ -n "${VIRTUAL_ENV}" && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
-  source "${VIRTUAL_ENV}/bin/activate"
-fi
-
-
-# -----------------------------------------------------------------------------
-# Golang
-# -----------------------------------------------------------------------------
-if [ -d "$HOME/.goenv" ]; then
-  export GOENV_ROOT="$HOME/.goenv"
-  export PATH="$GOENV_ROOT/bin:$PATH"
-  which goenv > /dev/null && eval "$(goenv init -)"
-fi
+# Go
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT:$PATH"
 
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export GO15VENDOREXPERIMENT=1
+
+# Python
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT:$PATH"
 
 
 # -----------------------------------------------------------------------------
@@ -105,6 +100,19 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[00;43;30m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
+
+
+# -----------------------------------------------------------------------------
+# History
+# -----------------------------------------------------------------------------
+export HISTFILE="${ZDOTDIR:-$HOME}/.zhistory"
+export HISTSIZE=10000
+export SAVEHIST=1000000
+
+if [[ $UID == 0 ]]; then
+  unset HISTFILE
+  export SAVEHIST=0
+fi
 
 
 # -----------------------------------------------------------------------------
@@ -129,3 +137,20 @@ export CORRECT_IGNORE='_*'
 export CORRECT_IGNORE_FILE='.*'
 
 export WORDCHARS='*?.[]~&;!#$%^(){}<>'
+
+# gettext
+export PATH="/usr/local/opt/gettext/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/gettext/lib"
+export CPPFLAGS="-I/usr/local/opt/gettext/include"
+
+# Openssl
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
+
+# pkgconfig
+export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+
+# readline
+export LDFLAGS="-L/usr/local/opt/readline/lib"
+export CPPFLAGS="-I/usr/local/opt/readline/include"

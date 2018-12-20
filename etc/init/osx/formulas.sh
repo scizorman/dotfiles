@@ -34,14 +34,12 @@ if is_osx; then
 
     # Install formulas
     formulas=(
-      autoconf
       brew-rmtree
       direnv
-      hadolint
-      mysql
-      pkg-config
-      shellcheck
-      the_platinum_searcher
+      # hadolint
+      # mysql
+      # shellcheck
+      # the_platinum_searcher
       tree
     )
 
