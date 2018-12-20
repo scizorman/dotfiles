@@ -1,5 +1,5 @@
 #!/bin/bash
-export DOTFILES_PATH="$HOME"/.dotfiles
+export DOTFILES_PATH="$HOME"/dotfiles
 
 # Stop script if errors occure
 trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
