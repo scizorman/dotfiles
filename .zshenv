@@ -22,7 +22,7 @@ path=( \
 # NOTE: Set fpath before compinit
 fpath=( \
   $HOME/.zsh/completions(N-/) \
-  $HOME/.zsh/plugins/zsh-completions(N-/) \
+  # $HOME/.zsh/plugins/zsh-completions(N-/) \
   /usr/local/share/zsh/site-functions(N-/) \
   $fpath \
 )
@@ -32,7 +32,7 @@ fpath=( \
 # autoload
 # -----------------------------------------------------------------------------
 autoload -Uz run-help
-# autoload -Uz add-zsh-hook
+autoload -Uz add-zsh-hook
 autoload -Uz colors && colors
 autoload -Uz is-at-least
 

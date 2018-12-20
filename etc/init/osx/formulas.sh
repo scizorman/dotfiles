@@ -57,16 +57,16 @@ if is_osx; then
     done
 
     # Install universal-ctags
-    if echo "${installed_formulas}" | grep -q "universal-ctags"; then
-      log_pass "universal-ctags: Already Installed!"
-    else
-      if brew install --HEAD universal-ctags/universal-ctags/universal-ctags; then
-        log_pass "universal-ctags: Installed successfully!"
-      else
-        log_fail "universal-ctags: Failed to install."
-        exit 1
-      fi
-    fi
+    # if echo "${installed_formulas}" | grep -q "universal-ctags"; then
+    #   log_pass "universal-ctags: Already Installed!"
+    # else
+    #   if brew install --HEAD universal-ctags/universal-ctags/universal-ctags; then
+    #     log_pass "universal-ctags: Installed successfully!"
+    #   else
+    #     log_fail "universal-ctags: Failed to install."
+    #     exit 1
+    #   fi
+    # fi
 
     # Update, Upgrade and cleanup
     brew update && brew upgrade && brew cleanup

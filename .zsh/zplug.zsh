@@ -20,7 +20,7 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "stedolen/jq", \
   as:command, \
   from:gh-r, \
-  rename-to:jq
+  rename-to:"jq"
 zplug "junegunn/fzf-bin", \
   as:command, \
   from:gh-r, \
