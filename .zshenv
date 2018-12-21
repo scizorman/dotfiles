@@ -3,7 +3,6 @@
 # NOTE: Disable if you don't tune Zsh.
 # zmodload zsh/zprof && zprof
 
-# zmodload zsh/zpty
 
 # -----------------------------------------------------------------------------
 # Paths
@@ -16,7 +15,7 @@ path=( \
   $HOME/bin(N-/) \
   $HOME/.zplug/bin(N-/) \
   "$path[@]" \
-) 
+)
 
 # FPATH
 # NOTE: Set fpath before compinit
