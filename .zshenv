@@ -71,7 +71,7 @@ export LC_CTYPE="${LANGUAGE}"
 # Programming Languages
 # -----------------------------------------------------------------------------
 # Go
-export GOENV_ROOT="$HOME/.goenv"
+export GOENV_ROOT="/usr/local/var/goenv"
 export PATH="$GOENV_ROOT:$PATH"
 
 export GOPATH="$HOME/go"
@@ -79,7 +79,7 @@ export PATH="$GOPATH/bin:$PATH"
 export GO15VENDOREXPERIMENT=1
 
 # Python
-export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT="/usr/local/var/pyenv"
 export PATH="$PYENV_ROOT:$PATH"
 
 # -----------------------------------------------------------------------------
