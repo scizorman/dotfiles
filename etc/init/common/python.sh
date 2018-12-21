@@ -33,11 +33,10 @@ fi
 if [[ "$(python -V 2>&1)" =~ ^Python\ $major.$minor.$build$ ]]; then
   log_pass 'Python (latest): Already installed'
 else
+  # Set path for pyenv
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
   if has 'pyenv'; then
-    # Set path for pyenv (temporary)
-    export PYENV_ROOT="$HOME"/.pyenv
-    export PATH="$PYENV_ROOT"/bin:$PATH
-
     log_echo 'Install Python (latest) with pyenv'
     if pyenv install $major.$minor.$build; then
       log_pass 'Python (latest): Installed successfully!'
