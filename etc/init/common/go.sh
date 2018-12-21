@@ -12,7 +12,7 @@ minor=11
 build=2
 
 # Install goenv
-if has 'goenv'; then
+if has 'goenv' || [ -d "$HOME/.goenv" ]; then
   log_pass 'goenv: Already installed!'
 else
   if has 'git'; then
