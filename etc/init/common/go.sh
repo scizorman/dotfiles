@@ -19,7 +19,7 @@ else
     osx)
       if has 'brew'; then
         log_echo 'Install goenv with Homebrew'
-        if brew install pyenv; then
+        if brew install goenv; then
           log_pass 'goenv: Installed successfully!'
         else
           log_fail 'goenv: Failed to install.'
@@ -56,6 +56,8 @@ else
     # Set the installed go global
     goenv rehash
     goenv global $major.$minor.$build
+
+    eval "$(goenv init -)"
   else
     log_fail 'Error: goenv is required.'
     exit 1
