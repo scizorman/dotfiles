@@ -3,7 +3,7 @@ trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
 # Get utilities
-. "$DOTFILES_PATH"/etc/lib/vital.sh
+. "$DOTFILES_PATH/etc/lib/vital.sh"
 
 # Install Homebrew
 if is_osx; then
