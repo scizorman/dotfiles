@@ -23,10 +23,10 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 
   # Plugins
   zplug "zplug/zplug", hook-build:'zplug --self-manage'
-  zplug "mafredri/zsh-async", from:gh-r
+  zplug "mafredri/zsh-async", from:github
   zplug "sindresorhus/pure", \
     use:pure.zsh, \
-    from:gh-r, \
+    from:github, \
     as:theme
   zplug "zsh-users/zsh-completions"
   zplug "zsh-users/zsh-syntax-highlighting", defer:2
@@ -180,7 +180,6 @@ fi
 alias -g G='| grep'
 alias -g L='| less'
 alias -g X='| xargs'
-alias -g S='| sort'
 alias -g W='| wc'
 alias -g F='| "$(available $INTERACTIVE_FILTER)"'
 alias -g N='| >/dev/null 2>&1'
