@@ -56,6 +56,8 @@ else
     # Set the installed python global
     pyenv rehash
     pyenv global $major.$minor.$build
+
+    eval "$(pyenv init -)"
   else
     log_fail 'Error: pyenv is required.'
     exit 1
@@ -67,6 +69,14 @@ if [[ "$(pip -V 2>&1)"  =~ ^pip.*\(python\ $major.$minor\) ]]; then
   req_path="$DOTFILES_PATH"/etc/lib/requirements.txt
   if [ ! -f "$req_path" ]; then
     log_fail "$req_path: Not found."
+    exit 1
+  fi
+
+  # Update pip
+  if pip install -U pip; then
+    log_pass 'pip: Update successfully!'
+  else
+    log_echo 'pip: Failed to update.'
     exit 1
   fi
 
