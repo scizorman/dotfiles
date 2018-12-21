@@ -15,18 +15,26 @@ build=1
 if has 'pyenv' || [ -d "$HOME/.pyenv" ]; then
   log_pass 'pyenv: Already installed!'
 else
-  if has 'git'; then
-    log_echo 'Install pyenv with Git'
-    if git clone https://github.com/yyuu/pyenv.git "$HOME/.pyenv"; then
-      log_pass 'pyenv: Installed successfully!'
-    else
-      log_fail 'pyenv: Failed to install.'
+  case "$(get_os)" in
+    osx)
+      if has 'brew'; then
+        log_echo 'Install pyenv with Homebrew'
+        if brew install pyenv; then
+          log_pass 'pyenv: Installed successfully!'
+        else
+          log_fail 'Error: Git is required.'
+          exit 1
+        fi
+      else
+        log_fail 'Error: Homebrew is required.'
+        exit 1
+      fi
+      ;;
+    *)
+      log_fail 'Error: This script only supported OSX.'
       exit 1
-    fi
-  else
-    log_fail 'Error: Git is required.'
-    exit 1
-  fi
+      ;;
+  esac
 fi
 
 # Install Python (latest) with pyenv
@@ -34,7 +42,7 @@ if [[ "$(python -V 2>&1)" =~ ^Python\ $major.$minor.$build$ ]]; then
   log_pass 'Python (latest): Already installed'
 else
   # Set path for pyenv
-  export PYENV_ROOT="$HOME/.pyenv"
+  export PYENV_ROOT="/usr/local/var/pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   if has 'pyenv'; then
     log_echo 'Install Python (latest) with pyenv'
