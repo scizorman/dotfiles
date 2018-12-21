@@ -33,11 +33,10 @@ fi
 if [[ "$(go version 2>&1)" =~ ^go\ version\ go$major.$minor.* ]]; then
   log_pass 'Golang (latest): Already installed'
 else
+  # Set path for goenv
+  export GOENV_ROOT="$HOME"/.goenv
+  export PATH="$GOENV_ROOT"/bin:$PATH
   if has 'goenv'; then
-    # Set path for goenv (temporary)
-    export GOENV_ROOT="$HOME"/.goenv
-    export PATH="$GOENV_ROOT"/bin:$PATH
-
     log_echo 'Install Golang (latest) with goenv'
     if goenv install $major.$minor.$build; then
       log_pass 'Golang (latest): Installed successfully!'
