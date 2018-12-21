@@ -15,26 +15,18 @@ build=2
 if has 'goenv'; then
   log_pass 'goenv: Already installed!'
 else
-  case "$(get_os)" in
-    osx)
-      if has 'brew'; then
-        log_echo 'Install goenv with Homebrew.'
-        if brew install goenv; then
-          log_pass 'goenv: Installed successfully!'
-        else
-          log_fail 'goenv: Failed to install.'
-          exit 1
-        fi
-      else
-        log_fail 'Error: Homebrew is required.'
-        exit 1
-      fi
-      ;;
-    *)
-      log_fail 'Error: This script only supported OSX.'
+  if has 'git'; then
+    log_echo 'Install goenv with Git.'
+    if git clone https://github.com/syndbg/goenv.git "$HOME/.goenv"; then
+      log_pass 'goenv: Installed successfully!'
+    else
+      log_fail 'goenv: Failed to install.'
       exit 1
-      ;;
-    esac
+    fi
+  else
+    log_fail 'Error: Git is required.'
+    exit 1
+  fi
 fi
 
 # Install Golang (latest) with goenv
