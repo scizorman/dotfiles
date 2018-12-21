@@ -15,26 +15,18 @@ build=1
 if has 'pyenv'; then
   log_pass 'pyenv: Already installed!'
 else
-  case "$(get_os)" in
-    osx)
-      if has 'brew'; then
-        log_echo 'Install pyenv with Homebrew.'
-        if brew install pyenv; then
-          log_pass 'Python3: Installed successfully!'
-        else
-          log_fail 'Python3: Failed to install.'
-          exit 1
-        fi
-      else
-        log_fail 'Error: Homebrew is required.'
-        exit 1
-      fi
-      ;;
-    *)
-      log_fail 'Error: This script only supported OSX.'
+  if has 'git'; then
+    log_echo 'Install pyenv with Git'
+    if git clone git://github.com/yyuu/pyenv.git "$HOME/.pyenv"; then
+      log_pass 'pyenv: Installed successfully!'
+    else
+      log_fail 'pyenv: Failed to install.'
       exit 1
-      ;;
-  esac
+    fi
+  else
+    log_fail 'Error: Git is required.'
+    exit 1
+  fi
 fi
 
 # Install Python (latest) with pyenv
