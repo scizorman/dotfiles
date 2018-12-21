@@ -14,11 +14,46 @@ fi
 # fi
 
 
+# -----------------------------------------------------------------------------
 # zplug
+# -----------------------------------------------------------------------------
 if [[ -f $HOME/.zplug/init.zsh ]]; then
-  export ZPLUG_LOADFILE=$HOME/.zsh/zplug.zsh
+  # export ZPLUG_LOADFILE=$HOME/.zsh/zplug.zsh
   source $HOME/.zplug/init.zsh
-  
+
+  # Plugins
+  zplug "zplug/zplug", hook-build:'zplug --self-manage'
+  zplug "mafredri/zsh-async", from:gh-r
+  zplug "sindresorhus/pure", \
+    use:pure.zsh, \
+    from:gh-r, \
+    as:theme
+  zplug "zsh-users/zsh-completions"
+  zplug "zsh-users/zsh-syntax-highlighting", defer:2
+  zplug "b4b4r07/enhancd", use:init.sh
+  if zplug check "b4b4r07/enhancd"; then
+    export ENHANCD_FILTER="fzf --height 50% --reverse --ansi"
+    export ENHANCD_DOT_SHOW_FULLPATH=1
+  fi
+  zplug "b4b4r07/zsh-vimode-visual", use:"*.zsh", defer:3
+  zplug "stedolan/jq", \
+    as:command, \
+    from:gh-r, \
+    rename-to:"jq"
+  zplug "junegunn/fzf-bin", \
+    as:command, \
+    from:gh-r, \
+    rename-to:"fzf", \
+    frozen:1
+  zplug "monochromegane/the_platinum_searcher", \
+    as:command, \
+    from:gh-r, \
+    rename-to:"pt", \
+    frozen:1
+  zplug "scizorman/zsh-garbage", \
+    as:command, \
+    use:bin/garbage
+
   if ! zplug check --verbose; then
     printf "Install? [y/n]: "
     if read -q; then
@@ -106,51 +141,6 @@ autoload -Uz run-help-git
 
 
 # -----------------------------------------------------------------------------
-# Keybind
-# -----------------------------------------------------------------------------
-# Vim-like keybind as default
-bindkey -v
-
-# Add Emacs-like keybind
-bindkey -M viins '^F' forward-char
-bindkey -M viins '^B' backward-char
-bindkey -M viins '^A' beginning-of-line
-bindkey -M viins '^E' end-of-line
-bindkey -M viins '^K' kill-line
-bindkey -M viins '^Y' yank
-bindkey -M viins '^W' backward-kill-word
-bindkey -M viins '^U' backward-kill-line
-bindkey -M viins '^H' backward-delete-char
-bindkey -M viins '^?' backward-delete-char
-bindkey -M viins '^G' send-break
-bindkey -M viins '^D' delete-char-or-list
-
-bindkey -M vicmd '^A'  beginning-of-line
-bindkey -M vicmd '^E'  end-of-line
-bindkey -M vicmd '^K'  kill-line
-bindkey -M vicmd '^P'  up-line-or-history
-bindkey -M vicmd '^N'  down-line-or-history
-bindkey -M vicmd '^Y'  yank
-bindkey -M vicmd '^W'  backward-kill-word
-bindkey -M vicmd '^U'  backward-kill-line
-
-if is-at-least 5.0.8; then
-  autoload -Uz surround
-  zle -N delete-surround surround
-  zle -N change-surround surround
-  zle -N add-surround surround
-  bindkey -a cs change-surround
-  bindkey -a ds delete-surround
-  bindkey -a S add-surround
-fi
-
-# Insert a last word
-autoload -Uz smart-insert-last-word
-zle -N insert-last-word smart-insert-last-word
-zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
-
-
-# -----------------------------------------------------------------------------
 # Alias
 # -----------------------------------------------------------------------------
 # 'ls' color
@@ -205,6 +195,51 @@ if is_osx; then
   alias -g CP='| pbcopy'
   alias -g CC='| tee /dev/tty | pbcopy'
 fi
+
+
+# -----------------------------------------------------------------------------
+# Keybind
+# -----------------------------------------------------------------------------
+# Vim-like keybind as default
+bindkey -v
+
+# Add Emacs-like keybind
+bindkey -M viins '^F' forward-char
+bindkey -M viins '^B' backward-char
+bindkey -M viins '^A' beginning-of-line
+bindkey -M viins '^E' end-of-line
+bindkey -M viins '^K' kill-line
+bindkey -M viins '^Y' yank
+bindkey -M viins '^W' backward-kill-word
+bindkey -M viins '^U' backward-kill-line
+bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^G' send-break
+bindkey -M viins '^D' delete-char-or-list
+
+bindkey -M vicmd '^A'  beginning-of-line
+bindkey -M vicmd '^E'  end-of-line
+bindkey -M vicmd '^K'  kill-line
+bindkey -M vicmd '^P'  up-line-or-history
+bindkey -M vicmd '^N'  down-line-or-history
+bindkey -M vicmd '^Y'  yank
+bindkey -M vicmd '^W'  backward-kill-word
+bindkey -M vicmd '^U'  backward-kill-line
+
+if is-at-least 5.0.8; then
+  autoload -Uz surround
+  zle -N delete-surround surround
+  zle -N change-surround surround
+  zle -N add-surround surround
+  bindkey -a cs change-surround
+  bindkey -a ds delete-surround
+  bindkey -a S add-surround
+fi
+
+# Insert a last word
+autoload -Uz smart-insert-last-word
+zle -N insert-last-word smart-insert-last-word
+zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
 
 
 # -----------------------------------------------------------------------------
