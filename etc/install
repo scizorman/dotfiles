@@ -147,8 +147,8 @@ log_fail() {
 # Install Dotfiles
 # -----------------------------------------------------------------------------
 dotfiles_logo='
-      | |     | |  / _(_) |          
-    __| | ___ | |_| |_ _| | ___  ___ 
+      | |     | |  / _(_) |
+    __| | ___ | |_| |_ _| | ___  ___
    / _` |/ _ \| __|  _| | |/ _ \/ __|
   | (_| | (_) | |_| | | | |  __/\__ \
    \__,_|\___/ \__|_| |_|_|\___||___/
@@ -163,7 +163,7 @@ dotfiles_logo='
 '
 
 if [ -z "${DOTFILES_PATH}" ]; then
-  DOTFILES_PATH=~/.dotfiles
+  DOTFILES_PATH="$HOME/dotfiles"
   export DOTFILES_PATH
 fi
 
