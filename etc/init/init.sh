@@ -1,5 +1,5 @@
 #!/bin/bash
-export DOTFILES_PATH="$HOME"/dotfiles
+export DOTFILES_PATH="$HOME/dotfiles"
 
 # Stop script if errors occure
 trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
@@ -11,7 +11,7 @@ if [ -z "$DOTFILES_PATH" ]; then
   exit 1
 fi
 
-. "$DOTFILES_PATH"/etc/lib/vital.sh
+. "$DOTFILES_PATH/etc/lib/vital.sh"
 
 # Ask for the administrator password upfront
 sudo -v
