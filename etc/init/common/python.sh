@@ -17,7 +17,7 @@ if has 'pyenv'; then
 else
   if has 'git'; then
     log_echo 'Install pyenv with Git'
-    if git clone git://github.com/yyuu/pyenv.git "$HOME/.pyenv"; then
+    if git clone https://github.com/yyuu/pyenv.git "$HOME/.pyenv"; then
       log_pass 'pyenv: Installed successfully!'
     else
       log_fail 'pyenv: Failed to install.'
