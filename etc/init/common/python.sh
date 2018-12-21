@@ -12,7 +12,7 @@ minor=7
 build=1
 
 # Install pyenv
-if has 'pyenv'; then
+if has 'pyenv' || [ -d "$HOME/.pyenv" ]; then
   log_pass 'pyenv: Already installed!'
 else
   if has 'git'; then
