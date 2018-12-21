@@ -4,7 +4,7 @@ trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
 # Get utilities
-. "$DOTFILES_PATH"/etc/lib/vital.sh
+. "$DOTFILES_PATH/etc/lib/vital.sh"
 
 # Install Tmux
 if has 'tmux'; then
@@ -33,16 +33,16 @@ else
 fi
 
 # Install tpm (Tmux Plugin Manager)
-if [ -d "$HOME"/.tmux/plugins/tpm ]; then
+if [ -d "$HOME/.tmux/plugins/tpm" ]; then
   log_pass 'tpm: Already installed!'
 else
-  if [ ! -d "$HOME".tmux/plugins ]; then
-    mkdir -p "$HOME"/.tmux/plugins
+  if [ ! -d "$HOME/.tmux/plugins" ]; then
+    mkdir -p "$HOME/.tmux/plugins"
   fi
-  
+
   if has 'git'; then
     log_echo 'Install tpm with Git.'
-    if git clone https://github.com/tmux-plugins/tpm "$HOME"/.tmux/plugins/tpm; then
+    if git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"; then
       log_pass 'tpm: Installed successfully!'
     else
       log_fail 'tpm: Failed to install.'

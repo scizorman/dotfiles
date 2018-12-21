@@ -4,7 +4,7 @@ trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
 # Get utilities
-. "$DOTFILES_PATH"/etc/lib/vital.sh
+. "$DOTFILES_PATH/etc/lib/vital.sh"
 
 # Golang version (latest)
 major=1
@@ -34,8 +34,8 @@ if [[ "$(go version 2>&1)" =~ ^go\ version\ go$major.$minor.* ]]; then
   log_pass 'Golang (latest): Already installed'
 else
   # Set path for goenv
-  export GOENV_ROOT="$HOME"/.goenv
-  export PATH="$GOENV_ROOT"/bin:$PATH
+  export GOENV_ROOT="$HOME/.goenv"
+  export PATH="$GOENV_ROOT/bin:$PATH"
   if has 'goenv'; then
     log_echo 'Install Golang (latest) with goenv'
     if goenv install $major.$minor.$build; then
