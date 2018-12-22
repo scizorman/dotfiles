@@ -8,10 +8,10 @@ if [[ -n $VIMRUNTIME ]]; then
   return 0
 fi
 
-# if [[ -z "$TMUX" ]]; then
-#   tmux new-session
-#   exit
-# fi
+if [[ -z "$TMUX" ]]; then
+  tmux new-session
+  exit
+fi
 
 
 # -----------------------------------------------------------------------------
