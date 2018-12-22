@@ -240,6 +240,10 @@ autoload -Uz smart-insert-last-word
 zle -N insert-last-word smart-insert-last-word
 zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
 
+# Select hisotries
+autoload -Uz select-history
+zle -N select-history
+bindkey '^h' select-history
 
 # -----------------------------------------------------------------------------
 # Options
