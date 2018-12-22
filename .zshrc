@@ -68,9 +68,26 @@ fi
 #   source $HOME/.zshrc.local
 # fi
 
-# Env family
+# -----------------------------------------------------------------------------
+# Env Family
+# -----------------------------------------------------------------------------
+# Go
+export GOENV_ROOT="/usr/local/var/goenv"
+export PATH="$GOENV_ROOT:$PATH"
 eval "$(goenv init -)"
+
+go_ver="$(goenv version | sed 's/.(.*)$//')"
+export GOROOT="$GOENV_ROOT/versions/$go_ver"
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+export GO15VENDOREXPERIMENT=1
+
+# Python
+export PYENV_ROOT="/usr/local/var/pyenv"
+export PATH="$PYENV_ROOT:$PATH"
 eval "$(pyenv init -)"
+
+# direnv
 eval "$(direnv hook zsh)"
 
 
