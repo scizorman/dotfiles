@@ -21,7 +21,7 @@ path=( \
 # NOTE: Set fpath before compinit
 fpath=( \
   $HOME/.zsh/completions(N-/) \
-  # $HOME/.zsh/plugins/zsh-completions(N-/) \
+  $HOME/.zsh/functions(N-/) \
   /usr/local/share/zsh/site-functions(N-/) \
   $fpath \
 )
