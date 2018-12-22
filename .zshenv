@@ -7,11 +7,9 @@
 # -----------------------------------------------------------------------------
 # Paths
 # -----------------------------------------------------------------------------
-typeset -gx -U path fpath
-
 # PATH
+typeset -gx -U path 
 path=( \
-  # /usr/local/bin(N-/) \
   $HOME/bin(N-/) \
   $HOME/.zplug/bin(N-/) \
   "$path[@]" \
@@ -19,6 +17,7 @@ path=( \
 
 # FPATH
 # NOTE: Set fpath before compinit
+typeset -gx -U fpath
 fpath=( \
   $HOME/.zsh/completions(N-/) \
   $HOME/.zsh/functions(N-/) \
