@@ -73,8 +73,8 @@ export GOENV_ROOT="/usr/local/var/goenv"
 export PATH="$GOENV_ROOT:$PATH"
 eval "$(goenv init -)"
 
-go_ver="$(goenv version | sed 's/.(.*)$//')"
-export GOROOT="$GOENV_ROOT/versions/$go_ver"
+GO_VERSION="$(goenv version | sed 's/.(.*)$//')"
+export GOROOT="$GOENV_ROOT/versions/$GO_VERSION"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export GO15VENDOREXPERIMENT=1
