@@ -1,7 +1,13 @@
 certifi==2018.11.29
+future==0.17.1
 greenlet==0.4.15
+jedi==0.13.2
 msgpack==0.6.0
+parso==0.3.1
 pipenv==2018.11.26
+pluggy==0.8.0
 pynvim==0.3.1
+python-jsonrpc-server==0.0.2
+python-language-server==0.21.4
 virtualenv==16.1.0
 virtualenv-clone==0.4.0
