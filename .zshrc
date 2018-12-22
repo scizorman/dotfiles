@@ -8,10 +8,27 @@ if [[ -n $VIMRUNTIME ]]; then
   return 0
 fi
 
-if [[ -z "$TMUX" ]]; then
-  tmux new-session
-  exit
-fi
+
+# -----------------------------------------------------------------------------
+# Env Family
+# -----------------------------------------------------------------------------
+typeset -gx -U path 
+# Go
+export GOENV_ROOT="/usr/local/var/goenv"
+eval "$(goenv init -)"
+
+GO_VERSION="$(goenv version | sed 's/.(.*)$//')"
+export GOROOT="$GOENV_ROOT/versions/$GO_VERSION"
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+export GO15VENDOREXPERIMENT=1
+
+# Python
+export PYENV_ROOT="/usr/local/var/pyenv"
+eval "$(pyenv init -)"
+
+# direnv
+eval "$(direnv hook zsh)"
 
 
 # -----------------------------------------------------------------------------
@@ -63,29 +80,6 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
   fi
   zplug load
 fi
-
-
-# -----------------------------------------------------------------------------
-# Env Family
-# -----------------------------------------------------------------------------
-# Go
-export GOENV_ROOT="/usr/local/var/goenv"
-export PATH="$GOENV_ROOT:$PATH"
-eval "$(goenv init -)"
-
-GO_VERSION="$(goenv version | sed 's/.(.*)$//')"
-export GOROOT="$GOENV_ROOT/versions/$GO_VERSION"
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
-export GO15VENDOREXPERIMENT=1
-
-# Python
-export PYENV_ROOT="/usr/local/var/pyenv"
-export PATH="$PYENV_ROOT:$PATH"
-eval "$(pyenv init -)"
-
-# direnv
-eval "$(direnv hook zsh)"
 
 
 # -----------------------------------------------------------------------------
