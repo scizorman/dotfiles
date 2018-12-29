@@ -8,7 +8,7 @@ set -eu
 
 # Install Tmux
 if has 'tmux'; then
-  log_pass 'Tmux: Already Installed!'
+  log_pass 'Tmux: Already installed!'
 else
   case "$(get_os)" in
     osx)
