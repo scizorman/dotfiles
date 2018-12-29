@@ -31,3 +31,37 @@ else
       ;;
   esac
 fi
+
+# Install Python3 provider
+if has 'pip'; then
+  if pip show pynvim > /dev/null; then
+    log_pass 'Python3 provider: Already installed!'
+  else
+    if pip install pynvim; then
+      log_pass 'Python3 provider: Installed successfully!'
+    else
+      log_fail 'Python3 provider: Failed to install.'
+      exit 1
+    fi
+  fi
+else
+  log_fail 'Error: pip is required.'
+  exit 1
+fi
+
+# Install Node.js provider
+if has 'npm'; then
+  if npm list -g neovim > /dev/null; then
+    log_pass 'Node.js provider: Already installed!'
+  else
+    if npm install -g neovim; then
+      log_pass 'Node.js provider: Install successfully!'
+    else
+      log_fail 'Node.js provider: Failed to install.'
+      exit 1
+    fi
+  fi
+else
+  log_fail 'Error: npm is required.'
+  exit 1
+fi
