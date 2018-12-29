@@ -6,6 +6,9 @@ set -eu
 # Get utilities
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
+# Node.js version (stable)
+NODE_VERSION=10.15.0
+
 # Install nodebrew
 if has 'nodebrew'; then
   log_pass 'nodebrew: Already installed!'
@@ -37,24 +40,18 @@ else
 fi
 
 # Install Node.js (stable) with nodebrew
-major=10
-minor=15
-build=0
-node_version=$major.$minor.$build
-
-
 if has 'node'; then
   log_pass 'Node.js (stable): Already installed!'
 else
   # Set path for nodebrew
   if has 'nodebrew'; then
     log_echo 'Install Node.js (stable) with nodebrew'
-    if nodebrew install-binary $node_version; then
+    if nodebrew install-binary $NODE_VERSION; then
       log_pass 'Node.js (stable): Installed successfully!'
 
       # Initialize npm
       export PATH="$NODEBREW_ROOT/current/bin:$PATH"
-      nodebrew use $node_version
+      nodebrew use $NODE_VERSION
     else
       log_fail 'Node.js (stable): Failed to install.'
       exit 1
