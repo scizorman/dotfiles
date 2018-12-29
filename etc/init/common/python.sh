@@ -63,31 +63,3 @@ else
     exit 1
   fi
 fi
-
-# Install Python package
-if [[ "$(pip -V 2>&1)"  =~ ^pip.*\(python\ $major.$minor\) ]]; then
-  req_path="$DOTFILES_PATH"/etc/lib/requirements.txt
-  if [ ! -f "$req_path" ]; then
-    log_fail "$req_path: Not found."
-    exit 1
-  fi
-
-  # Update pip
-  if pip install -U pip; then
-    log_pass 'pip: Update successfully!'
-  else
-    log_echo 'pip: Failed to update.'
-    exit 1
-  fi
-
-  log_echo 'Install requirements of Python3 with pip.'
-  if pip install -r "$req_path"; then
-    log_pass 'Python packages: Install successfully!'
-  else
-    log_fail 'Python packages: Install successfully!'
-    exit 1
-  fi
-else
-  log_fail 'Error: pip is required.'
-  exit 1
-fi
