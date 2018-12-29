@@ -24,7 +24,7 @@ else
           export NODEBREW_ROOT='/usr/local/var/nodebrew'
           nodebrew setup_dirs
         else
-          log_fail 'nodebrew: Faild to install.'
+          log_fail 'nodebrew: Failed to install.'
           exit 1
         fi
       else
