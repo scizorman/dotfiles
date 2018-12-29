@@ -22,7 +22,7 @@ else
         if brew install pyenv; then
           log_pass 'pyenv: Installed successfully!'
         else
-          log_fail 'Error: Git is required.'
+          log_fail 'pyenv: Failed to install.'
           exit 1
         fi
       else
@@ -42,7 +42,7 @@ if [[ "$(python -V 2>&1)" =~ ^Python\ $major.$minor.$build$ ]]; then
   log_pass 'Python (latest): Already installed'
 else
   # Set path for pyenv
-  export PYENV_ROOT="/usr/local/var/pyenv"
+  export PYENV_ROOT='/usr/local/var/pyenv'
   export PATH="$PYENV_ROOT/bin:$PATH"
   if has 'pyenv'; then
     log_echo 'Install Python (latest) with pyenv'
