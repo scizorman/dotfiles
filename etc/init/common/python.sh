@@ -74,12 +74,16 @@ if [[ "$(pip -V 2>&1)"  =~ ^pip.*\(python\ $major.$minor\) ]]; then
     exit 1
   fi
 
-  log_echo 'Install Pipenv'
-  if pip install pipenv; then
-    log_pass 'Pipenv: Install successfully!'
+  if has 'pipenv'; then
+    log_pass 'Pipenv: Already installed!'
   else
-    log_fail 'Pipenv: Failed to install'
-    exit 1
+    log_echo 'Install Pipenv'
+    if pip install pipenv; then
+      log_pass 'Pipenv: Install successfully!'
+    else
+      log_fail 'Pipenv: Failed to install'
+      exit 1
+    fi
   fi
 else
   log_fail 'Error: pip is required.'
