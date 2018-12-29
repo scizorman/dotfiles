@@ -63,3 +63,25 @@ else
     exit 1
   fi
 fi
+
+# Install Pipenv
+if [[ "$(pip -V 2>&1)"  =~ ^pip.*\(python\ $major.$minor\) ]]; then
+  # Update pip
+  if pip install -U pip; then
+    log_pass 'pip: Update successfully!'
+  else
+    log_echo 'pip: Failed to update.'
+    exit 1
+  fi
+
+  log_echo 'Install Pipenv'
+  if pip install pipenv; then
+    log_pass 'Pipenv: Install successfully!'
+  else
+    log_fail 'Pipenv: Failed to install'
+    exit 1
+  fi
+else
+  log_fail 'Error: pip is required.'
+  exit 1
+fi
