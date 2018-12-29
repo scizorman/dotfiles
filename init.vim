@@ -30,8 +30,9 @@ command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
 " -----------------------------------------------------------------------------
 " Neovim configs
 " -----------------------------------------------------------------------------
-let g:loaded_python_provider = 0
-let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
+" Python provider
+let g:python_host_prog = $PYENV_ROOT . '/versions/2.7.15/bin/python'
+let g:python3_host_prog = $PYENV_ROOT . '/versions/3.7.1/bin/python'
 
 
 " -----------------------------------------------------------------------------
