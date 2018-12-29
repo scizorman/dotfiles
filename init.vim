@@ -34,6 +34,9 @@ command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
 let g:python_host_prog = $PYENV_ROOT . '/versions/2.7.15/bin/python'
 let g:python3_host_prog = $PYENV_ROOT . '/versions/3.7.1/bin/python'
 
+" Node.js provider
+let g:node_host_prog = $NODEBREW_ROOT . '/current/bin/neovim-node-host'
+
 
 " -----------------------------------------------------------------------------
 " Options
