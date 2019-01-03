@@ -30,6 +30,10 @@ eval "$(pyenv init -)"
 # direnv
 eval "$(direnv hook zsh)"
 
+# Nodebrew
+export NODEBREW_ROOT="/usr/local/var/nodebrew"
+export PATH="$NODEBREW_ROOT/current/bin:$PATH"
+
 
 # -----------------------------------------------------------------------------
 # zplug
