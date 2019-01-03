@@ -75,13 +75,6 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
     as:command, \
     use:bin/garbage
 
-  if ! zplug check --verbose; then
-    printf "Install? [y/n]: "
-    if read -q; then
-      echo; zplug install
-    fi
-    echo
-  fi
   zplug load
 fi
 
