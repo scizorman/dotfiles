@@ -4,7 +4,8 @@
 [[plugins]]
 repo = "Shougo/deoplete.nvim"
 build = "UpdateRemotePlugins"
-on_event = "InsertCharPre"
+depends = ["context_filetype.vim"]
+on_event = "InsertEnter"
 hook_source = "call hook#source#deoplete#rc()"
 
 [[plugins]]
