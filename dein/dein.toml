@@ -48,7 +48,7 @@ repo = "ryanoasis/vim-devicons"
 # Utility
 # -----------------------------------------------------------------------------
 [[plugins]]
-repo = "machakann/vim-sandwich"
+repo = "tpope/vim-surround"
 
 [[plugins]]
 repo = "Yggdroot/indentLine"
