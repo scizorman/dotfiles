@@ -14,11 +14,6 @@ on_source = ["deoplete.nvim"]
 
 # Sources
 [[plugins]]
-repo = "zchee/deoplete-clang"
-depends = ["deoplete.nvim"]
-on_ft = ["c", "cpp", "objc", "objcpp"]
-
-[[plugins]]
 repo = "zchee/deoplete-go"
 build = "make"
 depends = ["deoplete.nvim"]
