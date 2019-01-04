@@ -12,7 +12,15 @@ repo = "Shougo/vimproc.vim"
 repo = "autozimu/LanguageClient-neovim"
 rev = "next"
 build = "bash install.sh"
-hook_add = "call hook#add#language_client#rc()"
+hook_add = """
+call hook#add#LanguageClient#config()"
+
+" Mapping
+nnoremap <silent>K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent><Leader>ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent><Leader>lf :call LanguageClient#textDocument_formatting()<CR>
+nnoremap <silent><Leader>lr :call LanguageClient#textDocument_rename()<CR>
+"""
 
 
 # -----------------------------------------------------------------------------
@@ -27,7 +35,7 @@ repo = "Shougo/neosnippet-snippets"
 # -----------------------------------------------------------------------------
 [[plugins]]
 repo = "lambdalisue/gina.vim"
-hook_add = "call hook#add#gina#rc()"
+hook_add = "call hook#add#gina#config()"
 
 [[plugins]]
 repo = "airblade/vim-gitgutter"
@@ -38,7 +46,7 @@ repo = "airblade/vim-gitgutter"
 # -----------------------------------------------------------------------------
 [[plugins]]
 repo = "itchyny/lightline.vim"
-hook_add = "call hook#add#lightline#rc()"
+hook_add = "call hook#add#lightline#config()"
 
 [[plugins]]
 repo = "ryanoasis/vim-devicons"
@@ -49,6 +57,9 @@ repo = "ryanoasis/vim-devicons"
 # -----------------------------------------------------------------------------
 [[plugins]]
 repo = "tpope/vim-surround"
+hook_add = """
+vmap S <Nop>
+"""
 
 [[plugins]]
 repo = "Yggdroot/indentLine"

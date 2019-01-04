@@ -6,7 +6,7 @@ repo = "Shougo/deoplete.nvim"
 build = "UpdateRemotePlugins"
 depends = ["context_filetype.vim"]
 on_event = "InsertEnter"
-hook_source = "call hook#source#deoplete#rc()"
+hook_source = "call hook#source#deoplete#config()"
 
 [[plugins]]
 repo = "Shougo/neoinclude.vim"
@@ -46,8 +46,14 @@ on_ft = ["vim"]
 [[plugins]]
 repo = "Shougo/neosnippet.vim"
 depends = ["neosnippet-snippets", "context_filetype.vim"]
-on_event = "InsertCharPre"
-hook_source = "call hook#source#neosnippet#rc()"
+on_i = 1
+hook_source = """
+call hook#source#neosnippet#config()
+
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+"""
 
 [[plugins]]
 repo = "Shougo/context_filetype.vim"
@@ -59,9 +65,8 @@ repo = "Shougo/context_filetype.vim"
 [[plugins]]
 repo = "Shougo/denite.nvim"
 depends = ["neomru.vim"]
-on_cmd = "Denite"
 build = "UpdateRemotePlugins"
-hook_source = "call hook#source#denite#rc()"
+hook_source = "call hook#source#denite#config()"
 
 [[plugins]]
 repo = "Shougo/neomru.vim"
@@ -80,7 +85,7 @@ on_ft = [
   "sh", "bash",
   "vim",
 ]
-hook_source = "call hook#source#ale#rc()"
+hook_source = "call hook#source#ale#config()"
 
 
 # -----------------------------------------------------------------------------
@@ -98,7 +103,7 @@ on_map = ["<Plug>(caw:hatpos:toggle)"]
 repo = "thinca/vim-quickrun"
 depends = ["vimproc.vim"]
 on_cmd = "QuickRun"
-hook_source = "call hook#source#quickrun#rc()"
+hook_source = "call hook#source#quickrun#config()"
 
 [[plugins]]
 repo = "mattn/sonictemplate-vim"
