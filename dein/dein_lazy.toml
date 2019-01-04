@@ -114,6 +114,7 @@ repo = "osyo-manga/vim-precious"
 depends = ["context_filetype.vim"]
 on_ft = ["markdown", "toml", "help"]
 hook_add = """
+let g:precious_enable_switch_CursorHold = {"*": 0, "help": 1}
 let g:precious_enable_switch_CursorMoved = {"*": 0, "help": 1}
 Gautocmd InsertEnter * :PreciousSwitch
 Gautocmd InsertLeave * :PreciousReset
