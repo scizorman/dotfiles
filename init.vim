@@ -303,52 +303,31 @@ cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-d> <Del>
 
-" ale
-nmap <silent>]a <Plug>(ale_next)
-nmap <silent>[a <Plug>(ale_previous)
-
+" Plugins
 " caw.vim
-nmap <Leader>c <Plug>(caw:hatpos:toggle)
-vmap <Leader>c <Plug>(caw:hatpos:toggle)
+if dein#tap('caw.vim')
+  nmap <Leader>c <Plug>(caw:hatpos:toggle)
+  vmap <Leader>c <Plug>(caw:hatpos:toggle)
+endif
 
 " Denite
-nmap [denite] <Nop>
-nmap <Leader>d [denite]
-nmap <silent>[denite]b :<C-u>Denite buffer -highlight-mode-insert=search<CR>
-nmap <silent>[denite]fm :<C-u>Denite file_mru -highlight-mode-insert=search<CR>
-nmap <silent>[denite]fr :<C-u>Denite file_rec -highlight-mode-insert=search<CR>
-nmap <silent>[denite]l :<C-u>Denite line -highlight-mode-insert=search<CR>
-nmap <silent>[denite]o :<C-u>Denite outline -highlight-mode-insert=search<CR>
-nmap <silent>[denite]r :<C-u>Denite register -highlight-mode-insert=search<CR>
-
-" gina.vim
-call gina#custom#mapping#nmap(
-      \ '/\%(commit\|status\|branch\|ls\|grep\|changes\|tag\)',
-      \ 'q', ':<C-u> q<CR>', {'noremap': 1, 'silent': 1},
-      \ )
-
-" neosnippet.vim
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-
-" open-browser.vim
-nmap <Leader>ob <Plug>(openbrowser-smart-search)
-vmap <Leader>ob <Plug>(openbrowser-smart-search)
-
-" vim-sandwich
-nmap s <Nop>
-vmap s <Nop>
+if dein#tap('denite.nvim')
+  nmap [denite] <Nop>
+  nmap <Leader>d [denite]
+  nmap <silent>[denite]b :<C-u>Denite buffer -highlight-mode-insert=search<CR>
+  nmap <silent>[denite]fm :<C-u>Denite file_mru -highlight-mode-insert=search<CR>
+  nmap <silent>[denite]fr :<C-u>Denite file_rec -highlight-mode-insert=search<CR>
+  nmap <silent>[denite]l :<C-u>Denite line -highlight-mode-insert=search<CR>
+  nmap <silent>[denite]o :<C-u>Denite outline -highlight-mode-insert=search<CR>
+  nmap <silent>[denite]r :<C-u>Denite register -highlight-mode-insert=search<CR>
+endif
 
 " Go
-Gautocmdft go nmap <silent><buffer>K <Plug>(go-doc)
-Gautocmdft go nmap <silent><buffer><LocalLeader>b <Plug>(go-build)<CR>
-Gautocmdft go nmap <silent><buffer><LocalLeader>f <Plug>(go-fmt)<CR>
-Gautocmdft go nmap <silent><buffer><LocalLeader>r <Plug>(go-run)<CR>
-Gautocmdft go nmap <silent><buffer><LocalLeader>t <Plug>(go-test)<CR>
-
-" markdown
-Gautocmdft markdown nmap <LocalLeader>p :PrevimOpen<CR>
+" Gautocmdft go nmap <silent><buffer>K <Plug>(go-doc)
+" Gautocmdft go nmap <silent><buffer><LocalLeader>b <Plug>(go-build)<CR>
+" Gautocmdft go nmap <silent><buffer><LocalLeader>f <Plug>(go-fmt)<CR>
+" Gautocmdft go nmap <silent><buffer><LocalLeader>r <Plug>(go-run)<CR>
+" Gautocmdft go nmap <silent><buffer><LocalLeader>t <Plug>(go-test)<CR>
 
 
 " Must be written at the last
