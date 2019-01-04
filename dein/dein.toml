@@ -9,12 +9,10 @@ repo = "Shougo/vimproc.vim"
 # Language Server Protocol
 # -----------------------------------------------------------------------------
 [[plugins]]
-repo = "prabirshrestha/vim-lsp"
-depends = ["async.vim"]
-hook_add = "call hook#add#lsp#rc()"
-
-[[plugins]]
-repo = "prabirshrestha/async.vim"
+repo = "autozimu/LanguageClient-neovim"
+rev = "next"
+build = "bash install.sh"
+hook_add = "call hook#add#language_client#rc()"
 
 
 # -----------------------------------------------------------------------------
