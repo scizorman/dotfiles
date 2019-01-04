@@ -1,4 +1,4 @@
-function hook#source#ale#rc()
+function hook#source#ale#config()
   " Disable at startup
   let g:ale_enabled = 1
 
@@ -22,16 +22,8 @@ function hook#source#ale#rc()
 
   " Enable linter
   let g:ale_linter = {
-        \ 'c': ['clang'],
-        \ 'cpp': ['clang'],
-        \ 'objc': ['clang'],
-        \ 'objcpp': ['clang'],
-        \ 'python': ['flake8'],
-        \ 'go': ['gofmt'],
-        \ 'html': ['HTMLHint'],
-        \ 'css': ['stylelint'],
-        \ 'sass': ['stylelint'],
-        \ 'scss': ['stylelint'],
+        \ 'go': ['govet'],
+        \ 'python': ['pylint'],
         \ 'dockerfile': ['hadolint'],
         \ 'sh': ['shellcheck'],
         \ 'bash': ['shellcheck'],

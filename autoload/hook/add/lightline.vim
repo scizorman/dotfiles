@@ -1,4 +1,4 @@
-function hook#add#lightline#rc()
+function hook#add#lightline#config()
   let g:lightline = {
         \ 'colorscheme': 'tender',
         \ 'active': {

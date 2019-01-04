@@ -1,4 +1,4 @@
-function! hook#add#gina#rc()
+function! hook#add#gina#config()
   call gina#custom#command#option('diff', '--opener', 'vsplit')
   call gina#custom#execute(
       \ '/\%(commit\)',
@@ -8,4 +8,10 @@ function! hook#add#gina#rc()
       \ '/\%(status\|branch\|ls\|grep\|changes\|tag\)',
       \ 'setlocal winfixheight',
       \ )
+
+  " Mapping
+  call gina#custom#mapping#nmap(
+        \ '/\%(commit\|status\|branch\|ls\|grep\|changes\|tag\)',
+        \ 'q', ':<C-u> q<CR>', {'noremap': 1, 'silent': 1},
+        \ )
 endfunction

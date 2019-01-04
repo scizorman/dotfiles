@@ -1,4 +1,4 @@
-function hook#source#deoplete#rc()
+function hook#source#deoplete#config()
   " core
   let g:deoplete#enable_at_startup = 1
 
