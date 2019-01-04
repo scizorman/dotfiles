@@ -114,13 +114,6 @@ Gautocmd InsertEnter * :PreciousSwitch
 Gautocmd InsertLeave * :PreciousReset
 """
 
-[[plugins]]
-repo = "tyru/open-browser.vim"
-on_map = ["<Plug>(openbrowser-smart-search)"]
-hook_add = """
-let g:netrw_nogx = 1 " Disable netrw"s gx mapping.
-"""
-
 
 # -----------------------------------------------------------------------------
 # Language plugins
