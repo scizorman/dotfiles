@@ -1,44 +1,44 @@
-function! misc#IsWindows()
+function! misc#isWindows()
   return has('win16') || has('win32') || has('win64')
 endfunction
 
 
-function! misc#IsCygwin()
+function! misc#isCygwin()
   return has('win32unix')
 endfunction
 
 
-function! misc#IsMac()
+function! misc#isMac()
   return has('mac') || has('macunix') || has('gui_macvim')
 endfunction
 
 
-function! misc#IsLinux()
-  return !misc#IsMac() && has('unix')
+function! misc#isLinux()
+  return !misc#isMac() && has('unix')
 endfunction
 
 
-function! misc#IsStarting()
+function! misc#isStarting()
   return has('vim-starting')
 endfunction
 
 
-function! misc#IsGui()
+function! misc#isGui()
   return has('gui-running')
 endfunction
 
 
-function! misc#IsTmuxRunning()
+function! misc#isTmuxRunning()
   return !empty($TMUX)
 endfunction
 
 
-function! misc#TmuxProc()
+function! misc#tmuxProc()
   return system('tmux display-message -p "#W"')
 endfunction
 
 
-function! misc#Mkdir(dir)
+function! misc#mkdir(dir)
   if !exists('*mkdir')
     return g:false
   endif
@@ -56,7 +56,7 @@ function! misc#Mkdir(dir)
 endfunction
 
 
-function! misc#PickExecutable(pathspecs)
+function! misc#pickExecutable(pathspecs)
   for l:pathspec in filter(a:pathspecs, '!empty(v:val)')
     for l:path in reverse(glob(l:pathspec, 0, 1))
       if executable(l:path)

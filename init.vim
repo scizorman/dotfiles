@@ -52,7 +52,7 @@ set autowrite
 " Keep backup file after overwriting a file
 set backup
 " List of directories for the backup file
-call misc#Mkdir(g:nvim_path.backup)
+call misc#mkdir(g:nvim_path.backup)
 let &backupdir = g:nvim_path.backup
 " Do not ring the bell for these reasons
 set belloff=all
@@ -65,7 +65,7 @@ set cmdheight=2
 " Columns to highlight
 set colorcolumn=79
 " List of directory names for the swap file
-call misc#Mkdir(g:nvim_path.swap)
+call misc#mkdir(g:nvim_path.swap)
 let &directory = g:nvim_path.swap
 " Use spaces when <Tab> is inserted
 set expandtab
@@ -166,7 +166,7 @@ set ttimeout
 " Time out time for key codes in milliseconds
 set ttimeoutlen=5
 " Where to store undo files
-call misc#Mkdir(g:nvim_path.undo)
+call misc#mkdir(g:nvim_path.undo)
 let &undodir = g:nvim_path.undo
 " Save undo information in a file
 set undofile
@@ -181,7 +181,7 @@ set wildignore+=*.o,*.obj,*.exe,*.dll,*.so,*.out,*.class " compiler
 set wildignore+=*.swp,*.swo,*.swn                        " vim
 set wildignore+=*/.git,*/.hg,*/.svn                      " vcs
 set wildignore+=tags,*.tags                              " tags
-if misc#IsMac()
+if misc#isMac()
   set wildignore+=*.DS_Store
 endif
 " Mode for 'wildchar' command-line expansion
@@ -251,7 +251,7 @@ if dein#load_state(s:dein_path.cache)
   call dein#save_state()
 endif
 
-if !misc#IsStarting() && dein#check_install()
+if !misc#isStarting() && dein#check_install()
   call dein#install()
 endif
 
