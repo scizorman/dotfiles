@@ -224,7 +224,8 @@ if is-at-least 5.0.8; then
   zle -N add-surround surround
   bindkey -a cs change-surround
   bindkey -a ds delete-surround
-  bindkey -a S add-surround
+  bindkey -a ys add-surround
+  bindkey -M visual S add-surround
 fi
 
 # Insert a last word
