@@ -133,19 +133,6 @@ is_bsd(){
 
 
 # -----------------------------------------------------------------------------
-# autoload
-# -----------------------------------------------------------------------------
-autoload -Uz cdr
-autoload -Uz history-search-end
-autoload -Uz modify-current-argument
-autoload -Uz terminfo
-# autoload -Uz vcs_info
-autoload -Uz zcalc
-autoload -Uz zmv
-autoload -Uz run-help-git
-
-
-# -----------------------------------------------------------------------------
 # Alias
 # -----------------------------------------------------------------------------
 # 'ls' color
