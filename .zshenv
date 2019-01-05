@@ -42,6 +42,10 @@ export CVSEDITOR="${EDITOR}"
 export SVN_EDITOR="${EDITOR}"
 export GIT_EDITOR="${EDITOR}"
 
+# Neovim
+export NVIM_PYTHON_LOG_FILE='/tmp/log'
+export NVIM_PYTHON_LOG_LEVEL=DEBUG
+
 
 # -----------------------------------------------------------------------------
 # XDG Base Directory
