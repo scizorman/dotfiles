@@ -326,10 +326,12 @@ if dein#tap('denite.nvim')
 endif
 
 " LanguageClient-neovim
-nnoremap <silent>K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent><Leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent><Leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <silent><Leader>lr :call LanguageClient#textDocument_rename()<CR>
+if dein#tap('LanguageClient-neovim')
+  nnoremap <silent>K :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent><Leader>ld :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <silent><Leader>lf :call LanguageClient#textDocument_formatting()<CR>
+  nnoremap <silent><Leader>lr :call LanguageClient#textDocument_rename()<CR>
+endif
 
 " Go
 " Gautocmdft go nmap <silent><buffer>K <Plug>(go-doc)
