@@ -325,6 +325,12 @@ if dein#tap('denite.nvim')
   nmap <silent>[denite]r :<C-u>Denite register -highlight-mode-insert=search<CR>
 endif
 
+" LanguageClient-neovim
+nnoremap <silent>K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent><Leader>ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent><Leader>lf :call LanguageClient#textDocument_formatting()<CR>
+nnoremap <silent><Leader>lr :call LanguageClient#textDocument_rename()<CR>
+
 " Go
 " Gautocmdft go nmap <silent><buffer>K <Plug>(go-doc)
 " Gautocmdft go nmap <silent><buffer><LocalLeader>b <Plug>(go-build)<CR>

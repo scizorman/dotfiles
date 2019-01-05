@@ -12,15 +12,7 @@ repo = "Shougo/vimproc.vim"
 repo = "autozimu/LanguageClient-neovim"
 rev = "next"
 build = "bash install.sh"
-hook_add = """
-call hook#add#LanguageClient#config()"
-
-" Mapping
-nnoremap <silent>K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent><Leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent><Leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <silent><Leader>lr :call LanguageClient#textDocument_rename()<CR>
-"""
+hook_add = "call hook#add#LanguageClient#config()"
 
 
 # -----------------------------------------------------------------------------
