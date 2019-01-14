@@ -27,12 +27,12 @@ export GO15VENDOREXPERIMENT=1
 export PYENV_ROOT="/usr/local/var/pyenv"
 eval "$(pyenv init -)"
 
-# direnv
-eval "$(direnv hook zsh)"
-
 # Nodebrew
 export NODEBREW_ROOT="/usr/local/var/nodebrew"
 export PATH="$NODEBREW_ROOT/current/bin:$PATH"
+
+# direnv
+eval "$(direnv hook zsh)"
 
 
 # -----------------------------------------------------------------------------
