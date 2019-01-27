@@ -19,7 +19,7 @@ path=( \
 # NOTE: Set fpath before compinit
 typeset -gx -U fpath
 fpath=( \
-  $HOME/.zsh/completions(N-/) \
+  $HOME/.zsh/completion(N-/) \
   $HOME/.zsh/functions(N-/) \
   /usr/local/share/zsh/site-functions(N-/) \
   $fpath \
