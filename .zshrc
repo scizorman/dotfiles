@@ -13,6 +13,7 @@ fi
 # Env Family
 # -----------------------------------------------------------------------------
 typeset -gx -U path 
+
 # Go
 export GOENV_ROOT="/usr/local/var/goenv"
 eval "$(goenv init -)"
