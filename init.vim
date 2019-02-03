@@ -32,7 +32,7 @@ command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
 " -----------------------------------------------------------------------------
 " Python provider
 let g:python_host_prog = $PYENV_ROOT . '/versions/2.7.15/bin/python'
-let g:python3_host_prog = $PYENV_ROOT . '/versions/3.7.1/bin/python'
+let g:python3_host_prog = $PYENV_ROOT . '/versions/3.7.2/bin/python'
 
 " Ruby provider
 let g:loaded_ruby_provider = 0
