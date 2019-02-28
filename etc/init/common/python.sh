@@ -9,7 +9,7 @@ set -eu
 # Python version (latest)
 major=3
 minor=7
-build=1
+build=2
 
 # Install pyenv
 if has 'pyenv' || [ -d "$HOME/.pyenv" ]; then
