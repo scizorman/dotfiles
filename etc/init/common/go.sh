@@ -9,7 +9,7 @@ set -eu
 # Golang version (latest)
 major=1
 minor=11
-build=2
+build=4
 
 # Install goenv
 if has 'goenv' || [ -d "$HOME/.goenv" ]; then
