@@ -65,3 +65,11 @@ else
     exit 1
   fi
 fi
+
+# Update npm
+if npm install -g npm; then
+  log_pass 'npm: Update successfully!'
+else
+  log_fail 'npm: Failed to update.'
+  exit 1
+fi
