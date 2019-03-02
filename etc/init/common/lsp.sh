@@ -41,3 +41,21 @@ else
     exit 1
   fi
 fi
+
+# Install vls
+if has 'vls'; then
+  log_pass 'vls: Already installed!'
+else
+  if has 'npm'; then
+    log_echo 'Install vls with npm'
+    if npm install -g vue-language-server; then
+      log_pass 'vls: Installed successfully!'
+    else
+      log_fail 'vls: Failed to install.'
+      exit 1
+    fi
+  else
+    log_fail 'Error: npm is required.'
+    exit 1
+  fi
+fi
