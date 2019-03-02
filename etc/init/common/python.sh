@@ -41,11 +41,13 @@ fi
 if [[ "$(python -V 2>&1)" =~ ^Python\ $major.$minor.$build$ ]]; then
   log_pass 'Python (latest): Already installed'
 else
-  # Set path for pyenv
-  export PYENV_ROOT='/usr/local/var/pyenv'
-  export PATH="$PYENV_ROOT/bin:$PATH"
   if has 'pyenv'; then
     log_echo 'Install Python (latest) with pyenv'
+
+    # Initialize pyenv
+    export PYENV_ROOT='/usr/local/var/pyenv'
+    eval "$(pyenv init -)"
+
     if pyenv install $major.$minor.$build; then
       log_pass 'Python (latest): Installed successfully!'
     else
@@ -57,7 +59,6 @@ else
     pyenv rehash
     pyenv global $major.$minor.$build
 
-    eval "$(pyenv init -)"
   else
     log_fail 'Error: pyenv is required.'
     exit 1
