@@ -37,6 +37,7 @@ if has 'pip'; then
   if pip show pynvim > /dev/null; then
     log_pass 'Python3 provider: Already installed!'
   else
+    log_echo "Install Python3 provider with pip."
     if pip install pynvim; then
       log_pass 'Python3 provider: Installed successfully!'
     else
@@ -54,6 +55,7 @@ if has 'npm'; then
   if npm list -g neovim > /dev/null; then
     log_pass 'Node.js provider: Already installed!'
   else
+    log_echo "Install Node.js provider with npm."
     if npm install -g neovim; then
       log_pass 'Node.js provider: Install successfully!'
     else
