@@ -3,15 +3,6 @@
 ## Overview
 This is dotfiles for **Zsh**, **Tmux**, and **Neovim**. 
 
-
-## Requirements
-- XCode-CLI (for OSX)
-
-    ```console
-    $ xcode-select --install
-    ```
-
-
 ## Installation
 The easist way to install this dotfiles is to open up a terminal, type the installation command below: Run the following command to setup a new machine:
 
