@@ -1,13 +1,12 @@
 version: 2
 jobs:
-  working_directory: ~/project
   build:
     macos:
       xcode: "10.0.0"
     
+  test:
     steps:
       - checkout
-
       - run:
           name: Install
           command: make install
