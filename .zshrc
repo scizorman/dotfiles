@@ -29,9 +29,9 @@ export GO111MODULE=on
 export PYENV_ROOT="/usr/local/var/pyenv"
 eval "$(pyenv init -)"
 
-# Nodebrew
-export NODEBREW_ROOT="/usr/local/var/nodebrew"
-export PATH="$NODEBREW_ROOT/current/bin:$PATH"
+# Node.js
+export NODENV_ROOT="/usr/local/var/nodenv"
+eval "$(nodenv init -)"
 
 # direnv
 eval "$(direnv hook zsh)"
