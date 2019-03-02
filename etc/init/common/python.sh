@@ -65,16 +65,16 @@ else
   fi
 fi
 
-# Install Pipenv
-if [[ "$(pip -V 2>&1)"  =~ ^pip.*\(python\ $major.$minor\) ]]; then
-  # Update pip
-  if pip install -U pip; then
+# Update pip
+if pip install -U pip; then
     log_pass 'pip: Update successfully!'
   else
     log_echo 'pip: Failed to update.'
     exit 1
-  fi
+fi
 
+# Install Pipenv
+if [[ "$(pip -V 2>&1)"  =~ ^pip.*\(python\ $major.$minor\) ]]; then
   if has 'pipenv'; then
     log_pass 'Pipenv: Already installed!'
   else
