@@ -66,6 +66,7 @@ else
 fi
 
 # Update pip
+log_echo 'Update pip'
 if pip install -U pip; then
     log_pass 'pip: Update successfully!'
   else
