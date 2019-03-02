@@ -30,3 +30,9 @@ if has pyenv; then
   export PYENV_ROOT="/usr/local/var/pyenv"
   eval "$(pyenv init -)"
 fi
+
+# Node.js
+if has nodenv; then
+  export NODENV_ROOT="/usr/local/var/nodenv"
+  eval "$(nodenv init -)"
+fi
