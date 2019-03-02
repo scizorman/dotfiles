@@ -1,0 +1,9 @@
+version: 2
+jobs:
+  build:
+    steps:
+      - checkout
+
+      - run:
+          name: Install
+          command: make install
