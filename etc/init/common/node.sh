@@ -67,6 +67,7 @@ else
 fi
 
 # Update npm
+log_echo 'Update npm'
 if npm install -g npm; then
   log_pass 'npm: Update successfully!'
 else
