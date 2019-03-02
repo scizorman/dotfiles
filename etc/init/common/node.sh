@@ -6,25 +6,23 @@ set -eu
 # Get utilities
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
-# Node.js version (stable)
-NODE_VERSION=11.10.0
+# Node.js version (latest)
+major=11
+minor=10
+build=0
 
-# Install nodebrew
-if has 'nodebrew'; then
-  log_pass 'nodebrew: Already installed!'
+# Install nodenv
+if has 'nodenv'; then
+  log_pass 'nodenv: Already installed!'
 else
   case "$(get_os)" in
     osx)
       if has 'brew'; then
-        log_echo 'Install nodebrew with Homebrew'
-        if brew install nodebrew; then
-          log_pass 'nodebrew: Installed successfully!'
-
-          # Initialize nodebrew
-          export NODEBREW_ROOT='/usr/local/var/nodebrew'
-          nodebrew setup_dirs
+        log_echo 'Install nodenv with Homebrew'
+        if brew install nodenv; then
+          log_pass 'nodenv: Installed successfully!'
         else
-          log_fail 'nodebrew: Failed to install.'
+          log_fail 'nodenv: Failed to install.'
           exit 1
         fi
       else
@@ -39,25 +37,31 @@ else
     esac
 fi
 
-# Install Node.js (stable) with nodebrew
-if has 'node'; then
-  log_pass 'Node.js (stable): Already installed!'
+# Install Node.js (latest) with nodenv
+if [[ "$(node -v 2>&1)" =~ ^v$major.$minor.$build ]]; then
+  log_pass 'Node.js (latest): Already installed!'
 else
-  # Set path for nodebrew
-  if has 'nodebrew'; then
-    log_echo 'Install Node.js (stable) with nodebrew'
-    if nodebrew install-binary $NODE_VERSION; then
-      log_pass 'Node.js (stable): Installed successfully!'
+  if has 'nodenv'; then
+    log_echo 'Install Node.js (latest) with nodenv'
 
-      # Initialize npm
-      export PATH="$NODEBREW_ROOT/current/bin:$PATH"
-      nodebrew use $NODE_VERSION
+    # Initialize nodenv
+    export NODENV_ROOT='/usr/local/var/nodenv'
+    eval "$(nodenv init -)"
+
+    if nodenv install $major.$minor.$build; then
+      log_pass 'Node.js (latest): Installed successfully!'
+
     else
-      log_fail 'Node.js (stable): Failed to install.'
+      log_fail 'Node.js (latest): Failed to install.'
       exit 1
     fi
+
+    # Set the installed node.js global
+    nodenv rehash
+    nodenv global $major.$minor.$build
+
   else
-    log_fail 'Error: nodebrew is required.'
+    log_fail 'Error: nodenv is required.'
     exit 1
   fi
 fi
