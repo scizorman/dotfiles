@@ -9,12 +9,18 @@ set -eu
 if is_osx; then
   if has 'brew'; then
     log_pass 'Homebrew: Already installed!'
-    exit
+    exit 1
   else
-    if /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; then
-      log_pass 'Homebrew: Installed successfully!'
+    if has 'ruby' && has 'curl'; then
+      log_echo 'Install Homebrew with Ruby.'
+      if ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; then
+        log_pass 'Homebrew: Installed successfully!'
+      else
+        log_fail 'Homebrew: Failed to install.'
+        exit 1
+      fi
     else
-      log_fail 'Homebrew: Failed to install.'
+      log_fail 'Error: Ruby and cURL are required.'
       exit 1
     fi
     brew doctor
