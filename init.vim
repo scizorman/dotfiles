@@ -38,7 +38,7 @@ let g:python3_host_prog = $PYENV_ROOT . '/versions/3.7.2/bin/python'
 let g:loaded_ruby_provider = 0
 
 " Node.js provider
-let g:node_host_prog = $NODEBREW_ROOT . '/current/bin/neovim-node-host'
+let g:loaded_node_provider = 0
 
 
 " -----------------------------------------------------------------------------
