@@ -25,7 +25,7 @@ deploy: ## create the symlink to home directory
 	@echo ''
 
 init: ## setup environment settings
-	@DOTPATH=$(DOTPATH) sh $(DOTPATH)/etc/init/init.sh
+	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/init/init.sh
 
 install: update deploy init ## run update, deploy and init
 	@exec $$SHELL
