@@ -1,5 +1,5 @@
 #!/bin/bash
-export DOTFILES_PATH="$(cd $(dirname ../../); pwd)"
+export DOTFILES_PATH="$(cd $(dirname $(readlink $0 || echo $0))/../../; pwd)"
 
 # Stop script if errors occure
 trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
