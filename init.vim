@@ -118,8 +118,6 @@ set number
 set pumheight=10
 " Default regexp engine to use
 set regexpengine=2
-" Show relative line number in front of each line
-set relativenumber
 " Show cursor line and column in the status line
 set ruler
 " Minimum number of lines to scroll
