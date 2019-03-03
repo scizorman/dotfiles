@@ -4,6 +4,7 @@ function hook#add#LanguageClient#config()
   let g:LanguageClient_serverCommands = {
         \ 'go': ['golsp'],
         \ 'python': ['pyls'],
+        \ 'vue': ['vls'],
         \ }
 
   augroup LanguageClient_config
