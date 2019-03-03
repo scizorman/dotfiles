@@ -49,21 +49,3 @@ else
   log_fail 'Error: pip is required.'
   exit 1
 fi
-
-# Install Node.js provider
-if has 'npm'; then
-  if npm list -g neovim > /dev/null; then
-    log_pass 'Node.js provider: Already installed!'
-  else
-    log_echo "Install Node.js provider with npm."
-    if npm install -g neovim; then
-      log_pass 'Node.js provider: Install successfully!'
-    else
-      log_fail 'Node.js provider: Failed to install.'
-      exit 1
-    fi
-  fi
-else
-  log_fail 'Error: npm is required.'
-  exit 1
-fi
