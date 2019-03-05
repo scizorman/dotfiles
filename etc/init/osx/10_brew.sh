@@ -9,7 +9,6 @@ set -eu
 if is_osx; then
   if has 'brew'; then
     log_pass 'Homebrew: Already installed!'
-    exit 1
   else
     if has 'ruby' && has 'curl'; then
       log_echo 'Install Homebrew with Ruby.'
