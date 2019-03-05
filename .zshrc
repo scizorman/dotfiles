@@ -23,7 +23,7 @@ export GOROOT="$GOENV_ROOT/versions/$GO_VERSION"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export GO15VENDOREXPERIMENT=1
-export GO111MODULE=on
+export GO111MODULE=auto
 
 # Python
 export PYENV_ROOT="/usr/local/var/pyenv"
