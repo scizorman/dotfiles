@@ -12,7 +12,7 @@ if has 'vue'; then
 else
   if has 'npm'; then
     log_echo 'Install Vue.js with npm'
-    if npm install -g vue-cli; then
+    if npm install -g @vue/cli; then
       log_pass 'Vue.js: Installed successfully!'
     else
       log_fail 'Vue.js: Failed to install'
