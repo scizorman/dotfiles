@@ -6,10 +6,11 @@ set -eu
 # Get utilities
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
-# Python version (latest)
+# Python version
 major=3
 minor=7
 build=2
+version="$major.$minor.$build"
 
 # Install pyenv
 if has 'pyenv' || [ -d "$HOME/.pyenv" ]; then
@@ -37,27 +38,27 @@ else
   esac
 fi
 
-# Install Python (latest) with pyenv
-if [[ "$(python -V 2>&1)" =~ ^Python\ $major.$minor.$build$ ]]; then
-  log_pass 'Python (latest): Already installed'
+# Install Python with pyenv
+if [[ "$(python -V 2>&1)" =~ ^Python\ $version$ ]]; then
+  log_pass "Python ($version): Already installed"
 else
   if has 'pyenv'; then
-    log_echo 'Install Python (latest) with pyenv'
+    log_echo "Install Python ($version) with pyenv"
 
     # Initialize pyenv
     export PYENV_ROOT='/usr/local/var/pyenv'
     eval "$(pyenv init -)"
 
-    if pyenv install $major.$minor.$build; then
-      log_pass 'Python (latest): Installed successfully!'
+    if pyenv install $version; then
+      log_pass "Python ($version): Installed successfully!"
     else
-      log_fail 'Python (latest): Failed to install.'
+      log_fail "Python ($version): Failed to install."
       exit 1
     fi
 
     # Set the installed python global
     pyenv rehash
-    pyenv global $major.$minor.$build
+    pyenv global $version
 
   else
     log_fail 'Error: pyenv is required.'

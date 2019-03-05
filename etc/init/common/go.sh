@@ -6,10 +6,11 @@ set -eu
 # Get utilities
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
-# Golang version (latest)
+# Golang version
 major=1
 minor=11
 build=4
+version="$major.$minor.$build"
 
 # Install goenv
 if has 'goenv' || [ -d "$HOME/.goenv" ]; then
@@ -37,27 +38,27 @@ else
   esac
 fi
 
-# Install Golang (latest) with goenv
-if [[ "$(go version 2>&1)" =~ ^go\ version\ go$major.$minor.* ]]; then
-  log_pass 'Golang (latest): Already installed'
+# Install Golang with goenv
+if [[ "$(go version 2>&1)" =~ ^go\ version\ go$major.$minor.*$ ]]; then
+  log_pass "Golang ($version): Already installed"
 else
   if has 'goenv'; then
-    log_echo 'Install Golang (latest) with goenv'
+    log_echo "Install Golang ($version) with goenv"
 
     # Initialize goenv
     export GOENV_ROOT="/usr/local/var/goenv"
     eval "$(goenv init -)"
 
-    if goenv install $major.$minor.$build; then
-      log_pass 'Golang (latest): Installed successfully!'
+    if goenv install $version; then
+      log_pass "Golang ($version): Installed successfully!"
     else
-      log_fail 'Golang (latest): Failed to install.'
+      log_fail "Golang ($version): Failed to install."
       exit 1
     fi
 
     # Set the installed go global
     goenv rehash
-    goenv global $major.$minor.$build
+    goenv global $version
 
   else
     log_fail 'Error: goenv is required.'

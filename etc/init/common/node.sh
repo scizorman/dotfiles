@@ -6,10 +6,11 @@ set -eu
 # Get utilities
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
-# Node.js version (latest)
+# Node.js version
 major=11
 minor=10
 build=0
+version="$major.$minor.$build"
 
 # Install nodenv
 if has 'nodenv'; then
@@ -37,28 +38,28 @@ else
     esac
 fi
 
-# Install Node.js (latest) with nodenv
-if [[ "$(node -v 2>&1)" =~ ^v$major.$minor.$build ]]; then
-  log_pass 'Node.js (latest): Already installed!'
+# Install Node.js with nodenv
+if [[ "$(node -v 2>&1)" =~ ^v$version$ ]]; then
+  log_pass "Node.js ($version): Already installed!"
 else
   if has 'nodenv'; then
-    log_echo 'Install Node.js (latest) with nodenv'
+    log_echo "Install Node.js ($version) with nodenv"
 
     # Initialize nodenv
     export NODENV_ROOT='/usr/local/var/nodenv'
     eval "$(nodenv init -)"
 
-    if nodenv install $major.$minor.$build; then
-      log_pass 'Node.js (latest): Installed successfully!'
+    if nodenv install $version; then
+      log_pass "Node.js ($version): Installed successfully!"
 
     else
-      log_fail 'Node.js (latest): Failed to install.'
+      log_fail "Node.js ($version): Failed to install."
       exit 1
     fi
 
     # Set the installed node.js global
     nodenv rehash
-    nodenv global $major.$minor.$build
+    nodenv global $version
 
   else
     log_fail 'Error: nodenv is required.'
