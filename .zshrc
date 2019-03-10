@@ -22,7 +22,6 @@ GO_VERSION="$(goenv version | sed 's/.(.*)$//')"
 export GOROOT="$GOENV_ROOT/versions/$GO_VERSION"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
-export GO15VENDOREXPERIMENT=1
 export GO111MODULE=auto
 
 # Python
