@@ -23,16 +23,16 @@ else
         if brew install pyenv; then
           log_pass 'pyenv: Installed successfully!'
         else
-          log_fail 'pyenv: Failed to install.'
+          log_fail 'pyenv: Failed to install'
           exit 1
         fi
       else
-        log_fail 'Error: Homebrew is required.'
+        log_fail 'Error: Homebrew is required'
         exit 1
       fi
       ;;
     *)
-      log_fail 'Error: This script only supported OSX.'
+      log_fail 'Error: This script only supported OSX'
       exit 1
       ;;
   esac
@@ -52,7 +52,7 @@ else
     if pyenv install $version; then
       log_pass "Python ($version): Installed successfully!"
     else
-      log_fail "Python ($version): Failed to install."
+      log_fail "Python ($version): Failed to install"
       exit 1
     fi
 
@@ -61,7 +61,7 @@ else
     pyenv global $version
 
   else
-    log_fail 'Error: pyenv is required.'
+    log_fail 'Error: pyenv is required'
     exit 1
   fi
 fi
@@ -71,7 +71,7 @@ log_echo 'Update pip'
 if pip install -U pip; then
     log_pass 'pip: Update successfully!'
   else
-    log_echo 'pip: Failed to update.'
+    log_echo 'pip: Failed to update'
     exit 1
 fi
 
@@ -89,6 +89,6 @@ if [[ "$(pip -V 2>&1)"  =~ ^pip.*\(python\ $major.$minor\) ]]; then
     fi
   fi
 else
-  log_fail 'Error: pip is required.'
+  log_fail 'Error: pip is required'
   exit 1
 fi

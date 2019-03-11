@@ -26,7 +26,7 @@ if is_osx; then
         if brew tap "$repo"; then
           log_pass "$repo: Tapped successfully!"
         else
-          log_fail "$repo: Failed to tap."
+          log_fail "$repo: Failed to tap"
           exit 1
         fi
       fi
@@ -50,7 +50,7 @@ if is_osx; then
         if brew install "$formula"; then
           log_pass "$formula: Installed successfully!"
         else
-          log_fail "$formula: Failed to install."
+          log_fail "$formula: Failed to install"
           exit 1
         fi
       fi
@@ -63,7 +63,7 @@ if is_osx; then
     #   if brew install --HEAD universal-ctags/universal-ctags/universal-ctags; then
     #     log_pass "universal-ctags: Installed successfully!"
     #   else
-    #     log_fail "universal-ctags: Failed to install."
+    #     log_fail "universal-ctags: Failed to install"
     #     exit 1
     #   fi
     # fi
@@ -72,10 +72,10 @@ if is_osx; then
     brew update && brew upgrade && brew cleanup
 
   else
-    log_fail 'Error: Homebrew is required.'
+    log_fail 'Error: Homebrew is required'
     exit 1
   fi
 else
-  log_fail 'This script is only supported OSX.'
+  log_fail 'This script is only supported OSX'
   exit 1
 fi

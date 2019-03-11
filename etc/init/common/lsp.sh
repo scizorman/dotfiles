@@ -15,11 +15,11 @@ else
     if go get -u golang.org/x/tools/cmd/golsp; then
       log_pass 'golsp: Installed successfully!'
     else
-      log_fail 'golsp: Failed to install.'
+      log_fail 'golsp: Failed to install'
       exit 1
     fi
   else
-    log_fail 'Error: Go is required.'
+    log_fail 'Error: Go is required'
     exit 1
   fi
 fi
@@ -33,11 +33,11 @@ else
     if pip install python-language-server; then
       log_pass 'pyls: Installed successfully!'
     else
-      log_fail 'pyls: Failed to install.'
+      log_fail 'pyls: Failed to install'
       exit 1
     fi
   else
-    log_fail 'Error: pip is required.'
+    log_fail 'Error: pip is required'
     exit 1
   fi
 fi
@@ -51,11 +51,11 @@ else
     if npm install -g vue-language-server; then
       log_pass 'vls: Installed successfully!'
     else
-      log_fail 'vls: Failed to install.'
+      log_fail 'vls: Failed to install'
       exit 1
     fi
   else
-    log_fail 'Error: npm is required.'
+    log_fail 'Error: npm is required'
     exit 1
   fi
 fi

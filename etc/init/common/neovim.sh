@@ -13,20 +13,20 @@ else
   case "$(get_os)" in
     osx)
       if has 'brew'; then
-        log_echo "Install Neovim with Homebrew."
+        log_echo "Install Neovim with Homebrew"
         if brew install neovim; then
           log_pass 'Neovim: Installed successfully!'
         else
-          log_fail 'Neovim: Failed to install.'
+          log_fail 'Neovim: Failed to install'
           exit 1
         fi
       else
-        log_fail 'Error: Homebrew is required.'
+        log_fail 'Error: Homebrew is required'
         exit 1
       fi
       ;;
     *)
-      log_fail 'Error: This script is only supported OSX.'
+      log_fail 'Error: This script is only supported OSX'
       exit 1
       ;;
   esac
@@ -37,15 +37,15 @@ if has 'pip'; then
   if pip show pynvim > /dev/null; then
     log_pass 'Python3 provider: Already installed!'
   else
-    log_echo "Install Python3 provider with pip."
+    log_echo "Install Python3 provider with pip"
     if pip install pynvim; then
       log_pass 'Python3 provider: Installed successfully!'
     else
-      log_fail 'Python3 provider: Failed to install.'
+      log_fail 'Python3 provider: Failed to install'
       exit 1
     fi
   fi
 else
-  log_fail 'Error: pip is required.'
+  log_fail 'Error: pip is required'
   exit 1
 fi

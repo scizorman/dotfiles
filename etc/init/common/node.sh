@@ -23,16 +23,16 @@ else
         if brew install nodenv; then
           log_pass 'nodenv: Installed successfully!'
         else
-          log_fail 'nodenv: Failed to install.'
+          log_fail 'nodenv: Failed to install'
           exit 1
         fi
       else
-        log_fail 'Error: Homebrew is required.'
+        log_fail 'Error: Homebrew is required'
         exit 1
       fi
       ;;
     *)
-      log_fail 'Error: This script only supported OSX.'
+      log_fail 'Error: This script only supported OSX'
       exit 1
       ;;
     esac
@@ -53,7 +53,7 @@ else
       log_pass "Node.js ($version): Installed successfully!"
 
     else
-      log_fail "Node.js ($version): Failed to install."
+      log_fail "Node.js ($version): Failed to install"
       exit 1
     fi
 
@@ -62,7 +62,7 @@ else
     nodenv global $version
 
   else
-    log_fail 'Error: nodenv is required.'
+    log_fail 'Error: nodenv is required'
     exit 1
   fi
 fi
@@ -72,6 +72,6 @@ log_echo 'Update npm'
 if npm install -g npm; then
   log_pass 'npm: Update successfully!'
 else
-  log_fail 'npm: Failed to update.'
+  log_fail 'npm: Failed to update'
   exit 1
 fi

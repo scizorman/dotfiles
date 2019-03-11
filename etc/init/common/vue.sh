@@ -19,7 +19,7 @@ else
       exit 1
     fi
   else
-    log_fail 'Error: npm is required.'
+    log_fail 'Error: npm is required'
     exit 1
   fi
 fi

@@ -39,7 +39,7 @@ if [ -d "$init_dir" ]; then
     fi
   done
 else
-  log_fail "Error: Not found '$init_dir'."
+  log_fail "Error: Not found '$init_dir'"
   exit 1
 fi
 

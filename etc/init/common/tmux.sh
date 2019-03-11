@@ -13,20 +13,20 @@ else
   case "$(get_os)" in
     osx)
       if has 'brew'; then
-        log_echo 'Install Tmux with Homebrew.'
+        log_echo 'Install Tmux with Homebrew'
         if brew install tmux reattach-to-user-namespace; then
           log_pass 'Tmux: Installed successfully!'
         else
-          log_fail 'Tmux: Failed to install.'
+          log_fail 'Tmux: Failed to install'
           exit 1
         fi
       else
-        log_fail 'Error: Homebrew is required.'
+        log_fail 'Error: Homebrew is required'
         exit 1
       fi
       ;;
     *)
-      log_fail 'Error: This script only supported OSX.'
+      log_fail 'Error: This script only supported OSX'
       exit 1
       ;;
   esac
@@ -41,15 +41,15 @@ else
   fi
 
   if has 'git'; then
-    log_echo 'Install tpm with Git.'
+    log_echo 'Install tpm with Git'
     if git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"; then
       log_pass 'tpm: Installed successfully!'
     else
-      log_fail 'tpm: Failed to install.'
+      log_fail 'tpm: Failed to install'
       exit 1
     fi
   else
-    log_fail 'Error: Git is required.'
+    log_fail 'Error: Git is required'
     exit 1
   fi
 fi
