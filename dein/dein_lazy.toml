@@ -140,6 +140,11 @@ on_ft = ["python"]
 repo = "leafgarland/typescript-vim"
 on_ft = ["typescript"]
 
+# Vue.js
+[[plugins]]
+repo = "posva/vim-vue"
+on_ft = ["vue"]
+
 # Toml
 [[plugins]]
 repo = "cespare/vim-toml"
