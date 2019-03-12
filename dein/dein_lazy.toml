@@ -135,6 +135,11 @@ Gautocmd InsertLeave * :PreciousReset
 repo = "Vimjas/vim-python-pep8-indent"
 on_ft = ["python"]
 
+# TypeScript
+[[plugins]]
+repo = "leafgarland/typescript-vim"
+on_ft = ["typescript"]
+
 # Toml
 [[plugins]]
 repo = "cespare/vim-toml"
