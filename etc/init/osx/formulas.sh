@@ -36,10 +36,6 @@ if is_osx; then
     formulas=(
       brew-rmtree
       direnv
-      # hadolint
-      # mysql
-      # shellcheck
-      # the_platinum_searcher
       tree
     )
 
@@ -55,18 +51,6 @@ if is_osx; then
         fi
       fi
     done
-
-    # Install universal-ctags
-    # if echo "${installed_formulas}" | grep -q "universal-ctags"; then
-    #   log_pass "universal-ctags: Already Installed!"
-    # else
-    #   if brew install --HEAD universal-ctags/universal-ctags/universal-ctags; then
-    #     log_pass "universal-ctags: Installed successfully!"
-    #   else
-    #     log_fail "universal-ctags: Failed to install"
-    #     exit 1
-    #   fi
-    # fi
 
     # update, Upgrade and cleanup
     brew update && brew upgrade && brew cleanup
