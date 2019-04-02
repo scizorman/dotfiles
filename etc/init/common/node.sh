@@ -8,7 +8,7 @@ set -eu
 
 # Node.js version
 major=11
-minor=10
+minor=11
 build=0
 version="$major.$minor.$build"
 
