@@ -21,7 +21,7 @@ else
           exit 1
         fi
       else
-        log_fail 'error: homebrew is required'
+        log_fail 'error: Homebrew is required'
         exit 1
       fi
       ;;
