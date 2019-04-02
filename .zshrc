@@ -28,6 +28,8 @@ export GO111MODULE=auto
 export PYENV_ROOT="/usr/local/var/pyenv"
 eval "$(pyenv init -)"
 
+export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+
 # Node.js
 export NODENV_ROOT="/usr/local/var/nodenv"
 eval "$(nodenv init -)"
