@@ -12,7 +12,7 @@ fi
 # -----------------------------------------------------------------------------
 # Env Family
 # -----------------------------------------------------------------------------
-typeset -gx -U path 
+typeset -gx -U path
 
 # Go
 export GOENV_ROOT="/usr/local/var/goenv"
@@ -43,7 +43,7 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
   # export ZPLUG_LOADFILE=$HOME/.zsh/zplug.zsh
   source $HOME/.zplug/init.zsh
 
-  # Plugins
+  # plugins
   zplug "zplug/zplug", hook-build:'zplug --self-manage'
   zplug "mafredri/zsh-async", from:github
   zplug "sindresorhus/pure", \
@@ -83,7 +83,7 @@ fi
 # -----------------------------------------------------------------------------
 # Functions
 # -----------------------------------------------------------------------------
-# Export the PLATFORM variable as you see fit
+# export the PLATFORM variable as you see fit
 detect_os() {
   export PLATFORM
   case "${(L):-$(uname)}" in
@@ -102,7 +102,7 @@ detect_os() {
   esac
 }
 
-# Returns true if running OS is 'OSX'
+# returns true if running OS is 'OSX'
 is_osx() {
   detect_os
   if [[ $PLATFORM == 'osx' ]]; then
@@ -112,7 +112,7 @@ is_osx() {
   fi
 }
 
-# Returns true if running OS is 'Linux'
+# returns true if running OS is 'Linux'
 is_linux(){
   detect_os
   if [[ $PLATFORM == 'linux' ]]; then
@@ -122,7 +122,7 @@ is_linux(){
   fi
 }
 
-# Returns true if running OS is 'FreeBSD'
+# returns true if running OS is 'FreeBSD'
 is_bsd(){
   detect_os
   if [[ $PLATFORM == 'bsd' ]]; then
@@ -143,7 +143,7 @@ else
   alias ls='lf -F --color'
 fi
 
-# Common aliases
+# common aliases
 alias ld='ls -ld'
 alias ll='ls -lF'
 alias la='ls -AF'
@@ -169,7 +169,7 @@ if is_osx; then
   alias sudo="${ZSH_VERSION:+nocorrect} sudo"
 fi
 
-# Global aliases
+# global aliases
 alias -g G='| grep'
 alias -g L='| less'
 alias -g X='| xargs'
@@ -194,7 +194,7 @@ fi
 # Vim-like keybind as default
 bindkey -v
 
-# Add Emacs-like keybind
+# add Emacs-like keybind
 bindkey -M viins '^F' forward-char
 bindkey -M viins '^B' backward-char
 bindkey -M viins '^A' beginning-of-line
@@ -228,12 +228,12 @@ if is-at-least 5.0.8; then
   bindkey -M visual S add-surround
 fi
 
-# Insert a last word
+# insert a last word
 autoload -Uz smart-insert-last-word
 zle -N insert-last-word smart-insert-last-word
 zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
 
-# Select hisotries
+# select hisotries
 autoload -Uz select-history
 zle -N select-history
 bindkey '^h' select-history
@@ -610,8 +610,8 @@ setopt no_beep # Unset
 # -----------------------------------------------------------------------------
 # Completions
 # -----------------------------------------------------------------------------
-# Styles
-# Completing grouping
+# styles
+# completing grouping
 zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:options' auto-description '%d'
 zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
@@ -623,7 +623,7 @@ zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
 zstyle ':completion:*' group-name ''
 
-# Completing misc
+# completing misc
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _complete _match _approximate
@@ -631,12 +631,12 @@ zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 
-# Directory
+# directory
 zstyle ':completion:*:cd:*' ignored-parents parent pwd
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 
-# For tuning.
+# for tuning
 if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi

@@ -1,12 +1,12 @@
 #!/bin/bash
-# Stop script i errors occure
+# stop script i errors occure
 trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
-# Get utilities
+# get utilities
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
-# Install Tmux
+# install Tmux
 if has 'tmux'; then
   log_pass 'Tmux: Already installed!'
 else
@@ -32,7 +32,7 @@ else
   esac
 fi
 
-# Install tpm (Tmux Plugin Manager)
+# install tpm (Tmux Plugin Manager)
 if [ -d "$HOME/.tmux/plugins/tpm" ]; then
   log_pass 'tpm: Already installed!'
 else

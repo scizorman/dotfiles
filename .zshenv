@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
-# For tuning
-# NOTE: Disable if you don't tune Zsh.
+# for tuning
+# NOTE: disable if you don't tune Zsh.
 # zmodload zsh/zprof && zprof
 
 
@@ -8,7 +8,7 @@
 # Paths
 # -----------------------------------------------------------------------------
 # PATH
-typeset -gx -U path 
+typeset -gx -U path
 path=( \
   $HOME/bin(N-/) \
   $HOME/.zplug/bin(N-/) \
@@ -16,7 +16,7 @@ path=( \
 )
 
 # FPATH
-# NOTE: Set fpath before compinit
+# NOTE: set fpath before compinit
 typeset -gx -U fpath
 fpath=( \
   $HOME/.zsh/completions(N-/) \
@@ -72,7 +72,7 @@ export PAGER='less'
 # Less status line
 export LESS='-R -f -X -i -P ?f%f: (stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
 
-# Less man page colors (makes Man pages more readable).
+# Less man page colors (makes Man pages more readable)
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -114,7 +114,7 @@ export FZF_DEFAULT_OPTS='
 export LSCOLORS=exfxcxdxbxegedabagacad
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
-# Declare the environment variables
+# declare the environment variables
 export CORRECT_IGNORE='_*'
 export CORRECT_IGNORE_FILE='.*'
 

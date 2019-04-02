@@ -1,9 +1,9 @@
 #!/bin/bash
-# Stop script if errors occure
+# stop script if errors occure
 trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
-# Get utilities
+# get utilities
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
 # Golang version
@@ -12,7 +12,7 @@ minor=11
 build=4
 version="$major.$minor.$build"
 
-# Install goenv
+# install goenv
 if has 'goenv' || [ -d "$HOME/.goenv" ]; then
   log_pass 'goenv: Already installed!'
 else
@@ -38,14 +38,14 @@ else
   esac
 fi
 
-# Install Golang with goenv
+# install Golang with goenv
 if [[ "$(go version 2>&1)" =~ ^go\ version\ go$major.$minor.*$ ]]; then
   log_pass "Golang ($version): Already installed!"
 else
   if has 'goenv'; then
     log_echo "Install Golang ($version) with goenv"
 
-    # Initialize goenv
+    # initialize goenv
     export GOENV_ROOT="/usr/local/var/goenv"
     eval "$(goenv init -)"
 
@@ -56,7 +56,7 @@ else
       exit 1
     fi
 
-    # Set the installed go global
+    # set the installed go global
     goenv rehash
     goenv global $version
 

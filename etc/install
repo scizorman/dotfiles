@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # Define functions
 # -----------------------------------------------------------------------------
-# General urilities
+# general urilities
 is_exists() {
   command -v "$1" >/dev/null 2>&1
   return $?
@@ -167,7 +167,7 @@ if [ -z "${DOTFILES_PATH}" ]; then
   export DOTFILES_PATH
 fi
 
-# Download
+# download
 download_dotfiles() {
   if [ -d "$DOTFILES_PATH" ]; then
     log_fail "$DOTFILES_PATH: Already exists."
@@ -205,7 +205,7 @@ download_dotfiles() {
   e_done 'Download'
 }
 
-# Deploy
+# deploy
 deploy_dotfiles() {
   e_newline
   e_header 'Deploying dotfiles...'
@@ -232,7 +232,7 @@ deploy_dotfiles() {
   e_done 'Deploy'
 }
 
-# Initialize
+# initialize
 initialize_dotfiles() {
   e_newline
   e_header 'Initializing dotfiles...'
@@ -252,7 +252,7 @@ initialize_dotfiles() {
   e_done 'Initialize'
 }
 
-# Install
+# install
 install_dotfiles() {
   download_dotfiles && deploy_dotfiles && initialize_dotfiles "$@"
 }

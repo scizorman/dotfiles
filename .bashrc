@@ -1,9 +1,9 @@
 #!/bin/bash
-# If not running interactively, don't do anything
+# if not running interactively, don't do anything
 [ -z "$PS1" ] && return
 [ -n "$VIMRUNTIME" ] && return
 
-# Functions
+# functions
 is_exists() {
   command -v "$1" >/dev/null 2>&1
   return $?

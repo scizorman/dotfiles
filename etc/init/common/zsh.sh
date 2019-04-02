@@ -1,12 +1,12 @@
 #!/bin/bash
-# Stop script if errors occure
+# stop script if errors occure
 trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
-# Get utilities
+# get utilities
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
-# Install Zsh
+# install Zsh
 if has 'zsh'; then
   log_pass 'Zsh: Already installed!'
 else
@@ -32,7 +32,7 @@ else
   esac
 fi
 
-# Install zplug
+# install zplug
 if has 'zplug' || [ -d "$HOME/.zplug" ]; then
   log_pass 'zplug: Already installed!'
 else
@@ -55,7 +55,7 @@ else
   fi
 fi
 
-# Run the forced termination with a last exit code
+# run the forced termination with a last exit code
 # exit $?
 
 # Assign Zsh as a login shell

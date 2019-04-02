@@ -1,13 +1,13 @@
 #!/bin/bash
-# Stop script if errors occure
+# stop script if errors occure
 trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
-# Get utilities
+# get utilities
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
 
-# Install formulas
+# install formulas
 if is_osx; then
   if has 'brew'; then
     brew update
@@ -15,7 +15,7 @@ if is_osx; then
     tapped_repos=$(brew tap)
     installed_formulas=$(brew list)
 
-    # Tap
+    # tap
     tap_repos=(
       beeftornado/rmtree
     )
@@ -32,7 +32,7 @@ if is_osx; then
       fi
     done
 
-    # Install formulas
+    # install formulas
     formulas=(
       brew-rmtree
       direnv
@@ -68,7 +68,7 @@ if is_osx; then
     #   fi
     # fi
 
-    # Update, Upgrade and cleanup
+    # update, Upgrade and cleanup
     brew update && brew upgrade && brew cleanup
 
   else

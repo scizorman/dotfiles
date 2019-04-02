@@ -1,12 +1,12 @@
 #!/bin/bash
-# Stop script if errors occure.
+# stop script if errors occure
 trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
-# Get utilities
+# get utilities
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
-# Install Neovim
+# install Neovim
 if has 'nvim'; then
   log_pass 'Neovim: Already installed!'
 else
@@ -32,7 +32,7 @@ else
   esac
 fi
 
-# Install Python3 provider
+# install Python3 provider
 if has 'pip'; then
   if pip show pynvim > /dev/null; then
     log_pass 'Python3 provider: Already installed!'

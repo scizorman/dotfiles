@@ -1,18 +1,18 @@
 #!/bin/bash
-# Stop script if errors occure
+# stop script if errors occure
 trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
-# Get utilities
+# get utilities
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
-# Python version
+# python version
 major=3
 minor=7
 build=2
 version="$major.$minor.$build"
 
-# Install pyenv
+# install pyenv
 if has 'pyenv' || [ -d "$HOME/.pyenv" ]; then
   log_pass 'pyenv: Already installed!'
 else
@@ -38,14 +38,14 @@ else
   esac
 fi
 
-# Install Python with pyenv
+# install Python with pyenv
 if [[ "$(python -V 2>&1)" =~ ^Python\ $version$ ]]; then
   log_pass "Python ($version): Already installed"
 else
   if has 'pyenv'; then
     log_echo "Install Python ($version) with pyenv"
 
-    # Initialize pyenv
+    # initialize pyenv
     export PYENV_ROOT='/usr/local/var/pyenv'
     eval "$(pyenv init -)"
 
@@ -56,7 +56,7 @@ else
       exit 1
     fi
 
-    # Set the installed python global
+    # set the installed python global
     pyenv rehash
     pyenv global $version
 
@@ -66,7 +66,7 @@ else
   fi
 fi
 
-# Update pip
+# update pip
 log_echo 'Update pip'
 if pip install -U pip; then
     log_pass 'pip: Update successfully!'
@@ -75,7 +75,7 @@ if pip install -U pip; then
     exit 1
 fi
 
-# Install Pipenv
+# install Pipenv
 if [[ "$(pip -V 2>&1)"  =~ ^pip.*\(python\ $major.$minor\) ]]; then
   if has 'pipenv'; then
     log_pass 'Pipenv: Already installed!'
