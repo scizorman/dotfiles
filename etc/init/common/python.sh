@@ -1,6 +1,6 @@
 #!/bin/bash
 # stop script if errors occure
-trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
+trap 'echo error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
 # get utilities
@@ -14,25 +14,25 @@ version="$major.$minor.$build"
 
 # install pyenv
 if has 'pyenv' || [ -d "$HOME/.pyenv" ]; then
-  log_pass 'pyenv: Already installed!'
+  log_pass 'pyenv: already installed!'
 else
   case "$(get_os)" in
     osx)
       if has 'brew'; then
-        log_echo 'Install pyenv with Homebrew'
+        log_echo 'install pyenv with Homebrew'
         if brew install pyenv; then
-          log_pass 'pyenv: Installed successfully!'
+          log_pass 'pyenv: installed successfully!'
         else
-          log_fail 'pyenv: Failed to install'
+          log_fail 'pyenv: failed to install'
           exit 1
         fi
       else
-        log_fail 'Error: Homebrew is required'
+        log_fail 'error: Homebrew is required'
         exit 1
       fi
       ;;
     *)
-      log_fail 'Error: This script only supported OSX'
+      log_fail 'error: this script only supported OSX'
       exit 1
       ;;
   esac
@@ -40,19 +40,19 @@ fi
 
 # install Python with pyenv
 if [[ "$(python -V 2>&1)" =~ ^Python\ $version$ ]]; then
-  log_pass "Python ($version): Already installed"
+  log_pass "Python ($version): already installed"
 else
   if has 'pyenv'; then
-    log_echo "Install Python ($version) with pyenv"
+    log_echo "install Python ($version) with pyenv"
 
     # initialize pyenv
     export PYENV_ROOT='/usr/local/var/pyenv'
     eval "$(pyenv init -)"
 
     if pyenv install $version; then
-      log_pass "Python ($version): Installed successfully!"
+      log_pass "Python ($version): installed successfully!"
     else
-      log_fail "Python ($version): Failed to install"
+      log_fail "Python ($version): failed to install"
       exit 1
     fi
 
@@ -61,34 +61,34 @@ else
     pyenv global $version
 
   else
-    log_fail 'Error: pyenv is required'
+    log_fail 'error: pyenv is required'
     exit 1
   fi
 fi
 
 # update pip
-log_echo 'Update pip'
+log_echo 'update pip'
 if pip install -U pip; then
-    log_pass 'pip: Update successfully!'
+    log_pass 'pip: update successfully!'
   else
-    log_echo 'pip: Failed to update'
+    log_echo 'pip: failed to update'
     exit 1
 fi
 
 # install Pipenv
 if [[ "$(pip -V 2>&1)"  =~ ^pip.*\(python\ $major.$minor\) ]]; then
   if has 'pipenv'; then
-    log_pass 'Pipenv: Already installed!'
+    log_pass 'Pipenv: already installed!'
   else
-    log_echo 'Install Pipenv'
+    log_echo 'install Pipenv'
     if pip install pipenv; then
-      log_pass 'Pipenv: Install successfully!'
+      log_pass 'Pipenv: install successfully!'
     else
-      log_fail 'Pipenv: Failed to install'
+      log_fail 'Pipenv: failed to install'
       exit 1
     fi
   fi
 else
-  log_fail 'Error: pip is required'
+  log_fail 'error: pip is required'
   exit 1
 fi

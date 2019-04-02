@@ -25,6 +25,8 @@ while true; do
 done 2>/dev/null &
 
 # initialize
+log_echo "start initialize"
+
 init_dir="$DOTFILES_PATH"/etc/init/"$(get_os)"
 
 if [ -d "$init_dir" ]; then
@@ -39,10 +41,10 @@ if [ -d "$init_dir" ]; then
     fi
   done
 else
-  log_fail "Error: Not found '$init_dir'"
+  log_fail "error: Not found '$init_dir'"
   exit 1
 fi
 
 # log_pass "$0: Finish!!" | sed "s $DOTFILES_PATH \$DOTFILES_PATH g"
 e_newline
-log_pass "Initialize: Finish!"
+log_pass "finished initialize successfully!"

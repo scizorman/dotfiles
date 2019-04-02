@@ -21,12 +21,12 @@ if is_osx; then
     )
     for repo in "${tap_repos[@]}"; do
       if echo "${tapped_repos[@]}" | grep -q "$repo"; then
-        log_pass "$repo: Already tapped!"
+        log_pass "$repo: already tapped!"
       else
         if brew tap "$repo"; then
-          log_pass "$repo: Tapped successfully!"
+          log_pass "$repo: tapped successfully!"
         else
-          log_fail "$repo: Failed to tap"
+          log_fail "$repo: failed to tap"
           exit 1
         fi
       fi
@@ -45,12 +45,12 @@ if is_osx; then
 
     for formula in "${formulas[@]}"; do
       if echo "${installed_formulas[@]}" | grep -q "$formula"; then
-        log_pass "$formula: Already installed!"
+        log_pass "$formula: already installed!"
       else
         if brew install "$formula"; then
-          log_pass "$formula: Installed successfully!"
+          log_pass "$formula: installed successfully!"
         else
-          log_fail "$formula: Failed to install"
+          log_fail "$formula: failed to install"
           exit 1
         fi
       fi
@@ -72,10 +72,10 @@ if is_osx; then
     brew update && brew upgrade && brew cleanup
 
   else
-    log_fail 'Error: Homebrew is required'
+    log_fail 'error: Homebrew is required'
     exit 1
   fi
 else
-  log_fail 'This script is only supported OSX'
+  log_fail 'this script is only supported OSX'
   exit 1
 fi

@@ -14,25 +14,25 @@ version="$major.$minor.$build"
 
 # install goenv
 if has 'goenv' || [ -d "$HOME/.goenv" ]; then
-  log_pass 'goenv: Already installed!'
+  log_pass 'goenv: already installed!'
 else
   case "$(get_os)" in
     osx)
       if has 'brew'; then
-        log_echo 'Install goenv with Homebrew'
+        log_echo 'install goenv with Homebrew'
         if brew install goenv; then
-          log_pass 'goenv: Installed successfully!'
+          log_pass 'goenv: installed successfully!'
         else
-          log_fail 'goenv: Failed to install'
+          log_fail 'goenv: failed to install'
           exit 1
         fi
       else
-        log_fail 'Error: Homebrew is required'
+        log_fail 'error: Homebrew is required'
         exit 1
       fi
       ;;
     *)
-      log_fail 'Error: This script only supported OSX'
+      log_fail 'error: this script only supported OSX'
       exit 1
       ;;
   esac
@@ -40,19 +40,19 @@ fi
 
 # install Golang with goenv
 if [[ "$(go version 2>&1)" =~ ^go\ version\ go$major.$minor.*$ ]]; then
-  log_pass "Golang ($version): Already installed!"
+  log_pass "Golang ($version): already installed!"
 else
   if has 'goenv'; then
-    log_echo "Install Golang ($version) with goenv"
+    log_echo "install Golang ($version) with goenv"
 
     # initialize goenv
     export GOENV_ROOT="/usr/local/var/goenv"
     eval "$(goenv init -)"
 
     if goenv install $version; then
-      log_pass "Golang ($version): Installed successfully!"
+      log_pass "Golang ($version): installed successfully!"
     else
-      log_fail "Golang ($version): Failed to install"
+      log_fail "Golang ($version): failed to install"
       exit 1
     fi
 
@@ -61,7 +61,7 @@ else
     goenv global $version
 
   else
-    log_fail 'Error: goenv is required'
+    log_fail 'error: goenv is required'
     exit 1
   fi
 fi
