@@ -12,7 +12,7 @@ if is_osx; then
   else
     if has 'ruby' && has 'curl'; then
       log_echo 'install Homebrew with Ruby'
-      if ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; then
+      if /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; then
         log_pass 'Homebrew: installed successfully!'
       else
         log_fail 'Homebrew: failed to install'
