@@ -2,7 +2,7 @@ function hook#add#LanguageClient#config()
   set hidden
 
   let g:LanguageClient_serverCommands = {
-        \ 'go': ['golsp'],
+        \ 'go': ['gopls'],
         \ 'python': ['pyls'],
         \ 'vue': ['vls'],
         \ }
