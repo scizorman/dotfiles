@@ -11,6 +11,7 @@
 typeset -gx -U path
 path=( \
   $HOME/bin(N-/) \
+  $HOME/.local/bin \
   $HOME/.zplug/bin(N-/) \
   "$path[@]" \
 )
@@ -119,20 +120,3 @@ export CORRECT_IGNORE='_*'
 export CORRECT_IGNORE_FILE='.*'
 
 export WORDCHARS='*?.[]~&;!#$%^(){}<>'
-
-# gettext
-export PATH="/usr/local/opt/gettext/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/gettext/lib"
-export CPPFLAGS="-I/usr/local/opt/gettext/include"
-
-# Openssl
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include"
-
-# pkgconfig
-export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
-
-# readline
-export LDFLAGS="-L/usr/local/opt/readline/lib"
-export CPPFLAGS="-I/usr/local/opt/readline/include"
