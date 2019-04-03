@@ -29,6 +29,7 @@ export PYENV_ROOT="/usr/local/var/pyenv"
 eval "$(pyenv init -)"
 
 export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+export PIPENV_VENV_IN_PROJECT=true
 
 # Node.js
 export NODENV_ROOT="/usr/local/var/nodenv"
@@ -36,6 +37,20 @@ eval "$(nodenv init -)"
 
 # direnv
 eval "$(direnv hook zsh)"
+
+
+# -----------------------------------------------------------------------------
+# Google Cloud SDK
+# -----------------------------------------------------------------------------
+# updates PATH for the Google Cloud SDK
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then
+  source "$HOME/google-cloud-sdk/path.zsh.inc"
+fi
+
+# enables shell command completion for gcloud
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
+  source "$HOME/google-cloud-sdk/completion.zsh.inc"
+fi
 
 
 # -----------------------------------------------------------------------------
