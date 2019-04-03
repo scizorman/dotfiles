@@ -1,0 +1,9 @@
+[user]
+	name = scizorman
+	email = tueda1207@gmail.com
+[push]
+	default = simple
+[color]
+	ui = auto
+[core]
+	excludesfile = /Users/scizorman/.gitignore-global
