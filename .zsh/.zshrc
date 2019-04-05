@@ -4,7 +4,7 @@ limit coredumpsize 0
 
 
 # Zplugin
-source "$ZDOTDIR/.zplugin/bin/zplugin.zsh"
+source "$ZDOTDIR/.zplugin/zplugin.zsh"
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 
