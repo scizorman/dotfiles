@@ -1,4 +1,15 @@
-.DS_Store
-.config/*
-!.config/nvim
-.tags
+### Zsh
+# Compiled files
+**/*.zwc
+
+# History
+*/.zhistory
+
+# Cache of completion candidates
+*/.zcompcache
+
+# List of interpolation functions
+*/.zcompdump
+
+# Zplugin
+*/.zplugin
