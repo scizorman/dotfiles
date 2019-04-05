@@ -2,10 +2,10 @@
 trap 'echo error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
-# get utilities
+# Get utilities
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
-# install Homebrew
+# Install Homebrew
 if is_osx; then
   if has 'brew'; then
     log_pass 'Homebrew: already installed!'
