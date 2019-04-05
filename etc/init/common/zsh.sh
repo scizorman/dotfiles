@@ -32,26 +32,24 @@ else
   esac
 fi
 
-# install zplug
-if has 'zplug' || [ -d "$HOME/.zplug" ]; then
-  log_pass 'zplug: already installed!'
+# Install Zplugin
+if has 'zplugin' || [ -d "${ZDOTDIR:-$HOME/.zsh}/.zplugin" ]; then
+  log_pass 'Zplugin: already installed!'
 else
-  if has 'curl'; then
-    log_echo 'install zplug with cURL'
-    if curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh; then
-      log_pass 'zplug: install successfully!'
+  if has 'git'; then
+    log_echo 'install Zplugin with Git'
+
+    ZPLUGIN_URL='https://github.com/zdharma/zplugin'
+
+    if git clone $ZPLUGIN_URL $ZDOTDIR/.zplugin; then
+      log_pass 'Zplugin: install successfully!'
     else
-      log_fail 'zplug: failed to install'
+      log_fail 'Zplugin: failed to install'
       exit 1
     fi
-  elif has 'git'; then
-    log_echo 'install zplug with Git'
-    if git clone https://github.com/zplug/zplug ~/.zplug; then
-      log_pass 'zplug: install successfully!'
-    else
-      log_fail 'zplug: failed to install'
-      exit 1
-    fi
+  else
+    log_fail 'error: Git is required'
+    exit 1
   fi
 fi
 
