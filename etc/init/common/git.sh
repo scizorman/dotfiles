@@ -1,12 +1,12 @@
 #!/bin/bash
-# stop script if errors occure
+# Stop script if errors occure
 trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
-# get utilities
+# Get utilities
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
-# install Git
+# Install Git
 if has 'git'; then
   log_pass 'Git: already installed!'
 else

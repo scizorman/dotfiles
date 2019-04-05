@@ -1,65 +1,35 @@
 #!/bin/bash
-# stop script if errors occure
+# Stop script if errors occure
 trap 'echo error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
-# get utilities
+# Get utilities
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
-# Node.js version
-major=11
-minor=11
-build=0
-version="$major.$minor.$build"
+# Node.js version (stable)
+MAJOR=10
+MINOR=15
+BUILD=3
+VERSION="$MAJOR.$MINOR.$BUILD"
 
-# install nodenv
-if has 'nodenv'; then
-  log_pass 'nodenv: already installed!'
-else
-  case "$(get_os)" in
-    osx)
-      if has 'brew'; then
-        log_echo 'install nodenv with Homebrew'
-        if brew install nodenv; then
-          log_pass 'nodenv: installed successfully!'
-        else
-          log_fail 'nodenv: failed to install'
-          exit 1
-        fi
-      else
-        log_fail 'error: Homebrew is required'
-        exit 1
-      fi
-      ;;
-    *)
-      log_fail 'error: this script only supported OSX'
-      exit 1
-      ;;
-    esac
-fi
-
-# install Node.js with nodenv
-if [[ "$(node -v 2>&1)" =~ ^v$version$ ]]; then
-  log_pass "Node.js ($version): already installed!"
+# Install Node.js with nodenv
+if [[ "$(node -v 2>&1)" =~ ^v$VERSION$ ]]; then
+  log_pass "Node.js ($VERSION): already installed!"
 else
   if has 'nodenv'; then
-    log_echo "install Node.js ($version) with nodenv"
+    log_echo "install Node.js ($VERSION) with nodenv"
 
-    # initialize nodenv
-    export NODENV_ROOT='/usr/local/var/nodenv'
-    eval "$(nodenv init -)"
-
-    if nodenv install $version; then
-      log_pass "Node.js ($version): installed successfully!"
-
+    # Initialize nodenv
+    if nodenv install $VERSION; then
+      log_pass "Node.js ($VERSION): installed successfully!"
     else
-      log_fail "Node.js ($version): failed to install"
+      log_fail "Node.js ($VERSION): failed to install"
       exit 1
     fi
 
-    # set the installed node.js global
+    # Set the installed node.js global
+    nodenv global $VERSION
     nodenv rehash
-    nodenv global $version
 
   else
     log_fail 'error: nodenv is required'
@@ -67,7 +37,7 @@ else
   fi
 fi
 
-# update npm
+# Update npm
 log_echo 'update npm'
 if npm install -g npm; then
   log_pass 'npm: update successfully!'
