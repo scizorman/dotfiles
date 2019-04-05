@@ -29,6 +29,19 @@ zplugin light monochromegane/the_platinum_searcher
 zplugin ice wait"!0" from"gh-r" as"program" mv"direnv* -> direnv" atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' pick"direnv"
 zplugin light direnv/direnv
 
+zplugin ice wait"!0" as"program" pick"gibo"
+zplugin light simonwhitaker/gibo
+
+# NOTE: In the future, enable automatic determination (bpick)
+zplugin ice wait"!0" from"gh-r" as"program" mv"jq* -> jq" pick"jq" bpick"*osx*"
+zplugin light stedolan/jq
+
+zplugin ice wait"!0" from"gh-r" as"program" pick"hugo" bpick"*macOS-64bit*"
+zplugin light gohugoio/hugo
+
+zplugin ice wait"!0" from"gh-r" as"program" pick"nvim*/bin/nvim" bpick"*macos*"
+zplugin light neovim/neovim
+
 zplugin ice wait"!0" atinit'zmodload zsh/zprof; zpcompinit; zpcdreplay' atload'zprof | head; zmodload -u zsh/zprof'
 # zplugin ice wait"!0" atinit'zpcompinit; zpcdreplay'
 zplugin light zdharma/fast-syntax-highlighting
