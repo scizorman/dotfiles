@@ -71,12 +71,12 @@ else
   fi
 fi
 
-# Update pip
-log_echo 'update pip'
+# Update Pip
+log_echo 'update Pip'
 if pip install -U pip; then
-    log_pass 'pip: update successfully!'
+    log_pass 'Pip: update successfully!'
   else
-    log_echo 'pip: failed to update'
+    log_echo 'Pip: failed to update'
     exit 1
 fi
 
@@ -94,6 +94,6 @@ if [[ "$(pip -V 2>&1)"  =~ ^pip.*\(python\ $MAJOR.$MINOR\) ]]; then
     fi
   fi
 else
-  log_fail 'error: pip is required'
+  log_fail 'error: Pip is required'
   exit 1
 fi
