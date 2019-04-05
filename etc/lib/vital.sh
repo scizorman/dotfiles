@@ -1,5 +1,5 @@
 #!/bin/bash
-# general utilities
+# General utilities
 is_interactive() {
   if [ "${-/i/}" != "$-" ]; then
     return 0
@@ -90,7 +90,7 @@ get_os() {
 }
 
 
-# logging
+# Logging
 e_newline() {
   printf "\n"
 }

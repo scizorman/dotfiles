@@ -1,11 +1,11 @@
 #!/bin/bash
 export DOTFILES_PATH="$(cd $(dirname $(readlink $0 || echo $0))/../../; pwd)"
 
-# stop script if errors occure
+# Stop script if errors occure
 trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
-# get utilities
+# Get utilities
 if [ -z "$DOTFILES_PATH" ]; then
   echo "$DOTFILES_PATH not set" >&2
   exit 1
@@ -13,24 +13,24 @@ fi
 
 . "$DOTFILES_PATH/etc/lib/vital.sh"
 
-# ask for the administrator password upfront
+# Ask for the administrator password upfront
 sudo -v
 
-# keep-alive
-# update existing `sudo` time stamp until this script has finnished
+# Keep-alive
+# Update existing `sudo` time stamp until this script has finnished
 while true; do
   sudo -n true
   sleep 60;
   kill -0 "$$" || exit
 done 2>/dev/null &
 
-# initialize
+# Initialize
 log_echo "start initialize"
 
-init_dir="$DOTFILES_PATH"/etc/init/"$(get_os)"
+INIT_DIR="$DOTFILES_PATH"/etc/init/"$(get_os)"
 
-if [ -d "$init_dir" ]; then
-  for i in "$init_dir"/*.sh; do
+if [ -d "$INIT_DIR" ]; then
+  for i in "$INIT_DIR"/*.sh; do
     if [ -f "$i" ]; then
       log_info "$(e_arrow "$(basename "$i")")"
       if [ "${DEBUG:-}" != 1 ]; then
@@ -41,10 +41,9 @@ if [ -d "$init_dir" ]; then
     fi
   done
 else
-  log_fail "error: Not found '$init_dir'"
+  log_fail "error: Not found '$INIT_DIR'"
   exit 1
 fi
 
-# log_pass "$0: Finish!!" | sed "s $DOTFILES_PATH \$DOTFILES_PATH g"
 e_newline
 log_pass "finished initialize successfully!"
