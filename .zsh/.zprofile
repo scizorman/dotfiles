@@ -21,8 +21,10 @@ fpath=( \
 export ANYENV_ROOT="$HOME/.anyenv"
 export ANYENV_DEFINITION_ROOT="$XDG_CONFIG_HOME/anyenv/anyenv-install"
 export PATH="$HOME/.anyenv/bin:$PATH"
-# NOTE: Make lazy load
-eval "$(anyenv init - --no-rehash)"
+
+ANYENV_INIT_SOURCE="$ZDOTDIR/anyenv-init.zsh"
+[[ ! -f "$ANYENV_INIT_SOURCE" ]] && anyenv init - --no-rehash > "$ANYENV_INIT_SOURCE"
+source "$ANYENV_INIT_SOURCE"
 
 # Go
 export GOPATH="${GOPATH:-$HOME/go}"
