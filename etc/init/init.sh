@@ -26,6 +26,7 @@ done 2>/dev/null &
 
 # Initialize
 log_echo "start initialize"
+e_newline
 
 INIT_DIR="$DOTFILES_PATH"/etc/init/"$(get_os)"
 
