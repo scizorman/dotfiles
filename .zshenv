@@ -6,4 +6,4 @@ setopt no_global_rcs
 export ZDOTDIR="$HOME/.zsh"
 
 # Source setting files
-source "$ZDOTDIR/.zsh"
+source "$ZDOTDIR/.zshenv"
