@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # if not running interactively, don't do anything
 [ -z "$PS1" ] && return
 [ -n "$VIMRUNTIME" ] && return
