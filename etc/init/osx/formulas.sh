@@ -35,6 +35,7 @@ if is_osx; then
     # Install formulas
     formulas=(
       brew-rmtree
+      terraform
     )
 
     for formula in "${formulas[@]}"; do
