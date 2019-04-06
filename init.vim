@@ -316,7 +316,7 @@ if dein#tap('denite.nvim')
   nmap [denite] <Nop>
   nmap <Leader>d [denite]
   nmap <silent>[denite]b :<C-u>Denite buffer -highlight-mode-insert=search<CR>
-  nmap <silent>[denite]fr :<C-u>Denite file_rec -highlight-mode-insert=search<CR>
+  nmap <silent>[denite]fr :<C-u>Denite file/rec -highlight-mode-insert=search<CR>
   nmap <silent>[denite]l :<C-u>Denite line -highlight-mode-insert=search<CR>
   nmap <silent>[denite]o :<C-u>Denite outline -highlight-mode-insert=search<CR>
   nmap <silent>[denite]r :<C-u>Denite register -highlight-mode-insert=search<CR>

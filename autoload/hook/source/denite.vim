@@ -5,44 +5,29 @@ function hook#source#denite#config()
   call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
   call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
 
-  call denite#custom#source(
-        \ 'buffer',
-        \ 'matchers',
-        \ ['matcher/fuzzy', 'matcher/project_files'],
-        \ )
+  call denite#custom#source('buffer', 'matchers',
+        \ ['matcher/fuzzy', 'matcher/project_files'])
 
   call denite#custom#var('grep', 'command', ['pt'])
-  call denite#custom#var(
-        \ 'grep',
-        \ 'default-opts',
-        \ ['--follow', '--hidden', '--nocolor',  '--nogroup', '--ignore="_*"']
-        \ )
+  call denite#custom#var('grep', 'default-opts',
+        \ ['--follow', '--hidden', '--nocolor',  '--nogroup', '--ignore="_*"'])
   call denite#custom#var('grep', 'recursive_opts', [])
   call denite#custom#var('grep', 'pattern_opt', ['-e'])
   call denite#custom#var('grep', 'separator', ['--'])
   call denite#custom#var('grep', 'final_opts', [])
 
-  call denite#custom#source(
-        \ 'file_rec',
-        \ 'matchers',
-        \ ['matcher/fuzzy', 'matcher/project_files', 'matcher/ignore_globs'],
-        \ )
-  call denite#custom#source('file_rec', 'sorters', ['sorter/sublime'])
-  call denite#custom#var(
-        \ 'file_rec',
-        \ 'command',
-        \ ['pt', '--nocolor', '--nogroup', '--follow', '--hidden', '-g=', '']
-        \ )
+  " file/rec
+  call denite#custom#source('file/rec', 'matchers',
+        \ ['matcher/fuzzy', 'matcher/project_files', 'matcher/ignore_globs'])
+  call denite#custom#source('file/rec', 'sorters', ['sorter/sublime'])
+  call denite#custom#var('file/rec', 'command',
+        \ ['pt', '--nocolor', '--nogroup', '--follow', '--hidden', '-g=', ''])
 
-  call denite#custom#source(
-        \ 'line',
-        \ 'command',
-        \ ['pt', '--nocolor', '--nogroup', '--follow', '--hidden', '-g=', '']
-        \ )
+  " line
+  call denite#custom#source('line', 'command',
+        \ ['pt', '--nocolor', '--nogroup', '--follow', '--hidden', '-g=', ''])
 
-  call denite#custom#filter(
-        \ 'matcher/ignore_globs',
-        \ 'ignore_globs',
+  call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
         \ ['.git/', '.ropeproject/', '.__pycache__/', 'venv/', 'images/', '*.min.*',
         \  'img/', 'fonts/', 'vendor/', '*pyc', '.DS_Store'],
         \ )
