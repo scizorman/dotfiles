@@ -8,24 +8,24 @@ function hook#source#denite#config()
   call denite#custom#source('buffer', 'matchers',
         \ ['matcher/fuzzy', 'matcher/project_files'])
 
-  call denite#custom#var('grep', 'command', ['pt'])
-  call denite#custom#var('grep', 'default-opts',
-        \ ['--follow', '--hidden', '--nocolor',  '--nogroup', '--ignore="_*"'])
-  call denite#custom#var('grep', 'recursive_opts', [])
-  call denite#custom#var('grep', 'pattern_opt', ['-e'])
-  call denite#custom#var('grep', 'separator', ['--'])
-  call denite#custom#var('grep', 'final_opts', [])
+	call denite#custom#var('grep', 'command', ['rg'])
+	call denite#custom#var('grep', 'default_opts',
+			\ ['--ignore-case', '--vimgrep', '--no-heading'])
+	call denite#custom#var('grep', 'recursive_opts', [])
+	call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+	call denite#custom#var('grep', 'separator', ['--'])
+	call denite#custom#var('grep', 'final_opts', [])
 
   " file/rec
   call denite#custom#source('file/rec', 'matchers',
         \ ['matcher/fuzzy', 'matcher/project_files', 'matcher/ignore_globs'])
   call denite#custom#source('file/rec', 'sorters', ['sorter/sublime'])
-  call denite#custom#var('file/rec', 'command',
-        \ ['pt', '--nocolor', '--nogroup', '--follow', '--hidden', '-g=', ''])
+  call denite#custom#var('filre/rec', 'command',
+        \ ['rg', '--follow', '--hidden'])
 
   " line
   call denite#custom#source('line', 'command',
-        \ ['pt', '--nocolor', '--nogroup', '--follow', '--hidden', '-g=', ''])
+        \ ['rg', '--follow', '--hidden'])
 
   call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
         \ ['.git/', '.ropeproject/', '.__pycache__/', 'venv/', 'images/', '*.min.*',
