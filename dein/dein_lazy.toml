@@ -64,12 +64,8 @@ repo = "Shougo/context_filetype.vim"
 # -----------------------------------------------------------------------------
 [[plugins]]
 repo = "Shougo/denite.nvim"
-depends = ["neomru.vim"]
 build = "UpdateRemotePlugins"
 hook_source = "call hook#source#denite#config()"
-
-[[plugins]]
-repo = "Shougo/neomru.vim"
 
 
 # -----------------------------------------------------------------------------

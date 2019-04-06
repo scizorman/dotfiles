@@ -35,12 +35,6 @@ function hook#source#denite#config()
         \ )
 
   call denite#custom#source(
-        \ 'file_mru',
-        \ 'matchers',
-        \ ['matcher/fuzzy', 'matcher/project_files'],
-        \ )
-
-  call denite#custom#source(
         \ 'line',
         \ 'command',
         \ ['pt', '--nocolor', '--nogroup', '--follow', '--hidden', '-g=', '']
