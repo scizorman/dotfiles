@@ -30,6 +30,11 @@ source "$ANYENV_INIT_SOURCE"
 export GOPATH="${GOPATH:-$HOME/go}"
 export PATH="$GOPATH/bin:$PATH"
 
+# Python
+# Pipenv
+export PIPENV_DEFAULT_PYTHON_VERSION=3.7.3
+export PIPENV_VENV_IN_PROJECT=true
+
 
 # Utility functions
 # Export 'PLATFORM' variable as you see fit
