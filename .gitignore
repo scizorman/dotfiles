@@ -13,3 +13,11 @@
 
 # Zplugin
 */.zplugin
+
+# Cachee of "anyenv init - --no-rehash"
+*/anyenv-init.zsh
+
+
+## Node.js
+# Installed packages
+node_modules

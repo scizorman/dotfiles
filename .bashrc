@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # if not running interactively, don't do anything
 [ -z "$PS1" ] && return
 [ -n "$VIMRUNTIME" ] && return
@@ -13,26 +13,10 @@ has() {
   is_exists "$@"
 }
 
+
+# Initialize `anyenv`
+eval "$(anyenv init -)"
+
 # Go
-if has goenv; then
-  export GOENV_ROOT="/usr/local/var/goenv"
-  eval "$(goenv init -)"
-
-  GO_VERSION="$(goenv version | sed 's/.(.*)$//')"
-  export GOROOT="$GOENV_ROOT/versions/$GO_VERSION"
-fi
-
-export GOPATH="$HOME/go"
+export GOPATH="${GOPATH:-$HOME/go}"
 export PATH="$GOPATH/bin:$PATH"
-
-# Python
-if has pyenv; then
-  export PYENV_ROOT="/usr/local/var/pyenv"
-  eval "$(pyenv init -)"
-fi
-
-# Node.js
-if has nodenv; then
-  export NODENV_ROOT="/usr/local/var/nodenv"
-  eval "$(nodenv init -)"
-fi

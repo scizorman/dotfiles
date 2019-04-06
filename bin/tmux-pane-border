@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 # SSH info
-function get_ssh_info(){
+function get_ssh_info() {
   local current_pane_pid="$1"
   local ssh_info=$({ pgrep -flaP $current_pane_pid;  ps -o command -p $pane_pid; } | xargs -I{} echo {} | awk '/ssh/' | sed -E 's/^[0-9]*[[:blank:]]*ssh //')
   local port=$(echo $info | grep -Eo '\-p ([0-9]+)' | sed 's/-p //')
@@ -38,7 +38,7 @@ function get_ssh_info(){
 }
 
 # Main
-function main(){
+function main() {
   local current_pane_command="$1"
   local current_pane_pid="$2"
   local current_pane_path="$3"
