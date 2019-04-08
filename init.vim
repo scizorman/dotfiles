@@ -322,6 +322,16 @@ if dein#tap('denite.nvim')
   nmap <silent>[denite]r :<C-u>Denite register -highlight-mode-insert=search<CR>
 endif
 
+" gina.vim
+if dein#tap('gina.vim')
+  nmap [gina] <Nop>
+  nmap <Leader>g [gina]
+  nmap <silent>[gina]c :<C-u>Gina commit<CR>
+  nmap <silent>[gina]d :<C-u>Gina diff<CR>
+  nmap <silent>[gina]l :<C-u>Gina log<CR>
+  nmap <silent>[gina]s :<C-u>Gina status<CR>
+endif
+
 " LanguageClient-neovim
 if dein#tap('LanguageClient-neovim')
   nnoremap <silent>K :call LanguageClient#textDocument_hover()<CR>

@@ -1,5 +1,9 @@
 function! hook#add#gina#config()
+  call gina#custom#command#option('commit', '--opener', 'vsplit')
   call gina#custom#command#option('diff', '--opener', 'vsplit')
+  call gina#custom#command#option('log', '--opener', 'vsplit')
+  call gina#custom#command#option('status', '--opener', 'vsplit')
+
   call gina#custom#execute(
       \ '/\%(commit\)',
       \ 'setlocal colorcolumn=79 expandtab shiftwidth=2 softtabstop=2 tabstop=2 winheight=40',
