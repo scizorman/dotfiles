@@ -2,6 +2,7 @@
 # PATH
 typeset -gxU path PATH
 path=( \
+  $HOME/node_modules/.bin \
   $HOME/bin(N-/) \
   $HOME/.local/bin \
   /usr/local/bin \
