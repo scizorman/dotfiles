@@ -6,8 +6,8 @@
   "private": true,
   "dependencies": {
     "@vue/cli": "^3.5.5",
-    "firebase-tools": "^6.5.3",
-    "npm-check-updates": "^3.1.4"
+    "firebase-tools": "^6.6.0",
+    "npm-check-updates": "^3.1.7"
   },
   "devDependencies": {
     "javascript-typescript-langserver": "^2.11.3",
