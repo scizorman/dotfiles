@@ -1,30 +1,30 @@
+# Plugin manager
 [[plugins]]
 repo = "Shougo/dein.vim"
 
-[[plugins]]
-repo = "Shougo/vimproc.vim"
-
-
-# -----------------------------------------------------------------------------
 # Language Server Protocol
-# -----------------------------------------------------------------------------
 [[plugins]]
 repo = "autozimu/LanguageClient-neovim"
 rev = "next"
 build = "bash install.sh"
 hook_add = "call hook#add#LanguageClient#config()"
 
+# File explorer
+[[plugins]]
+repo = "Shougo/defx.nvim"
 
-# -----------------------------------------------------------------------------
-# Neosnippet
-# -----------------------------------------------------------------------------
+# Snippets
 [[plugins]]
 repo = "Shougo/neosnippet-snippets"
 
+# Quoting/Parenthesizeing
+[[plugins]]
+repo = "tpope/vim-surround"
+hook_add = """
+vmap S <Nop>
+"""
 
-# -----------------------------------------------------------------------------
 # Git
-# -----------------------------------------------------------------------------
 [[plugins]]
 repo = "lambdalisue/gina.vim"
 hook_add = "call hook#add#gina#config()"
@@ -32,34 +32,20 @@ hook_add = "call hook#add#gina#config()"
 [[plugins]]
 repo = "airblade/vim-gitgutter"
 
+# Indent identifier
+[[plugins]]
+repo = "Yggdroot/indentLine"
 
-# -----------------------------------------------------------------------------
-# Interface
-# -----------------------------------------------------------------------------
+# Statusline/Tabline
 [[plugins]]
 repo = "itchyny/lightline.vim"
 hook_add = "call hook#add#lightline#config()"
 
+# Devicons
 [[plugins]]
 repo = "ryanoasis/vim-devicons"
 
-
-# -----------------------------------------------------------------------------
-# Utility
-# -----------------------------------------------------------------------------
-[[plugins]]
-repo = "tpope/vim-surround"
-hook_add = """
-vmap S <Nop>
-"""
-
-[[plugins]]
-repo = "Yggdroot/indentLine"
-
-
-# -----------------------------------------------------------------------------
-# Colorscheme
-# -----------------------------------------------------------------------------
+# Colorschemes
 [[plugins]]
 repo = "cocopon/iceberg.vim"
 

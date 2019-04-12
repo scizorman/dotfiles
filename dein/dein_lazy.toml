@@ -1,33 +1,16 @@
-# -----------------------------------------------------------------------------
+# Denite
+[[plugins]]
+repo = "Shougo/denite.nvim"
+build = "UpdateRemotePlugins"
+hook_source = "call hook#source#denite#config()"
+
 # Deoplete
-# -----------------------------------------------------------------------------
 [[plugins]]
 repo = "Shougo/deoplete.nvim"
-build = "UpdateRemotePlugins"
 depends = ["context_filetype.vim"]
+build = "UpdateRemotePlugins"
 on_event = "InsertEnter"
 hook_source = "call hook#source#deoplete#config()"
-
-[[plugins]]
-repo = "Shougo/neoinclude.vim"
-on_source = ["deoplete.nvim"]
-
-# Sources
-[[plugins]]
-repo = "zchee/deoplete-go"
-build = "make"
-depends = ["deoplete.nvim"]
-on_ft = ["go"]
-
-[[plugins]]
-repo = "zchee/deoplete-jedi"
-depends = ["deoplete.nvim"]
-on_ft = ["python"]
-
-[[plugins]]
-repo = "zchee/deoplete-docker"
-depends = ["deoplete.nvim"]
-on_ft = ["dockerfile"]
 
 [[plugins]]
 repo = "zchee/deoplete-zsh"
@@ -39,10 +22,7 @@ repo = "Shougo/neco-vim"
 depends = ["deoplete.nvim"]
 on_ft = ["vim"]
 
-
-# -----------------------------------------------------------------------------
-# Neosnippet
-# -----------------------------------------------------------------------------
+# Snippet handler
 [[plugins]]
 repo = "Shougo/neosnippet.vim"
 depends = ["neosnippet-snippets", "context_filetype.vim"]
@@ -55,22 +35,28 @@ smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
 """
 
+# Template handler
+[[plugins]]
+repo = "mattn/sonictemplate-vim"
+on_cmd = "Template"
+
+
+# Context filetype library
 [[plugins]]
 repo = "Shougo/context_filetype.vim"
 
-
-# -----------------------------------------------------------------------------
-# Denite
-# -----------------------------------------------------------------------------
 [[plugins]]
-repo = "Shougo/denite.nvim"
-build = "UpdateRemotePlugins"
-hook_source = "call hook#source#denite#config()"
+repo = "osyo-manga/vim-precious"
+depends = ["context_filetype.vim"]
+on_ft = ["vue", "markdown", "toml", "help"]
+hook_add = """
+let g:precious_enable_switch_CursorHold = {"*": 0, "help": 1}
+let g:precious_enable_switch_CursorMoved = {"*": 0, "help": 1}
+Gautocmd InsertEnter * :PreciousSwitch
+Gautocmd InsertLeave * :PreciousReset
+"""
 
-
-# -----------------------------------------------------------------------------
 # Linter
-# -----------------------------------------------------------------------------
 [[plugins]]
 repo = "w0rp/ale"
 on_ft = [
@@ -84,48 +70,17 @@ on_ft = [
 hook_source = "call hook#source#ale#config()"
 
 
-# -----------------------------------------------------------------------------
-# Utility
-# -----------------------------------------------------------------------------
+# Parenthesizeing
 [[plugins]]
 repo = "cohama/lexima.vim"
 on_i = 1
 
+# Comment out
 [[plugins]]
 repo = "tyru/caw.vim"
 on_map = ["<Plug>(caw:hatpos:toggle)"]
 
-[[plugins]]
-repo = "thinca/vim-quickrun"
-depends = ["vimproc.vim"]
-on_cmd = "QuickRun"
-hook_source = "call hook#source#quickrun#config()"
-
-[[plugins]]
-repo = "mattn/sonictemplate-vim"
-on_cmd = "Template"
-
-[[plugins]]
-repo = "osyo-manga/vim-precious"
-depends = ["context_filetype.vim"]
-on_ft = ["vue", "markdown", "toml", "help"]
-hook_add = """
-let g:precious_enable_switch_CursorHold = {"*": 0, "help": 1}
-let g:precious_enable_switch_CursorMoved = {"*": 0, "help": 1}
-Gautocmd InsertEnter * :PreciousSwitch
-Gautocmd InsertLeave * :PreciousReset
-"""
-
-
-# -----------------------------------------------------------------------------
-# Language plugins
-# -----------------------------------------------------------------------------
-# Go
-# [[plugins]]
-# repo = "fatih/vim-go"
-# on_ft = ["go"]
-# hook_source = "call hook#source#go#rc()"
-
+# For languages
 # Python
 [[plugins]]
 repo = "Vimjas/vim-python-pep8-indent"
