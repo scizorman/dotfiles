@@ -65,6 +65,11 @@ set belloff=all
 set clipboard=unnamed,unnamedplus
 " Number of lines to use for the command-line
 set cmdheight=2
+" Specify how keyword completion `ins-completion` works
+" when `CTRL-P` or `CTRL-N` are used
+set complete=.
+" Options for Insert mode completion `ins-completion``
+set completeopt=menuone,noinsert,noselect
 " Columns to highlight
 set colorcolumn=79
 " List of directory names for the swap file
@@ -269,7 +274,7 @@ Gautocmd BufWinEnter *
 Gautocmdft ia64 let b:caw_oneline_comment = '//' | let b:caw_wrap_oneline_comment = ['/*', '*/']
 
 " Vim
-Gautocmd BufWritePost $MYVIMRC,*.vim nested silent! source $MYVIMRC | setlocal colorcolumn=79
+" Gautocmd BufWritePost $MYVIMRC,*.vim nested silent! source $MYVIMRC | setlocal colorcolumn=79
 
 " Neosnippet
 Gautocmd InsertLeave * NeoSnippetClearMarkers
