@@ -1,9 +1,13 @@
-" -----------------------------------------------------------------------------
 " Global variables
-" -----------------------------------------------------------------------------
-let $XDG_CACHE_HOME = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
-let $XDG_CONFIG_HOME = empty($XDG_CONFIG_HOME) ? expand('~/.config') : $XDG_CONFIG_HOME
-let $XDG_DATA_HOME = empty($XDG_DATA_HOME) ? expand('~/.local/share') : $XDG_DATA_HOME
+let $XDG_CACHE_HOME = empty($XDG_CACHE_HOME)
+      \ ? expand('~/.cache')
+      \ : $XDG_CACHE_HOME
+let $XDG_CONFIG_HOME = empty($XDG_CONFIG_HOME)
+      \ ? expand('~/.config')
+      \ : $XDG_CONFIG_HOME
+let $XDG_DATA_HOME = empty($XDG_DATA_HOME)
+      \ ? expand('~/.local/share')
+      \ : $XDG_DATA_HOME
 
 let g:nvim_path = {
       \ 'nvim': expand($XDG_CONFIG_HOME . '/nvim'),
@@ -16,20 +20,13 @@ let g:nvim_path = {
 let g:true = 1
 let g:false = 0
 
-
-" -----------------------------------------------------------------------------
-" GlobalAutoCmd
-" -----------------------------------------------------------------------------
+" Initialize `GlobalAutoCmd`
 augroup GlobalAutoCmd
   autocmd!
 augroup END
 command! -nargs=* Gautocmd autocmd GlobalAutoCmd <args>
 command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
 
-
-" -----------------------------------------------------------------------------
-" Neovim configs
-" -----------------------------------------------------------------------------
 " Python provider
 let g:python_host_prog = $PYENV_ROOT . '/shims/python2'
 let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
@@ -40,10 +37,7 @@ let g:loaded_ruby_provider = 0
 " Node.js provider
 let g:loaded_node_provider = 0
 
-
-" -----------------------------------------------------------------------------
 " Options
-" -----------------------------------------------------------------------------
 " What to do with Unicode chars of ambiguous width
 set ambiwidth=single
 " Take indent for new line from previous line
@@ -197,9 +191,6 @@ set wrap
 " Searches wrap around the end of the file
 set wrapscan
 
-"
-" Disable options
-"
 " Change directory to the file in the current window
 set noautochdir
 " Ring the bell for error messages
@@ -210,7 +201,6 @@ set nofoldenable
 set nojoinspaces
 " Don't redraw while executing macros
 set nolazyredraw
-
 " Show (partial) command in status line
 set noshowcmd
 " Message on status line to show current mode
@@ -226,10 +216,7 @@ set novisualbell
 " Make a backup before overwriting a file
 set nowritebackup
 
-
-" -----------------------------------------------------------------------------
 " Dein
-" -----------------------------------------------------------------------------
 let s:dein_path = {
       \ 'cache': expand($XDG_CACHE_HOME . '/dein'),
       \ 'dein': expand($XDG_CACHE_HOME . '/dein/repos/github.com/Shougo/dein.vim'),
@@ -241,8 +228,6 @@ let s:dein_path = {
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_path.dein)
     execute '!git clone https://github.com/Shougo/dein.vim ' . s:dein_path.dein
-    execute '!git clone https://github.com/Shougo/vimproc.vim ' . s:dein_path.vimproc
-    execute '!cd ' . s:dein_path.vimproc ' && make'
   endif
   execute 'set runtimepath^=' . fnamemodify(s:dein_path.dein, ':p')
 endif
@@ -261,10 +246,7 @@ if !misc#isStarting() && dein#check_install()
   call dein#install()
 endif
 
-
-" -----------------------------------------------------------------------------
 " GlobalAutoCmd
-" -----------------------------------------------------------------------------
 " Global
 Gautocmd BufWinEnter *
       \ if line("'\'") > 1 && line("'\'") <= line("$") && &filetype != 'gitcommit' |
@@ -282,10 +264,7 @@ Gautocmd InsertLeave * NeoSnippetClearMarkers
 
 Gautocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-
-" -----------------------------------------------------------------------------
 " Key mappings
-" -----------------------------------------------------------------------------
 " Define Leader
 noremap <Space> <Nop>
 let g:mapleader = "\<Space>"
@@ -344,14 +323,6 @@ if dein#tap('LanguageClient-neovim')
   nnoremap <silent><Leader>lf :call LanguageClient#textDocument_formatting()<CR>
   nnoremap <silent><Leader>lr :call LanguageClient#textDocument_rename()<CR>
 endif
-
-" Go
-" Gautocmdft go nmap <silent><buffer>K <Plug>(go-doc)
-" Gautocmdft go nmap <silent><buffer><LocalLeader>b <Plug>(go-build)<CR>
-" Gautocmdft go nmap <silent><buffer><LocalLeader>f <Plug>(go-fmt)<CR>
-" Gautocmdft go nmap <silent><buffer><LocalLeader>r <Plug>(go-run)<CR>
-" Gautocmdft go nmap <silent><buffer><LocalLeader>t <Plug>(go-test)<CR>
-
 
 " Must be written at the last
 " See :help secure
