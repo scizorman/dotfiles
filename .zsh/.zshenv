@@ -35,7 +35,6 @@ export CORRECT_IGNORE_FILE='.*'
 
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
-
 # History
 export HISTFILE="$ZDOTDIR/.zhistory"
 export HISTSIZE=10000

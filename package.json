@@ -6,10 +6,11 @@
   "private": true,
   "dependencies": {
     "@vue/cli": "^3.5.5",
-    "firebase-tools": "^6.5.3",
-    "npm-check-updates": "^3.1.4"
+    "firebase-tools": "^6.6.0",
+    "npm-check-updates": "^3.1.7"
   },
   "devDependencies": {
+    "dockerfile-language-server-nodejs": "0.0.20",
     "javascript-typescript-langserver": "^2.11.3",
     "vue-language-server": "0.0.49"
   }
