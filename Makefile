@@ -1,5 +1,5 @@
 DOTPATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-CANDIDATES := $(wildcard .??*) bin node_modules package.json package-lock.json
+CANDIDATES := $(wildcard .??*) bin node_modules package.json yarn.lock
 EXCLUSIONS := .DS_Store .git .gitmodules .gitignore
 DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
