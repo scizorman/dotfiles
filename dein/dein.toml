@@ -27,7 +27,7 @@ vmap S <Nop>
 # Git
 [[plugins]]
 repo = "lambdalisue/gina.vim"
-hook_add = "call hook#add#gina#config()"
+hook_source = "call hook#source#gina#config()"
 
 [[plugins]]
 repo = "airblade/vim-gitgutter"
