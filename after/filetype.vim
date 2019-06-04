@@ -4,6 +4,7 @@ endif
 let g:did_load_filetypes_userafter = 1
 
 augroup filetypedetect
+  autocmd! BufNewFile,BufRead LICENSE setlocal filetype=license
   autocmd! BufNewFile,BufRead *.conf setlocal filetype=conf
   autocmd! BufNewFile,BufRead *.es6 setlocal filetype=javascript
   autocmd! BufNewFile,BufRead *.mm setlocal filetype=objcpp
