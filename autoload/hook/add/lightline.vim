@@ -1,6 +1,6 @@
 function hook#add#lightline#config()
   let g:lightline = {
-        \ 'colorscheme': 'tender',
+        \ 'colorscheme': 'dracula',
         \ 'active': {
         \   'left': [['mode', 'paste'], ['gitbranch', 'readonly', 'filename', 'modified']],
         \   'right': [['lineinfo'], ['percent'],
