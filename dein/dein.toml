@@ -2,6 +2,9 @@
 [[plugins]]
 repo = "Shougo/dein.vim"
 
+[[plugins]]
+repo = "Shougo/vimproc.vim"
+
 # Language Server Protocol
 [[plugins]]
 repo = "autozimu/LanguageClient-neovim"

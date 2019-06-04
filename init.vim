@@ -227,6 +227,8 @@ let s:dein_path = {
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_path.dein)
     execute '!git clone https://github.com/Shougo/dein.vim ' . s:dein_path.dein
+    execute '!git clone https://github.com/Shougo/vimproc.vim ' . s:dein_path.vimproc
+    execute '!cd ' . s:dein_path.vimproc ' && make'
   endif
   execute 'set runtimepath^=' . fnamemodify(s:dein_path.dein, ':p')
 endif
