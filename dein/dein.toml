@@ -31,6 +31,14 @@ vmap s <Nop>
 # Git
 [[plugins]]
 repo = "lambdalisue/gina.vim"
+hook_add = '''
+nmap [gina] <Nop>
+map <Leader>g [gina]
+
+nmap <silent>[gina]b :<C-u>Gina blame<CR>
+nmap <silent>[gina]c :<C-u>Gina compare --opener=vsplit<CR>
+nmap <silent>[gina]s :<C-u>Gina status --opener=vsplit<CR>
+'''
 hook_source = "call hook#source#gina#config()"
 
 [[plugins]]
