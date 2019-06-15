@@ -22,9 +22,10 @@ repo = "Shougo/neosnippet-snippets"
 
 # Quoting/Parenthesizeing
 [[plugins]]
-repo = "tpope/vim-surround"
+repo = "machakann/vim-sandwich"
 hook_add = """
-vmap S <Nop>
+nmap s <Nop>
+vmap s <Nop>
 """
 
 # Git
@@ -34,10 +35,6 @@ hook_source = "call hook#source#gina#config()"
 
 [[plugins]]
 repo = "airblade/vim-gitgutter"
-
-# Indent identifier
-[[plugins]]
-repo = "Yggdroot/indentLine"
 
 # Statusline/Tabline
 [[plugins]]
