@@ -1,57 +1,66 @@
-function! misc#isWindows()
+function! misc#is_windows()
   return has('win16') || has('win32') || has('win64')
 endfunction
 
-
-function! misc#isCygwin()
+function! misc#is_cygwin()
   return has('win32unix')
 endfunction
 
-
-function! misc#isMac()
+function! misc#is_mac()
   return has('mac') || has('macunix') || has('gui_macvim')
 endfunction
 
-
-function! misc#isLinux()
-  return !misc#isMac() && has('unix')
+function! misc#is_linux()
+  return !misc#is_mac() && has('unix')
 endfunction
 
 
-function! misc#isStarting()
-  return has('vim-starting')
+function! misc#is_starting()
+  return has('vim_starting')
 endfunction
 
-
-function! misc#isGui()
-  return has('gui-running')
+function! misc#is_gui()
+  return has('gui_running')
 endfunction
 
-
-function! misc#isTmuxRunning()
+function! misc#is_tmux_running()
   return !empty($TMUX)
 endfunction
 
-
-function! misc#tmuxProc()
+function! misc#tmux_proc()
   return system('tmux display-message -p "#W"')
 endfunction
 
 
+function! misc#on_filetype() abort
+  if execute('filetype') =~# 'OFF'
+    " lazy loding
+    silent! filetype plugin indent on
+    syntax enable
+    filetype detect
+  endif
+endfunction
+
+
+function! misc#toggle_option(option_name) abort
+  execute 'setlocal' a:option_name . '!'
+  execute 'setlocal' a:option_name . '?'
+endfunction
+
 function! misc#mkdir(dir)
   if !exists('*mkdir')
-    return g:false
+    return v:false
   endif
 
   let l:dir = expand(a:dir)
   if isdirectory(l:dir)
-    return g:true
+    return v:true
   endif
 
   if !exists(dir)
     return mkdir(dir, 'p')
   else
-    return g:true
+    return v:true
   endif
 endfunction
 
