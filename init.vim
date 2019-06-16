@@ -1,25 +1,3 @@
-" Global variables
-let $XDG_CACHE_HOME = empty($XDG_CACHE_HOME)
-      \ ? expand('~/.cache')
-      \ : $XDG_CACHE_HOME
-let $XDG_CONFIG_HOME = empty($XDG_CONFIG_HOME)
-      \ ? expand('~/.config')
-      \ : $XDG_CONFIG_HOME
-let $XDG_DATA_HOME = empty($XDG_DATA_HOME)
-      \ ? expand('~/.local/share')
-      \ : $XDG_DATA_HOME
-
-let g:nvim_path = {
-      \ 'nvim': expand($XDG_CONFIG_HOME . '/nvim'),
-      \ 'backup': expand($XDG_DATA_HOME . '/nvim/backup'),
-      \ 'swap': expand($XDG_DATA_HOME . '/nvim/swap'),
-      \ 'undo': expand($XDG_DATA_HOME . '/nvim/undo'),
-      \ }
-
-" Set True = 1, False = 0
-let g:true = 1
-let g:false = 0
-
 " Initialize `GlobalAutoCmd`
 augroup GlobalAutoCmd
   autocmd!
