@@ -24,8 +24,8 @@ let g:false = 0
 augroup GlobalAutoCmd
   autocmd!
 augroup END
-command! -nargs=* Gautocmd autocmd GlobalAutoCmd <args>
-command! -nargs=* Gautocmdft autocmd GlobalAutoCmd FileType <args>
+" augroup filetypedetect
+" augroup END
 
 " Python provider
 let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
@@ -249,21 +249,21 @@ endif
 
 " GlobalAutoCmd
 " Global
-Gautocmd BufWinEnter *
+autocmd GlobalAutoCmd BufWinEnter *
       \ if line("'\'") > 1 && line("'\'") <= line("$") && &filetype != 'gitcommit' |
       \ execute "silent! keepjumps normal! g`\"zz"
 
 " Go
-Gautocmdft ia64 let b:caw_oneline_comment = '//' | let b:caw_wrap_oneline_comment = ['/*', '*/']
+autocmd GlobalAutoCmd FileType ia64 let b:caw_oneline_comment = '//' | let b:caw_wrap_oneline_comment = ['/*', '*/']
 
 " Vim
 " Gautocmd BufWritePost $MYVIMRC,*.vim nested silent! source $MYVIMRC | setlocal colorcolumn=79
 
 " Neosnippet
-Gautocmd InsertLeave * NeoSnippetClearMarkers
+autocmd GlobalAutoCmd InsertLeave * NeoSnippetClearMarkers
 
 
-Gautocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+autocmd GlobalAutoCmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Key mappings
 " Define Leader
@@ -392,6 +392,6 @@ if dein#tap('LanguageClient-neovim')
   nnoremap <silent><Leader>lr :call LanguageClient#textDocument_rename()<CR>
 endif
 
-" Must be written at the last
+" NOTO: Must be written at the last
 " See :help secure
 set secure

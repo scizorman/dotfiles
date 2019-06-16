@@ -59,7 +59,7 @@ repo = "cocopon/iceberg.vim"
 
 [[plugins]]
 repo = "dracula/vim"
-hook_add = "Gautocmd VimEnter * nested colorscheme dracula"
+hook_add = "autocmd GlobalAutoCmd VimEnter * nested colorscheme dracula"
 
 [[plugins]]
 repo = "jacoborus/tender.vim"
