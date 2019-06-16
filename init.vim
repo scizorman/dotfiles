@@ -24,11 +24,13 @@ endfunction
 " Initialize `GlobalAutoCmd`
 augroup GlobalAutoCmd
   autocmd!
+  autocmd FileType,Syntax,BufNewFile,BufNew,BufRead *?
+       \ call misc#on_filetype()
+  autocmd CursorHold toml syntax sync minlines=300
 augroup END
-" augroup filetypedetect
-" augroup END
 
 " Python provider
+let g:python_host_prog = $PYENV_ROOT . '/shims/python2'
 let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
 
 " Ruby provider
