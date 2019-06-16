@@ -63,7 +63,7 @@ endif
 
 set showtabline=2 " tells when the tab pages line is displayed (always)
 
-" set noshowmode " message on status line to show current mode (disable)
+set noshowmode " message on status line to show current mode (disable)
 
 " list of flags, reduce length of messages
 "   a: all of the above abbreviation
