@@ -1,5 +1,5 @@
 DOTPATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-CANDIDATES := $(wildcard .??*) bin node_modules package.json yarn.lock
+CANDIDATES := $(wildcard .??*) bin
 EXCLUSIONS := .DS_Store .git .gitmodules .gitignore
 DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
@@ -19,7 +19,7 @@ update: ## fetch changes for this repository
 
 deploy: ## create the symlink to home directory
 	@echo ''
-	@echo '==> Start to deploy dotfiles to home directory.'
+	@echo '==> start to deploy dotfiles to home directory.'
 	@echo ''
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 	@echo ''
@@ -31,6 +31,6 @@ install: update deploy init ## run update, deploy and init
 	@exec $$SHELL
 
 clean: ## remove the dot files and this repository
-	@echo 'Remove dot files in your home directory...'
+	@echo 'remove dot files in your home directory...'
 	@-$(foreach val, $(DOTFILES), unlink $(HOME)/$(val);)
 	-rm -rf $(DOTPATH)
