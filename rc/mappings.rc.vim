@@ -26,9 +26,4 @@ cnoremap <C-y> <C-r>*
 " exit
 cnoremap <C-g> <C-c>
 
-" Define 'Leader'
-noremap <Space> <Nop>
-let g:mapleader = "\<Space>"
-let g:maplocalleader = "\\"
-
 nnoremap <silent><Esc> <Esc>:noh<CR> 

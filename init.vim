@@ -16,9 +16,9 @@ let g:loaded_ruby_provider = 0
 " Node.js provider
 let g:loaded_node_provider = 0
 
-call misc#source_rc('encoding.rc.vim')
-call misc#source_rc('options.rc.vim')
-call misc#source_rc('mappings.rc.vim')
+if misc#is_starting()
+  call misc#source_rc('init.rc.vim')
+endif
 
 call misc#source_rc('dein.rc.vim')
 
@@ -31,11 +31,17 @@ if !misc#is_starting()
   call dein#call_hook('post_source')
 endif
 
+call misc#source_rc('encoding.rc.vim')
+
+call misc#source_rc('options.rc.vim')
+
+call misc#source_rc('mappings.rc.vim')
+
 " GlobalAutoCmd
 " Global
 autocmd GlobalAutoCmd BufWinEnter *
-      \ if line("'\'") > 1 && line("'\'") <= line("$") && &filetype != 'gitcommit' |
-      \ execute "silent! keepjumps normal! g`\"zz"
+     \ if line("'\'") > 1 && line("'\'") <= line("$") && &filetype != 'gitcommit' |
+     \ execute "silent! keepjumps normal! g`\"zz"
 
 " Vim
 " Gautocmd BufWritePost $MYVIMRC,*.vim nested silent! source $MYVIMRC | setlocal colorcolumn=79
