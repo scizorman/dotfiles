@@ -9,7 +9,7 @@ set -eu
 # Golang version
 MAJOR=1
 MINOR=12
-BUILD=1
+BUILD=5
 VERSION="$MAJOR.$MINOR.$BUILD"
 
 # Install Golang with goenv
