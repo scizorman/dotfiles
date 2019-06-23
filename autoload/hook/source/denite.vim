@@ -1,44 +1,65 @@
 function hook#source#denite#config()
-  call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
-  call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
-  call denite#custom#map('insert', '<C-s>', '<denite:do_action:split>', 'noremap')
-  call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
-  call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
+  if executable('rg')
+    call denite#custom#var('file/rec', 'command',
+          \ ['rg', '--files', '--glob', '!.git'])
+    call denite#custom#var('grep', 'command',
+          \ ['rg', '--threads', '1'])
+    call denite#custom#var('grep', 'default_opts',
+          \ ['-i', '--vimgrep', '--no-heading'])
+    call denite#custom#var('grep', 'recursive_opts',
+          \ [])
+  endif
 
   call denite#custom#source('buffer', 'matchers',
         \ ['matcher/fuzzy', 'matcher/project_files'])
+  call denite#custom#source('file/old', 'matchers',
+        \ ['matcher/fuzzy', 'matcher/project_files'])
+  " call denite#custom#source('file/rec', 'matchers',
+  "      \ ['matcher/fuzzy', 'matcher/project_files', 'matcher/ignore_globs'])
+  call denite#custom#source('tag', 'matchers',
+        \ ['matcher/substring'])
 
-	call denite#custom#var('grep', 'command', ['rg'])
-	call denite#custom#var('grep', 'default_opts',
-			\ ['--ignore-case', '--vimgrep', '--no-heading'])
-	call denite#custom#var('grep', 'recursive_opts', [])
-	call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-	call denite#custom#var('grep', 'separator', ['--'])
-	call denite#custom#var('grep', 'final_opts', [])
+  call denite#custom#source('file/old', 'converters',
+        \ ['converter/relative_word'])
 
-  " file/rec
-  call denite#custom#source('file/rec', 'matchers',
-        \ ['matcher/fuzzy', 'matcher/project_files', 'matcher/ignore_globs'])
-  call denite#custom#source('file/rec', 'sorters', ['sorter/sublime'])
-  call denite#custom#var('filre/rec', 'command',
-        \ ['rg', '--follow', '--hidden'])
+  call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+  call denite#custom#var('file/rec/git', 'command',
+        \ ['git', 'ls-files', '-co', '--exclude-standard'])
 
-  " line
-  call denite#custom#source('line', 'command',
-        \ ['rg', '--follow', '--hidden'])
+  let l:denite_winwidth_percent = 0.5
+  let l:denite_winheight_percent = 0.3
+  call denite#custom#option('default', {
+        \ 'prompt': '> ',
+        \ 'source_names': 'short',
+        \ 'split': 'floating',
+        \ 'statusline': v:false,
+        \ 'winwidth': float2nr(&columns * l:denite_winwidth_percent),
+        \ 'wincol': float2nr((&columns - (&columns * l:denite_winwidth_percent)) / 2),
+        \ 'winheight': float2nr(&lines * l:denite_winheight_percent),
+        \ 'winrow': float2nr((&lines - (&lines * l:denite_winheight_percent)) / 2),
+        \ })
 
   call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-        \ ['.git/', '.ropeproject/', '.__pycache__/', 'venv/', 'images/', '*.min.*',
-        \  'img/', 'fonts/', 'vendor/', '*pyc', '.DS_Store'],
-        \ )
+        \ ['.git', '__pycache__', '.ropeproject/', 'venv',
+        \  'node_modules/', 'images/', 'img/', '*.min.*', 'fonts/'])
+
 
   let s:menus = {}
+  let s:menus.nvim = {
+        \ 'description': 'Edit your Neovim configurations',
+        \ }
+  let s:menus.nvim.file_candidates = [
+        \ ['init.vim', expand($XDG_CONFIG_HOME . '/nvim/init.vim')],
+        \ ['dein/dein.toml', expand($XDG_CONFIG_HOME . '/nvim/dein/dein.toml')],
+        \ ['dein/dein_lazy.toml', expand($XDG_CONFIG_HOME . '/nvim/dein/dein_lazy.toml')],
+        \ ]
   let s:menus.zsh = {
-        \ 'description': 'Edit your import zsh configuration'
+        \ 'description': 'Edit your Zsh configuration'
         \ }
   let s:menus.zsh.file_candidates = [
-        \ ['zshrc', '~/.zshrc'],
-        \ ['zshenv', '~/.zshenv'],
+        \ ['zshrc', expand($ZDOTDIR . '/.zshrc')],
+        \ ['zprofile', expand($ZDOTDIR . '/.zprofile')],
+        \ ['zshenv', expand($ZDOTDIR . '/.zshenv')],
         \ ]
   call denite#custom#var('menu', 'menus', s:menus)
 endfunction
