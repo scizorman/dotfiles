@@ -2,7 +2,6 @@
 # PATH
 typeset -gxU path PATH
 path=( \
-  $HOME/node_modules/.bin \
   $HOME/bin(N-/) \
   $HOME/.local/bin \
   /usr/local/bin \
@@ -33,8 +32,12 @@ export PATH="$GOPATH/bin:$PATH"
 
 # Python
 # Pipenv
-export PIPENV_DEFAULT_PYTHON_VERSION=3.7.3
 export PIPENV_VENV_IN_PROJECT=true
+
+
+# Google-Cloud-SDK
+source "$HOME/google-cloud-sdk/path.zsh.inc"
+# source "$HOME/google-cloud-sdk/completion.zsh.inc"
 
 
 # Utility functions
@@ -174,3 +177,30 @@ zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:s
 autoload -Uz select-history
 zle -N select-history
 bindkey '^h' select-history
+
+
+# Completions
+# Styles
+# Completing grouping
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
+zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
+zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
+zstyle ':completion:*' group-name ''
+
+# Completing misc
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
+zstyle ':completion:*' use-cache true
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+
+# Directory
+zstyle ':completion:*:cd:*' ignored-parents parent pwd
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
