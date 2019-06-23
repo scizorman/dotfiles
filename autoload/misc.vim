@@ -1,3 +1,4 @@
+" Determin OS
 function! misc#is_windows()
   return has('win16') || has('win32') || has('win64')
 endfunction
@@ -14,7 +15,7 @@ function! misc#is_linux()
   return !misc#is_mac() && has('unix')
 endfunction
 
-
+" Utilities
 function! misc#is_starting()
   return has('vim_starting')
 endfunction
@@ -31,7 +32,6 @@ function! misc#tmux_proc()
   return system('tmux display-message -p "#W"')
 endfunction
 
-
 function! misc#on_filetype() abort
   if execute('filetype') =~# 'OFF'
     " lazy loding
@@ -40,7 +40,6 @@ function! misc#on_filetype() abort
     filetype detect
   endif
 endfunction
-
 
 function! misc#toggle_option(option_name) abort
   execute 'setlocal' a:option_name . '!'
@@ -69,32 +68,4 @@ function! misc#source_rc(path, ...) abort
       call delete(l:tempfile)
     endif
   endtry
-endfunction
-
-function! misc#mkdir(dir)
-  if !exists('*mkdir')
-    return v:false
-  endif
-
-  let l:dir = expand(a:dir)
-  if isdirectory(l:dir)
-    return v:true
-  endif
-
-  if !exists(dir)
-    return mkdir(dir, 'p')
-  else
-    return v:true
-  endif
-endfunction
-
-
-function! misc#pickExecutable(pathspecs)
-  for l:pathspec in filter(a:pathspecs, '!empty(v:val)')
-    for l:path in reverse(glob(l:pathspec, 0, 1))
-      if executable(l:path)
-        return l:path
-      endif
-    endfor
-  endfor
 endfunction
