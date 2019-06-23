@@ -1,51 +1,53 @@
 function hook#source#deoplete#config()
-  let g:deoplete#enable_at_startup = 1
+  " <TAB>: completion
+  inoremap <silent><expr> <TAB>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ deoplete#manual_complete()
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1] =~? '\s'
+  endfunction
 
-  let s:deoplete_custom_option = {
-        \ 'auto_complete_delay': 0,
-        \ 'auto_refresh_delay': 50,
-        \ 'camel_case': v:false,
-        \ 'ignore_case': v:true,
-        \ 'ignore_sources': {
-        \   '_': ['around', 'dictionary', 'omni', 'tag'],
-        \   'c': ['around', 'dictionary', 'omni', 'tag', 'buffer', 'member', 'neosnippet'],
-        \   'cpp': ['around', 'dictionary', 'omni', 'tag', 'buffer', 'member', 'neosnippet'],
-        \   'go': ['around', 'dictionary', 'omni', 'tag', 'buffer', 'member', 'neosnippet', 'LanguageClient'],
-        \   'python': ['around', 'dictionary', 'omni', 'tag', 'member', 'neosnippet', 'LanguageClient'],
-        \   'sh': ['around', 'dictionary', 'omni', 'tag'],
-        \   'bash': ['around', 'dictionary', 'omni', 'tag'],
-        \   'zsh': ['around', 'dictionary', 'omni', 'tag'],
-        \   'yaml': ['around', 'dictionary', 'omni', 'tag', 'neosnippet'],
-        \   'yaml.docker-compose': ['around', 'dictionary', 'omni', 'tag', 'neosnippet'],
-        \ },
-        \ 'omni_patterns': {
-        \   'c': '[^. *\t]\.\w*',
-        \   'cpp': '[^. *\t]\.\w*',
-        \   'sh': '[^ *\t"{=$]\w*',
-        \   'yaml': '[^ *\t"{=$]\w*',
-        \   'yaml.docker-compose': '[^ *\t"{=$]\w*',
-        \ },
-        \ 'max_list': 10000,
-        \ 'min_pattern_length': 1,
-        \ 'num_processes': 10,
-        \ 'on_insert_enter': v:true,
-        \ 'on_text_changed_i': v:true,
-        \ 'refresh_always': v:false,
-        \ 'skip_chars': ['(', ')'],
-        \ 'smart_case': v:true,
-        \ }
-  call deoplete#custom#option(s:deoplete_custom_option)
+  " <S-TAB>: completion back
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-  let s:deoplete_omni_input_patterns = {}
-  call deoplete#custom#var('omni', 'input_patterns', s:deoplete_omni_input_patterns)
+  call deoplete#custom#source('_', 'matchers',
+        \ ['matcher_fuzzy', 'matcher_length'])
 
-  call deoplete#custom#source('_', 'converters', ['converter_auto_paren', 'converter_remove_overlap'])
-  call deoplete#custom#source('_', 'sorters', [])
-  call deoplete#custom#source('buffer', 'rank', 0)
-  call deoplete#custom#source('neosnippet', 'rank', 0)
-  call deoplete#custom#source('vim', 'disable_syntaxes', ['Comment'])
-  call deoplete#custom#source('LanguageClient', 'sorters', [])
-  call deoplete#custom#source('LanguageClient', 'disable_syntaxes', ['Comment'])
-  call deoplete#custom#source('LanguageClient', 'matchers', ['match_head'])
-  call deoplete#custom#source('LanguageClient', 'min_pattern_length', 1)
+  call deoplete#custom#source('_', 'converters', [
+        \ 'converter_remove_paren',
+        \ 'converter_remove_overlap',
+        \ 'matcher_length',
+        \ 'converter_truncate_abbr',
+        \ 'converter_truncate_info',
+        \ 'converter_truncate_menu',
+        \ 'converter_auto_delimiter',
+        \ ])
+
+  call deoplete#custom#option({
+        \ 'auto_refresh_delay': 10,
+        \ 'camel_case': v:true,
+        \ 'prev_completion_mode': 'none',
+        \ 'skip_multibyte': v:true,
+        \ })
+
+  let s:default_ignore_sources = ['around', 'buffer']
+  call deoplete#custom#source('ignore_sources', {
+        \ '_': s:default_ignore_sources + ['LanguageClient'],
+        \ 'go': s:default_ignore_sources,
+        \ 'python': s:default_ignore_sources,
+        \ 'javascript': s:default_ignore_sources,
+        \ 'typescript': s:default_ignore_sources,
+        \ 'vue': s:default_ignore_sources,
+        \ 'c': s:default_ignore_sources,
+        \ 'cpp': s:default_ignore_sources,
+        \ })
+
+  call deoplete#custom#option('keyword_patterns', {
+        \ '_': '[a-zA-Z_]\k*\(?',
+        \ 'tex': '[^\w|\s][a-zA-Z_]\w*',
+        \ })
+
+  call deoplete#enable()
 endfunction
