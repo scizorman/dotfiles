@@ -1,0 +1,68 @@
+# Plugin manager
+[[plugins]]
+repo = "Shougo/dein.vim"
+
+[[plugins]]
+repo = "Shougo/vimproc.vim"
+
+# Language Server Protocol
+[[plugins]]
+repo = "autozimu/LanguageClient-neovim"
+rev = "next"
+build = "bash install.sh"
+hook_add = '''
+call hook#add#LanguageClient#config()
+
+nnoremap <silent>K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent><Leader>ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent><Leader>lf :call LanguageClient#textDocument_formatting()<CR>
+nnoremap <silent><Leader>lr :call LanguageClient#textDocument_rename()<CR>
+'''
+
+# Snippets
+[[plugins]]
+repo = "Shougo/neosnippet-snippets"
+
+# Quoting/Parenthesizeing
+[[plugins]]
+repo = "machakann/vim-sandwich"
+hook_add = """
+nmap s <Nop>
+vmap s <Nop>
+"""
+
+# Git
+[[plugins]]
+repo = "lambdalisue/gina.vim"
+hook_add = '''
+nmap [gina] <Nop>
+map <Leader>g [gina]
+
+nmap <silent>[gina]b :<C-u>Gina blame<CR>
+nmap <silent>[gina]c :<C-u>Gina compare --opener=vsplit<CR>
+nmap <silent>[gina]s :<C-u>Gina status --opener=vsplit<CR>
+'''
+hook_source = "call hook#source#gina#config()"
+
+[[plugins]]
+repo = "airblade/vim-gitgutter"
+
+# Statusline/Tabline
+[[plugins]]
+repo = "itchyny/lightline.vim"
+hook_add = "call hook#add#lightline#config()"
+
+# Devicons
+[[plugins]]
+repo = "ryanoasis/vim-devicons"
+
+# Colorschemes
+[[plugins]]
+repo = "cocopon/iceberg.vim"
+
+[[plugins]]
+repo = "dracula/vim"
+hook_add = "autocmd GlobalAutoCmd VimEnter * nested colorscheme dracula"
+
+[[plugins]]
+repo = "jacoborus/tender.vim"
