@@ -1,10 +1,7 @@
 function hook#add#LanguageClient#config()
-  set hidden
-
   let g:LanguageClient_serverCommands = {
         \ 'go': ['gopls'],
         \ 'python': ['pyls'],
-        \ 'vue': ['vls'],
         \ }
   let g:LanguageClient_autoStart = 1
   let g:LanguageClient_autoStop = 1
@@ -15,4 +12,5 @@ function hook#add#LanguageClient#config()
     autocmd User LanguageClientStopped setlocal signcolumn=auto
   augroup END
 
+  set omnifunc=LanguageClient#complete
 endfunction
