@@ -14,7 +14,7 @@ else
     osx)
       if has 'brew'; then
         log_echo 'install Tmux with Homebrew'
-        if brew install tmux reattach-to-user-namespace; then
+        if brew install tmux; then
           log_pass 'Tmux: installed successfully!'
         else
           log_fail 'Tmux: failed to install'
