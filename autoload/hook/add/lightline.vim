@@ -2,13 +2,14 @@ function hook#add#lightline#config()
   let g:lightline = {
         \ 'colorscheme': 'dracula',
         \ 'active': {
-        \   'left': [['mode', 'paste'], ['gitbranch', 'readonly', 'filename', 'modified']],
+        \   'left': [['mode', 'paste'], ['gitbranch', 'readonly', 'filepath', 'modified']],
         \   'right': [['lineinfo'], ['percent'],
         \             ['ale', 'fileformat', 'fileencoding', 'filetype']],
         \ },
         \ 'component_function': {
         \   'ale': 'LightlineAle',
         \   'gitbranch': 'LightlineGitbranch',
+        \   'filepath': 'LightlineFilepath',
         \   'fileformat': 'LightlineFileformat',
         \   'filetype': 'LightlineFiletype',
         \   'modified': 'LightlineModified',
@@ -29,7 +30,18 @@ endfunction
 function! LightlineGitbranch()
   let l:gitbranch = gina#component#repo#branch()
   if &filetype !~? 'vimfiler\|gundo' && !empty(l:gitbranch)
-    return "\uf126 " . l:gitbranch
+    return winwidth(0) > 100 ? "\uf126 " . l:gitbranch : ''
+  else
+    return ''
+  endif
+endfunction
+
+function! LightlineFilepath()
+  let l:width = winwidth(0)
+  if l:width > 150
+    return expand('%:s')
+  elseif l:width > 75
+    return expand('%:t')
   else
     return ''
   endif
@@ -37,17 +49,17 @@ endfunction
 
 
 function! LightlineFileformat()
-  return winwidth(0) > 70 ? (&fileformat . ' '. WebDevIconsGetFileFormatSymbol()) . ' ' : ''
+  return winwidth(0) > 75 ? (&fileformat . ' '. WebDevIconsGetFileFormatSymbol()) . ' ' : ''
 endfunction
 
 
 function! LightlineFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() . ' ' : 'no ft') : ''
+  return winwidth(0) > 75 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() . ' ' : 'no ft') : ''
 endfunction
 
 
 function! LightlineModified()
-  return &filetype == 'help\|vimfiler\|gundo' ? '' : &modified ? "+" : &modifiable ? '' : '-'
+  return &filetype ==? 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 
