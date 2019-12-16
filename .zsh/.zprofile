@@ -43,11 +43,6 @@ export PATH="$GOPATH/bin:$PATH"
 export PIPENV_VENV_IN_PROJECT=true
 
 
-# Google-Cloud-SDK
-source "$HOME/google-cloud-sdk/path.zsh.inc"
-# source "$HOME/google-cloud-sdk/completion.zsh.inc"
-
-
 # Utility functions
 # Export 'PLATFORM' variable as you see fit
 function detect_os() {
