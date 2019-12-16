@@ -1,0 +1,29 @@
+hook_add = """
+" Update filetype
+autocmd MyAutoCmd BufWritePost * nested
+      \ if &l:filetype ==# '' || exists('b:ftdetect')
+      \ | unlet! b:ftdetect
+      \ | filetype detect
+      \ | endif
+
+" Reload .vimrc automatically.
+autocmd MyAutoCmd BufWritePost .vimrc,vimrc,*.rc.vim,*.toml
+      \ source $MYVIMRC | redraw
+
+" Auto reload VimScript.
+autocmd MyAutoCmd BufWritePost,FileWritePost *.vim nested
+      \ if &l:autoread > 0
+      \ | source <afile>
+      \ | echo 'source ' . bufname('%')
+      \ | endif
+"""
+
+[ftplugin]
+go = """
+setlocal iskeyword+="
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal tabstop=4
+
+setlocal noexpandtab
+"""

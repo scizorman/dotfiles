@@ -1,0 +1,9 @@
+\(\S\+\)\.service$
+	service {{$1}} {
+	  rpc {{_cursor_}}
+	}
+
+\(\S\+\)\.message$
+	message {{$1}} {
+	  {{_cursor_}}
+	}

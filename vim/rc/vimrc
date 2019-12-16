@@ -1,0 +1,69 @@
+" -----------------------------------------------------------------------------
+" vimrc
+" -----------------------------------------------------------------------------
+if &compatible
+  set nocompatible
+endif
+
+function! s:source_rc(path, ...) abort
+  let use_global = get(a:000, 0, !has('vim_starting'))
+  let abspath = resolve(expand($XDG_CONFIG_HOME . '/nvim/rc/' . a:path))
+  if !use_global
+    execute 'source' fnameescape(abspath)
+  endif
+
+  " substitute all 'set' to 'setglobal'
+  let content = map(readfile(abspath),
+        \ 'substitute(v:val, "^\\W*\\zsset\\ze\\W", "setglobal", "")')
+  " create tempfile and source the tempfile
+  let tempfile = tempname()
+  try
+    call writefile(content, tempfile)
+    execute 'source' fnameescape(tempfile)
+  finally
+    if filereadable(tempfile)
+      call delete(tempfile)
+    endif
+  endtry
+endfunction
+
+" Set augroup
+augroup MyAutoCmd
+  autocmd!
+  autocmd FileType,Syntax,BufNewFile,BufNew,BufWrite,BufRead *?
+     \ call misc#on_filetype()
+  autocmd CursorHold *.toml syntax sync minlines=300
+augroup END
+
+" augroup filetypedetect
+" augroup END
+
+" Source rc files
+if has('vim_starting')
+  call s:source_rc('init.rc.vim')
+endif
+
+call s:source_rc('dein.rc.vim')
+
+if has('vim_starting') && !empty(argv())
+  call misc#on_filetype()
+endif
+
+if !has('vim_starting')
+  call dein#call_hook('source')
+  call dein#call_hook('post_source')
+endif
+
+call s:source_rc('options.rc.vim')
+call s:source_rc('mappings.rc.vim')
+
+if has('vim_starting') && empty(argv())
+  syntax off
+endif
+
+call s:source_rc('unix.rc.vim')
+
+
+" NOTE: must be written at the last
+" see :help secure
+set secure

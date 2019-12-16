@@ -1,0 +1,59 @@
+# Plugin manager
+[[plugins]]
+repo = "Shougo/dein.vim"
+
+# LSP client
+[[plugins]]
+repo = "neoclide/coc.nvim"
+rev = "release"
+hook_add = "source ~/.config/nvim/rc/plugins/coc.vim"
+
+# Quoting/Parenthesizeing
+[[plugins]]
+repo = "machakann/vim-sandwich"
+hook_add = """
+nmap s <Nop>
+vmap s <Nop>
+"""
+
+# Git
+[[plugins]]
+repo = "lambdalisue/gina.vim"
+hook_add = """
+nnoremap <silent><Up> :<C-u>Gina status --opener=vsplit<CR>
+nnoremap <silent><Down> :<C-u>Gina compare --opener=vsplit<CR>
+"""
+
+[[plugins]]
+repo = "airblade/vim-gitgutter"
+
+# Template
+[[plugins]]
+repo = "mattn/sonictemplate-vim"
+hook_add = """
+let g:sonictemplate_vim_template_dir = [
+      \ '$HOME/.config/nvim/template',
+      \ ]
+"""
+
+# Comment out
+[[plugins]]
+repo = "tyru/caw.vim"
+
+# Syntax
+[[plugins]]
+repo = "sheerun/vim-polyglot"
+
+# Colorschemes
+[[plugins]]
+repo = "cocopon/iceberg.vim"
+
+[[plugins]]
+repo = "dracula/vim"
+hook_add = "autocmd MyAutoCmd VimEnter * nested colorscheme dracula"
+
+[[plugins]]
+repo = "morhetz/gruvbox"
+
+[[plugins]]
+repo = "nanotech/jellybeans.vim"
