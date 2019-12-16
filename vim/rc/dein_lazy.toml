@@ -1,0 +1,150 @@
+# File explorer
+[[plugins]]
+repo = "Shougo/defx.nvim"
+on_cmd = "Defx"
+hook_add = """
+nnoremap <silent><Leader>f
+      \ :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()`<CR>
+"""
+hook_source = """
+call defx#custom#column('mark', {
+      \ 'readonly_icon': '✗',
+      \ 'selected_icon': '✓',
+      \ })
+call defx#custom#column('icon', {
+      \ 'directory_icon': '▸',
+      \ 'opened_icon': '▾',
+      \ 'root_icon': ' ',
+      \ })
+call defx#custom#option('_', {
+      \ 'toggle': v:true,
+      \ 'direction': 'topleft',
+      \ 'split': 'vertical',
+      \ 'winwidth': 30,
+      \ })
+"""
+[plugins.ftplugin]
+defx = """
+  nnoremap <silent><buffer><expr> <CR>
+        \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> c
+        \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> m
+        \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> p
+        \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> l
+        \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> E
+        \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> P
+        \ defx#do_action('open', 'pedit')
+  nnoremap <silent><buffer><expr> o
+        \ defx#do_action('open_or_close_tree')
+  nnoremap <silent><buffer><expr> O
+        \ defx#do_action('open_tree_recursive')
+  nnoremap <silent><buffer><expr> K
+        \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N
+        \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> M
+        \ defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> C
+        \ defx#do_action('toggle_columns', 'mark:indent:icon:filename:type:size:time')
+  nnoremap <silent><buffer><expr> S
+        \ defx#do_action('toggle_sort', 'time')
+  nnoremap <silent><buffer><expr> d
+        \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+        \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> !
+        \ defx#do_action('execute_command')
+  nnoremap <silent><buffer><expr> x
+        \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> yy
+        \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> .
+        \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> ;
+        \ defx#do_action('repeat')
+  nnoremap <silent><buffer><expr> h
+        \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> ~
+        \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> q
+        \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+        \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+        \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j
+        \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k
+        \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>
+        \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+        \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> cd
+        \ defx#do_action('change_vim_cwd')
+"""
+
+[[plugins]]
+repo = "Shougo/denite.nvim"
+on_cmd = "Denite"
+hook_add = """
+  nmap [denite] <Nop>
+  nmap <Leader>d [denite]
+
+  nnoremap <silent>[denite]b :<C-u>Denite buffer<CR>
+  nnoremap <silent>[denite]c :<C-u>Denite command<CR>
+  nnoremap <silent>[denite]h :<C-u>Denite help<CR>
+  nnoremap <silent>[denite]l :<C-u>Denite line<CR>
+  nnoremap <silent>[denite]r :<C-u>Denite register<CR>
+  nnoremap <silent>[denite]fr :<C-u>Denite file/rec -start-filter<CR>
+"""
+hook_source = "source ~/.config/nvim/rc/plugins/denite.vim"
+[plugins.ftplugin]
+denite = """
+  nnoremap <silent><buffer><expr> <CR>
+        \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+        \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+        \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+        \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+        \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+        \ denite#do_map('toggle_select') . 'j'
+"""
+
+# Parenthesizing
+[[plugins]]
+repo = "cohama/lexima.vim"
+on_event = "InsertEnter"
+
+# Context filetype library
+[[plugins]]
+repo = "Shougo/context_filetype.vim"
+
+[[plugins]]
+repo = "osyo-manga/vim-precious"
+depends = ["context_filetype.vim"]
+on_ft = ["markdown", "toml", "help"]
+
+# etc.
+[[plugins]]
+repo = "rhysd/accelerated-jk"
+on_map = {n = "<Plug>"}
+hook_add = """
+  nmap <silent>j <Plug>(accelerated_jk_gj)
+  nmap <silent>k <Plug>(accelerated_jk_gk)
+"""
+
+# Languages
+# Terraform
+[[plugins]]
+repo = "hashivim/vim-terraform"
+on_ft = ["terraform"]

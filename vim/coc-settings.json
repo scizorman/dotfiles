@@ -1,0 +1,46 @@
+{
+  "tsserver.enableJavascript": true,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "filetypes": [
+        "go"
+      ],
+      "rootPatterns": [
+        "go.mod",
+        ".git"
+      ]
+    },
+    "metals": {
+      "command": "metals-vim",
+      "rootPatterns": [
+        "build.sbt"
+      ],
+      "filetypes": [
+        "scala",
+        "sbt"
+      ]
+    },
+    "elmLS": {
+      "command": "elm-language-server",
+      "filetypes": [
+        "elm"
+      ],
+      "rootPatterns": [
+        "elm.json"
+      ],
+      "initializationOptions": {
+        "elmPath": "elm",
+        "elmFormatPath": "elm-format",
+        "elmTestPath": "elm-test",
+        "elmAnalysisTrigger": "change"
+      }
+    }
+  }
+}
