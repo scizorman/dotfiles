@@ -47,6 +47,7 @@ tags
 
 ### VSCode ###
 .vscode
+.devcontainer
 
 ### Env family ###
 # goenv
@@ -56,7 +57,7 @@ tags
 .python-version
 
 # nodenv
-.nodenv
+.node-version
 
 # direnv
 .envrc
