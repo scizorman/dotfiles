@@ -136,6 +136,9 @@ fi
 # Vim-like key bind as default
 bindkey -v
 
+# Escape insert mode 
+bindkey -M viins 'jj' vi-cmd-mode
+
 # Add Emacs-like keybind
 bindkey -M viins '^F' forward-char
 bindkey -M viins '^B' backward-char
