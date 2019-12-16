@@ -21,9 +21,6 @@ zplugin light zsh-users/zsh-autosuggestions
 zplugin ice wait"!0"
 zplugin light b4b4r07/enhancd
 
-# zplugin ice wait"!0" from"gh-r" as"program" mv"gomi* -> gomi" pick"gomi" bpick"*darwin_amd64*"
-# zplugin light b4b4r07/gomi
-
 zplugin ice wait"!0" from"gh-r" as"program" pick"fzf* -> fzf" bpick"*darwin_amd64*"
 zplugin light junegunn/fzf-bin
 
@@ -36,17 +33,11 @@ zplugin light stedolan/jq
 zplugin ice from"gh-r" as"program" mv"direnv* -> direnv" atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' pick"direnv" bpick="*darwin-amd64" src="zhook.zsh"
 zplugin light direnv/direnv
 
-zplugin ice wait"!0" from"gh-r" as"program" pick"hugo" bpick"*macOS-64bit*"
-zplugin light gohugoio/hugo
-
-zplugin ice wait"!0" from"gh-r" as"program" mv"hadolint* -> hadolint" pick"hadolint"
-zplugin light hadolint/hadolint
+zplugin ice from"gh-r" as"program" mv"bazel* -> bazel" pick"bazel"
+zplugin light bazelbuild/bazel
 
 zplugin ice wait"!0" from"gh-r" as"program" bpick"*darwin_amd64*"
 zplugin light ktr0731/evans
-
-zplugin ice wait"!0" from"gh-r" as"program" pick"nvim*/bin/nvim" bpick"*macos*"
-zplugin light neovim/neovim
 
 zplugin ice wait"!0" atinit'zpcompinit; zpcdreplay'
 zplugin light zdharma/fast-syntax-highlighting
