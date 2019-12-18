@@ -3,7 +3,7 @@
 **/*.zwc
 
 # History
-*/.zhistory
+*/.zsh_history
 
 # Cache of completion candidates
 */.zcompcache

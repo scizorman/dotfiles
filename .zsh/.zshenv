@@ -36,7 +36,7 @@ export CORRECT_IGNORE_FILE='.*'
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
 # History
-export HISTFILE="$ZDOTDIR/.zhistory"
+export HISTFILE="$ZDOTDIR/.zsh_history"
 export HISTSIZE=10000
 export SAVEHIST=1000000
 
