@@ -18,29 +18,17 @@ zplugin light zsh-users/zsh-completions
 zplugin ice wait"!0" atload"_zsh_autosuggest_start"
 zplugin light zsh-users/zsh-autosuggestions
 
+zplugin ice wait"!0" atinit'zpcompinit; zpcdreplay'
+zplugin light zdharma/fast-syntax-highlighting
+
 zplugin ice wait"!0"
 zplugin light b4b4r07/enhancd
 
-zplugin ice wait"!0" from"gh-r" as"program" pick"fzf* -> fzf" bpick"*darwin_amd64*"
-zplugin light junegunn/fzf-bin
-
-zplugin ice wait"!0" from"gh-r" as"program" pick"ripgrep*/rg"
-zplugin light BurntSushi/ripgrep
-
-zplugin ice wait"!0" from"gh-r" as"program" mv"jq* -> jq" pick"jq" bpick"*osx-amd64"
-zplugin light stedolan/jq
-
-zplugin ice from"gh-r" as"program" mv"direnv* -> direnv" atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' pick"direnv" bpick="*darwin-amd64" src="zhook.zsh"
-zplugin light direnv/direnv
-
-zplugin ice from"gh-r" as"program" mv"bazel* -> bazel" pick"bazel"
+zplugin ice wait"!0" from"gh-r" as"program" mv"bazel* -> bazel" pick"bazel"
 zplugin light bazelbuild/bazel
 
-zplugin ice wait"!0" from"gh-r" as"program" bpick"*darwin_amd64*"
-zplugin light ktr0731/evans
-
-zplugin ice wait"!0" atinit'zpcompinit; zpcdreplay'
-zplugin light zdharma/fast-syntax-highlighting
+zplugin ice wait"!0" from"gh-r" as"program" mv"mdr* -> mdr" pick"mdr"
+zplugin light MichaelMure/mdr
 
 
 # Options
