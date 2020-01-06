@@ -42,6 +42,10 @@ export PATH="$GOPATH/bin:$PATH"
 # Pipenv
 export PIPENV_VENV_IN_PROJECT=true
 
+# Poetry
+export PATH="$HOME/.poetry/bin:$PATH"
+export POETRY_VIRTUALENVS_IN_PROJECT=true
+
 
 # Utility functions
 # Export 'PLATFORM' variable as you see fit
