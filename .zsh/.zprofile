@@ -46,6 +46,9 @@ export PIPENV_VENV_IN_PROJECT=true
 export PATH="$HOME/.poetry/bin:$PATH"
 export POETRY_VIRTUALENVS_IN_PROJECT=true
 
+# Scala
+export JAVA_HOME="$(/usr/libexec/java_home -v 11)"
+
 
 # Utility functions
 # Export 'PLATFORM' variable as you see fit
