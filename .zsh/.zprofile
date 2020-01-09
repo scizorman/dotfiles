@@ -158,6 +158,8 @@ bindkey -M viins '^U' backward-kill-line
 bindkey -M viins '^H' backward-delete-char
 bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^G' send-break
+bindkey -M viins '^P' up-line-or-history
+bindkey -M viins '^N' down-line-or-history
 bindkey -M viins '^D' delete-char-or-list
 bindkey -M vicmd '^A' beginning-of-line
 bindkey -M vicmd '^E' end-of-line
