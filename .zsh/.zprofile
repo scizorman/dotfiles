@@ -24,12 +24,9 @@ export PATH="$HOME/.anyenv/bin:$PATH"
 
 ANYENV_INIT_SOURCE="$ZDOTDIR/anyenv-init.zsh"
 if [[ -e ${ANYENV_INIT_SOURCE} ]]; then
-  # ret=$(diff ${ANYENV_INIT_SOURCE} <(anyenv init - --no-rehash))
-  # [[ $ret != "" ]] && anyenv init - --no-rehash > ${ANYENV_INIT_SOURCE}
   ret=$(diff ${ANYENV_INIT_SOURCE} <(anyenv init -))
   [[ $ret != "" ]] && anyenv init - > ${ANYENV_INIT_SOURCE}
 else
-  # anyenv init - --no-rehash > ${ANYENV_INIT_SOURCE}
   anyenv init - > ${ANYENV_INIT_SOURCE}
 fi
 source ${ANYENV_INIT_SOURCE}
