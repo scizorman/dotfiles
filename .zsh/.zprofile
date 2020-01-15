@@ -188,7 +188,6 @@ zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:s
 # select hisotries
 autoload -Uz select-history
 zle -N select-history
-bindkey '^h' select-history
 
 
 # Completions
