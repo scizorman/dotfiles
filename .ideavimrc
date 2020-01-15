@@ -1,0 +1,29 @@
+" Key mappings
+" 
+" Common mappings
+source $HOME/dotfiles/vim/rc/mappings.rc.vim
+
+" Only IdeaVim
+nnoremap <C-o> :<C-u>action Back<CR>
+nnoremap <C-i> :<C-u>action Forward<CR>
+nnoremap [g :<C-u>action GotoPreviousError<CR>
+nnoremap ]g :<C-u>action GotoNextError<CR>
+nnoremap gd :<C-u>GotoDeclaration<CR>
+
+
+" Options (https://github.com/JetBrains/ideavim/blob/master/doc/set-commands.md)
+"
+" Common
+set clipboard
+set history
+set hlsearch
+set ignorecase
+set incsearch
+set number
+set relativenumber
+set smartcase
+set timeout
+set timeoutlen=500
+
+" Only IdeaVim
+set surround
