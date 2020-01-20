@@ -13,7 +13,7 @@ inoremap <C-l> <Right>
 nmap # *:%s/<C-r>///g<Left><Left>
 
 " remove highlights
-nnoremap <silent><C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap <silent><C-l> :<C-u>nohlsearch<CR>
 
 " do not yank
 nnoremap x "_x
