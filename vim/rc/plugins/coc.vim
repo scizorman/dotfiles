@@ -17,10 +17,10 @@ nmap <silent>[g <Plug>(coc-diagnostic-prev)
 nmap <silent>]g <Plug>(coc-diagnostic-next)
 
 nmap <silent>gd <Plug>(coc-definition)
-nmap <silent>gy <Plug>(coc-type-definition)
-nmap <silent>gy <Plug>(coc-implementation)
+nmap <silent>gi <Plug>(coc-implementation)
 nmap <silent>gr <Plug>(coc-references)
 nmap <silent>F <Plug>(coc-format)
+nmap <Leader>lr <Plug>(coc-rename)
 
 nnoremap <silent>K :call <SID>show_documentation()<CR>
 
