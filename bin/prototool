@@ -1,0 +1,11 @@
+#!/bin/bash
+DOCKER_IMAGE='uber/prototool'
+
+function main() {
+  docker run --rm \
+    -v $(pwd):/work \
+    ${DOCKER_IMAGE} \
+    prototool ${@}
+}
+
+main ${@}
