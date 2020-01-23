@@ -3,34 +3,6 @@ umask 022
 limit coredumpsize 0
 
 
-# Zplugin
-# NOTE: In the future, enable automatic determination (bpick)
-source "$ZDOTDIR/.zplugin/zplugin.zsh"
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-
-zplugin ice pick"async.zsh" src"pure.zsh"
-zplugin light sindresorhus/pure
-
-zplugin ice wait"!0" blockf
-zplugin light zsh-users/zsh-completions
-
-zplugin ice wait"!0" atload"_zsh_autosuggest_start"
-zplugin light zsh-users/zsh-autosuggestions
-
-zplugin ice wait"!0" atinit'zpcompinit; zpcdreplay'
-zplugin light zdharma/fast-syntax-highlighting
-
-zplugin ice wait"!0"
-zplugin light b4b4r07/enhancd
-
-zplugin ice wait"!0" from"gh-r" as"program" mv"bazel* -> bazel" pick"bazel"
-zplugin light bazelbuild/bazel
-
-zplugin ice wait"!0" from"gh-r" as"program" mv"mdr* -> mdr" pick"mdr"
-zplugin light MichaelMure/mdr
-
-
 # Options
 # NOTE: T.B.D
 # Completion
@@ -100,3 +72,31 @@ setopt multios
 
 # Zle
 unsetopt beep
+
+
+# Zinit
+# NOTE: In the future, enable automatic determination (bpick)
+source "$ZDOTDIR/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=zinit
+
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
+
+zinit ice wait"!0" blockf
+zinit light zsh-users/zsh-completions
+
+zinit ice wait"!0" atload"_zsh_autosuggest_start"
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait"!0" atinit'zpcompinit; zpcdreplay'
+zinit light zdharma/fast-syntax-highlighting
+
+zinit ice wait"!0"
+zinit light b4b4r07/enhancd
+
+zinit ice wait"!0" from"gh-r" as"program" mv"bazel* -> bazel" pick"bazel"
+zinit light bazelbuild/bazel
+
+zinit ice wait"!0" from"gh-r" as"program" mv"mdr* -> mdr" pick"mdr"
+zinit light MichaelMure/mdr
