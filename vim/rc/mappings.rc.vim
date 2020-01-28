@@ -5,8 +5,13 @@ inoremap jj <ESC>
 " write 'j'
 inoremap j<Space> j
 
-" move right
-inoremap <C-l> <Right>
+" like Emacs
+" next char
+inoremap <C-f> <Right>
+" previous char
+inoremap <C-b> <Left>
+" delete char
+inoremap <C-d> <Del>
 
 " Normal mode
 " highlight and replace the word of the cursor position
