@@ -1,14 +1,16 @@
 " Key mappings
 " 
 " Common mappings
-source $HOME/dotfiles/vim/rc/mappings.rc.vim
+source ~/dotfiles/vim/rc/mappings.rc.vim
 
 " Only IdeaVim
 nnoremap <C-o> :<C-u>action Back<CR>
 nnoremap <C-i> :<C-u>action Forward<CR>
 nnoremap [g :<C-u>action GotoPreviousError<CR>
 nnoremap ]g :<C-u>action GotoNextError<CR>
-nnoremap gd :<C-u>GotoDeclaration<CR>
+nnoremap gd :<C-u>action GotoDeclaration<CR>
+nnoremap gi :<C-u>action GotoImplementation<CR>
+nnoremap <Leader>r <C-u>action RenameElement<CR>
 
 
 " Options (https://github.com/JetBrains/ideavim/blob/master/doc/set-commands.md)
