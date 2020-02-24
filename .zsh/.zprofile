@@ -36,15 +36,12 @@ export GOPATH="${GOPATH:-$HOME/go}"
 export PATH="$GOPATH/bin:$PATH"
 
 # Python
-# Pipenv
-export PIPENV_VENV_IN_PROJECT=true
-
 # Poetry
 export PATH="$HOME/.poetry/bin:$PATH"
-export POETRY_VIRTUALENVS_IN_PROJECT=true
 
 # Scala
-export JAVA_HOME="$(/usr/libexec/java_home -v 11)"
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export JAVA_HOME="/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
 
 
 # Utility functions
