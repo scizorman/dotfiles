@@ -31,6 +31,9 @@ else
 fi
 source ${ANYENV_INIT_SOURCE}
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # Go
 export GOPATH="${GOPATH:-$HOME/go}"
 export PATH="$GOPATH/bin:$PATH"
