@@ -9,7 +9,8 @@
     "go",
     "kotlin",
     "elm",
-    "Dockerfile"
+    "Dockerfile",
+    "bash"
   ],
   "languageserver": {
     "golang": {
@@ -37,6 +38,12 @@
       "command": "docker-langserver",
       "filetypes": ["Dockerfile"],
       "args": ["--stdio"]
+    },
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh", "bash"],
+      "ignoredRootPaths": ["~"]
     }
   },
   "python.formatting.provider": "black",
