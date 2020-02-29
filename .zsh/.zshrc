@@ -76,27 +76,27 @@ unsetopt beep
 
 # Zinit
 # NOTE: In the future, enable automatic determination (bpick)
-source "$ZDOTDIR/.zinit/bin/zinit.zsh"
+source $ZDOTDIR/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=zinit
 
-zinit ice pick"async.zsh" src"pure.zsh"
+zinit ice pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 
-zinit ice wait"!0" blockf
+zinit ice wait'!0' blockf
 zinit light zsh-users/zsh-completions
 
-zinit ice wait"!0" atload"_zsh_autosuggest_start"
+zinit ice wait'!0' atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 
-zinit ice wait"!0" atinit'zpcompinit; zpcdreplay'
+zinit ice wait'!0' atinit'zpcompinit; zpcdreplay'
 zinit light zdharma/fast-syntax-highlighting
 
-zinit ice wait"!0"
+zinit ice wait'!0'
 zinit light b4b4r07/enhancd
 
-zinit ice wait"!0" from"gh-r" as"program" mv"bazel* -> bazel" pick"bazel"
+zinit ice wait'!0' from'gh-r' as'program' mv'bazel* -> bazel' pick'bazel'
 zinit light bazelbuild/bazel
 
-zinit ice wait"!0" from"gh-r" as"program" mv"mdr* -> mdr" pick"mdr"
+zinit ice wait'!0' from'gh-r' as'program' mv'mdr* -> mdr' pick'mdr'
 zinit light MichaelMure/mdr

@@ -18,14 +18,14 @@ fpath=( \
 )
 
 # Initialize 'anyenv'
-export ANYENV_ROOT="$HOME/.anyenv"
-export ANYENV_DEFINITION_ROOT="$XDG_CONFIG_HOME/anyenv/anyenv-install"
-export PATH="$HOME/.anyenv/bin:$PATH"
+export ANYENV_ROOT=$HOME/.anyenv
+export ANYENV_DEFINITION_ROOT=$XDG_CONFIG_HOME/anyenv/anyenv-install
+export PATH=$HOME/.anyenv/bin:$PATH
 
-ANYENV_INIT_SOURCE="$ZDOTDIR/anyenv-init.zsh"
+ANYENV_INIT_SOURCE=$ZDOTDIR/anyenv-init.zsh
 if [[ -e ${ANYENV_INIT_SOURCE} ]]; then
   ret=$(diff ${ANYENV_INIT_SOURCE} <(anyenv init -))
-  [[ $ret != "" ]] && anyenv init - > ${ANYENV_INIT_SOURCE}
+  [[ $ret != '' ]] && anyenv init - > ${ANYENV_INIT_SOURCE}
 else
   anyenv init - > ${ANYENV_INIT_SOURCE}
 fi
@@ -35,33 +35,29 @@ source ${ANYENV_INIT_SOURCE}
 eval "$(direnv hook zsh)"
 
 # Go
-export GOPATH="${GOPATH:-$HOME/go}"
+export GOPATH=${GOPATH:-$HOME/go}
 export PATH="$GOPATH/bin:$PATH"
 
 # Rust
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH=$HOME/.cargo/bin:$PATH
 
 # Python
 # Pipenv
 export PIPENV_VENV_IN_PROJECT=true
 
 # Poetry
-export PATH="$HOME/.poetry/bin:$PATH"
+export PATH=$HOME/.poetry/bin:$PATH
 export POETRY_VIRTUALENVS_IN_PROJECT=true
 
 # JVM
 # SDKMAN
 export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+[[ -s $SDKMAN_DIR/bin/sdkman-init.sh ]] && source $SDKMAN_DIR/bin/sdkman-init.sh
 
 
 # Aliases
 # 'ls' color
-if is_osx; then
-  alias ls='ls -GF'
-else
-  alias ls='ls -F --color'
-fi
+alias ls='ls -GF'
 
 # Common aliases
 alias ll='ls -lF'
@@ -75,9 +71,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-if is_osx; then
-  alias sudo="${ZSH_VERSION:+nocorrect} sudo"
-fi
+alias sudo="${ZSH_VERSION:+nocorrect} sudo"
 
 # Global aliases
 alias -g G='| grep'
@@ -90,10 +84,8 @@ alias -g N2='| 2>/dev/null'
 (( $+galiases[H] )) || alias -g H='| head'
 (( $+galiases[T] )) || alias -g T='| tail'
 
-if is_osx; then
-  alias -g CP='| pbcopy'
-  alias -g CC='tee /dev/tty | pbcopy'
-fi
+alias -g CP='| pbcopy'
+alias -g CC='tee /dev/tty | pbcopy'
 
 
 # Keybind
@@ -175,5 +167,3 @@ zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 # Directory
 zstyle ':completion:*:cd:*' ignored-parents parent pwd
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-export PATH="$HOME/.cargo/bin:$PATH"
