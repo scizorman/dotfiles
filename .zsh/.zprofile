@@ -55,54 +55,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 
-# Utility functions
-# Export 'PLATFORM' variable as you see fit
-function detect_os() {
-  case "${(L):-$(uname)}" in
-    *'darwin'*)
-      PLATFORM='osx'
-      ;;
-    *'linux'*)
-      PLATFORM='linux'
-      ;;
-    *'bsd'*)
-      PLATFORM='bsd'
-      ;;
-  esac
-  export PLATFORM
-}
-
-# Return true if runnint OS is 'OSX'
-function is_osx() {
-  detect_os
-  if [[ $PLATFORM == 'osx' ]]; then
-    return 0
-  else
-    return 1
-  fi
-}
-
-# Return true if runnint OS is 'Linux'
-function is_linux() {
-  detect_os
-  if [[ $PLATFORM == 'linux' ]]; then
-    return 0
-  else
-    return 1
-  fi
-}
-
-# Return true if runnint OS is 'FreeBSD'
-function is_bsd() {
-  detect_os
-  if [[ $PLATFORM == 'bsd' ]]; then
-    return 0
-  else
-    return 1
-  fi
-}
-
-
 # Aliases
 # 'ls' color
 if is_osx; then
