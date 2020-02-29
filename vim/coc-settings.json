@@ -45,7 +45,6 @@
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
   "python.sortImports.path": "isort",
-  "python.venvPath": "~/.local/share/virtualenvs:~/Library/Caches/pypoetry/virtualenvs",
   "tsserver.enableJavascript": true,
   "eslint.filetypes": [
     "javascript",
