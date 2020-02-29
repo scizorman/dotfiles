@@ -49,9 +49,10 @@ export PIPENV_VENV_IN_PROJECT=true
 export PATH="$HOME/.poetry/bin:$PATH"
 export POETRY_VIRTUALENVS_IN_PROJECT=true
 
-# Scala
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-export JAVA_HOME="/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+# JVM
+# SDKMAN
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 
 # Utility functions
