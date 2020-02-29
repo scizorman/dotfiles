@@ -31,6 +31,9 @@ source ${ANYENV_INIT_SOURCE}
 export GOPATH="${GOPATH:-$HOME/go}"
 export PATH="$GOPATH/bin:$PATH"
 
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Python
 # Poetry
 export PATH="$HOME/.poetry/bin:$PATH"

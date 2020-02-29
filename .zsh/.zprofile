@@ -38,6 +38,9 @@ eval "$(direnv hook zsh)"
 export GOPATH="${GOPATH:-$HOME/go}"
 export PATH="$GOPATH/bin:$PATH"
 
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Python
 # Pipenv
 export PIPENV_VENV_IN_PROJECT=true
@@ -219,3 +222,5 @@ zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 # Directory
 zstyle ':completion:*:cd:*' ignored-parents parent pwd
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+export PATH="$HOME/.cargo/bin:$PATH"
