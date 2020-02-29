@@ -8,6 +8,25 @@ repo = "neoclide/coc.nvim"
 rev = "release"
 hook_add = "source ~/.config/nvim/rc/plugins/coc.vim"
 
+# Testing
+[[plugins]]
+repo = "janko/vim-test"
+depends = ["vim-dispatch"]
+hook_add = """
+let test#strategy = {
+      \ 'nearest': 'dispatch',
+      \ 'file': 'dispatch',
+      \ 'suite': 'basic',
+      \ }
+
+nnoremap <silent><Leader>tn :<C-u>TestNearest<CR>
+nnoremap <silent><Leader>tf :<C-u>TestFile<CR>
+nnoremap <silent><Leader>ts :<C-u>TestSuite<CR>
+"""
+
+[[plugins]]
+repo = "tpope/vim-dispatch"
+
 # Quoting/Parenthesizeing
 [[plugins]]
 repo = "machakann/vim-sandwich"
