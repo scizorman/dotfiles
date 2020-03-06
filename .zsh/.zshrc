@@ -90,7 +90,7 @@ zinit ice wait'!0' atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 
 zinit ice wait'!0' atinit'zpcompinit; zpcdreplay'
-zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-syntax-highlighting
 
 zinit ice wait'!0'
 zinit light b4b4r07/enhancd
