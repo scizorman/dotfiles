@@ -6,6 +6,7 @@
     "javascriptreact",
     "typescript",
     "typescriptreact",
+    "vue",
     "go",
     "kotlin",
     "elm",
@@ -57,6 +58,7 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "vue"
   ]
 }
