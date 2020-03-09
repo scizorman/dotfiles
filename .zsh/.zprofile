@@ -63,18 +63,19 @@ alias ls='ls -GF'
 alias ll='ls -lF'
 alias la='ls -AF'
 alias lla='ls -lAF'
+alias cat='bat'
 alias cp="${ZSH_VERSION:+nocorrect} cp -i"
 alias mv='mv -i'
 alias mkdir="${ZSH_VERSION:+nocorrect} mkdir"
 alias du='du -h'
-alias grep='grep --color=auto'
+alias grep='rg --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 alias sudo="${ZSH_VERSION:+nocorrect} sudo"
 
 # Global aliases
-alias -g G='| grep'
+alias -g G='| rg'
 alias -g L='| less'
 alias -g X='| xargs'
 alias -g N='| >/dev/null 2>&1'
