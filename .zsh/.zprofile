@@ -57,7 +57,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Aliases
 # ls -> exa
-alias ls='exa -g --time-style=longiso'
+alias ls='exa -g --time-style=long-iso'
 alias ll='ls -lF'
 alias la='ls -aF'
 alias lla='ls -laF'
