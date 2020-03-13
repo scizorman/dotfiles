@@ -56,22 +56,22 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 
 # Aliases
-# 'ls' color
-alias ls='ls -GF'
-
-# Common aliases
+# ls -> exa
+alias ls='exa -g --time-style=longiso'
 alias ll='ls -lF'
-alias la='ls -AF'
-alias lla='ls -lAF'
-alias cat='bat'
-alias cp="${ZSH_VERSION:+nocorrect} cp -i"
-alias mv='mv -i'
-alias mkdir="${ZSH_VERSION:+nocorrect} mkdir"
-alias du='du -h'
-alias grep='rg --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias la='ls -aF'
+alias lla='ls -laF'
 
+# cat -> bat
+alias cat='bat'
+
+# grep -> ripgrep
+alias grep='rg --color=auto'
+
+alias mv='mv -i'
+alias du='du -h'
+alias cp="${ZSH_VERSION:+nocorrect} cp -i"
+alias mkdir="${ZSH_VERSION:+nocorrect} mkdir"
 alias sudo="${ZSH_VERSION:+nocorrect} sudo"
 
 # Global aliases
