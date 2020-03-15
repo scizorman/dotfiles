@@ -57,10 +57,11 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Aliases
 # ls -> exa
-alias ls='exa -g --time-style=long-iso'
-alias ll='ls -lF'
-alias la='ls -aF'
-alias lla='ls -laF'
+alias ls='exa'
+alias ll='exa -lF --git'
+alias la='exa -aF'
+alias lla='exa -alF --git'
+alias tree='exa -T --git-ignore'
 
 # cat -> bat
 alias cat='bat'
