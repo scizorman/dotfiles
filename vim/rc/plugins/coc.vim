@@ -20,7 +20,7 @@ nmap <silent>gd <Plug>(coc-definition)
 nmap <silent>gi <Plug>(coc-implementation)
 nmap <silent>gr <Plug>(coc-references)
 nmap <silent>F <Plug>(coc-format)
-nmap <Leader>lr <Plug>(coc-rename)
+nmap <Leader>rn <Plug>(coc-rename)
 
 nnoremap <silent>K :call <SID>show_documentation()<CR>
 
