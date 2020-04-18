@@ -95,8 +95,8 @@ zinit light zdharma/fast-syntax-highlighting
 zinit ice wait'!0'
 zinit light b4b4r07/enhancd
 
-zinit ice wait'!0' from'gh-r' as'program' mv'bazel* -> bazel' pick'bazel'
-zinit light bazelbuild/bazel
+zinit ice wait'!0' from'gh-r' as'program' mv'bazel-deps* -> bazel-deps' pick'bazel-deps'
+zinit light johnynek/bazel-deps
 
 zinit ice wait'!0' from'gh-r' as'program' mv'mdr* -> mdr' pick'mdr'
 zinit light MichaelMure/mdr
