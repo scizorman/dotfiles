@@ -21,7 +21,8 @@ fpath=( \
 export GHQ_ROOT=$HOME/ghq
 
 function ghq-cd() {
-  cd $(ghq root)/$(ghq list | fzf-tmux +m)
+  REPO=$(ghq list | fzf-tmux +m)
+  [[ -n $REPO ]] && cd $(ghq root)/$REPO
 }
 
 # Initialize 'anyenv'
