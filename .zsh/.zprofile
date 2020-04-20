@@ -17,6 +17,13 @@ fpath=( \
   "$fpath[@]" \
 )
 
+# ghq
+export GHQ_ROOT=$HOME/ghq
+
+function ghq-cd() {
+  cd $(ghq root)/$(ghq list | fzf-tmux +m)
+}
+
 # Initialize 'anyenv'
 export ANYENV_ROOT=$HOME/.anyenv
 export ANYENV_DEFINITION_ROOT=$XDG_CONFIG_HOME/anyenv/anyenv-install
@@ -74,6 +81,9 @@ alias du='du -h'
 alias cp="${ZSH_VERSION:+nocorrect} cp -i"
 alias mkdir="${ZSH_VERSION:+nocorrect} mkdir"
 alias sudo="${ZSH_VERSION:+nocorrect} sudo"
+
+# ghq
+alias gl='ghq-cd'
 
 # Global aliases
 alias -g G='| rg'
