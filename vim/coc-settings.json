@@ -1,5 +1,6 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
+    "go",
     "scala",
     "python",
     "javascript",
@@ -7,18 +8,12 @@
     "typescript",
     "typescriptreact",
     "vue",
-    "go",
     "kotlin",
     "elm",
     "Dockerfile",
     "bash"
   ],
   "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "filetypes": ["go"],
-      "rootPatterns": ["go.mod", ".git"]
-    },
     "kotlin": {
       "command": "kotlin-language-server",
       "filetypes": ["kotlin"],
@@ -46,6 +41,11 @@
       "filetypes": ["sh", "bash"],
       "ignoredRootPaths": ["~"]
     }
+  },
+  "go.enable": true,
+  "go.tags": {
+    "options": "json=omitempty",
+    "tags": "json,bson"
   },
   "python.formatting.provider": "black",
   "python.jediEnabled": false,
