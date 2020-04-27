@@ -16,7 +16,7 @@ nnoremap <Leader>r <C-u>action RenameElement<CR>
 " Options (https://github.com/JetBrains/ideavim/blob/master/doc/set-commands.md)
 "
 " Common
-set clipboard
+set clipboard+=unnamed
 set history
 set hlsearch
 set ignorecase
