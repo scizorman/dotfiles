@@ -78,6 +78,7 @@ alias cat='bat'
 alias grep='rg --color=auto'
 
 alias mv='mv -i'
+alias rm='rm -i'
 alias du='du -h'
 alias cp="${ZSH_VERSION:+nocorrect} cp -i"
 alias mkdir="${ZSH_VERSION:+nocorrect} mkdir"
