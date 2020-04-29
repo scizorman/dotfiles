@@ -144,11 +144,6 @@ nmap <silent>k <Plug>(accelerated_jk_gk)
 """
 
 # Languages
-# Go
-[[plugins]]
-repo = "mattn/vim-goimports"
-on_ft = ["go"]
-
 # Terraform
 [[plugins]]
 repo = "hashivim/vim-terraform"
