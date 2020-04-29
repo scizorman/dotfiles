@@ -100,3 +100,8 @@ zinit light johnynek/bazel-deps
 
 zinit ice wait'!0' from'gh-r' as'program' mv'mdr* -> mdr' pick'mdr'
 zinit light MichaelMure/mdr
+
+# NOTE: Take a profile if 'zprof' is loaded
+if (which zprof > /dev/null); then
+  zprof | less
+fi
