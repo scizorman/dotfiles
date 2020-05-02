@@ -21,7 +21,7 @@ fpath=( \
 export GHQ_ROOT=$HOME/ghq
 
 function ghq-cd() {
-  REPO=$(ghq list | fzf-tmux +m)
+  REPO=$(ghq list | fzf +m)
   [[ -n $REPO ]] && cd $(ghq root)/$REPO
 }
 
@@ -29,25 +29,14 @@ function ghq-cd() {
 export ANYENV_ROOT=$HOME/.anyenv
 export ANYENV_DEFINITION_ROOT=$XDG_CONFIG_HOME/anyenv/anyenv-install
 export PATH=$HOME/.anyenv/bin:$PATH
+eval "$(anyenv init - --no-rehash)"
 
-ANYENV_INIT_SOURCE=$ZDOTDIR/anyenv-init.zsh
-if [[ -e ${ANYENV_INIT_SOURCE} ]]; then
-  ret=$(diff ${ANYENV_INIT_SOURCE} <(anyenv init -))
-  [[ $ret != '' ]] && anyenv init - > ${ANYENV_INIT_SOURCE}
-else
-  anyenv init - > ${ANYENV_INIT_SOURCE}
-fi
-source ${ANYENV_INIT_SOURCE}
-
-# direnv
-eval "$(direnv hook zsh)"
+# SDKMAN
+[[ -s $HOME/.sdkman/bin/sdkman-init.sh ]] && source $HOME/.sdkman/bin/sdkman-init.sh
 
 # Go
 export GOPATH=${GOPATH:-$HOME/go}
 export PATH="$GOPATH/bin:$PATH"
-
-# Rust
-export PATH=$HOME/.cargo/bin:$PATH
 
 # Python
 # Pipenv
@@ -56,11 +45,6 @@ export PIPENV_VENV_IN_PROJECT=true
 # Poetry
 export PATH=$HOME/.poetry/bin:$PATH
 export POETRY_VIRTUALENVS_IN_PROJECT=true
-
-# JVM
-# SDKMAN
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s $SDKMAN_DIR/bin/sdkman-init.sh ]] && source $SDKMAN_DIR/bin/sdkman-init.sh
 
 
 # Aliases
@@ -73,6 +57,8 @@ alias tree='exa -T --git-ignore'
 
 # cat -> bat
 alias cat='bat'
+
+alias find='fd'
 
 # grep -> ripgrep
 alias grep='rg --color=auto'

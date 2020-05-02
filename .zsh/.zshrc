@@ -75,31 +75,52 @@ unsetopt beep
 
 
 # Zinit
-# NOTE: In the future, enable automatic determination (bpick)
 source $ZDOTDIR/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+zinit wait lucid light-mode from'gh-r' as'program' for \
+  pick'bat*/bat' \
+    @sharkdp/bat \
+  pick'fd*/fd' \
+    @sharkdp/fd \
+  mv'exa* -> exa' \
+    ogham/exa \
+  pick'ripgrep*/rg' \
+    BurntSushi/ripgrep \
+  mv'fzf* -> fzf' \
+    junegunn/fzf-bin \
+  pick'ghq*/ghq' \
+    x-motemen/ghq \
+
+zinit wait'!3' lucid light-mode from'gh-r' as'program' for \
+  pick'gh*/bin/gh' \
+    cli/cli \
+  atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' pick'direnv' src'zhook.zsh' \
+    direnv/direnv \
+  mv'bazelisk* -> bazel' \
+    bazelbuild/bazelisk \
+  mv'bazel-deps* -> bazel-deps' \
+    johnynek/bazel-deps
+
+zinit wait lucid light-mode for \
+  atinit'zicompinit; zicdreplay' \
+    zdharma/fast-syntax-highlighting \
+  atload'_zsh_autosuggest_start' \
+    zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+    zsh-users/zsh-completions \
+    b4b4r07/enhancd
 
 zinit ice pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 
-zinit ice wait'!0' blockf
-zinit light zsh-users/zsh-completions
+zinit ice as'completion'
+zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-zinit ice wait'!0' atload'_zsh_autosuggest_start'
-zinit light zsh-users/zsh-autosuggestions
+zinit ice as'completion'
+zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
 
-zinit ice wait'!0' atinit'zpcompinit; zpcdreplay'
-zinit light zdharma/fast-syntax-highlighting
-
-zinit ice wait'!0'
-zinit light b4b4r07/enhancd
-
-zinit ice wait'!0' from'gh-r' as'program' mv'bazel-deps* -> bazel-deps' pick'bazel-deps'
-zinit light johnynek/bazel-deps
-
-zinit ice wait'!0' from'gh-r' as'program' mv'mdr* -> mdr' pick'mdr'
-zinit light MichaelMure/mdr
 
 # NOTE: Take a profile if 'zprof' is loaded
 if (which zprof > /dev/null); then
