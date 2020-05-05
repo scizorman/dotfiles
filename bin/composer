@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+DOCKER_IMAGE=composer:1.10.5
+
+main() {
+  docker run --rm \
+    --volume $PWD:/app \
+    --volume ${COMPOSER_HOME:-$HOME/.composer}:/tmp \
+    $DOCKER_IMAGE $@
+}
+
+main $@
