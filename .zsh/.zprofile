@@ -58,8 +58,6 @@ alias tree='exa -T --git-ignore'
 # cat -> bat
 alias cat='bat'
 
-alias find='fd'
-
 # grep -> ripgrep
 alias grep='rg --color=auto'
 
@@ -136,11 +134,6 @@ fi
 autoload -Uz smart-insert-last-word
 zle -N insert-last-word smart-insert-last-word
 zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
-
-# select hisotries
-autoload -Uz select-history
-zle -N select-history
-bindkey '^R' select-history
 
 
 # Completions

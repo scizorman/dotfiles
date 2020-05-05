@@ -103,17 +103,17 @@ zinit wait'!3' lucid light-mode from'gh-r' as'program' for \
   mv'bazel-deps* -> bazel-deps' \
     johnynek/bazel-deps
 
-zinit wait lucid light-mode for \
-  atinit'zicompinit; zicdreplay' \
-    zdharma/fast-syntax-highlighting \
-  atload'_zsh_autosuggest_start' \
-    zsh-users/zsh-autosuggestions \
-  blockf atpull'zinit creinstall -q .' \
-    zsh-users/zsh-completions \
-    b4b4r07/enhancd
-
-zinit ice pick'async.zsh' src'pure.zsh'
-zinit light sindresorhus/pure
+zinit for \
+  light-mode atload'_zsh_autosuggest_start' \
+             zsh-users/zsh-autosuggestions \
+  light-mode atpull'zinit creinstall -q .' atload'zicompinit; zicdreplay' blockf \
+             zsh-users/zsh-completions \
+  light-mode zdharma/fast-syntax-highlighting \
+             zdharma/history-search-multi-word \
+  light-mode pick'async.zsh' src'pure.zsh' \
+             sindresorhus/pure \
+  light-mode wait'!1' lucid \
+             b4b4r07/enhancd
 
 zinit ice as'completion'
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
