@@ -8,17 +8,11 @@
     "typescript",
     "typescriptreact",
     "vue",
-    "kotlin",
     "elm",
     "Dockerfile",
     "bash"
   ],
   "languageserver": {
-    "kotlin": {
-      "command": "kotlin-language-server",
-      "filetypes": ["kotlin"],
-      "rootPatterns": ["build.gradle.kts"]
-    },
     "elmLS": {
       "command": "elm-language-server",
       "filetypes": ["elm"],
