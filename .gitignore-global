@@ -45,10 +45,6 @@ tags
 # Persistent undo
 [._]*.un~
 
-### VSCode ###
-.vscode
-.devcontainer
-
 ### Env family ###
 # goenv
 .go-version

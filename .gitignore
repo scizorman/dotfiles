@@ -13,6 +13,3 @@
 
 # Zinit
 */.zinit
-
-# Cachee of "anyenv init - --no-rehash"
-*/anyenv-init.zsh
