@@ -122,6 +122,15 @@ zinit ice as'completion'
 zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
 
 
+# AWS CLI
+autoload bashcompinit && bashcompinit
+complete -C aws_completer aws
+
+# Google Cloud SDK
+[[ -f $HOME/google-cloud-sdk/path.zsh.inc ]] && source $HOME/google-cloud-sdk/path.zsh.inc
+[[ -f $HOME/google-cloud-sdk/completion.zsh.inc ]] && source $HOME/google-cloud-sdk/completion.zsh.inc
+
+
 # NOTE: Take a profile if 'zprof' is loaded
 if (which zprof > /dev/null); then
   zprof | less
