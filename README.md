@@ -1,9 +1,11 @@
 # Dotfiles
 
 ## Overview
-This is dotfiles for **Zsh**, **Tmux**, and **Neovim**. 
+
+This is dotfiles for **Zsh**, **Tmux**, and **Neovim**.
 
 ## Installation
+
 The easist way to install this dotfiles is to open up a terminal, type the installation command below: Run the following command to setup a new machine:
 
 <table>
@@ -45,32 +47,35 @@ The easist way to install this dotfiles is to open up a terminal, type the insta
   - `make init`: Initializing some settings
 
 **What's inside?**
+
 1. Download this repository
-1. Deploy (i.e. *copy* or *create symlink*) dot files to your home directory; `make deploy`
+1. Deploy (i.e. _copy_ or _create symlink_) dot files to your home directory; `make deploy`
 1. Run all programs for setup in `./etc/init` directory; `make init` (**Optional**: when running the [installation command](#oneliner) specify `-s init` as an argument)
 
 When the [installation command](#onliner) format is not curl -L URL | bash but `bash -c "$(curl -L URL)"`, shell will be restart automatically. If this is not the case, it is necessary to restart your shell manually.
 
-
 ## Update
+
 To update later on, just run this command.
 
-  ```console
-  $ make update
-  ```
+```console
+$ make update
+```
 
 ## Setup
 
 ### Initialize
+
 All configuration files for setup is stored within the `etc/init` directory. By running the command below, you can interactively setup all preferences.
 
-  ```console
-  $ make init
-  ```
+```console
+$ make init
+```
 
 ## Uninstall
+
 To remove this dotfiles, run the command below.
 
-  ```console
-  $ make clean
-  ```
+```console
+$ make clean
+```
