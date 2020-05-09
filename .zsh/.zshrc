@@ -84,11 +84,10 @@ zinit wait lucid light-mode from'gh-r' as'program' for \
     @sharkdp/bat \
   pick'fd*/fd' \
     @sharkdp/fd \
-  mv'exa* -> exa' \
+  mv'exa* -> exa' pick'exa' \
     ogham/exa \
   pick'ripgrep*/rg' \
     BurntSushi/ripgrep \
-  mv'fzf* -> fzf' \
     junegunn/fzf-bin \
   pick'ghq*/ghq' \
     x-motemen/ghq \
@@ -96,11 +95,11 @@ zinit wait lucid light-mode from'gh-r' as'program' for \
 zinit wait'!3' lucid light-mode from'gh-r' as'program' for \
   pick'gh*/bin/gh' \
     cli/cli \
-  atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' pick'direnv' src'zhook.zsh' \
+  mv'direnv* -> direnv' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' pick'direnv' src'zhook.zsh' \
     direnv/direnv \
-  mv'bazelisk* -> bazel' \
+  mv'bazelisk* -> bazel' pick'bazel' \
     bazelbuild/bazelisk \
-  mv'bazel-deps* -> bazel-deps' \
+  mv'bazel-deps* -> bazel-deps' pick'bazel-deps' \
     johnynek/bazel-deps
 
 zinit for \
