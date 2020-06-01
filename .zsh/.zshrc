@@ -99,9 +99,9 @@ zinit wait'!3' lucid light-mode from'gh-r' as'program' for \
     direnv/direnv \
   mv'sops* -> sops' bpick'*darwin' \
     mozilla/sops \
-  mv'bazelisk* -> bazel' pick'bazel' \
+  mv'bazelisk* -> bazel' \
     bazelbuild/bazelisk \
-  mv'bazel-deps* -> bazel-deps' pick'bazel-deps' \
+  mv'bazel-deps* -> bazel-deps' \
     johnynek/bazel-deps
 
 zinit for \
