@@ -95,7 +95,7 @@ zinit wait lucid light-mode from'gh-r' as'program' for \
 zinit wait'!3' lucid light-mode from'gh-r' as'program' for \
   pick'gh*/bin/gh' \
     cli/cli \
-  mv'direnv* -> direnv' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' pick'direnv' src'zhook.zsh' \
+  atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' mv'direnv* -> direnv' src'zhook.zsh' \
     direnv/direnv \
   mv'bazelisk* -> bazel' pick'bazel' \
     bazelbuild/bazelisk \
