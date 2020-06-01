@@ -97,6 +97,8 @@ zinit wait'!3' lucid light-mode from'gh-r' as'program' for \
     cli/cli \
   atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' mv'direnv* -> direnv' src'zhook.zsh' \
     direnv/direnv \
+  mv'sops* -> sops' bpick'*darwin' \
+    mozilla/sops \
   mv'bazelisk* -> bazel' pick'bazel' \
     bazelbuild/bazelisk \
   mv'bazel-deps* -> bazel-deps' pick'bazel-deps' \
