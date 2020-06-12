@@ -85,6 +85,9 @@ alias -g N2='| 2>/dev/null'
 alias -g CP='| pbcopy'
 alias -g CC='tee /dev/tty | pbcopy'
 
+# Google Chrome CLI
+alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+
 
 # Keybind
 # Vim-like key bind as default
