@@ -63,6 +63,10 @@ repo = "tyru/caw.vim"
 [[plugins]]
 repo = "sheerun/vim-polyglot"
 
+# Dash
+[[plugins]]
+repo = "rizzatti/dash.vim"
+
 # Colorschemes
 [[plugins]]
 repo = "cocopon/iceberg.vim"
