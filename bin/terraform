@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-DOCKER_IMAGE=terraform:light
-
-main() {
-  docker run --rm \
-    @DOCKER_IMAGE $@
-}
-
-main $@
