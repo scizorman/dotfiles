@@ -86,6 +86,8 @@ zinit wait lucid light-mode from'gh-r' as'program' for \
     @sharkdp/fd \
   mv'exa* -> exa' pick'exa' \
     ogham/exa \
+  pick'delta*/delta' \
+    dandavison/delta \
   pick'ripgrep*/rg' \
     BurntSushi/ripgrep \
     junegunn/fzf-bin \
