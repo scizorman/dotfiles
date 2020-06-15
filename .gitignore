@@ -13,3 +13,6 @@
 
 # Zinit
 */.zinit
+
+# Pure (https://github.com/sindresorhus/pure)
+.zsh/pure

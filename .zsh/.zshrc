@@ -113,8 +113,6 @@ zinit for \
              zsh-users/zsh-completions \
   light-mode zdharma/fast-syntax-highlighting \
              zdharma/history-search-multi-word \
-  light-mode pick'async.zsh' src'pure.zsh' \
-             sindresorhus/pure \
   light-mode wait'!1' lucid \
              b4b4r07/enhancd
 
@@ -123,6 +121,15 @@ zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_
 
 zinit ice as'completion'
 zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
+
+# Pure (https://github.com/sindresorhus/pure)
+PUREDIR=$ZDOTDIR/pure
+if [ ! -d $PUREDIR ]; then
+  git clone https://github.com/sindresorhus/pure.git $PUREDIR
+fi
+fpath+=$PUREDIR
+autoload -Uz promptinit; promptinit
+prompt pure
 
 
 # AWS CLI
