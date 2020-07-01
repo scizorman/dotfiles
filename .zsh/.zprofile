@@ -71,6 +71,12 @@ alias sudo="${ZSH_VERSION:+nocorrect} sudo"
 # ghq
 alias gl='ghq-cd'
 
+# PostgreSQL Client
+export PATH=/usr/local/opt/libpq/bin:$PATH
+
+# MySQL Client
+export PATH=/usr/local/opt/mysql-client/bin:$PATH
+
 # Global aliases
 alias -g G='| rg'
 alias -g L='| less'
