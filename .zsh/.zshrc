@@ -99,6 +99,8 @@ zinit wait'!3' lucid light-mode from'gh-r' as'program' for \
     cli/cli \
   atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' mv'direnv* -> direnv' src'zhook.zsh' \
     direnv/direnv \
+  mv'prototool* -> prototool' \
+    uber/prototool \
   mv'sops* -> sops' bpick'*darwin' \
     mozilla/sops \
   pick'golangci-lint*/golangci-lint' \
