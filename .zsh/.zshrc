@@ -103,7 +103,7 @@ zinit wait'!3' lucid light-mode from'gh-r' as'program' for \
     uber/prototool \
   mv'sops* -> sops' bpick'*darwin' \
     mozilla/sops \
-  pick'golangci-lint*/golangci-lint' \
+  mv'golangci-lint* -> golangci-lint' pick'golangci-lint*/golangci-lint' \
     golangci/golangci-lint \
   mv'bazelisk* -> bazel' \
     bazelbuild/bazelisk \
