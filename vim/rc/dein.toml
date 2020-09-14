@@ -70,7 +70,6 @@ repo = "rizzatti/dash.vim"
 # Colorschemes
 [[plugins]]
 repo = "cocopon/iceberg.vim"
-hook_add = "autocmd MyAutoCmd VimEnter * nested colorscheme iceberg"
 
 [[plugins]]
 repo = "dracula/vim"
@@ -80,3 +79,7 @@ repo = "morhetz/gruvbox"
 
 [[plugins]]
 repo = "nanotech/jellybeans.vim"
+
+[[plugins]]
+repo = "w0ng/vim-hybrid"
+hook_add = "autocmd MyAutoCmd VimEnter * nested colorscheme hybrid"
