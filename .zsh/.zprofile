@@ -46,6 +46,9 @@ export PIPENV_VENV_IN_PROJECT=true
 export PATH=$HOME/.poetry/bin:$PATH
 export POETRY_VIRTUALENVS_IN_PROJECT=true
 
+# Rust
+export PATH=$HOME/.cargo/bin:$PATH
+
 
 # Aliases
 # ls -> exa
