@@ -1,5 +1,8 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
+    "c",
+    "cpp",
+    "cs",
     "go",
     "scala",
     "python",
@@ -13,6 +16,20 @@
     "bash"
   ],
   "languageserver": {
+    "golangci-lint-languageserver": {
+      "command": "golangci-lint-langserver",
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "command": [
+          "golangci-lint",
+          "run",
+          "--disable",
+          "lll",
+          "--out-format",
+          "json"
+        ]
+      }
+    },
     "elmLS": {
       "command": "elm-language-server",
       "filetypes": ["elm"],
@@ -28,14 +45,9 @@
       "command": "docker-langserver",
       "filetypes": ["Dockerfile"],
       "args": ["--stdio"]
-    },
-    "bash": {
-      "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh", "bash"],
-      "ignoredRootPaths": ["~"]
     }
   },
+  "clangd.path": "/Users/scizorman/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
   "go.enable": true,
   "go.tags": {
     "options": "json=omitempty",
