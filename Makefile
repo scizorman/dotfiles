@@ -1,36 +1,45 @@
-DOTPATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-CANDIDATES := $(wildcard .??*) bin
-EXCLUSIONS := .DS_Store .git .gitmodules .gitignore
-DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
+.DEFAULT_GOAL := help
 
-help:
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
-		| sort \
-		| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+CANDIDATES := $(wildcard .??*)
+EXCLUSIONS := .DS_Store .git .gitignore
+DOTFILES   := $(filter-out $(EXCLUSIONS),$(CANDIDATES))
 
-list: ## show dot files in this repository
-	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
+## list: show dot files in this repository
+list:
+	@$(foreach val,$(DOTFILES),/bin/ls -dF $(val);)
 
-update: ## fetch changes for this repository
-	git pull origin master
-	git submodule init
-	git submodule update
-	git submodule foreach git pull origin master
+## update: fetch changes for this repository
+update:
+	@git pull origin main
 
-deploy: ## create the symlink to home directory
+## deploy: create the symlink to home directory
+deploy:
 	@echo ''
 	@echo '==> start to deploy dotfiles to home directory.'
 	@echo ''
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 	@echo ''
 
-init: ## setup environment settings
+## list: setup environment settings
+init:
 	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/init/init.sh
 
+## run update, deploy and init
 install: update deploy init ## run update, deploy and init
-	@exec $$SHELL
+	@exec $$SHELL -l
 
-clean: ## remove the dot files and this repository
+## clean: remove the dot files and this repository
+clean:
 	@echo 'remove dot files in your home directory...'
-	@-$(foreach val, $(DOTFILES), unlink $(HOME)/$(val);)
+	@-$(foreach val,$(DOTFILES),unlink $(HOME)/$(val);)
 	-rm -rf $(DOTPATH)
+
+## help: show this help message
+help:
+	@grep -E '^## [a-zA-Z_-]+: .*$$' $(MAKEFILE_LIST) \
+		| tr -d '##' \
+		| sort \
+		| awk 'BEGIN {FS = ":"}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: list update deploy init install clean help
