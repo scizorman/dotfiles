@@ -13,6 +13,7 @@
     "vue",
     "elm",
     "Dockerfile",
+    "terraform",
     "bash"
   ],
   "languageserver": {
@@ -45,6 +46,11 @@
       "command": "docker-langserver",
       "filetypes": ["Dockerfile"],
       "args": ["--stdio"]
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "filetypes": ["terraform"],
+      "args": ["serve"]
     }
   },
   "clangd.path": "/Users/scizorman/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
