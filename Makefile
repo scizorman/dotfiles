@@ -1,13 +1,12 @@
 .DEFAULT_GOAL := help
 
-DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-CANDIDATES := $(wildcard .??*)
-EXCLUSIONS := .DS_Store .git .gitignore
-DOTFILES   := $(filter-out $(EXCLUSIONS),$(CANDIDATES))
+candidates := $(wildcard .??*)
+exclusions := .DS_Store .git .gitignore
+dotfiles   := $(filter-out $(exclusions),$(candidates))
 
-## list: show dot files in this repository
+## list: show dotfiles in this repository
 list:
-	@$(foreach val,$(DOTFILES),/bin/ls -dF $(val);)
+	@$(foreach val,$(dotfiles),/bin/ls -dF $(val);)
 
 ## update: fetch changes for this repository
 update:
@@ -16,30 +15,24 @@ update:
 ## deploy: create the symlink to home directory
 deploy:
 	@echo ''
-	@echo '==> start to deploy dotfiles to home directory.'
-	@echo ''
-	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
+	$(info Start to deploy dotfiles to home directory)
+	@$(foreach dotfile,$(dotfiles),ln -sfnv $(abspath $(dotfile)) $(HOME)/$(dotfile);)
 	@echo ''
 
-## init: setup environment settings
-init:
-	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/init/init.sh
-
-## run update, deploy and init
-install: update deploy init ## run update, deploy and init
+## install: setup environments and install CLI tools
+install: update deploy
+	$(MAKE) -f install.mk install
 	@exec $$SHELL -l
 
 ## clean: remove the dot files and this repository
 clean:
-	@echo 'remove dot files in your home directory...'
-	@-$(foreach val,$(DOTFILES),unlink $(HOME)/$(val);)
-	-rm -rf $(DOTPATH)
+	$(info Remove dotfiles in your home directory...)
+	@-$(foreach dotfile,$(dotfiles),unlink $(HOME)/$(dotfile);)
 
 ## help: show this help message
 help:
 	@grep -E '^## [a-zA-Z_-]+: .*$$' $(MAKEFILE_LIST) \
 		| tr -d '##' \
-		| sort \
 		| awk 'BEGIN {FS = ":"}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: list update deploy init install clean help
+.PHONY: list update deploy install clean help
