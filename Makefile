@@ -14,15 +14,11 @@ update:
 
 ## deploy: create the symlink to home directory
 deploy:
-	@echo ''
-	$(info Start to deploy dotfiles to home directory)
 	@$(foreach dotfile,$(dotfiles),ln -sfnv $(abspath $(dotfile)) $(HOME)/$(dotfile);)
-	@echo ''
 
 ## install: setup environments and install CLI tools
 install: update deploy
-	$(MAKE) -f install.mk install
-	@exec $$SHELL -l
+	$(MAKE) -f install.mk
 
 ## clean: remove the dot files and this repository
 clean:
