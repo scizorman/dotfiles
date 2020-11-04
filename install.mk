@@ -22,7 +22,11 @@ poetry := $(HOME)/.poetry
 $(poetry):
 	@curl -sSL 'https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py' | python
 
-install: $(brew) $(zinit) $(anyenv) $(poetry)
+rustup := $(HOME)/.cargo/bin/rustup
+$(rustup):
+	@curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+install: $(brew) $(zinit) $(anyenv) $(poetry) $(rustup)
 	@exec $$SHELL -l
 
 .PHONY: install
