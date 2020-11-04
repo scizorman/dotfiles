@@ -18,7 +18,8 @@ deploy:
 
 ## install: Setup environments and install programs
 install: update deploy
-	$(MAKE) -f install.mk
+	@$(MAKE) -f install.mk
+	@exec $$SHELL -l
 
 ## clean: Remove the dot files and this repository
 clean:
