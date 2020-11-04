@@ -49,8 +49,18 @@ export POETRY_VIRTUALENVS_IN_PROJECT=true
 # Rust
 export PATH=$HOME/.cargo/bin:$PATH
 
+# PostgreSQL Client
+export PATH=/usr/local/opt/libpq/bin:$PATH
+
+# MySQL Client
+export PATH=/usr/local/opt/mysql-client/bin:$PATH
+
 
 # Aliases
+# Neovim
+alias vi='nvim'
+alias vim='nvim'
+
 # ls -> exa
 alias ls='exa'
 alias ll='exa -lF --git'
@@ -73,12 +83,6 @@ alias sudo="${ZSH_VERSION:+nocorrect} sudo"
 
 # ghq
 alias gl='ghq-cd'
-
-# PostgreSQL Client
-export PATH=/usr/local/opt/libpq/bin:$PATH
-
-# MySQL Client
-export PATH=/usr/local/opt/mysql-client/bin:$PATH
 
 # Global aliases
 alias -g G='| rg'
