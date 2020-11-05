@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := install
 
 .DELETE_ON_ERROR:
-.INTERMEDIATE: get-poetry.py flutter.zip
+.INTERMEDIATE: get-poetry.py flutter.zip google-cloud-sdk.tar.gz
 
 brew := /usr/local/bin/brew
 $(brew):
@@ -37,7 +37,13 @@ flutter.zip:
 $(flutter): flutter.zip
 	@unzip $< -d $(@D)
 
-install: $(brew) $(zinit) $(anyenv) $(poetry) $(rustup) $(flutter)
+google-cloud-sdk := $(HOME)/google-cloud-sdk
+google-cloud-sdk.tar.gz:
+	@curl -sSL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-315.0.0-darwin-x86_64.tar.gz -o $@
+$(google-cloud-sdk): google-cloud-sdk.tar.gz
+	@tar zxvf $< -C $(@D)
+
+install: $(brew) $(zinit) $(anyenv) $(poetry) $(rustup) $(flutter) $(google-cloud-sdk)
 	@echo 'Finished to install programs'
 
 .PHONY: install
