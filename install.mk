@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := install
 
 .DELETE_ON_ERROR:
-.INTERMEDIATE: get-poetry.py
+.INTERMEDIATE: get-poetry.py flutter.zip
 
 brew := /usr/local/bin/brew
 $(brew):
@@ -31,7 +31,13 @@ rustup := $(HOME)/.cargo/bin/rustup
 $(rustup):
 	@curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-install: $(brew) $(zinit) $(anyenv) $(poetry) $(rustup)
+flutter := $(HOME)/flutter
+flutter.zip:
+	@curl -sSL https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_1.22.3-stable.zip -o $@
+$(flutter): flutter.zip
+	@unzip $< -d $(@D)
+
+install: $(brew) $(zinit) $(anyenv) $(poetry) $(rustup) $(flutter)
 	@echo 'Finished to install programs'
 
 .PHONY: install
