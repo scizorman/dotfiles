@@ -33,17 +33,20 @@ $(rustup):
 
 flutter := $(HOME)/flutter
 flutter.zip:
-	@curl -sSL https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_1.22.3-stable.zip -o $@
+	@curl -sSL https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_1.22.4-stable.zip -o $@
 $(flutter): flutter.zip
 	@unzip $< -d $(@D)
 
 google-cloud-sdk := $(HOME)/google-cloud-sdk
 google-cloud-sdk.tar.gz:
-	@curl -sSL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-315.0.0-darwin-x86_64.tar.gz -o $@
+	@curl -sSL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-319.0.0-darwin-x86_64.tar.gz -o $@
 $(google-cloud-sdk): google-cloud-sdk.tar.gz
 	@tar zxvf $< -C $(@D)
 
-install: $(brew) $(zinit) $(anyenv) $(poetry) $(rustup) $(flutter) $(google-cloud-sdk)
-	@echo 'Finished to install programs'
+firebase := /usr/local/bin/firebase
+$(firebase):
+	@curl -sL https://firebase.tools
+
+install: $(brew) $(zinit) $(anyenv) $(poetry) $(rustup) $(flutter) $(google-cloud-sdk) $(firebase)
 
 .PHONY: install
