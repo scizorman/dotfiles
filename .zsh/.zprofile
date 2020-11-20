@@ -21,8 +21,8 @@ fpath=( \
 export GHQ_ROOT=$HOME/ghq
 
 function ghq-cd() {
-  REPO=$(ghq list | fzf +m)
-  [[ -n $REPO ]] && cd $(ghq root)/$REPO
+  local repository=$(ghq list | fzf +m)
+  [[ -n $repository ]] && cd $(ghq root)/$repository
 }
 
 # Initialize 'anyenv'
