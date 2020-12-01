@@ -30,6 +30,8 @@ set relativenumber
 set smartcase
 set timeout
 set timeoutlen=500
+set visualbell
+set noerrorbells
 
 " Only IdeaVim
 set surround
