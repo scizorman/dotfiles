@@ -59,6 +59,7 @@
     "options": "json=omitempty",
     "tags": "json,bson"
   },
+  "metals.javaHome": "/Users/scizorman/.sdkman/candidates/java/11.0.9.hs-adpt",
   "python.formatting.provider": "black",
   "python.jediEnabled": false,
   "python.linting.enabled": true,
