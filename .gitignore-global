@@ -57,3 +57,6 @@ tags
 
 # direnv
 .envrc
+
+### SDKMAN
+.sdkmanrc
