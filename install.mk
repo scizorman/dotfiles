@@ -43,10 +43,6 @@ google-cloud-sdk.tar.gz:
 $(google-cloud-sdk): google-cloud-sdk.tar.gz
 	@tar zxvf $< -C $(@D)
 
-firebase := /usr/local/bin/firebase
-$(firebase):
-	@curl -sL https://firebase.tools
-
-install: $(brew) $(zinit) $(anyenv) $(poetry) $(rustup) $(flutter) $(google-cloud-sdk) $(firebase)
+install: $(brew) $(zinit) $(anyenv) $(poetry) $(rustup) $(flutter) $(google-cloud-sdk)
 
 .PHONY: install
