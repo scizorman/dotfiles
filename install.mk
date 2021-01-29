@@ -3,7 +3,13 @@
 .DELETE_ON_ERROR:
 .INTERMEDIATE: get-poetry.py flutter.zip google-cloud-sdk.tar.gz
 
-brew := /usr/local/bin/brew
+os := $(shell uname -s)
+ifeq ($(os),Linux)
+	brew := $(HOME)/.linuxbrew/bin/brew
+else
+	brew := /usr/local/bin/brew
+endif
+
 $(brew):
 	@bash -c '$(shell curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)'
 	@brew bundle --global
@@ -25,7 +31,7 @@ poetry := $(HOME)/.poetry
 get-poetry.py:
 	@curl -sSL 'https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py' -o $@
 $(poetry): get-poetry.py
-	@python $< --no-modify-path --yes
+	@python3 $< --no-modify-path --yes
 
 rustup := $(HOME)/.cargo/bin/rustup
 $(rustup):
