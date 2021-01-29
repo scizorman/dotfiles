@@ -17,20 +17,6 @@
     "bash"
   ],
   "languageserver": {
-    "golangci-lint-languageserver": {
-      "command": "golangci-lint-langserver",
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "command": [
-          "golangci-lint",
-          "run",
-          "--disable",
-          "lll",
-          "--out-format",
-          "json"
-        ]
-      }
-    },
     "elmLS": {
       "command": "elm-language-server",
       "filetypes": ["elm"],
