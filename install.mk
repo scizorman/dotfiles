@@ -23,6 +23,7 @@ $(zinit):
 anyenv := $(HOME)/.anyenv
 $(anyenv):
 	@git clone https://github.com/anyenv/anyenv.git $@
+	@$@ install --init
 
 sdkman := $(HOME)/.sdkman
 $(sdkman):
