@@ -1,18 +1,20 @@
 .DEFAULT_GOAL := install
 
 .DELETE_ON_ERROR:
-.INTERMEDIATE: get-poetry.py flutter.zip google-cloud-sdk.tar.gz
+.INTERMEDIATE: install-homebrew.sh get-poetry.py flutter.zip google-cloud-sdk.tar.gz
 
 os := $(shell uname -s)
 ifeq ($(os),Linux)
-	brew := $(HOME)/.linuxbrew/bin/brew
+	brew := /home/linuxbrew/.linuxbrew/bin/brew
 else
 	brew := /usr/local/bin/brew
 endif
 
-$(brew):
-	@bash -c '$(shell curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)'
-	@brew bundle --global
+install-homebrew.sh:
+	@curl -fsSL 'https://raw.githubusercontent.com/Homebrew/install/master/install.sh' -o $@
+$(brew): install-homebrew.sh
+	@bash $<
+	@$@ bundle --global
 
 zinit := $(HOME)/.zsh/.zinit
 $(zinit):
