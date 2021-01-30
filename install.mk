@@ -27,7 +27,6 @@ $(anyenv):
 sdkman := $(HOME)/.sdkman
 $(sdkman):
 	@curl -s 'https://get.sdkman.io?rcuupdate=false' | bash
-	@source $@/bin/sdkman-init.sh
 
 poetry := $(HOME)/.poetry
 get-poetry.py:
@@ -51,6 +50,6 @@ google-cloud-sdk.tar.gz:
 $(google-cloud-sdk): google-cloud-sdk.tar.gz
 	@tar zxvf $< -C $(@D)
 
-install: $(brew) $(zinit) $(anyenv) $(poetry) $(rustup) $(flutter) $(google-cloud-sdk)
+install: $(brew) $(zinit) $(anyenv) $(sdkman) $(poetry) $(rustup) $(flutter) $(google-cloud-sdk)
 
 .PHONY: install
