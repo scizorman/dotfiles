@@ -17,12 +17,24 @@ fpath=( \
   "$fpath[@]" \
 )
 
-# Homebrew
-if [ $(uname) == 'Linux' ]; then
-  export PATH=$HOME/.linuxbrew/bin:$PATH
-  export MANPATH=$HOME/.linuxbrew/share/man:$MANPATH
-  export INFOPATH=$HOME/.linuxbrew/share/info:$INFOPATH
-  export LD_LIBRARY_PATH=$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH
+if [ $(uname) = 'Linux' ]; then
+  # Homebrew
+  export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+  export MANPATH=/home/linuxbrew/.linuxbrew/share/man:$MANPATH
+  export INFOPATH=/home/linuxbrew/.linuxbrew/share/info:$INFOPATH
+  export LD_LIBRARY_PATH=/home/linuxbrew/.linuxbrew/lib:$LD_LIBRARY_PATH
+
+  # PostgreSQL Client
+  export PATH=/home/linuxbrew/.linuxbrew/opt/libpq/bin:$PATH
+
+  # MySQL Client
+  export PATH=/home/linuxbrew/.linuxbrew/opt/mysql-client/bin:$PATH
+else
+  # PostgreSQL Client
+  export PATH=/usr/local/opt/libpq/bin:$PATH
+
+  # MySQL Client
+  export PATH=/usr/local/opt/mysql-client/bin:$PATH
 fi
 
 # ghq
@@ -62,12 +74,6 @@ export PATH=$HOME/Library/Android/sdk/tools/bin:$PATH
 
 # Flutter
 export PATH=$HOME/flutter/bin:$PATH
-
-# PostgreSQL Client
-export PATH=/usr/local/opt/libpq/bin:$PATH
-
-# MySQL Client
-export PATH=/usr/local/opt/mysql-client/bin:$PATH
 
 
 # Aliases
