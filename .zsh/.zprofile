@@ -72,9 +72,6 @@ export PATH=$HOME/.cargo/bin:$PATH
 # Android SDK Manager
 export PATH=$HOME/Library/Android/sdk/tools/bin:$PATH
 
-# Flutter
-export PATH=$HOME/flutter/bin:$PATH
-
 
 # Aliases
 # Neovim
