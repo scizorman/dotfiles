@@ -95,7 +95,7 @@ zinit wait lucid light-mode from'gh-r' as'program' for \
     x-motemen/ghq \
 
 zinit wait'!3' lucid light-mode from'gh-r' as'program' for \
-  pick'gh*/bin/gh' \
+  pick'gh*/bin/gh' bpick'*.tar.gz' \
     cli/cli \
   atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' mv'direnv* -> direnv' src'zhook.zsh' \
     direnv/direnv \
