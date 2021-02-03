@@ -73,9 +73,6 @@ export POETRY_VIRTUALENVS_IN_PROJECT=true
 # Rust
 export PATH=$HOME/.cargo/bin:$PATH
 
-# Android SDK Manager
-export PATH=$HOME/Library/Android/sdk/tools/bin:$PATH
-
 
 # Aliases
 # Neovim
