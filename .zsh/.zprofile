@@ -99,6 +99,12 @@ alias cp="${ZSH_VERSION:+nocorrect} cp -i"
 alias mkdir="${ZSH_VERSION:+nocorrect} mkdir"
 alias sudo="${ZSH_VERSION:+nocorrect} sudo"
 
+# Clipboard
+if [ $(uname) = 'Linux' ]; then
+  alias pbcopy='xclip -selection c'
+  alias pbpaste='xclip -selection c -o'
+fi
+
 # ghq
 alias gl='ghq-cd'
 
