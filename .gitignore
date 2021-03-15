@@ -1,3 +1,6 @@
+# Homebrew
+.Brewfile
+
 ### Zsh
 # Compiled files
 **/*.zwc
