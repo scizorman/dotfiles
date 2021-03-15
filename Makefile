@@ -1,11 +1,14 @@
 .DEFAULT_GOAL := help
 
 candidates := $(wildcard .??*)
-exclusions := .DS_Store .git .gitignore
+exclusions := $(wildcard .Brewfile.*) .DS_Store .git .gitignore
 dotfiles   := $(filter-out $(exclusions),$(candidates))
 
+.Brewfile:
+	@ln -sfn .Brewfile.$(shell uname | tr [A-Z] [a-z]) $@
+
 ## list: Show dotfiles in this repository
-list:
+list: .Brewfile
 	@$(foreach val,$(dotfiles),/bin/ls -dF $(val);)
 
 ## update: Fetch changes for this repository
@@ -13,7 +16,7 @@ update:
 	@git pull origin main
 
 ## deploy: Create the symlink to home directory
-deploy:
+deploy: .Brewfile
 	@$(foreach dotfile,$(dotfiles),ln -sfnv $(abspath $(dotfile)) $(HOME)/$(dotfile);)
 
 ## install: Setup environments and install programs
