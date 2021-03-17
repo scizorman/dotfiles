@@ -39,25 +39,18 @@
       "args": ["serve"]
     }
   },
-  "clangd.path": "/Users/scizorman/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
+  "clangd.path": "/home/scizorman/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
   "go.enable": true,
   "go.tags": {
     "options": "json=omitempty",
     "tags": "json,bson"
   },
-  "metals.javaHome": "/Users/scizorman/.sdkman/candidates/java/11.0.9.hs-adpt",
+  "metals.javaHome": "/home/scizorman/.sdkman/candidates/java/11.0.10.hs-adpt",
   "python.formatting.provider": "black",
   "python.jediEnabled": false,
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
   "python.sortImports.path": "isort",
-  "tsserver.enableJavascript": true,
-  "eslint.filetypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue"
-  ]
+  "tsserver.enableJavascript": true
 }

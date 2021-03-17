@@ -101,7 +101,7 @@ zinit wait'!3' lucid light-mode from'gh-r' as'program' for \
     direnv/direnv \
   mv'prototool* -> prototool' \
     uber/prototool \
-  mv'golangci-lint* -> golangci-lint' pick'golangci-lint*/golangci-lint' \
+  mv'golangci-lint* -> golangci-lint' pick'usr/local/bin/golangci-lint' \
     golangci/golangci-lint \
   mv'bazelisk* -> bazel' \
     bazelbuild/bazelisk \
