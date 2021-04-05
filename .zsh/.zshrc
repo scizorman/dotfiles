@@ -79,35 +79,6 @@ source $ZDOTDIR/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit wait lucid light-mode from'gh-r' as'program' for \
-  pick'bat*/bat' \
-    @sharkdp/bat \
-  pick'fd*/fd' \
-    @sharkdp/fd \
-  mv'exa* -> exa' pick'exa' \
-    ogham/exa \
-  pick'delta*/delta' \
-    dandavison/delta \
-  pick'ripgrep*/rg' \
-    BurntSushi/ripgrep \
-    junegunn/fzf-bin \
-  pick'ghq*/ghq' \
-    x-motemen/ghq \
-
-zinit wait'!3' lucid light-mode from'gh-r' as'program' for \
-  pick'gh*/bin/gh' bpick'*.tar.gz' \
-    cli/cli \
-  atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' mv'direnv* -> direnv' src'zhook.zsh' \
-    direnv/direnv \
-  mv'prototool* -> prototool' \
-    uber/prototool \
-  mv'golangci-lint* -> golangci-lint' pick'usr/local/bin/golangci-lint' \
-    golangci/golangci-lint \
-  mv'bazelisk* -> bazel' \
-    bazelbuild/bazelisk \
-  mv'bazel-deps* -> bazel-deps' \
-    johnynek/bazel-deps
-
 zinit for \
   light-mode atload'_zsh_autosuggest_start' \
              zsh-users/zsh-autosuggestions \
