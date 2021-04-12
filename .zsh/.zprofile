@@ -73,6 +73,9 @@ export POETRY_VIRTUALENVS_IN_PROJECT=true
 # Rust
 export PATH=$HOME/.cargo/bin:$PATH
 
+# Deno
+export PATH=$HOME/.deno/bin:$PATH
+
 # Flutter
 export PATH=$HOME/flutter/bin:$PATH
 
