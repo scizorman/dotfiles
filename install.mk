@@ -41,7 +41,7 @@ $(rustup):
 
 deno := $(HOME)/.deno/bin/deno
 install-deno.sh:
-	@curl -fsSL https://deno.land/x/install/install.sh
+	@curl -fsSL https://deno.land/x/install/install.sh -o $@
 $(deno): install-deno.sh
 	@sh $<
 
