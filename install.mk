@@ -46,10 +46,8 @@ $(deno): install-deno.sh
 	@sh $<
 
 google-cloud-sdk := $(HOME)/google-cloud-sdk
-google-cloud-sdk.tar.gz:
-	@curl -sSL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-319.0.0-darwin-x86_64.tar.gz -o $@
-$(google-cloud-sdk): google-cloud-sdk.tar.gz
-	@tar zxvf $< -C $(@D)
+$(google-cloud-sdk):
+	@curl https://sdk.cloud.google.com | bash
 
 install: $(brew) $(zinit) $(anyenv) $(sdkman) $(poetry) $(rustup) $(deno) $(google-cloud-sdk)
 
