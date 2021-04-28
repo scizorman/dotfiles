@@ -60,9 +60,6 @@ export GOPATH=${GOPATH:-$HOME/go}
 export PATH="$GOPATH/bin:$PATH"
 
 # Python
-# Pipenv
-export PIPENV_VENV_IN_PROJECT=true
-
 # Poetry
 export PATH=$HOME/.poetry/bin:$PATH
 export POETRY_VIRTUALENVS_IN_PROJECT=true
