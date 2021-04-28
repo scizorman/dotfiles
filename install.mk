@@ -20,11 +20,6 @@ zinit := $(HOME)/.zsh/.zinit
 $(zinit):
 	@git clone https://github.com/zdharma/zinit.git $@/bin
 
-anyenv := $(HOME)/.anyenv
-$(anyenv):
-	@git clone https://github.com/anyenv/anyenv.git $@
-	@$@ install --init
-
 sdkman := $(HOME)/.sdkman
 $(sdkman):
 	@curl -s 'https://get.sdkman.io?rcuupdate=false' | bash

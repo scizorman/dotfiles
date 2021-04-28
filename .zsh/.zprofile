@@ -50,9 +50,6 @@ function ghq-cd() {
 }
 
 # Initialize 'anyenv'
-export ANYENV_ROOT=$HOME/.anyenv
-export ANYENV_DEFINITION_ROOT=$XDG_CONFIG_HOME/anyenv/anyenv-install
-export PATH=$HOME/.anyenv/bin:$PATH
 eval "$(anyenv init - --no-rehash)"
 
 # SDKMAN
