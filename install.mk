@@ -44,6 +44,6 @@ google-cloud-sdk := $(HOME)/google-cloud-sdk
 $(google-cloud-sdk):
 	@curl https://sdk.cloud.google.com | bash
 
-install: $(brew) $(zinit) $(anyenv) $(sdkman) $(poetry) $(rustup) $(deno) $(google-cloud-sdk)
+install: $(brew) $(zinit) $(sdkman) $(poetry) $(rustup) $(deno) $(google-cloud-sdk)
 
 .PHONY: install
