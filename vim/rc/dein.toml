@@ -66,10 +66,10 @@ repo = "sheerun/vim-polyglot"
 # Colorschemes
 [[plugins]]
 repo = "cocopon/iceberg.vim"
-hook_add = "autocmd MyAutoCmd VimEnter * nested colorscheme iceberg"
 
 [[plugins]]
 repo = "dracula/vim"
+hook_add = "autocmd MyAutoCmd VimEnter * nested colorscheme dracula"
 
 [[plugins]]
 repo = "morhetz/gruvbox"

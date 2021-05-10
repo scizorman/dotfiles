@@ -87,7 +87,7 @@ alias lla='exa -alF --git'
 alias tree='exa -T --git-ignore'
 
 # cat -> bat
-alias cat='bat'
+alias cat='bat --theme=Dracula'
 
 # grep -> ripgrep
 alias grep='rg --color=auto'
