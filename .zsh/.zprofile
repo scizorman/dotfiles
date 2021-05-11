@@ -49,8 +49,10 @@ function ghq-cd() {
   [[ -n $repository ]] && cd $(ghq root)/$repository
 }
 
-# Initialize 'anyenv'
-eval "$(anyenv init - --no-rehash)"
+# Initialize envs
+eval "$(goenv init - --no-rehash)"
+eval "$(nodenv init - --no-rehash)"
+eval "$(pyenv init --path --no-rehash)"
 
 # SDKMAN
 [[ -s $HOME/.sdkman/bin/sdkman-init.sh ]] && source $HOME/.sdkman/bin/sdkman-init.sh
