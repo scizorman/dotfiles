@@ -50,8 +50,7 @@ function ghq-cd() {
 }
 
 # Initialize envs
-eval "$(goenv init - --no-rehash)"
-eval "$(nodenv init - --no-rehash)"
+eval "$(anyenv init - --no-rehash)"
 eval "$(pyenv init --path --no-rehash)"
 
 # SDKMAN
