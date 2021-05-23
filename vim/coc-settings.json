@@ -28,11 +28,6 @@
         "elmAnalysisTrigger": "change"
       }
     },
-    "dockerfile": {
-      "command": "docker-langserver",
-      "filetypes": ["Dockerfile"],
-      "args": ["--stdio"]
-    },
     "terraform": {
       "command": "terraform-ls",
       "filetypes": ["terraform"],
