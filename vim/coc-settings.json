@@ -34,7 +34,7 @@
       "args": ["serve"]
     }
   },
-  "clangd.path": "/home/scizorman/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
+  "clangd.path": "/home/scizorman/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd",
   "go.enable": true,
   "go.tags": {
     "options": "json=omitempty",
