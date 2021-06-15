@@ -49,10 +49,6 @@ function ghq-cd() {
   [[ -n $repository ]] && cd $(ghq root)/$repository
 }
 
-# Initialize envs
-eval "$(anyenv init - --no-rehash)"
-eval "$(pyenv init --path --no-rehash)"
-
 # SDKMAN
 [[ -s $HOME/.sdkman/bin/sdkman-init.sh ]] && source $HOME/.sdkman/bin/sdkman-init.sh
 
@@ -62,16 +58,12 @@ export GOPATH=${GOPATH:-$HOME/go}
 export PATH="$GOPATH/bin:$PATH"
 
 # Python
+# pyenv
+eval "$(pyenv init --path --no-rehash)"
+
 # Poetry
 export PATH=$HOME/.poetry/bin:$PATH
 export POETRY_VIRTUALENVS_IN_PROJECT=true
-
-# Node
-# NVM
-export PATH=$HOME/sdk/node-v14.17.0/bin:$PATH
-export NVM_DIR=$HOME/.nvm
-[ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
-[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && . "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
 
 # Rust
 export PATH=$HOME/.cargo/bin:$PATH

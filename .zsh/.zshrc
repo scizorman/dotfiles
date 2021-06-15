@@ -115,6 +115,14 @@ complete -C '/usr/local/bin/aws_completer' aws
 [[ -f $HOME/google-cloud-sdk/completion.zsh.inc ]] && source $HOME/google-cloud-sdk/completion.zsh.inc
 
 
+# Node
+# NVM
+export PATH=$HOME/sdk/node-v14.17.0/bin:$PATH
+export NVM_DIR=$HOME/.nvm
+[ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
+[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && . "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
+
+
 # NOTE: Take a profile if 'zprof' is loaded
 if (which zprof > /dev/null); then
   zprof | less
