@@ -29,10 +29,6 @@ if [ $(uname) = 'Linux' ]; then
 
   # MySQL Client
   export PATH=/home/linuxbrew/.linuxbrew/opt/mysql-client/bin:$PATH
-
-  # CUDA
-  export PATH=/usr/local/cuda/bin:$PATH
-  export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 else
   # PostgreSQL Client
   export PATH=/usr/local/opt/libpq/bin:$PATH
@@ -67,9 +63,6 @@ export POETRY_VIRTUALENVS_IN_PROJECT=true
 
 # Rust
 export PATH=$HOME/.cargo/bin:$PATH
-
-# Deno
-export PATH=$HOME/.deno/bin:$PATH
 
 # Flutter
 export PATH=$HOME/flutter/bin:$PATH
