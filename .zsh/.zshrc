@@ -74,6 +74,54 @@ setopt multios
 unsetopt beep
 
 
+if [ $(uname) = 'Linux' ]; then
+  # Homebrew
+  export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+  export MANPATH=/home/linuxbrew/.linuxbrew/share/man:$MANPATH
+  export INFOPATH=/home/linuxbrew/.linuxbrew/share/info:$INFOPATH
+  export LD_LIBRARY_PATH=/home/linuxbrew/.linuxbrew/lib:$LD_LIBRARY_PATH
+
+  # PostgreSQL Client
+  export PATH=/home/linuxbrew/.linuxbrew/opt/libpq/bin:$PATH
+
+  # MySQL Client
+  export PATH=/home/linuxbrew/.linuxbrew/opt/mysql-client/bin:$PATH
+else
+  # PostgreSQL Client
+  export PATH=/usr/local/opt/libpq/bin:$PATH
+
+  # MySQL Client
+  export PATH=/usr/local/opt/mysql-client/bin:$PATH
+fi
+
+# SDKMAN
+[[ -s $HOME/.sdkman/bin/sdkman-init.sh ]] && source $HOME/.sdkman/bin/sdkman-init.sh
+
+# Go
+export PATH=$HOME/sdk/go1.16.5/bin:$PATH
+export GOPATH=${GOPATH:-$HOME/go}
+export PATH="$GOPATH/bin:$PATH"
+
+# Node
+# NVM
+export NVM_DIR=$HOME/.nvm
+[ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
+[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && . "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
+
+# Python
+# pyenv
+eval "$(pyenv init --path --no-rehash)"
+
+# Poetry
+export PATH=$HOME/.poetry/bin:$PATH
+export POETRY_VIRTUALENVS_IN_PROJECT=true
+
+# Rust
+export PATH=$HOME/.cargo/bin:$PATH
+
+# Flutter
+export PATH=$HOME/flutter/bin:$PATH
+
 # Zinit
 source $ZDOTDIR/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
@@ -104,23 +152,13 @@ fpath+=$PUREDIR
 autoload -Uz promptinit; promptinit
 prompt pure
 
-
 # AWS CLI
 autoload bashcompinit && bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws
 
-
 # Google Cloud SDK
 [[ -f $HOME/google-cloud-sdk/path.zsh.inc ]] && source $HOME/google-cloud-sdk/path.zsh.inc
 [[ -f $HOME/google-cloud-sdk/completion.zsh.inc ]] && source $HOME/google-cloud-sdk/completion.zsh.inc
-
-
-# Node
-# NVM
-export PATH=$HOME/sdk/node-v14.17.0/bin:$PATH
-export NVM_DIR=$HOME/.nvm
-[ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
-[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && . "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
 
 
 # NOTE: Take a profile if 'zprof' is loaded

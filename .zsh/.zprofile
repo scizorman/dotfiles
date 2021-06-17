@@ -17,26 +17,6 @@ fpath=( \
   "$fpath[@]" \
 )
 
-if [ $(uname) = 'Linux' ]; then
-  # Homebrew
-  export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
-  export MANPATH=/home/linuxbrew/.linuxbrew/share/man:$MANPATH
-  export INFOPATH=/home/linuxbrew/.linuxbrew/share/info:$INFOPATH
-  export LD_LIBRARY_PATH=/home/linuxbrew/.linuxbrew/lib:$LD_LIBRARY_PATH
-
-  # PostgreSQL Client
-  export PATH=/home/linuxbrew/.linuxbrew/opt/libpq/bin:$PATH
-
-  # MySQL Client
-  export PATH=/home/linuxbrew/.linuxbrew/opt/mysql-client/bin:$PATH
-else
-  # PostgreSQL Client
-  export PATH=/usr/local/opt/libpq/bin:$PATH
-
-  # MySQL Client
-  export PATH=/usr/local/opt/mysql-client/bin:$PATH
-fi
-
 # ghq
 export GHQ_ROOT=$HOME/ghq
 
@@ -44,29 +24,6 @@ function ghq-cd() {
   local repository=$(ghq list | fzf +m)
   [[ -n $repository ]] && cd $(ghq root)/$repository
 }
-
-# SDKMAN
-[[ -s $HOME/.sdkman/bin/sdkman-init.sh ]] && source $HOME/.sdkman/bin/sdkman-init.sh
-
-# Go
-export PATH=$HOME/sdk/go1.16.5/bin:$PATH
-export GOPATH=${GOPATH:-$HOME/go}
-export PATH="$GOPATH/bin:$PATH"
-
-# Python
-# pyenv
-eval "$(pyenv init --path --no-rehash)"
-
-# Poetry
-export PATH=$HOME/.poetry/bin:$PATH
-export POETRY_VIRTUALENVS_IN_PROJECT=true
-
-# Rust
-export PATH=$HOME/.cargo/bin:$PATH
-
-# Flutter
-export PATH=$HOME/flutter/bin:$PATH
-
 
 # Aliases
 # Neovim
