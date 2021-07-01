@@ -81,12 +81,18 @@ if [ $(uname) = 'Linux' ]; then
   export INFOPATH=/home/linuxbrew/.linuxbrew/share/info:$INFOPATH
   export LD_LIBRARY_PATH=/home/linuxbrew/.linuxbrew/lib:$LD_LIBRARY_PATH
 
+  # Go
+  export PATH=$HOME/sdk/go1.16.5/bin:$PATH
+
   # PostgreSQL Client
   export PATH=/home/linuxbrew/.linuxbrew/opt/libpq/bin:$PATH
 
   # MySQL Client
   export PATH=/home/linuxbrew/.linuxbrew/opt/mysql-client/bin:$PATH
 else
+  # Go
+  export PATH=/usr/local/go/bin:$PATH
+
   # PostgreSQL Client
   export PATH=/usr/local/opt/libpq/bin:$PATH
 
@@ -98,7 +104,6 @@ fi
 [[ -s $HOME/.sdkman/bin/sdkman-init.sh ]] && source $HOME/.sdkman/bin/sdkman-init.sh
 
 # Go
-export PATH=$HOME/sdk/go1.16.5/bin:$PATH
 export GOPATH=${GOPATH:-$HOME/go}
 export PATH="$GOPATH/bin:$PATH"
 
