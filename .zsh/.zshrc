@@ -161,6 +161,9 @@ prompt pure
 autoload bashcompinit && bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws
 
+# AWS SAM CLI
+export PATH=/usr/local/aws-sam-cli/current/bin:$PATH
+
 # Google Cloud SDK
 [[ -f $HOME/google-cloud-sdk/path.zsh.inc ]] && source $HOME/google-cloud-sdk/path.zsh.inc
 [[ -f $HOME/google-cloud-sdk/completion.zsh.inc ]] && source $HOME/google-cloud-sdk/completion.zsh.inc
