@@ -127,6 +127,9 @@ export PATH=$HOME/.cargo/bin:$PATH
 # Flutter
 export PATH=$HOME/flutter/bin:$PATH
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # Zinit
 source $ZDOTDIR/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
