@@ -82,7 +82,7 @@ if [ $(uname) = 'Linux' ]; then
   export LD_LIBRARY_PATH=/home/linuxbrew/.linuxbrew/lib:$LD_LIBRARY_PATH
 
   # Go
-  export PATH=$HOME/sdk/go1.16.5/bin:$PATH
+  export PATH=$HOME/sdk/go1.16.6/bin:$PATH
 
   # PostgreSQL Client
   export PATH=/home/linuxbrew/.linuxbrew/opt/libpq/bin:$PATH
