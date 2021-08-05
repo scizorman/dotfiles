@@ -22,7 +22,7 @@ $(zinit):
 
 sdkman := $(HOME)/.sdkman
 $(sdkman):
-	@curl -s 'https://get.sdkman.io?rcuupdate=false' | bash
+	@curl -s 'https://get.sdkman.io?rcupdate=false' | bash
 
 poetry := $(HOME)/.poetry
 get-poetry.py:
