@@ -11,41 +11,33 @@
     "typescript",
     "typescriptreact",
     "vue",
-    "elm",
     "Dockerfile",
     "terraform",
     "bash"
   ],
   "languageserver": {
-    "elmLS": {
-      "command": "elm-language-server",
-      "filetypes": ["elm"],
-      "rootPatterns": ["elm.json"],
-      "initializationOptions": {
-        "elmPath": "elm",
-        "elmFormatPath": "elm-format",
-        "elmTestPath": "elm-test",
-        "elmAnalysisTrigger": "change"
-      }
-    },
     "terraform": {
       "command": "terraform-ls",
-      "filetypes": ["terraform"],
-      "args": ["serve"]
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {},
+      "settings": {}
     }
   },
   "clangd.path": "/home/scizorman/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd",
-  "go.enable": true,
+  "go.checkForUpdates": "ask",
   "go.tags": {
     "options": "json=omitempty",
     "tags": "json,bson"
   },
   "metals.javaHome": "/home/scizorman/.sdkman/candidates/java/11.0.11.hs-adpt",
-  "python.formatting.provider": "black",
   "python.jediEnabled": false,
   "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": true,
+  "python.linting.flake8Path": "pflake8",
+  "python.formatting.provider": "black",
   "python.sortImports.path": "isort",
+  "python.linting.mypyEnabled": true,
   "tsserver.enableJavascript": true
 }
