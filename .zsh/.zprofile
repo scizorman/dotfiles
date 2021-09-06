@@ -5,8 +5,12 @@ path=( \
   $HOME/bin(N-/) \
   $HOME/.local/bin \
   /usr/local/bin \
-  "$path[@]" \
+  $path \
 )
+if [[ $(uname) == 'Darwin' ]]; then
+  path=(/usr/local/opt/*/libexec/gnubin $path)
+  manpath=(/usr/local/opt/*/libexec/gnuman $mantpath)
+fi
 
 # FPATH
 # NOTE: Set fpath before compinit
@@ -14,7 +18,7 @@ typeset -gxU fpath FPATH
 fpath=( \
   $HOME/.zsh/completions(N-/) \
   $HOME/.zsh/functions(N-/) \
-  "$fpath[@]" \
+  $fpath \
 )
 
 # ghq
