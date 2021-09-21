@@ -20,10 +20,6 @@ zinit := $(HOME)/.zsh/.zinit
 $(zinit):
 	@git clone https://github.com/zdharma/zinit.git $@/bin
 
-sdkman := $(HOME)/.sdkman
-$(sdkman):
-	@curl -s 'https://get.sdkman.io?rcupdate=false' | bash
-
 poetry := $(HOME)/.local/bin/poetry
 install-poetry.py:
 	@curl -sSL 'https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py' -o $@
