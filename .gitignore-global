@@ -61,17 +61,14 @@ tags
 [._]*.un~
 
 ### Env family ###
-# goenv
-.go-version
-
 # pyenv
 .python-version
-
-# nodenv
-.node-version
 
 # direnv
 .envrc
 
-### SDKMAN
+### NVM ###
+.nvmrc
+
+### SDKMAN ###
 .sdkmanrc
