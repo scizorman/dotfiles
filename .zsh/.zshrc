@@ -74,62 +74,6 @@ setopt multios
 unsetopt beep
 
 
-if [ $(uname) = 'Linux' ]; then
-  # Homebrew
-  export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
-  export MANPATH=/home/linuxbrew/.linuxbrew/share/man:$MANPATH
-  export INFOPATH=/home/linuxbrew/.linuxbrew/share/info:$INFOPATH
-  export LD_LIBRARY_PATH=/home/linuxbrew/.linuxbrew/lib:$LD_LIBRARY_PATH
-
-  # Go
-  export PATH=$HOME/sdk/go1.17.1/bin:$PATH
-
-  # PostgreSQL Client
-  export PATH=/home/linuxbrew/.linuxbrew/opt/libpq/bin:$PATH
-
-  # MySQL Client
-  export PATH=/home/linuxbrew/.linuxbrew/opt/mysql-client/bin:$PATH
-else
-  # Go
-  export PATH=/usr/local/go/bin:$PATH
-
-  # PostgreSQL Client
-  export PATH=/usr/local/opt/libpq/bin:$PATH
-
-  # MySQL Client
-  export PATH=/usr/local/opt/mysql-client/bin:$PATH
-fi
-
-# SDKMAN
-[[ -s $HOME/.sdkman/bin/sdkman-init.sh ]] && source $HOME/.sdkman/bin/sdkman-init.sh
-
-# Go
-export GOPATH=${GOPATH:-$HOME/go}
-export PATH="$GOPATH/bin:$PATH"
-
-# Node
-# NVM
-export NVM_DIR=$HOME/.nvm
-[ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
-[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && . "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
-
-# Python
-# pyenv
-eval "$(pyenv init --path --no-rehash)"
-
-# Poetry
-export PATH=$HOME/.poetry/bin:$PATH
-export POETRY_VIRTUALENVS_IN_PROJECT=true
-
-# Rust
-export PATH=$HOME/.cargo/bin:$PATH
-
-# Flutter
-export PATH=$HOME/flutter/bin:$PATH
-
-# direnv
-eval "$(direnv hook zsh)"
-
 # Zinit
 source $ZDOTDIR/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
@@ -179,3 +123,5 @@ eval "$(aws-vault --completion-script-zsh)"
 if (which zprof > /dev/null); then
   zprof | less
 fi
+
+export PATH=".poetry/bin:$PATH"
