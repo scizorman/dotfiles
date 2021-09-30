@@ -1,16 +1,13 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
-    "c",
-    "cpp",
-    "cs",
     "go",
-    "scala",
     "python",
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact",
     "vue",
+    "scala",
     "Dockerfile",
     "terraform",
     "bash"
@@ -24,16 +21,11 @@
       "settings": {}
     }
   },
-  "clangd.path": "/home/scizorman/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd",
   "go.checkForUpdates": "ask",
   "go.tags": {
     "options": "json=omitempty",
-    "tags": "json,bson"
+    "tags": "json"
   },
-  "metals.javaHome": "/home/scizorman/.sdkman/candidates/java/11.0.11.hs-adpt",
-  "python.jediEnabled": false,
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Path": "pflake8",
   "python.formatting.provider": "black",
