@@ -157,8 +157,3 @@ on_ft = ["terraform"]
 hook_source = """
 let g:terraform_fmt_on_save = 1
 """
-
-# Earthly
-[[plugins]]
-repo = "earthly/earthly.vim"
-on_ft = ["Earthfile"]
