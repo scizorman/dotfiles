@@ -67,6 +67,7 @@ export NVM_DIR=$HOME/.nvm
 
 # Python
 # pyenv
+export PYENV_ROOT=$HOME/.pyenv
 eval "$(pyenv init --path --no-rehash)"
 
 # Poetry
