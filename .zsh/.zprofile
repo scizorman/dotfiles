@@ -29,18 +29,12 @@ if [ $(uname) = 'Linux' ]; then
   export INFOPATH=/home/linuxbrew/.linuxbrew/share/info:$INFOPATH
   export LD_LIBRARY_PATH=/home/linuxbrew/.linuxbrew/lib:$LD_LIBRARY_PATH
 
-  # Go
-  export PATH=$HOME/sdk/go1.17.1/bin:$PATH
-
   # PostgreSQL Client
   export PATH=/home/linuxbrew/.linuxbrew/opt/libpq/bin:$PATH
 
   # MySQL Client
   export PATH=/home/linuxbrew/.linuxbrew/opt/mysql-client/bin:$PATH
 else
-  # Go
-  export PATH=/usr/local/go/bin:$PATH
-
   # PostgreSQL Client
   export PATH=/usr/local/opt/libpq/bin:$PATH
 
@@ -49,6 +43,7 @@ else
 fi
 
 # Go
+export PATH=$HOME/sdk/go1.17.2/bin:$PATH
 export GOPATH=${GOPATH:-$HOME/go}
 export PATH="$GOPATH/bin:$PATH"
 
