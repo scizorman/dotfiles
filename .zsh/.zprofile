@@ -51,7 +51,7 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH=$HOME/.cargo/bin:$PATH
 
 # JAVA
-export JAVA_HOME=$HOME/.jdks/openjdk-17
+export JAVA_HOME=$HOME/.jdks/corretto-1.8.0_302
 export PATH=$JAVA_HOME/bin:$PATH
 
 # Node
