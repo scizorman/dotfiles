@@ -84,8 +84,8 @@ zinit for \
              zsh-users/zsh-autosuggestions \
   light-mode atpull'zinit creinstall -q .' atload'zicompinit; zicdreplay' blockf \
              zsh-users/zsh-completions \
-  light-mode zdharma/fast-syntax-highlighting \
-             zdharma/history-search-multi-word \
+  light-mode zdharma-continuum/fast-syntax-highlighting \
+             zdharma-continuum/history-search-multi-word \
   light-mode wait'!1' lucid \
              b4b4r07/enhancd
 

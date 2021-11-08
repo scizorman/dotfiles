@@ -18,7 +18,7 @@ $(brew): install-homebrew.sh
 
 zinit := $(HOME)/.zsh/.zinit
 $(zinit):
-	@git clone https://github.com/zdharma/zinit.git $@/bin
+	@git clone https://github.com/zdharma-continuum/zinit.git $@/bin
 
 poetry := $(HOME)/.local/bin/poetry
 install-poetry.py:
