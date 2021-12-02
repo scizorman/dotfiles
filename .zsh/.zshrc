@@ -104,6 +104,9 @@ fpath+=$PUREDIR
 autoload -Uz promptinit; promptinit
 prompt pure
 
+# pyenv
+eval "$(pyenv init -)"
+
 # AWS CLI
 autoload bashcompinit && bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws

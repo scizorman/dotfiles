@@ -24,10 +24,7 @@ fpath=( \
 # Linux specifics
 if [ $(uname) = 'Linux' ]; then
   # Homebrew
-  export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
-  export MANPATH=/home/linuxbrew/.linuxbrew/share/man:$MANPATH
-  export INFOPATH=/home/linuxbrew/.linuxbrew/share/info:$INFOPATH
-  export LD_LIBRARY_PATH=/home/linuxbrew/.linuxbrew/lib:$LD_LIBRARY_PATH
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
   # PostgreSQL Client
   export PATH=/home/linuxbrew/.linuxbrew/opt/libpq/bin:$PATH
@@ -63,7 +60,7 @@ export NVM_DIR=$HOME/.nvm
 # Python
 # pyenv
 export PYENV_ROOT=$HOME/.pyenv
-eval "$(pyenv init --path --no-rehash)"
+eval "$(pyenv init --path)"
 
 # Poetry
 export PATH=$HOME/.poetry/bin:$PATH
