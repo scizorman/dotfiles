@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := install
 
 .DELETE_ON_ERROR:
-.INTERMEDIATE: install-homebrew.sh install-poetry.py google-cloud-sdk.tar.gz
+.INTERMEDIATE: install-homebrew.sh google-cloud-sdk.tar.gz
 
 os := $(shell uname -s)
 ifeq ($(os),Linux)
@@ -21,10 +21,8 @@ $(zinit):
 	@git clone https://github.com/zdharma-continuum/zinit.git $@/bin
 
 poetry := $(HOME)/.local/bin/poetry
-install-poetry.py:
-	@curl -sSL 'https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py' -o $@
-$(poetry): install-poetry.py
-	@python3 $< --yes
+$(poetry):
+	@curl -sSL 'https://install.python-poetry.org' | python3 -
 
 rustup := $(HOME)/.cargo/bin/rustup
 $(rustup):
