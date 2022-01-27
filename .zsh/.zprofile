@@ -62,10 +62,6 @@ export NVM_DIR=$HOME/.nvm
 [ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && . "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
 
 # Python
-# pyenv
-export PYENV_ROOT=$HOME/.pyenv
-eval "$(pyenv init --path)"
-
 # Poetry
 export PATH=$HOME/.poetry/bin:$PATH
 export POETRY_VIRTUALENVS_IN_PROJECT=true
