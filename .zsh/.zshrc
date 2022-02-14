@@ -104,6 +104,9 @@ fpath+=$PUREDIR
 autoload -Uz promptinit; promptinit
 prompt pure
 
+# pyenv
+eval "$(pyenv init -)"
+
 # AWS CLI
 autoload bashcompinit && bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws
@@ -123,5 +126,3 @@ eval "$(aws-vault --completion-script-zsh)"
 if (which zprof > /dev/null); then
   zprof | less
 fi
-
-export PATH=".poetry/bin:$PATH"
