@@ -28,10 +28,14 @@ rustup := $(HOME)/.cargo/bin/rustup
 $(rustup):
 	@curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+deno := $(HOME)/.deno
+$(deno):
+	@curl -fsSL https://deno.land/install.sh | sh
+
 google-cloud-sdk := $(HOME)/google-cloud-sdk
 $(google-cloud-sdk):
 	@curl https://sdk.cloud.google.com | bash
 
-install: $(brew) $(zinit) $(poetry) $(rustup) $(google-cloud-sdk)
+install: $(brew) $(zinit) $(poetry) $(rustup) $(deno) $(google-cloud-sdk)
 
 .PHONY: install

@@ -52,14 +52,15 @@ export PATH=$HOME/sdk/go1.17.7/bin:$PATH
 export GOPATH=${GOPATH:-$HOME/go}
 export PATH="$GOPATH/bin:$PATH"
 
-# Rust
-export PATH=$HOME/.cargo/bin:$PATH
-
 # Node
 # NVM
 export NVM_DIR=$HOME/.nvm
 [ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
 [ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && . "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
+
+# Deno
+export DENO_INSTALL=$HOME/.deno
+export PATH=$DENO_INSTALL/bin:$PATH
 
 # Python
 # pyenv
@@ -69,6 +70,9 @@ eval "$(pyenv init --path)"
 # Poetry
 export PATH=$HOME/.poetry/bin:$PATH
 export POETRY_VIRTUALENVS_IN_PROJECT=true
+
+# Rust
+export PATH=$HOME/.cargo/bin:$PATH
 
 # Flutter
 export PATH=$HOME/flutter/bin:$PATH
