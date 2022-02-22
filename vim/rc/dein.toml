@@ -70,12 +70,3 @@ repo = "cocopon/iceberg.vim"
 [[plugins]]
 repo = "dracula/vim"
 hook_add = "autocmd MyAutoCmd VimEnter * nested colorscheme dracula"
-
-[[plugins]]
-repo = "morhetz/gruvbox"
-
-[[plugins]]
-repo = "nanotech/jellybeans.vim"
-
-[[plugins]]
-repo = "w0ng/vim-hybrid"
