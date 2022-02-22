@@ -121,6 +121,10 @@ nnoremap <silent><buffer><expr> <Space>
       \ denite#do_map('toggle_select') . 'j'
 """
 
+[[plugins]]
+repo = "vim-denops/denops.vim"
+on_event = "CursorHold"
+
 # Parenthesizing
 [[plugins]]
 repo = "cohama/lexima.vim"
@@ -149,11 +153,3 @@ nmap <silent>k <Plug>(accelerated_jk_gk)
 [[plugins]]
 repo = "mattn/vim-goimports"
 on_ft = ["go"]
-
-# Terraform
-[[plugins]]
-repo = "hashivim/vim-terraform"
-on_ft = ["terraform"]
-hook_source = """
-let g:terraform_fmt_on_save = 1
-"""
