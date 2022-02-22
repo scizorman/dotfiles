@@ -39,7 +39,7 @@ set list " show <Tab> and <EOL>
 set number         " print the line number in front of each line
 set relativenumber " show relative line number in front of each line
 
-set colorcolumn=79 " columns to highlight
+set colorcolumn=120 " columns to highlight
 
 set cmdheight=2 " number of lines to use for the command-line
 
