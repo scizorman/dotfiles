@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := install
 
 .DELETE_ON_ERROR:
-.INTERMEDIATE: install-homebrew.sh google-cloud-sdk.tar.gz
+.INTERMEDIATE: install-homebrew.sh
 
 os := $(shell uname -s)
 ifeq ($(os),Linux)
@@ -14,7 +14,6 @@ install-homebrew.sh:
 	@curl -fsSL 'https://raw.githubusercontent.com/Homebrew/install/master/install.sh' -o $@
 $(brew): install-homebrew.sh
 	@bash $<
-	@$@ bundle --global
 
 zinit := $(HOME)/.zsh/.zinit
 $(zinit):
