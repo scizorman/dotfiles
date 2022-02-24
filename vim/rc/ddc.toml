@@ -1,7 +1,7 @@
 [[plugins]]
 repo = "Shougo/ddc.vim"
-depends = ['denops.vim', 'pum.vim']
-on_event = ['InsertEnter', 'CursorHold']
+depends = ["denops.vim", "pum.vim"]
+on_event = ["InsertEnter", "CursorHold"]
 hook_add = """
 nnoremap : <cmd>call CmdlinePre(':')<CR>:
 nnoremap ? <cmd>call CmdlinePre('/')<CR>?
