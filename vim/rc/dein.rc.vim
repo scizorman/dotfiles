@@ -1,5 +1,5 @@
 let g:dein#auto_recache = 1
-let g:dein#install_progress_type = 'title'
+let g:dein#install_progress_type = 'floating'
 let g:dein#enable_notification = 1
 
 let s:path = expand('$XDG_CACHE_HOME/dein')
