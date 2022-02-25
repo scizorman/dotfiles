@@ -90,38 +90,6 @@ nnoremap <silent><buffer><expr> cd
 """
 
 [[plugins]]
-repo = "Shougo/denite.nvim"
-on_cmd = "Denite"
-hook_add = """
-nmap [denite] <Nop>
-nmap <Leader>d [denite]
-
-nnoremap <silent>[denite]b :<C-u>Denite buffer<CR>
-nnoremap <silent>[denite]c :<C-u>Denite command<CR>
-nnoremap <silent>[denite]g :<C-u>Denite grep<CR>
-nnoremap <silent>[denite]h :<C-u>Denite help<CR>
-nnoremap <silent>[denite]l :<C-u>Denite line<CR>
-nnoremap <silent>[denite]r :<C-u>Denite register<CR>
-nnoremap <silent>[denite]fr :<C-u>Denite file/rec -start-filter<CR>
-"""
-hook_source = "source ~/.config/nvim/rc/plugins/denite.vim"
-[plugins.ftplugin]
-denite = """
-nnoremap <silent><buffer><expr> <CR>
-      \ denite#do_map('do_action')
-nnoremap <silent><buffer><expr> d
-      \ denite#do_map('do_action', 'delete')
-nnoremap <silent><buffer><expr> p
-      \ denite#do_map('do_action', 'preview')
-nnoremap <silent><buffer><expr> q
-      \ denite#do_map('quit')
-nnoremap <silent><buffer><expr> i
-      \ denite#do_map('open_filter_buffer')
-nnoremap <silent><buffer><expr> <Space>
-      \ denite#do_map('toggle_select') . 'j'
-"""
-
-[[plugins]]
 repo = "vim-denops/denops.vim"
 on_event = "CursorHold"
 
