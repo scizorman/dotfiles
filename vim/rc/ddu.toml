@@ -4,7 +4,7 @@ depends = "denops.vim"
 on_source = 'denops.vim'
 hook_add = """
 nnoremap <silent> ss
-      \ <cmd>Ddu -name=files `finddir('.git', ';') != '' ? 'file_external' : 'file_rec'` -ui-param-displaySourceName=short -ui-param-startFilter<CR>
+      \ <cmd>Ddu -name=files `finddir('.git', ';') != '' ? 'file_external' : 'file_rec'` -ui-param-startFilter<CR>
 nnoremap <silent> /
       \ <cmd>Ddu -name=search line -ui-param-startFilter<CR>
 nnoremap <silent> *
@@ -54,7 +54,9 @@ call ddu#custom#patch_global({
       \ },
       \ 'uiParams': {
       \   'ff': {
-      \     'filterSplitDirection': 'floating',
+      \     'filterSplitDirection': has('nvim') ? 'floating' : 'botright',
+      \     'prompt': '> ',
+      \     'split': has('nvim') ? 'floating' : 'botright'
       \   },
       \ },
       \ })
@@ -62,7 +64,8 @@ call ddu#custom#patch_global({
 call ddu#custom#patch_local('files', {
       \ 'uiParams': {
       \   'ff': {
-      \     'split': has('nvim') ? 'floating' : 'horizontal',
+      \     'previewFloating': v:true,
+      \     'previewWidth': &columns / 2,
       \   },
       \ },
       \ })
