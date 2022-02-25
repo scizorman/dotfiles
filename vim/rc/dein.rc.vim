@@ -10,6 +10,7 @@ endif
 let s:toml = expand($XDG_CONFIG_HOME) . '/nvim/rc/dein.toml'
 let s:lazy_toml = expand($XDG_CONFIG_HOME) . '/nvim/rc/dein_lazy.toml'
 let s:ddc_toml = expand($XDG_CONFIG_HOME) . '/nvim/rc/ddc.toml'
+let s:ddu_toml = expand($XDG_CONFIG_HOME) . '/nvim/rc/ddu.toml'
 let s:ft_toml = expand($XDG_CONFIG_HOME) . '/nvim/rc/dein_ft.toml'
 
 call dein#begin(s:path, [
@@ -19,6 +20,7 @@ call dein#begin(s:path, [
 call dein#load_toml(s:toml, {'lazy': 0})
 call dein#load_toml(s:lazy_toml, {'lazy': 1})
 call dein#load_toml(s:ddc_toml, {'lazy': 1})
+call dein#load_toml(s:ddu_toml, {'lazy': 1})
 call dein#load_toml(s:ft_toml)
 
 call dein#end()
