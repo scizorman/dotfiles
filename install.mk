@@ -31,10 +31,14 @@ deno := $(HOME)/.deno
 $(deno):
 	@curl -fsSL https://deno.land/install.sh | sh
 
+sdkman := $(HOME)/.sdkman
+$(sdkman):
+	@curl -s https://get.sdkman.io | bash
+
 google-cloud-sdk := $(HOME)/google-cloud-sdk
 $(google-cloud-sdk):
 	@curl https://sdk.cloud.google.com | bash
 
-install: $(brew) $(zinit) $(poetry) $(rustup) $(deno) $(google-cloud-sdk)
+install: $(brew) $(zinit) $(poetry) $(rustup) $(deno) $(sdkman) $(google-cloud-sdk)
 
 .PHONY: install

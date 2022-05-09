@@ -26,20 +26,12 @@ if [ $(uname) = 'Linux' ]; then
   # Homebrew
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-  # JAVA
-  export JAVA_HOME=$HOME/.jdks/corretto-1.8.0_312
-  export PATH=$JAVA_HOME/bin:$PATH
-
   # PostgreSQL Client
   export PATH=/home/linuxbrew/.linuxbrew/opt/libpq/bin:$PATH
 
   # MySQL Client
   export PATH=/home/linuxbrew/.linuxbrew/opt/mysql-client/bin:$PATH
 else
-  # Java
-  export JAVA_HOME=$HOME/Library/Java/JavaVirtualMachines/corretto-1.8.0_312/Contents/Home
-  export PATH=$JAVA_HOME/bin:$PATH
-
   # PostgreSQL Client
   export PATH=/usr/local/opt/libpq/bin:$PATH
 
@@ -76,6 +68,9 @@ export PATH=$HOME/.cargo/bin:$PATH
 
 # Flutter
 export PATH=$HOME/flutter/bin:$PATH
+
+# SDKMAN
+source $HOME/.sdkman/bin/sdkman-init.sh
 
 # direnv
 eval "$(direnv hook zsh)"
