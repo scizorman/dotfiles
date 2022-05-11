@@ -20,7 +20,7 @@ call defx#custom#option('_', {
       \ 'toggle': v:true,
       \ 'direction': 'topleft',
       \ 'split': 'vertical',
-      \ 'winwidth': 30,
+      \ 'winwidth': 50,
       \ })
 """
 [plugins.ftplugin]
