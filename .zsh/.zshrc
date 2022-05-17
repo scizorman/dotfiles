@@ -86,8 +86,6 @@ zinit for \
              zsh-users/zsh-completions \
   light-mode zdharma-continuum/fast-syntax-highlighting \
              zdharma-continuum/history-search-multi-word \
-  light-mode wait'!1' lucid \
-             b4b4r07/enhancd
 
 zinit ice as'completion'
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
@@ -103,6 +101,9 @@ fi
 fpath+=$PUREDIR
 autoload -Uz promptinit; promptinit
 prompt pure
+
+# zoxide
+eval "$(zoxide init zsh)"
 
 # pyenv
 eval "$(pyenv init -)"
