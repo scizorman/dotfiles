@@ -40,7 +40,7 @@ else
 fi
 
 # Go
-export PATH=$HOME/sdk/go1.18.2/bin:$PATH
+export PATH=$HOME/sdk/go1.18.3/bin:$PATH
 export GOPATH=${GOPATH:-$HOME/go}
 export PATH="$GOPATH/bin:$PATH"
 
