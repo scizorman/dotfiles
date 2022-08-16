@@ -26,6 +26,9 @@ if [ $(uname) = 'Linux' ]; then
   # Homebrew
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+  # Docker Compose
+  export PATH=$HOME/.docker/cli-plugins:$PATH
+
   # PostgreSQL Client
   export PATH=/home/linuxbrew/.linuxbrew/opt/libpq/bin:$PATH
 
