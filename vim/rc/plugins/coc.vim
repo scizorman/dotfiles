@@ -8,9 +8,12 @@ inoremap <expr> <S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <S-TAB>
       \ pumvisible() ? "\<C-p>" : "\<C-h>"
 
+inoremap <silent><expr> <CR>
+      \ coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1] =~ '\s'
+  return !col || getline('.')[col - 1] =~# '\s'
 endfunction
 
 " Key mappings
@@ -30,10 +33,10 @@ nmap <silent>F <Plug>(coc-format)
 nnoremap <silent>K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation() abort
-  if (index(['vim', 'help'], &filetype) >= 0)
-    execute 'help ' . expand('<cword>')
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
