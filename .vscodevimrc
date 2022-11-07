@@ -1,10 +1,4 @@
 " Key mappings
-" leave Insert mode
-inoremap jj <ESC>
-
-" write 'j'
-inoremap j<Space> j
-
 " like Emacs
 " next char
 inoremap <C-f> <Right>
