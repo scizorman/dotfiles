@@ -72,9 +72,6 @@ export PATH=$HOME/.cargo/bin:$PATH
 # Flutter
 export PATH=$HOME/flutter/bin:$PATH
 
-# SDKMAN
-source $HOME/.sdkman/bin/sdkman-init.sh
-
 # direnv
 eval "$(direnv hook zsh)"
 
@@ -112,9 +109,15 @@ alias mkdir="${ZSH_VERSION:+nocorrect} mkdir"
 alias sudo="${ZSH_VERSION:+nocorrect} sudo"
 
 # Clipboard
+# Linux
 if [ $(uname) = 'Linux' ]; then
   alias pbcopy='xclip -selection c'
   alias pbpaste='xclip -selection c -o'
+fi
+# WSL2
+if [[ $(uname -r) == *microsoft* ]]; then
+  alias pbcopy='clip.exe'
+  alias pbpaste='powershell.exe -Command Get-Clipboard'
 fi
 
 # ghq
@@ -134,16 +137,10 @@ alias -g N2='| 2>/dev/null'
 alias -g CP='| pbcopy'
 alias -g CC='tee /dev/tty | pbcopy'
 
-# Google Chrome CLI
-alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
-
 
 # Keybind
 # Vim-like key bind as default
 bindkey -v
-
-# Escape insert mode 
-bindkey -M viins 'jj' vi-cmd-mode
 
 # Add Emacs-like keybind
 bindkey -M viins '^F' forward-char
