@@ -1,8 +1,10 @@
-.DEFAULT_GOAL := help
+SHELL := /bin/bash -e -o pipefail
 
 candidates := $(wildcard .??*)
 exclusions := $(wildcard .Brewfile.*) .DS_Store .git .gitignore
 dotfiles   := $(filter-out $(exclusions),$(candidates))
+
+all: help
 
 .Brewfile:
 	@ln -sfn .Brewfile.$(shell uname | tr [A-Z] [a-z]) $@
@@ -33,6 +35,6 @@ clean:
 help:
 	@grep -E '^## [a-zA-Z_-]+: .*$$' $(MAKEFILE_LIST) \
 		| tr -d '##' \
-		| awk 'BEGIN {FS = ":"}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+		| awk 'BEGIN {FS = ":"}; {printf "%-30s %s\n", $$1, $$2}'
 
-.PHONY: list update deploy install clean help
+.PHONY: all list update deploy install clean help
