@@ -7,7 +7,7 @@ else
 	brew := /usr/local/bin/brew
 endif
 
-all: $(brew) $(zinit) $(rustup) $(poetry) $(sdkman) $(deno) $(google-cloud-sdk)
+all: install
 
 $(brew): install-homebrew.sh
 	@bash $<
@@ -38,6 +38,8 @@ google-cloud-sdk := $(HOME)/google-cloud-sdk
 $(google-cloud-sdk):
 	@curl https://sdk.cloud.google.com | bash
 
-.PHONY: all
+install: $(brew) $(zinit) $(rustup) $(poetry) $(sdkman) $(deno) $(google-cloud-sdk)
+
+.PHONY: all install
 .DELETE_ON_ERROR:
 .INTERMEDIATE: install-homebrew.sh
