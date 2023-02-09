@@ -92,7 +92,7 @@ call ddc#custom#patch_filetype(
       \ )
 if has('nvim')
   call ddc#custom#patch_filetype(
-        \ ['go', 'rust', 'python', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'terraform'],
+        \ ['go', 'python', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'terraform'],
         \ 'sources',
         \ ['nvim-lsp', 'around'],
         \ )

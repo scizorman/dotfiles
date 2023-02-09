@@ -68,7 +68,6 @@ end
 local config = require('lspconfig')
 local servers = {
   'gopls',
-  'rust_analyzer',
   'pyright',
   'denols',
   'tsserver',
