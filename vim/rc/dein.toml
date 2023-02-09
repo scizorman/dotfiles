@@ -44,6 +44,17 @@ repo = "tyru/caw.vim"
 [[plugins]]
 repo = "sheerun/vim-polyglot"
 
+# Statusline/Tabline
+[[plugins]]
+repo = "itchyny/lightline.vim"
+hook_add = """
+let g:lightline = {
+      \ 'colorscheme': 'dracula',
+      \ }
+set laststatus=2
+set noshowmode
+"""
+
 # Colorschemes
 [[plugins]]
 repo = "cocopon/iceberg.vim"
