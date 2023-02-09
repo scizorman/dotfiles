@@ -50,6 +50,7 @@ call ddc#custom#patch_global('sources', ['around', 'rg'])
 call ddc#custom#patch_global('cmdlineSources', {
       \ ':': ['cmdline-history', 'cmdline', 'around'],
       \ })
+
 call ddc#custom#patch_global('sourceOptions', #{
       \ _: #{
       \   ignoreCase: v:true,
@@ -59,6 +60,19 @@ call ddc#custom#patch_global('sourceOptions', #{
       \ around: #{
       \   mark: 'A',
       \   matchers: ['matcher_head'],
+      \ line: #{
+      \   mark: 'line',
+      \ },
+      \ },
+      \ rg: #{
+      \   mark: 'rg',
+      \   minAutoCompleteLength: 5,
+      \   enabledIf: "finddir('.git', ';') != ''",
+      \ },
+      \ nvim-lsp: #{
+      \   mark: 'lsp',
+      \   forceCompletionPattern: '\.\w*|:\w*|->\w*',
+      \   dup: 'force',
       \ },
       \ cmdline: #{
       \   mark: 'cmdline',
@@ -69,16 +83,6 @@ call ddc#custom#patch_global('sourceOptions', #{
       \   mark: 'history',
       \   sorters: [],
       \ },
-      \ zsh: #{
-      \   mark: 'zsh',
-      \   isVolatile: v:true,
-      \   forceCompletionPattern: '\S/\S*',
-      \ },
-      \ rg: #{
-      \   mark: 'rg',
-      \   minAutoCompleteLength: 5,
-      \   enabledIf: "finddir('.git', ';') != ''",
-      \ },
       \ })
 
 call ddc#custom#patch_filetype(
@@ -86,15 +90,36 @@ call ddc#custom#patch_filetype(
       \ 'sources',
       \ ['around', 'rg'],
       \ )
+if has('nvim')
+  call ddc#custom#patch_filetype(
+        \ ['go', 'rust', 'python', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'terraform'],
+        \ 'sources',
+        \ ['nvim-lsp', 'around'],
+        \ )
+endif
 
 " Use pum.vim
 call ddc#custom#patch_global('autoCompleteEvents', [
+      \ 'InsertEnter',
+      \ 'TextChangedI',
+      \ 'TextChangedP',
+      \ 'TextChangedT',
       \ 'CmdlineEnter',
       \ 'CmdlineChanged',
       \ ])
 call ddc#custom#patch_global('ui', 'pum')
 
-" Command line mode completion.
+" Mappings
+inoremap <expr> <TAB>
+      \ pum#visible()
+      \ ? '<cmd>call pum#map#insert_relative(+1)<CR>'
+      \ : (col('.') <= 1 <BAR><BAR> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#map#manual_complete()
+inoremap <S-TAB> <cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <C-n> <cmd>call pum#map#insert_relative(+1)<CR>
+inoremap <C-p> <cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <C-y> <cmd>call pum#map#confirm()<CR>
+inoremap <C-e> <cmd>call pum#map#cancel()<CR>
+
 cnoremap <expr> <TAB>
       \ pum#visible()
       \ ? '<cmd>call pum#map#insert_relative(+1)<CR>'
@@ -112,10 +137,6 @@ call ddc#enable()
 repo = "Shougo/pum.vim"
 
 [[plugins]]
-repo = "Shougo/ddc-ui-native"
-on_source = "ddc.vim"
-
-[[plugins]]
 repo = "Shougo/ddc-ui-pum"
 on_source = "ddc.vim"
 
@@ -128,12 +149,12 @@ repo = "Shougo/ddc-source-line"
 on_source = "ddc.vim"
 
 [[plugins]]
-repo = "Shougo/ddc-source-zsh"
+repo = "Shougo/ddc-source-rg"
 on_source = "ddc.vim"
 
 [[plugins]]
-repo = "Shougo/ddc-source-rg"
-on_source = "ddc.vim"
+repo = "Shougo/ddc-source-nvim-lsp"
+on_source = "nvim-lspconfig"
 
 [[plugins]]
 repo = "Shougo/ddc-cmdline"

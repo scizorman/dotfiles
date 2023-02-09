@@ -3,10 +3,10 @@
 repo = "Shougo/dein.vim"
 
 # LSP client
-[[plugins]]
-repo = "neoclide/coc.nvim"
-rev = "release"
-hook_add = "source ~/.config/nvim/rc/plugins/coc.vim"
+# [[plugins]]
+# repo = "neoclide/coc.nvim"
+# rev = "release"
+# hook_add = "source ~/.config/nvim/rc/plugins/coc.vim"
 
 # Quoting/Parenthesizeing
 [[plugins]]
