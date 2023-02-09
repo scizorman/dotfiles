@@ -29,6 +29,5 @@
   "python.linting.flake8Path": "pflake8",
   "python.formatting.provider": "black",
   "python.sortImports.path": "isort",
-  "python.linting.mypyEnabled": true,
-  "tsserver.enableJavascript": true
+  "python.linting.mypyEnabled": true
 }
