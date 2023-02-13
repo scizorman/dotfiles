@@ -60,9 +60,9 @@ call ddc#custom#patch_global('sourceOptions', #{
       \ around: #{
       \   mark: 'A',
       \   matchers: ['matcher_head'],
+      \ },
       \ line: #{
       \   mark: 'line',
-      \ },
       \ },
       \ rg: #{
       \   mark: 'rg',

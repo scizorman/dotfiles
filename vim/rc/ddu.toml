@@ -17,55 +17,57 @@ nnoremap <silent> sg
       \ <cmd>Ddu dein<CR>
 """
 hook_source = """
-call ddu#custom#patch_global({
-      \ 'ui': 'ff',
-      \ 'filterParams': {
-      \   'matcher_substring': {
-      \     'highlightMatched': 'Search',
+call ddu#custom#patch_global(#{
+      \ ui: 'ff',
+      \ filterParams: #{
+      \   matcher_substring: #{
+      \     highlightMatched: 'Search',
       \   },
       \ },
-      \ 'kindOptions': {
-      \   'file': {
-      \     'defaultAction': 'open',
+      \ kindOptions: #{
+      \   file: #{
+      \     defaultAction: 'open',
       \   },
-      \   'action': {
-      \     'defaultAction': 'do',
-      \   },
-      \ },
-      \ 'sourceOptions': {
-      \   '_': {
-      \     'matchers': ['matcher_substring'],
-      \   },
-      \   'file_external': {
-      \     'matchers': ['matcher_fzf'],
-      \   },
-      \   'file_rec': {
-      \     'matchers': ['matcher_substring', 'matcher_hidden'],
-      \   },
-      \   'rg': {
-      \     'cmd': ['rg', '--files', '--glob', '!.git', '--color', 'never', '--no-messages'],
-      \     'updateItems': 50000,
+      \   action: #{
+      \     defaultAction: 'do',
       \   },
       \ },
-      \ 'sourceParams': {
-      \   'file_external': {
-      \     'cmd': ['git', 'ls-files', '-co', '--exclude-standard'],
+      \ sourceOptions: #{
+      \   _: #{
+      \     matchers: ['matcher_substring'],
+      \   },
+      \   file_external: #{
+      \     matchers: ['matcher_fzf'],
+      \   },
+      \   file_rec: #{
+      \     matchers: ['matcher_substring', 'matcher_hidden'],
+      \   },
+      \   rg: #{
+      \     matchers: ['convert_display_word', 'matcher_substring']
       \   },
       \ },
-      \ 'uiParams': {
-      \   'ff': {
-      \     'filterSplitDirection': has('nvim') ? 'floating' : 'botright',
-      \     'prompt': '> ',
-      \     'split': has('nvim') ? 'floating' : 'botright'
+      \ sourceParams: #{
+      \   file_external: #{
+      \     cmd: ['git', 'ls-files', '-co', '--exclude-standard'],
+      \   },
+      \   rg: #{
+      \     args: ['--json'],
+      \   },
+      \ },
+      \ uiParams: #{
+      \   ff: #{
+      \     filterSplitDirection: has('nvim') ? 'floating' : 'botright',
+      \     prompt: '> ',
+      \     split: has('nvim') ? 'floating' : 'botright'
       \   },
       \ },
       \ })
 
-call ddu#custom#patch_local('files', {
-      \ 'uiParams': {
-      \   'ff': {
-      \     'previewFloating': v:true,
-      \     'previewWidth': &columns / 2,
+call ddu#custom#patch_local('files', #{
+      \ uiParams: #{
+      \   ff: #{
+      \     previewFloating: v:true,
+      \     previewWidth: &columns / 2,
       \   },
       \ },
       \ })
