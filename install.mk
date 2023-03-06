@@ -30,6 +30,10 @@ sdkman := $(HOME)/.sdkman
 $(sdkman):
 	@curl -s https://get.sdkman.io | bash
 
+volta := $(HOME)/.volta
+$(volta):
+	@curl https://get.volta.sh | bash
+
 deno := $(HOME)/.deno
 $(deno):
 	@curl -fsSL https://deno.land/install.sh | sh
@@ -38,7 +42,7 @@ google-cloud-sdk := $(HOME)/google-cloud-sdk
 $(google-cloud-sdk):
 	@curl https://sdk.cloud.google.com | bash
 
-install: $(brew) $(zinit) $(rustup) $(poetry) $(sdkman) $(deno) $(google-cloud-sdk)
+install: $(brew) $(zinit) $(rustup) $(poetry) $(sdkman) $(volta) $(deno) $(google-cloud-sdk)
 
 .PHONY: all install
 .DELETE_ON_ERROR:
