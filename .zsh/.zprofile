@@ -103,6 +103,9 @@ alias cat='bat --theme=Dracula'
 # grep -> ripgrep
 alias grep='rg --color=auto'
 
+# du -> dust
+alias du='dust'
+
 alias mv='mv -i'
 alias rm='rm -i'
 alias du='du -h'
