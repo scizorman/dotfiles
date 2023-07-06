@@ -1,4 +1,4 @@
-SHELL := /bin/bash -e -o pipefail
+SHELL := /bin/bash
 
 os := $(shell uname -s)
 ifeq ($(os),Linux)

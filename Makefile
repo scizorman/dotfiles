@@ -1,4 +1,4 @@
-SHELL := /bin/bash -e -o pipefail
+SHELL := /bin/bash
 
 candidates := $(wildcard .??*)
 exclusions := $(wildcard .Brewfile.*) .DS_Store .git .gitignore
