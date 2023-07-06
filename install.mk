@@ -26,6 +26,10 @@ poetry := $(HOME)/.local/bin/poetry
 $(poetry):
 	@curl -sSL 'https://install.python-poetry.org' | python3 -
 
+rye := $(HOME)/.rye
+$(rye):
+	@curl -fsS 'https://rye-up.com/get' | bash
+
 sdkman := $(HOME)/.sdkman
 $(sdkman):
 	@curl -s https://get.sdkman.io | bash
@@ -42,7 +46,7 @@ google-cloud-sdk := $(HOME)/google-cloud-sdk
 $(google-cloud-sdk):
 	@curl https://sdk.cloud.google.com | bash
 
-install: $(brew) $(zinit) $(rustup) $(poetry) $(sdkman) $(volta) $(deno) $(google-cloud-sdk)
+install: $(brew) $(zinit) $(rustup) $(poetry) $(rye) $(sdkman) $(volta) $(deno) $(google-cloud-sdk)
 
 .PHONY: all install
 .DELETE_ON_ERROR:

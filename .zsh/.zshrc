@@ -108,6 +108,9 @@ eval "$(zoxide init zsh)"
 # pyenv
 eval "$(pyenv init -)"
 
+# rye
+eval "$(rye self completion --shell zsh)"
+
 # AWS CLI
 autoload bashcompinit && bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws

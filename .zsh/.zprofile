@@ -65,6 +65,9 @@ eval "$(pyenv init --path)"
 export PATH=$HOME/.poetry/bin:$PATH
 export POETRY_VIRTUALENVS_IN_PROJECT=true
 
+# rye
+source $HOME/.rye/env
+
 # Rust
 export PATH=$HOME/.cargo/bin:$PATH
 
