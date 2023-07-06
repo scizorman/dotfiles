@@ -113,10 +113,7 @@ eval "$(rye self completion --shell zsh)"
 
 # AWS CLI
 autoload bashcompinit && bashcompinit
-complete -C '/usr/local/bin/aws_completer' aws
-
-# AWS SAM CLI
-export PATH=/usr/local/aws-sam-cli/current/bin:$PATH
+complete -C "$(command -v aws_completer)" aws
 
 # AWS Vault
 eval "$(aws-vault --completion-script-zsh)"
