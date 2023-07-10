@@ -1,0 +1,9 @@
+theme = "dracula_at_night"
+
+[editor]
+line-number = "relative"
+true-color = true
+
+[editor.cursor-shape]
+insert = "bar"
+select = "underline"
