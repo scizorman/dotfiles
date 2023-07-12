@@ -42,6 +42,11 @@ else
   export PATH=/usr/local/opt/mysql-client/bin:$PATH
 fi
 
+# WSL2 specifics
+if [[ $(uname -r) =~ 'microsoft' ]]; then
+  export GPG_TTY=$(tty)
+fi
+
 # Go
 export PATH=$HOME/sdk/go1.20.5/bin:$PATH
 export GOPATH=${GOPATH:-$HOME/go}
