@@ -48,7 +48,7 @@ if [[ $(uname -r) =~ 'microsoft' ]]; then
 fi
 
 # Go
-export PATH=$HOME/sdk/go1.20.6/bin:$PATH
+export PATH=$HOME/sdk/go1.21.0/bin:$PATH
 export GOPATH=${GOPATH:-$HOME/go}
 export PATH="$GOPATH/bin:$PATH"
 
