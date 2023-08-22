@@ -1,40 +1,24 @@
 SHELL := /bin/bash
 
-candidates := $(wildcard .??*)
-exclusions := $(wildcard .Brewfile.*) .DS_Store .git .gitignore
-dotfiles   := $(filter-out $(exclusions),$(candidates))
+OS := $(shell uname -s)
 
-all: help
+.PHONY: all
+all:
+	@more $(MAKEFILE_LIST)
 
-.Brewfile:
-	@ln -sfn .Brewfile.$(shell uname | tr [A-Z] [a-z]) $@
-
-## list: Show dotfiles in this repository
-list: .Brewfile
-	@$(foreach val,$(dotfiles),/bin/ls -dF $(val);)
-
-## update: Fetch changes for this repository
-update:
-	@git pull origin main
-
-## deploy: Create the symlink to home directory
-deploy: .Brewfile
-	@$(foreach dotfile,$(dotfiles),ln -sfnv $(abspath $(dotfile)) $(HOME)/$(dotfile);)
-
-## install: Setup environments and install programs
-install: update deploy
-	@$(MAKE) -f install.mk
-	@exec $$SHELL -l
-
-## clean: Remove the dot files and this repository
+.PHONY: clean
 clean:
-	$(info Remove dotfiles in your home directory...)
-	@-$(foreach dotfile,$(dotfiles),unlink $(HOME)/$(dotfile);)
+	$(MAKE) -f deploy.mk $@
+	$(MAKE) -f install.mk $@
 
-## help: Show this help message
-help:
-	@grep -E '^## [a-zA-Z_-]+: .*$$' $(MAKEFILE_LIST) \
-		| tr -d '##' \
-		| awk 'BEGIN {FS = ":"}; {printf "%-30s %s\n", $$1, $$2}'
+.PHONY: update
+update:
+	git pull origin main
 
-.PHONY: all list update deploy install clean help
+.PHONY: deploy
+deploy: update
+	$(MAKE) -f deploy.mk $@ OS=$(OS)
+
+.PHONY: install
+install: deploy
+	$(MAKE) -f install.mk $@ OS=$(OS)

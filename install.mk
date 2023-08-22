@@ -1,53 +1,72 @@
+.DELETE_ON_ERROR:
+
 SHELL := /bin/bash
 
-os := $(shell uname -s)
-ifeq ($(os),Linux)
+OS := $(shell uname -s)
+
+ifeq ($(OS),Linux)
 	brew := /home/linuxbrew/.linuxbrew/bin/brew
 else
 	brew := /usr/local/bin/brew
 endif
 
-all: install
+zinit            := $(HOME)/.zsh/.zinit
+volta            := $(HOME)/.volta
+sdkman           := $(HOME)/.sdkman
+rye              := $(HOME)/.rye
+poetry           := $(HOME)/.local/bin/poetry
+rustup           := $(HOME)/.cargo/bin/rustup
+deno             := $(HOME)/.deno
+google_cloud_sdk := $(HOME)/google-cloud-sdk
+
+tools := \
+	$(brew) \
+	$(zinit) \
+	$(volta) \
+	$(sdkman) \
+	$(rye) \
+	$(poetry) \
+	$(rustup) \
+	$(deno) \
+	$(google_cloud_sdk)
+
+.PHONY: all
+all:
+	@more $(MAKEFILE_LIST)
+
+.PHONY: clean
+clean:
+	-rm -rf $(tools)
+
+.PHONY: install
+install: $(tools)
 
 $(brew): install-homebrew.sh
-	@bash $<
-install-homebrew.sh:
-	@curl -fsSL 'https://raw.githubusercontent.com/Homebrew/install/master/install.sh' -o $@
-
-zinit := $(HOME)/.zsh/.zinit
-$(zinit):
-	@git clone https://github.com/zdharma-continuum/zinit.git $@/bin
-
-rustup := $(HOME)/.cargo/bin/rustup
-$(rustup):
-	@curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-poetry := $(HOME)/.local/bin/poetry
-$(poetry):
-	@curl -sSL 'https://install.python-poetry.org' | python3 -
-
-rye := $(HOME)/.rye
-$(rye):
-	@curl -fsS 'https://rye-up.com/get' | bash
-
-sdkman := $(HOME)/.sdkman
-$(sdkman):
-	@curl -s https://get.sdkman.io | bash
-
-volta := $(HOME)/.volta
-$(volta):
-	@curl https://get.volta.sh | bash
-
-deno := $(HOME)/.deno
-$(deno):
-	@curl -fsSL https://deno.land/install.sh | sh
-
-google-cloud-sdk := $(HOME)/google-cloud-sdk
-$(google-cloud-sdk):
-	@curl https://sdk.cloud.google.com | bash
-
-install: $(brew) $(zinit) $(rustup) $(poetry) $(rye) $(sdkman) $(volta) $(deno) $(google-cloud-sdk)
-
-.PHONY: all install
-.DELETE_ON_ERROR:
+	bash $<
 .INTERMEDIATE: install-homebrew.sh
+install-homebrew.sh:
+	curl -fsSL 'https://raw.githubusercontent.com/Homebrew/install/master/install.sh' -o $@
+
+$(zinit):
+	git clone https://github.com/zdharma-continuum/zinit.git $@/bin
+
+$(volta):
+	curl https://get.volta.sh | bash
+
+$(sdkman):
+	curl -s https://get.sdkman.io | bash
+
+$(rye):
+	curl -fsS 'https://rye-up.com/get' | bash
+
+$(poetry):
+	curl -sSL 'https://install.python-poetry.org' | python3 -
+
+$(rustup):
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+$(deno):
+	curl -fsSL https://deno.land/install.sh | sh
+
+$(google-cloud-sdk):
+	curl https://sdk.cloud.google.com | bash
