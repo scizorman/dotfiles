@@ -93,15 +93,6 @@ zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_
 zinit ice as'completion'
 zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
 
-# Pure (https://github.com/sindresorhus/pure)
-PUREDIR=$ZDOTDIR/pure
-if [ ! -d $PUREDIR ]; then
-  git clone https://github.com/sindresorhus/pure.git $PUREDIR
-fi
-fpath+=$PUREDIR
-autoload -Uz promptinit; promptinit
-prompt pure
-
 # zoxide
 eval "$(zoxide init zsh)"
 
@@ -122,6 +113,8 @@ eval "$(aws-vault --completion-script-zsh)"
 [[ -f $HOME/google-cloud-sdk/path.zsh.inc ]] && source $HOME/google-cloud-sdk/path.zsh.inc
 [[ -f $HOME/google-cloud-sdk/completion.zsh.inc ]] && source $HOME/google-cloud-sdk/completion.zsh.inc
 
+# Starship
+eval "$(starship init zsh)"
 
 # NOTE: Take a profile if 'zprof' is loaded
 if (which zprof > /dev/null); then
