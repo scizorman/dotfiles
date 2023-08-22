@@ -102,6 +102,9 @@ eval "$(pyenv init -)"
 # rye
 eval "$(rye self completion --shell zsh)"
 
+# Deno
+eval "$(deno completions zsh)"
+
 # AWS CLI
 autoload bashcompinit && bashcompinit
 complete -C "$(command -v aws_completer)" aws
@@ -116,11 +119,11 @@ eval "$(aws-vault --completion-script-zsh)"
 # Starship
 eval "$(starship init zsh)"
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
 # NOTE: Take a profile if 'zprof' is loaded
 if (which zprof > /dev/null); then
   zprof | less
 fi
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
