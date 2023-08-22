@@ -33,5 +33,6 @@ clean:
 deploy: $(deploy_targets)
 
 $(HOME)/% $(XDG_CONFIG_HOME)/%: %
+	ln -sfnv $(abspath $<) $@
 $(HOME)/.Brewfile: .Brewfile.$(shell echo $(OS) | tr '[:upper:]' '[:lower:]')
 	ln -sfnv $(abspath $<) $@
