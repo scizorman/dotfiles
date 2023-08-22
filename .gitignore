@@ -1,6 +1,3 @@
-# Homebrew
-.Brewfile
-
 ### Zsh
 # Compiled files
 **/*.zwc
@@ -16,6 +13,3 @@
 
 # Zinit
 */.zinit
-
-# Pure (https://github.com/sindresorhus/pure)
-.zsh/pure
