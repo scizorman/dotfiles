@@ -90,9 +90,6 @@ zinit for \
 zinit ice as'completion'
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-zinit ice as'completion'
-zinit snippet https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
-
 # zoxide
 eval "$(zoxide init zsh)"
 

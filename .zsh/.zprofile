@@ -44,11 +44,13 @@ fi
 
 # WSL2 specifics
 if [[ $(uname -r) =~ 'microsoft' ]]; then
+  export AWS_VAULT_BACKEND=pass
+  export AWS_VAULT_PASS_PREFIX=aws-vault
   export GPG_TTY=$(tty)
 fi
 
 # Go
-export PATH=$HOME/sdk/go1.21.0/bin:$PATH
+export PATH=$HOME/sdk/go1.21.1/bin:$PATH
 export GOPATH=${GOPATH:-$HOME/go}
 export PATH="$GOPATH/bin:$PATH"
 
