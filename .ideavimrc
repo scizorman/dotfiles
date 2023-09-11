@@ -5,7 +5,7 @@ let mapleader = "\<Space>"
 let maplocalleader = "\\
 
 " Common mappings
-source ~/dotfiles/vim/rc/mappings.rc.vim
+source ~/dotfiles/nvim/rc/mappings.rc.vim
 
 " Only IdeaVim
 nnoremap <C-o> :<C-u>action Back<CR>
