@@ -21,7 +21,6 @@ google_cloud_sdk := $(HOME)/google-cloud-sdk
 
 tools := \
 	$(brew) \
-	$(zinit) \
 	$(volta) \
 	$(sdkman) \
 	$(rye) \
@@ -46,9 +45,6 @@ $(brew): install-homebrew.sh
 .INTERMEDIATE: install-homebrew.sh
 install-homebrew.sh:
 	curl -fsSL 'https://raw.githubusercontent.com/Homebrew/install/master/install.sh' -o $@
-
-$(zinit):
-	git clone https://github.com/zdharma-continuum/zinit.git $@/bin
 
 $(volta):
 	curl https://get.volta.sh | bash
