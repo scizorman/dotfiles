@@ -7,7 +7,6 @@ limit coredumpsize 0
 typeset -gxU fpath FPATH
 fpath=( \
   $HOME/.zsh/completions(N-/) \
-  $HOME/.zsh/functions(N-/) \
   $fpath \
 )
 
