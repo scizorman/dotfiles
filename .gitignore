@@ -1,16 +1,22 @@
-### Zsh
-# Compiled files
-**/*.zwc
+### Zsh ###
+# Zsh compiled script + zrecompile backup
+*.zwc
+*.zwc.old
 
-# Completions
-*/.zsh/completions
+# Zsh completion-optimization dumpfile
+*zcompdump*
 
-# History
+# Zsh history
 */.zsh_history
 
-# Cache of completion candidates
-*/.zcompcache
+# Zsh sessions
+*/.zsh_sessions
 
-# List of interpolation functions
-*/.zcompdump
+# Zsh zcalc history
+*/.zcalc_history
 
+# Zsh completions
+.zsh/completions
+
+### Helix
+helix/runtime
