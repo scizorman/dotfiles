@@ -11,7 +11,7 @@ export XDG_DATA_HOME=$HOME/.local/share
 export LANG='en_US.UTF-8'
 
 # Editor
-export EDITOR='nvim'
+export EDITOR='hx'
 
 # Pager
 export PAGER='less'

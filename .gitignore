@@ -2,6 +2,9 @@
 # Compiled files
 **/*.zwc
 
+# Completions
+*/.zsh/completions
+
 # History
 */.zsh_history
 
