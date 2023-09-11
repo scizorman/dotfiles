@@ -17,6 +17,7 @@ dotfiles := \
 xdg_configs := \
 	helix \
 	nvim \
+	sheldon
 
 deploy_targets := $(addprefix $(HOME)/,$(dotfiles)) $(addprefix $(XDG_CONFIG_HOME)/,$(xdg_configs))
 

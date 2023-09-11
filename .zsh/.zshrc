@@ -74,21 +74,10 @@ setopt multios
 unsetopt beep
 
 
-# Zinit
-source $ZDOTDIR/.zinit/bin/zinit.zsh
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-zinit for \
-  light-mode atload'_zsh_autosuggest_start' \
-             zsh-users/zsh-autosuggestions \
-  light-mode atpull'zinit creinstall -q .' atload'zicompinit; zicdreplay' blockf \
-             zsh-users/zsh-completions \
-  light-mode zdharma-continuum/fast-syntax-highlighting \
-             zdharma-continuum/history-search-multi-word \
-
-zinit ice as'completion'
-zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+# sheldon
+autoload -Uz compinit
+compinit
+eval "$(sheldon source)"
 
 # zoxide
 eval "$(zoxide init zsh)"
