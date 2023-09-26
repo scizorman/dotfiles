@@ -10,9 +10,11 @@ fpath=( \
   $fpath \
 )
 
+# zcalc
+autoload -Uz zcalc
+
 # sheldon
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 eval "$(sheldon source)"
 
 
