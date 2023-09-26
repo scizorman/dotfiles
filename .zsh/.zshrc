@@ -230,6 +230,7 @@ eval "$(direnv hook zsh)"
 
 volta completions -f --quiet -o"${ZDOTDIR}/completions/_volta" zsh
 eval "$(deno completions zsh)"
+source "${BUN_INSTALL}/_bun"
 
 eval "$(rye self completion --shell zsh)"
 poetry completions zsh >! "${ZDOTDIR}/completions/_poetry"

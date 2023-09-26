@@ -17,6 +17,7 @@ rye              := $(HOME)/.rye
 poetry           := $(HOME)/.local/bin/poetry
 rustup           := $(HOME)/.cargo/bin/rustup
 deno             := $(HOME)/.deno
+bun              := $(HOME)/.ban
 google_cloud_sdk := $(HOME)/google-cloud-sdk
 
 tools := \
@@ -27,6 +28,7 @@ tools := \
 	$(poetry) \
 	$(rustup) \
 	$(deno) \
+	$(bun) \
 	$(google_cloud_sdk)
 
 .PHONY: all
@@ -63,6 +65,9 @@ $(rustup):
 
 $(deno):
 	curl -fsSL https://deno.land/install.sh | sh
+
+$(bun):
+	curl -fsSL https://bun.sh/install | bash
 
 $(google-cloud-sdk):
 	curl https://sdk.cloud.google.com | bash
