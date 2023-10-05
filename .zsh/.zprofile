@@ -34,8 +34,9 @@ fi
 if [[ $(uname -r) =~ 'microsoft' ]]; then
   export AWS_VAULT_BACKEND=pass
   export AWS_VAULT_PASS_PREFIX=aws-vault
-  export GPG_TTY=$(tty)
 fi
+
+export GPG_TTY=$(tty)
 
 # Go
 export PATH=$HOME/sdk/go1.21.1/bin:$PATH
