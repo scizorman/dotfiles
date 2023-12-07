@@ -39,7 +39,7 @@ fi
 export GPG_TTY=$(tty)
 
 # Go
-export PATH=$HOME/sdk/go1.21.1/bin:$PATH
+export PATH=$HOME/sdk/go1.21.5/bin:$PATH
 export GOPATH=${GOPATH:-$HOME/go}
 export PATH="$GOPATH/bin:$PATH"
 
