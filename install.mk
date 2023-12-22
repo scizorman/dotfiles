@@ -17,7 +17,7 @@ rye              := $(HOME)/.rye
 poetry           := $(HOME)/.local/bin/poetry
 rustup           := $(HOME)/.cargo/bin/rustup
 deno             := $(HOME)/.deno
-bun              := $(HOME)/.ban
+bun              := $(HOME)/.bun
 google_cloud_sdk := $(HOME)/google-cloud-sdk
 
 tools := \
