@@ -1,5 +1,3 @@
-SHELL := /bin/bash
-
 OS := $(shell uname -s)
 
 .PHONY: all

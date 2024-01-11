@@ -1,7 +1,5 @@
 .DELETE_ON_ERROR:
 
-SHELL := /bin/bash
-
 OS              := $(shell uname -s)
 XDG_CONFIG_HOME := $(HOME)/.config
 
