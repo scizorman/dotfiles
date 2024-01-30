@@ -7,27 +7,23 @@ path=( \
   /usr/local/bin \
   $path \
 )
-if [[ $(uname) == 'Darwin' ]]; then
-  path=(/usr/local/opt/*/libexec/gnubin $path)
-  manpath=(/usr/local/opt/*/libexec/gnuman $mantpath)
-fi
 
 # Linux specifics
-if [ $(uname) = 'Linux' ]; then
+if [[ $(uname) == 'Linux' ]]; then
   # Homebrew
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
-  # PostgreSQL Client
-  export PATH=/home/linuxbrew/.linuxbrew/opt/libpq/bin:$PATH
+# macOS specifics
+if [[ $(uname) == 'Darwin' ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 
-  # MySQL Client
-  export PATH=/home/linuxbrew/.linuxbrew/opt/mysql-client/bin:$PATH
-else
-  # PostgreSQL Client
-  export PATH=/usr/local/opt/libpq/bin:$PATH
+  # GNU toolchain
+  path=("${HOMEBREW_PREFIX}/opt/*/libexec/gnubin" $path)
+  manpath=("${HOMEBREW_PREFIX/opt/*/libexec/gnuman}" $manpath)
 
-  # MySQL Client
-  export PATH=/usr/local/opt/mysql-client/bin:$PATH
+  # SnowSQL
+  export PATH="/Applications/SnowSQL.app/Contents/MacOS:${PATH}"
 fi
 
 # WSL2 specifics
@@ -37,6 +33,12 @@ if [[ $(uname -r) =~ 'microsoft' ]]; then
 fi
 
 export GPG_TTY=$(tty)
+
+# PostgreSQL client
+export PATH="${HOMEBREW_PREFIX}/opt/libpq/bin":$PATH
+
+# MySQL client
+export PATH="${HOMEBREW_PREFIX}/opt/mysql-client/bin":$PATH
 
 # Go
 export PATH=$HOME/sdk/go1.21.5/bin:$PATH

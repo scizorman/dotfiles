@@ -5,7 +5,7 @@ OS := $(shell uname -s)
 ifeq ($(OS),Linux)
 	brew := /home/linuxbrew/.linuxbrew/bin/brew
 else
-	brew := /usr/local/bin/brew
+	brew := /opt/homebrew/bin/brew
 endif
 
 zinit            := $(HOME)/.zsh/.zinit
