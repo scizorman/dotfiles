@@ -67,5 +67,5 @@ $(deno):
 $(bun):
 	curl -fsSL https://bun.sh/install | bash
 
-$(google-cloud-sdk):
+$(google_cloud_sdk):
 	curl https://sdk.cloud.google.com | bash
