@@ -94,12 +94,12 @@ unsetopt beep
 alias vi='nvim'
 alias vim='nvim'
 
-# ls -> exa
-alias ls='exa'
-alias ll='exa -lF --git'
-alias la='exa -aF'
-alias lla='exa -alF --git'
-alias tree='exa -T --git-ignore'
+# ls -> eza
+alias ls='eza'
+alias ll='eza -lF --git'
+alias la='eza -aF'
+alias lla='eza -alF --git'
+alias tree='eza -T --git-ignore'
 
 # cat -> bat
 alias cat='bat --theme=Dracula'
