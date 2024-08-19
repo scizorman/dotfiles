@@ -41,7 +41,7 @@ export PATH="${HOMEBREW_PREFIX}/opt/libpq/bin":$PATH
 export PATH="${HOMEBREW_PREFIX}/opt/mysql-client/bin":$PATH
 
 # Go
-export PATH=$HOME/sdk/go1.22.5/bin:$PATH
+export PATH=$HOME/sdk/go1.23.0/bin:$PATH
 export GOPATH=${GOPATH:-$HOME/go}
 export PATH="$GOPATH/bin:$PATH"
 
