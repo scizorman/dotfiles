@@ -8,25 +8,22 @@ else
 	brew := /opt/homebrew/bin/brew
 endif
 
-zinit            := $(HOME)/.zsh/.zinit
-volta            := $(HOME)/.volta
-sdkman           := $(HOME)/.sdkman
-rye              := $(HOME)/.rye
 poetry           := $(HOME)/.local/bin/poetry
-rustup           := $(HOME)/.cargo/bin/rustup
-deno             := $(HOME)/.deno
 bun              := $(HOME)/.bun
+volta            := $(HOME)/.volta
+deno             := $(HOME)/.deno
+rustup           := $(HOME)/.cargo/bin/rustup
+sdkman           := $(HOME)/.sdkman
 google_cloud_sdk := $(HOME)/google-cloud-sdk
 
 tools := \
 	$(brew) \
-	$(volta) \
-	$(sdkman) \
-	$(rye) \
 	$(poetry) \
-	$(rustup) \
-	$(deno) \
 	$(bun) \
+	$(deno) \
+	$(volta) \
+	$(rustup) \
+	$(sdkman) \
 	$(google_cloud_sdk)
 
 .PHONY: all
@@ -46,26 +43,23 @@ $(brew): install-homebrew.sh
 install-homebrew.sh:
 	curl -fsSL 'https://raw.githubusercontent.com/Homebrew/install/master/install.sh' -o $@
 
-$(volta):
-	curl https://get.volta.sh | bash
-
-$(sdkman):
-	curl -s https://get.sdkman.io | bash
-
-$(rye):
-	curl -fsS 'https://rye-up.com/get' | bash
-
 $(poetry):
 	curl -sSL 'https://install.python-poetry.org' | python3 -
 
-$(rustup):
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+$(bun):
+	curl -fsSL https://bun.sh/install | bash
 
 $(deno):
 	curl -fsSL https://deno.land/install.sh | sh
 
-$(bun):
-	curl -fsSL https://bun.sh/install | bash
+$(volta):
+	curl https://get.volta.sh | bash
+
+$(rustup):
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+$(sdkman):
+	curl -s https://get.sdkman.io | bash
 
 $(google_cloud_sdk):
 	curl https://sdk.cloud.google.com | bash

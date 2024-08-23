@@ -230,13 +230,12 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 
+eval "$(pyenv init -)"
+poetry completions zsh >! "${ZDOTDIR}/completions/_poetry"
+
+source "${BUN_INSTALL}/_bun"
 volta completions -f --quiet -o"${ZDOTDIR}/completions/_volta" zsh
 eval "$(deno completions zsh)"
-source "${BUN_INSTALL}/_bun"
-
-eval "$(rye self completion --shell zsh)"
-poetry completions zsh >! "${ZDOTDIR}/completions/_poetry"
-eval "$(pyenv init -)"
 
 rustup completions zsh >! "${ZDOTDIR}/completions/_rustup"
 rustup completions zsh cargo >! "${ZDOTDIR}/completions/_cargo"
