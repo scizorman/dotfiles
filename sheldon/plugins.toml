@@ -1,3 +1,5 @@
+shell = "zsh"
+
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
