@@ -17,7 +17,7 @@
 */.zcalc_history
 
 # Zsh completions
-.zsh/completions
+.zsh/site-functions
 
 ### Helix
 helix/runtime

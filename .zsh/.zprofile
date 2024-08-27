@@ -1,67 +1,56 @@
 #!/usr/bin/env zsh
-# PATH
-typeset -gxU path PATH
-path=( \
-  $HOME/bin(N-/) \
-  $HOME/.local/bin \
-  /usr/local/bin \
-  $path \
-)
-
-# Linux specifics
-if [[ $(uname) == 'Linux' ]]; then
-  # Homebrew
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
-# macOS specifics
-if [[ $(uname) == 'Darwin' ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-
-  # GNU toolchain
-  path=("${HOMEBREW_PREFIX}/opt/*/libexec/gnubin" $path)
-  manpath=("${HOMEBREW_PREFIX/opt/*/libexec/gnuman}" $manpath)
-fi
-
 # WSL2 specifics
 if [[ $(uname -r) =~ 'microsoft' ]]; then
   export AWS_VAULT_BACKEND=pass
   export AWS_VAULT_PASS_PREFIX=aws-vault
+  export GPG_TTY=$(tty)
 fi
 
-export GPG_TTY=$(tty)
+export \
+  GOPATH="${GOPATH:-$HOME/go}" \
+  POETRY_VIRTUALENVS_IN_PROJECT=true \
+  BUN_INSTALL="${HOME}/.bun" \
+  DENO_INSTALL="${HOME}/.deno" \
+  VOLTA_HOME="${HOME}/.volta"
 
-# PostgreSQL client
-export PATH="${HOMEBREW_PREFIX}/opt/libpq/bin":$PATH
+typeset -u path manpath fpath
 
-# MySQL client
-export PATH="${HOMEBREW_PREFIX}/opt/mysql-client/bin":$PATH
+case "$(uname)" in
+  'Linux')
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    ;;
+  'Darwin')
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    ;;
+esac
 
-# Go
-export PATH=$HOME/sdk/go1.23.0/bin:$PATH
-export GOPATH=${GOPATH:-$HOME/go}
-export PATH="$GOPATH/bin:$PATH"
+path=( \
+  ${HOME}/sdk/go1.23.0/bin(N-/) \
+  ${GOPATH}/bin(N-/) \
+  ${BUN_INSTALL}/bin(N-/) \
+  ${DENO_INSTALL}/bin(N-/) \
+  ${VOLTA_HOME}/bin(N-/) \
+  ${HOME}/.cargo/bin(N-/) \
+  ${HOMEBREW_PREFIX}/opt/*/libexec/gnubin(N-/) \
+  ${HOMEBREW_PREFIX}/opt/libpq/bin(N-/) \
+  ${HOME}/.local/bin(N-/) \
+  $path \
+)
+manpath=( \
+  ${HOMEBREW_PREFIX}/opt/*/libexec/gnuman(N-/) \
+  $manpath \
+)
+fpath=( \
+  ${BUN_INSTALL}(N-/) \
+  ${ZDOTDIR}/site-functions(N-/) \
+  $fpath
+)
 
-# Python
-# Poetry
-export PATH=$HOME/.poetry/bin:$PATH
-export POETRY_VIRTUALENVS_IN_PROJECT=true
-
-# Node
-# Bun
-export BUN_INSTALL=$HOME/.bun
-export PATH=$BUN_INSTALL/bin:$PATH
-
-# Deno
-export DENO_INSTALL=$HOME/.deno
-export PATH=$DENO_INSTALL/bin:$PATH
-
-# Volta
-export VOLTA_HOME=$HOME/.volta
-export PATH=$VOLTA_HOME/bin:$PATH
-
-# Rust
-export PATH=$HOME/.cargo/bin:$PATH
-
-# ghq
-export GHQ_ROOT=$HOME/ghq
+mkdir -p "${ZDOTDIR}/site-functions"
+poetry completions zsh >! "${ZDOTDIR}/site-functions/_poetry"
+deno completions zsh >! "${ZDOTDIR}/site-functions/_deno"
+volta completions -f --quiet -o "${ZDOTDIR}/site-functions/_volta" zsh
+rustup completions zsh rustup >! "${ZDOTDIR}/site-functions/_rustup"
+rustup completions zsh cargo >! "${ZDOTDIR}/site-functions/_cargo"
+docker completion zsh >! "${ZDOTDIR}/site-functions/_docker"
+aws-vault --completion-script-zsh >! "${ZDOTDIR}/site-functions/_aws-vault"

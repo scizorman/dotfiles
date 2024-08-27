@@ -38,16 +38,6 @@ export CORRECT_IGNORE_FILE='.*'
 
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
-# History
-export HISTFILE=$ZDOTDIR/.zsh_history
-export HISTSIZE=10000
-export SAVEHIST=1000000
-
-if [[ $UID == 0 ]]; then
-  unset HISTFILE
-  export SAVEHIST=0
-fi
-
 # fzf: command-line fuzzy finder
 export FZF_DEFAULT_OPTS='
   --extended
