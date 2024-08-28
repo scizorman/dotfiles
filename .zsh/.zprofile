@@ -9,20 +9,23 @@ case "$(uname)" in
     ;;
 esac
 
-export EDITOR='hx'
-export PAGER='bat'
-
-export GOPATH="${GOPATH:-$HOME/go}"
-export POETRY_VIRTUALENVS_IN_PROJECT=true
-export BUN_INSTALL="${HOME}/.bun"
-export DENO_INSTALL="${HOME}/.deno"
-export VOLTA_HOME="${HOME}/.volta"
+export \
+  EDITOR='hx' \
+  PAGER='bat' \
+  GPG_TTY="$(tty)"
 
 if [[ $(uname -r) =~ 'microsoft' ]]; then
-  export AWS_VAULT_BACKEND='pass'
-  export AWS_VAULT_PASS_PREFIX='aws-vault'
-  export GPG_TTY="$(tty)"
+  export \
+    AWS_VAULT_BACKEND='pass' \
+    AWS_VAULT_PASS_PREFIX='aws-vault'
 fi
+
+export \
+  GOPATH="${GOPATH:-$HOME/go}" \
+  POETRY_VIRTUALENVS_IN_PROJECT=true \
+  BUN_INSTALL="${HOME}/.bun" \
+  DENO_INSTALL="${HOME}/.deno" \
+  VOLTA_HOME="${HOME}/.volta"
 
 path=( \
   ${GOPATH}/bin(N-/) \
@@ -32,6 +35,7 @@ path=( \
   ${HOME}/.cargo/bin(N-/) \
   ${HOMEBREW_PREFIX}/opt/*/libexec/gnubin(N-/) \
   ${HOMEBREW_PREFIX}/opt/libpq/bin(N-/) \
+  ${HOMEBREW_PREFIX}/opt/mysql-client/bin(N-/) \
   ${HOME}/.local/bin(N-/) \
   $path \
 )
