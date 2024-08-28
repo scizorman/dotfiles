@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
-umask 022
-limit coredumpsize 0
-
+# Parameters
 HISTFILE="${ZDOTDIR}/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=1000000
@@ -10,191 +8,193 @@ if [[ "${UID}" == 0 ]]; then
   SAVEHIST=0
 fi
 
+WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
+
 # Options
-# Completion
-setopt always_last_prompt
-setopt always_to_end
-setopt auto_list
-setopt auto_menu
-setopt auto_param_keys
-setopt auto_param_slash
-setopt auto_remove_slash
-setopt complete_in_word
-setopt list_types
-unsetopt list_beep
-unsetopt menu_complete
-# Expansion and Globbing
-setopt brace_ccl
-setopt equals
-setopt extended_glob
-setopt glob_dots
-setopt magic_equal_subst
-setopt mark_dirs
-unsetopt case_glob
-# History
-setopt append_history
-setopt bang_hist
-setopt extended_history
-setopt hist_expire_dups_first
-setopt hist_ignore_all_dups
-setopt hist_ignore_dups
-setopt hist_ignore_space
-setopt hist_no_functions
-setopt hist_no_store
-setopt hist_reduce_blanks
-setopt hist_save_no_dups
-setopt hist_verify
-setopt inc_append_history
-setopt share_history
-unsetopt hist_beep
-# Input/Output
-setopt correct
-setopt correct_all
-setopt ignore_eof
-setopt interactive_comments
-setopt no_clobber
-setopt no_flow_control
-setopt path_dirs
-setopt print_eight_bit
-setopt rm_star_wait
-# Job Control
-setopt auto_resume
-setopt long_list_jobs
-setopt notify
-# Scripts and Functions
-# Perform implicit tees or cats when multiple redirections are attempted.
-# Examples:
-#     ~$ < file1                        # cat
-#     ~$ < file1 < file2                # cat 2 files
-#     ~$ < file1 > file3                # copy file1 to file3
-#     ~$ < file1 > file3 | cat          # Copy and put stdout
-#     ~$ cat file1 > file3 > /dev/stdin # tee
-setopt multios
-# Zle
-unsetopt beep
+setopt \
+  always_last_prompt \
+  always_to_end \
+  auto_list \
+  auto_menu \
+  auto_param_keys \
+  auto_param_slash \
+  auto_remove_slash \
+  complete_in_word \
+  list_types \
+  brace_ccl \
+  equals \
+  extended_glob \
+  glob_dots \
+  magic_equal_subst \
+  mark_dirs \
+  append_history \
+  bang_hist \
+  extended_history \
+  hist_expire_dups_first \
+  hist_ignore_all_dups \
+  hist_ignore_dups \
+  hist_ignore_space \
+  hist_no_functions \
+  hist_no_store \
+  hist_reduce_blanks \
+  hist_save_no_dups \
+  hist_verify \
+  inc_append_history \
+  share_history \
+  correct \
+  correct_all \
+  ignore_eof \
+  interactive_comments \
+  path_dirs \
+  print_eight_bit \
+  rm_star_wait \
+  auto_resume \
+  long_list_jobs \
+  notify \
+  multios
 
-# Aliases
-alias vi='nvim'
-alias vim='nvim'
-alias ls='eza'
-alias ll='eza -lF --git'
-alias la='eza -aF'
-alias lla='eza -alF --git'
-alias tree='eza -T --git-ignore'
-alias cat='bat --theme=Dracula'
-alias grep='rg --color=auto'
-alias du='dust'
-alias mv='mv -i'
-alias rm='rm -i'
-alias du='du -h'
-alias cp="${ZSH_VERSION:+nocorrect} cp -i"
-alias mkdir="${ZSH_VERSION:+nocorrect} mkdir"
-alias sudo="${ZSH_VERSION:+nocorrect} sudo"
+unsetopt \
+  list_beep \
+  case_glob \
+  hist_beep \
+  clobber \
+  flow_control \
+  beep
 
-function ghq-cd() {
-  local repository="$(ghq list | fzf +m)"
-  [[ -n "${repository}" ]] && cd "$(ghq root)/${repository}"
-}
-alias gl='ghq-cd'
-
-if [ $(uname) = 'Linux' ]; then
-  alias pbcopy='xclip -selection c'
-  alias pbpaste='xclip -selection c -o'
-fi
-if [[ $(uname -r) =~ 'microsoft' ]]; then
-  alias pbcopy='clip.exe'
-  alias pbpaste='powershell.exe -Command Get-Clipboard'
-fi
-
-# Global aliases
-alias -g G='| rg'
-alias -g L='| less'
-alias -g X='| xargs'
-alias -g N='| >/dev/null 2>&1'
-alias -g N1='| >/dev/null'
-alias -g N2='| 2>/dev/null'
-(( $+galiases[H] )) || alias -g H='| head'
-(( $+galiases[T] )) || alias -g T='| tail'
-alias -g CP='| pbcopy'
-alias -g CC='tee /dev/tty | pbcopy'
-
-# Keybind
-# Vim-like key bind as default
+# Key bindings
 bindkey -v
-# Emacs-like keybind
-bindkey -M viins '^F' forward-char
-bindkey -M viins '^B' backward-char
-bindkey -M viins '^A' beginning-of-line
-bindkey -M viins '^E' end-of-line
-bindkey -M viins '^K' kill-line
-bindkey -M viins '^Y' yank
-bindkey -M viins '^W' backward-kill-word
-bindkey -M viins '^U' backward-kill-line
-bindkey -M viins '^H' backward-delete-char
-bindkey -M viins '^?' backward-delete-char
-bindkey -M viins '^G' send-break
-bindkey -M viins '^P' up-line-or-history
-bindkey -M viins '^N' down-line-or-history
-bindkey -M viins '^D' delete-char-or-list
-bindkey -M vicmd '^A' beginning-of-line
-bindkey -M vicmd '^E' end-of-line
-bindkey -M vicmd '^K' kill-line
-bindkey -M vicmd '^P' up-line-or-history
-bindkey -M vicmd '^N' down-line-or-history
-bindkey -M vicmd '^Y' yank
-bindkey -M vicmd '^W' backward-kill-word
-bindkey -M vicmd '^U' backward-kill-line
-# Surround.vim
+
+bindkey -M viins \
+  '^F' forward-char \
+  '^B' backward-char \
+  '^A' beginning-of-line \
+  '^E' end-of-line \
+  '^K' kill-line \
+  '^Y' yank \
+  '^W' backward-kill-word \
+  '^U' backward-kill-line \
+  '^H' backward-delete-char \
+  '^?' backward-delete-char \
+  '^G' send-break \
+  '^P' up-line-or-history \
+  '^N' down-line-or-history \
+  '^D' delete-char-or-list
+bindkey -M vicmd \
+  '^A' beginning-of-line \
+  '^E' end-of-line \
+  '^K' kill-line \
+  '^P' up-line-or-history \
+  '^N' down-line-or-history \
+  '^Y' yank \
+  '^W' backward-kill-word \
+  '^U' backward-kill-line
+
 autoload -Uz is-at-least
 if is-at-least 5.0.8; then
   autoload -Uz surround
   zle -N delete-surround surround
   zle -N change-surround surround
   zle -N add-surround surround
-  bindkey -a cs change-surround
-  bindkey -a ds delete-surround
-  bindkey -a ys add-surround
+  bindkey -a \
+    cs change-surround \
+    ds delete-surround \
+    ys add-surround
   bindkey -M visual S add-surround
 fi
 
 # Completions
-# Styles
-# Completing grouping
-zstyle ':completion:*:options' description 'yes'
-zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*' \
+  auto-description '%d' \
+  completer _complete _match _approximate \
+  format '%F{yellow}-- %d --%f' \
+  group-name '' \
+  matcher-list 'm:{a-z}={A-Z}' \
+  use-cache true \
+  verbose yes
+
 zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
-zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
 zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
 zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
-zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
-zstyle ':completion:*' group-name ''
-# Completing misc
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*' completer _complete _match _approximate
+
 zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
-zstyle ':completion:*' use-cache true
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
-# Directory
 zstyle ':completion:*:cd:*' ignored-parents parent pwd
+
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
+# Utilities
 autoload -Uz zcalc
 
-typeset -U path
-autoload -Uz compinit && compinit
+# External tools
+export FZF_DEFAULT_OPTS='
+  --extended
+  --ansi
+  --multi
+  --border
+  --reverse
+'
+
 eval "$(sheldon source)"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
-eval "$(pyenv init -)"
 [[ -f "${HOME}/google-cloud-sdk/path.zsh.inc" ]] && source $HOME/google-cloud-sdk/path.zsh.inc
 [[ -f "${HOME}/google-cloud-sdk/completion.zsh.inc" ]] && source $HOME/google-cloud-sdk/completion.zsh.inc
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 [[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+# Aliases
+function ghq-cd() {
+  local repository="$(ghq list | fzf +m)"
+  [[ -n "${repository}" ]] && cd "$(ghq root)/${repository}"
+}
+
+alias \
+  gl='ghq-cd' \
+  vi='nvim' \
+  vim='nvim' \
+  ls='eza' \
+  ll='eza --classify --git --long' \
+  la='eza --all --classify' \
+  lla='eza -all --classify --git --long --git' \
+  tree='eza --git-ignore --tree' \
+  cat='bat --theme Dracula' \
+  less='bat --theme Dracula' \
+  grep='rg --color=auto' \
+  diff="delta" \
+  du='dust -r' \
+  find='fd' \
+  mv='mv -i' \
+  rm='rm -i' \
+  cp="${ZSH_VERSION:+nocorrect} cp -i" \
+  mkdir="${ZSH_VERSION:+nocorrect} mkdir" \
+  sudo="${ZSH_VERSION:+nocorrect} sudo"
+
+if [ $(uname) = 'Linux' ]; then
+  alias \
+    pbcopy='xclip -selection c' \
+    pbpaste='xclip -selection c -o'
+fi
+if [[ $(uname -r) =~ 'microsoft' ]]; then
+  alias \
+    pbcopy='clip.exe' \
+    pbpaste='powershell.exe -Command Get-Clipboard'
+fi
+
+# Global aliases
+alias -g \
+  G='| rg' \
+  L='| less' \
+  X='| xargs' \
+  N='| > /dev/null 2 > &1' \
+  N1='| > /dev/null' \
+  N2='| 2 > /dev/null' \
+  H='| head' \
+  T='| tail' \
+  CP='| pbcopy' \
+  CC='tee /dev/tty | pbcopy'
+
 # NOTE: Take a profile if 'zprof' is loaded
-if (which zprof > /dev/null); then
+if which zprof > /dev/null; then
   zprof | less
 fi

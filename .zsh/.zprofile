@@ -1,20 +1,4 @@
 #!/usr/bin/env zsh
-# WSL2 specifics
-if [[ $(uname -r) =~ 'microsoft' ]]; then
-  export AWS_VAULT_BACKEND=pass
-  export AWS_VAULT_PASS_PREFIX=aws-vault
-  export GPG_TTY=$(tty)
-fi
-
-export \
-  GOPATH="${GOPATH:-$HOME/go}" \
-  POETRY_VIRTUALENVS_IN_PROJECT=true \
-  BUN_INSTALL="${HOME}/.bun" \
-  DENO_INSTALL="${HOME}/.deno" \
-  VOLTA_HOME="${HOME}/.volta"
-
-typeset -u path manpath fpath
-
 case "$(uname)" in
   'Linux')
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -24,8 +8,22 @@ case "$(uname)" in
     ;;
 esac
 
+export EDITOR='hx'
+export PAGER='bat'
+
+export GOPATH="${GOPATH:-$HOME/go}"
+export POETRY_VIRTUALENVS_IN_PROJECT=true
+export BUN_INSTALL="${HOME}/.bun"
+export DENO_INSTALL="${HOME}/.deno"
+export VOLTA_HOME="${HOME}/.volta"
+
+if [[ $(uname -r) =~ 'microsoft' ]]; then
+  export AWS_VAULT_BACKEND='pass'
+  export AWS_VAULT_PASS_PREFIX='aws-vault'
+  export GPG_TTY="$(tty)"
+fi
+
 path=( \
-  ${HOME}/sdk/go1.23.0/bin(N-/) \
   ${GOPATH}/bin(N-/) \
   ${BUN_INSTALL}/bin(N-/) \
   ${DENO_INSTALL}/bin(N-/) \

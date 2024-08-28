@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 # Do not run the startup files /etc/zshenv, /etc/zprofile, ...
-setopt no_global_rcs
+unsetopt global_rcs
 
 # Directory of the startup files
-export ZDOTDIR="$HOME/.zsh"
+export ZDOTDIR="${HOME}/.zsh"
 
 # Source setting files
-source "$ZDOTDIR/.zshenv"
+[[ -f "${ZDOTDIR}/.zshenv" ]] && source "${ZDOTDIR}/.zshenv"
