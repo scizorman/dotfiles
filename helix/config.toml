@@ -7,3 +7,9 @@ true-color = true
 [editor.cursor-shape]
 insert = "bar"
 select = "underline"
+
+[editor.indent-guides]
+render = true
+
+[editor.file-picker]
+hidden = false
