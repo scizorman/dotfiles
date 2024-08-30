@@ -8,8 +8,8 @@ true-color = true
 insert = "bar"
 select = "underline"
 
-[editor.indent-guides]
-render = true
-
 [editor.file-picker]
 hidden = false
+
+[editor.indent-guides]
+render = true
