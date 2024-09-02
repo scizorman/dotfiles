@@ -5,7 +5,6 @@ XDG_CONFIG_HOME := $(HOME)/.config
 
 dotfiles := \
 	.Brewfile \
-	.gitignore-global \
 	.ideavimrc \
 	.tmux.conf \
 	.vscodevimrc \
@@ -13,6 +12,7 @@ dotfiles := \
 	.zshenv
 
 xdg_configs := \
+	git \
 	helix \
 	nvim \
 	sheldon

@@ -19,5 +19,8 @@
 # Zsh completions
 .zsh/site-functions
 
+### Git
+git/config
+
 ### Helix
 helix/runtime
