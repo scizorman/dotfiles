@@ -10,7 +10,6 @@ endif
 
 poetry           := $(HOME)/.local/bin/poetry
 bun              := $(HOME)/.bun
-volta            := $(HOME)/.volta
 deno             := $(HOME)/.deno
 rustup           := $(HOME)/.cargo/bin/rustup
 sdkman           := $(HOME)/.sdkman
@@ -51,9 +50,6 @@ $(bun):
 
 $(deno):
 	curl -fsSL https://deno.land/install.sh | sh
-
-$(volta):
-	curl https://get.volta.sh | bash
 
 $(rustup):
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
