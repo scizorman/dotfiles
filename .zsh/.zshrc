@@ -177,8 +177,8 @@ if [ $(uname) = 'Linux' ]; then
 fi
 if [[ $(uname -r) =~ 'microsoft' ]]; then
   alias \
-    pbcopy='clip.exe' \
-    pbpaste='powershell.exe -Command Get-Clipboard'
+    pbcopy='iconv -t sjis | clip.exe' \
+    pbpaste='powershell.exe Get-Clipboard | iconv -t UTF-8 sed "s/\r$//"'
 fi
 
 # Global aliases
@@ -186,15 +186,15 @@ alias -g \
   G='| rg' \
   L='| less' \
   X='| xargs' \
-  N='| > /dev/null 2 > &1' \
-  N1='| > /dev/null' \
-  N2='| 2 > /dev/null' \
+  N='| >/dev/null 2>&1' \
+  N1='| >/dev/null' \
+  N2='| 2>/dev/null' \
   H='| head' \
   T='| tail' \
   CP='| pbcopy' \
   CC='tee /dev/tty | pbcopy'
 
 # NOTE: Take a profile if 'zprof' is loaded
-if which zprof > /dev/null; then
+if which zprof >/dev/null; then
   zprof | less
 fi
