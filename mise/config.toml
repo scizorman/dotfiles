@@ -1,0 +1,53 @@
+[settings]
+experimental = true
+pipx_uvx = true
+
+[tools]
+bun = "latest"
+deno = "latest"
+go = "latest"
+node = "lts"
+python = "latest"
+rust = "latest"
+
+java = "corretto-21.0.4.7.1"
+
+"go:github.com/go-delve/delve/cmd/dlv" = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
+
+"npm:biome" = "latest"
+"npm:typescript-language-server" = "latest"
+"npm:yaml-language-server" = "latest"
+
+"pipx:ruff" = "latest"
+"pipx:ruff-lsp" = "latest"
+
+awscli = "latest"
+aws-vault = "latest"
+bat = "latest"
+buf = "latest"
+cargo-binstall = "latest"
+delta = "latest"
+dust = "latest"
+editorconfig-checker = "latest"
+eza = "latest"
+fd = "latest"
+fzf = "latest"
+gcloud = "latest"
+ghq = "latest"
+github-cli = "latest"
+gradle = "latest"
+grpcurl = "latest"
+jnv = "latest"
+jq = "latest"
+neovim = "latest"
+protoc = "latest"
+ripgrep = "latest"
+shellcheck = "latest"
+shfmt = "latest"
+terraform-ls = "latest"
+tfenv = "latest"
+usage = "latest"
+uv = "latest"
+yq = "latest"
+zoxide = "latest"

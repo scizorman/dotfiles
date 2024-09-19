@@ -138,10 +138,10 @@ export FZF_DEFAULT_OPTS='
 
 eval "$(sheldon source)"
 eval "$(zoxide init zsh)"
-eval "$(direnv hook zsh)"
-[[ -f "${HOME}/google-cloud-sdk/path.zsh.inc" ]] && source $HOME/google-cloud-sdk/path.zsh.inc
-[[ -f "${HOME}/google-cloud-sdk/completion.zsh.inc" ]] && source $HOME/google-cloud-sdk/completion.zsh.inc
-[[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C "${XDG_DATA_HOME}/mise/shims/aws_completer" aws
+[[ -f "${XDG_DATA_HOME}/mise/installs/gcloud/latest/completion.zsh.inc" ]] && source "${XDG_DATA_HOME}/mise/installs/gcloud/latest/completion.zsh.inc"
 
 # Aliases
 function ghq-cd() {

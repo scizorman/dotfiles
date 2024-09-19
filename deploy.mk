@@ -14,6 +14,7 @@ dotfiles := \
 xdg_configs := \
 	git \
 	helix \
+	mise \
 	nvim \
 	sheldon
 
