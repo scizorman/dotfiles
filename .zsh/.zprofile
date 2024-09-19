@@ -27,8 +27,6 @@ export \
 path=( \
   ${VOLTA_HOME}/bin(N-/) \
   ${HOMEBREW_PREFIX}/opt/*/libexec/gnubin(N-/) \
-  ${HOMEBREW_PREFIX}/opt/libpq/bin(N-/) \
-  ${HOMEBREW_PREFIX}/opt/mysql-client/bin(N-/) \
   ${HOME}/.local/bin(N-/) \
   $path \
 )
@@ -51,4 +49,5 @@ deno completions zsh >! "${ZDOTDIR}/site-functions/_deno"
 rustup completions zsh rustup >! "${ZDOTDIR}/site-functions/_rustup"
 rustup completions zsh cargo >! "${ZDOTDIR}/site-functions/_cargo"
 aws-vault --completion-script-zsh >! "${ZDOTDIR}/site-functions/_aws-vault"
+snow --show-completion >! "${ZDOTDIR}/site-functions/_snow"
 volta completions -f --quiet -o "${ZDOTDIR}/site-functions/_volta" zsh

@@ -128,6 +128,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload -Uz zcalc
 
 # External tools
+export FZF_DEFAULT_COMMAND='fd --type f --hidden'
 export FZF_DEFAULT_OPTS='
   --extended
   --ansi
