@@ -16,7 +16,8 @@ xdg_configs := \
 	helix \
 	mise \
 	nvim \
-	sheldon
+	sheldon \
+	zellij
 
 deploy_targets := $(addprefix $(HOME)/,$(dotfiles)) $(addprefix $(XDG_CONFIG_HOME)/,$(xdg_configs))
 
@@ -31,7 +32,8 @@ clean:
 .PHONY: deploy
 deploy: $(deploy_targets)
 
-$(HOME)/% $(XDG_CONFIG_HOME)/%: %
+$(HOME)/%: %
+$(XDG_CONFIG_HOME)/%: %
 	ln -sfnv $(abspath $<) $@
 $(HOME)/.Brewfile: .Brewfile.$(shell echo $(OS) | tr '[:upper:]' '[:lower:]')
 	ln -sfnv $(abspath $<) $@
