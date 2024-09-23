@@ -178,8 +178,8 @@ if [ $(uname) = 'Linux' ]; then
 fi
 if [[ $(uname -r) =~ 'microsoft' ]]; then
   alias \
-    pbcopy='iconv -t sjis | clip.exe' \
-    pbpaste='powershell.exe Get-Clipboard | iconv -t UTF-8 sed "s/\r$//"'
+    pbcopy='clip.exe' \
+    pbpaste='powershell.exe -Command Get-Clipboard'
 fi
 
 # Global aliases
