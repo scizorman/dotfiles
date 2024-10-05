@@ -137,6 +137,8 @@ export FZF_DEFAULT_OPTS='
   --reverse
 '
 
+eval "$(mise activate zsh)"
+eval "$(op signin)"
 eval "$(sheldon source)"
 eval "$(zoxide init zsh)"
 autoload bashcompinit && bashcompinit
