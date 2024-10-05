@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
- Parameters
+# Parameters
 HISTFILE="${ZDOTDIR}/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=1000000
@@ -138,7 +138,6 @@ export FZF_DEFAULT_OPTS='
 '
 
 eval "$(mise activate zsh)"
-eval "$(op signin)"
 eval "$(sheldon source)"
 eval "$(zoxide init zsh)"
 autoload bashcompinit && bashcompinit
