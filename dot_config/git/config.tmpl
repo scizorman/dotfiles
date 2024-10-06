@@ -12,10 +12,11 @@
 	conflictstyle = diff3
 [user]
 	name = scizorman
-	email = tueda1207@gmail.com
 {{ if eq .chezmoi.hostname "SCIZORMAN-WINDOWS" }}
+	email = tueda1207@gmail.com
 	signingKey = {{ onepasswordRead "op://scizorman-windows/scizorman-windows-git-commit-signing-gpg-key/key-id" }}
 {{ else if eq .chezmoi.hostname "UEDAs-MacBook-Air" }}
+	email = te.ueda@cartahd.com
 	signingKey = {{ onepasswordRead "op://scizorman-macbook-air/scizorman-macbook-air-git-commit-signing-gpg-key/key-id" }}
 {{ end }}
 [core]
