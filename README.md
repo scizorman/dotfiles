@@ -9,7 +9,7 @@ This is dotfiles for **Zsh**, **Tmux**, and **Neovim**.
 Open a new terminal and enter:
 
 ```console
-$ git clone https://github.com/scizorman/dotfiles.git ~/dotfiles
-$ cd ~/dotfiles
-$ make install
+$ sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "${HOME}/.local/bin"
+$ "${HOME}/.local/bin/chezmoi init https://github.com/scizorman/dotfiles.git"
+$ chezmoi apply -v
 ```
