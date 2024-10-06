@@ -1,24 +1,23 @@
 #!/usr/bin/env zsh
-case "$(uname)" in
-  'Linux')
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    ;;
-  'Darwin')
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    source ~/.orbstack/shell/init.zsh 2>/dev/null || :
-    ;;
-esac
+{{ if eq .chezmoi.os "linux" }}
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+{{ else if eq .chezmoi.os "darwin" }}
+eval "$(/opt/homebrew/bin/brew shellenv)"
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+{{ end }}
 
 export \
   EDITOR='hx' \
   PAGER='bat' \
   GPG_TTY="$(tty)"
 
-if [[ $(uname -r) =~ 'microsoft' ]]; then
-  export \
-    AWS_VAULT_BACKEND='pass' \
-    AWS_VAULT_PASS_PREFIX='aws-vault'
-fi
+{{ if eq .chezmoi.os "linux" -}}
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+export \
+  AWS_VAULT_BACKEND='pass' \
+  AWS_VAULT_PASS_PREFIX='aws-vault'
+{{   end }}
+{{ end }}
 
 export \
   POETRY_VIRTUALENVS_IN_PROJECT=true \
@@ -34,20 +33,18 @@ manpath=( \
   ${HOMEBREW_PREFIX}/opt/*/libexec/gnuman(N-/) \
   $manpath \
 )
-fpath=( \
-  ${BUN_INSTALL}(N-/) \
-  ${ZDOTDIR}/site-functions(N-/) \
-  $fpath
-)
 
-eval "$(mise activate zsh --shims)"
-
+# Shell Completion Setup
 mkdir -p "${ZDOTDIR}/site-functions"
+
+chezmoi completion zsh >! "${ZDOTDIR}/site-functions/_chezmoi"
 docker completion zsh >! "${ZDOTDIR}/site-functions/_docker"
-mise completion zsh >! "${ZDOTDIR}/site-functions/_mise"
+eval "$(mise activate zsh --shims)"
 deno completions zsh >! "${ZDOTDIR}/site-functions/_deno"
 rustup completions zsh rustup >! "${ZDOTDIR}/site-functions/_rustup"
 rustup completions zsh cargo >! "${ZDOTDIR}/site-functions/_cargo"
+op completion zsh >! "${ZDOTDIR}/site-functions/_op"
 aws-vault --completion-script-zsh >! "${ZDOTDIR}/site-functions/_aws-vault"
 snow --show-completion >! "${ZDOTDIR}/site-functions/_snow"
-volta completions -f --quiet -o "${ZDOTDIR}/site-functions/_volta" zsh
+
+chmod -R +x "${ZDOTDIR}/site-functions"
