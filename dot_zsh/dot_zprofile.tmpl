@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
-{{ if eq .chezmoi.os "linux" -}}
+{{ if eq .chezmoi.os "linux" }}
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-{{- else if eq .chezmoi.os "darwin" -}}
+{{ else if eq .chezmoi.os "darwin" }}
 eval "$(/opt/homebrew/bin/brew shellenv)"
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
-{{- end }}
+{{ end }}
 
 export \
   EDITOR='hx' \
@@ -12,12 +12,12 @@ export \
   GPG_TTY="$(tty)"
 
 {{ if eq .chezmoi.os "linux" -}}
-{{-   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 export \
   AWS_VAULT_BACKEND='pass' \
   AWS_VAULT_PASS_PREFIX='aws-vault'
-{{-   end -}}
-{{- end }}
+{{   end }}
+{{ end }}
 
 export \
   POETRY_VIRTUALENVS_IN_PROJECT=true \

@@ -178,17 +178,17 @@ alias \
   mkdir="${ZSH_VERSION:+nocorrect} mkdir" \
   sudo="${ZSH_VERSION:+nocorrect} sudo"
 
-{{ if eq .chezmoi.os "linux" -}}
-{{-   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+{{ if eq .chezmoi.os "linux" }}
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 alias \
   pbcopy='clip.exe' \
   pbpaste='powershell.exe -Command Get-Clipboard'
-{{-   else -}}
+{{   else }}
 alias \
   pbcopy='xclip -selection c' \
   pbpaste='xclip -selection c -o'
-{{-   end -}}
-{{- end }}
+{{   end }}
+{{ end }}
 
 # Global aliases
 alias -g \

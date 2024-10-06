@@ -13,11 +13,11 @@
 [user]
 	name = scizorman
 	email = tueda1207@gmail.com
-{{- if eq .chezmoi.hostname "SCIZORMAN-WINDOWS" }}
+{{ if eq .chezmoi.hostname "SCIZORMAN-WINDOWS" }}
 	signingKey = {{ onepasswordRead "op://scizorman-windows/scizorman-windows-git-commit-signing-gpg-key/key-id" }}
-{{ else if eq .chezmoi.hostname "UEDAs-MacBook-Air.local" }}
+{{ else if eq .chezmoi.hostname "UEDAs-MacBook-Air" }}
 	signingKey = {{ onepasswordRead "op://scizorman-macbook-air/scizorman-macbook-air-git-commit-signing-gpg-key/key-id" }}
-{{ end -}}
+{{ end }}
 [core]
 	pager = delta
 [interactive]
