@@ -1,9 +1,3 @@
 README.md
 LICENSE
-Makefile
-deploy.mk
-install.mk
-
-.zsh/.zcompdump
-.zsh/.zsh_history
-.zsh/site-functions
+Brewfile*
