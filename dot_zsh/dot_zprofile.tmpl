@@ -34,16 +34,17 @@ manpath=( \
   $manpath \
 )
 
-eval "$(mise activate zsh --shims)"
-
+# Shell Completion Setup
 mkdir -p "${ZDOTDIR}/site-functions"
+
+chezmoi completion zsh >! "${ZDOTDIR}/site-functions/_chezmoi"
 docker completion zsh >! "${ZDOTDIR}/site-functions/_docker"
-mise completion zsh >! "${ZDOTDIR}/site-functions/_mise"
+eval "$(mise activate zsh --shims)"
 deno completions zsh >! "${ZDOTDIR}/site-functions/_deno"
 rustup completions zsh rustup >! "${ZDOTDIR}/site-functions/_rustup"
 rustup completions zsh cargo >! "${ZDOTDIR}/site-functions/_cargo"
 op completion zsh >! "${ZDOTDIR}/site-functions/_op"
 aws-vault --completion-script-zsh >! "${ZDOTDIR}/site-functions/_aws-vault"
-chezmoi completion zsh >! "${ZDOTDIR}/site-functions/_chezmoi"
 snow --show-completion >! "${ZDOTDIR}/site-functions/_snow"
-volta completions -f --quiet -o "${ZDOTDIR}/site-functions/_volta" zsh
+
+chmod -R +x "${ZDOTDIR}/site-functions"
