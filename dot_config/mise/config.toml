@@ -7,7 +7,7 @@ bun = "latest"
 deno = "latest"
 go = "latest"
 node = "lts"
-python = "latest"
+python = "3.12.7"
 rust = "latest"
 
 java = "corretto-21.0.4.7.1"
@@ -21,7 +21,7 @@ java = "corretto-21.0.4.7.1"
 
 "pipx:ruff" = "latest"
 "pipx:ruff-lsp" = "latest"
-"pipx:snowflake-cli-labs" = "latest"
+"pipx:snowflake-cli" = "latest"
 
 "cargo:sheldon" = "latest"
 
