@@ -1,0 +1,18 @@
+#!/bin/bash
+{{ if eq .chezmoi.os "darwin" -}}
+eval "$(/opt/homebrew/bin/brew shellenv)"
+{{ else if eq .chezmoi.os "linux" -}}
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+{{- end }}
+
+brew bundle --no-lock --file /dev/stdin <<EOF
+{{ if eq .chezmoi.os "darwin" -}}
+{{   range .packages.darwin.brew -}}
+brew {{ . | quote }}
+{{   end -}}
+{{ else if eq .chezmoi.os "linux" -}}
+{{   range .packages.linux.brew -}}
+brew {{ . | quote }}
+{{   end -}}
+{{ end -}}
+EOF

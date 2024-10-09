@@ -1,0 +1,10 @@
+#!/bin/bash
+{{ if eq .chezmoi.os "darwin" -}}
+eval "$(/opt/homebrew/bin/brew shellenv)"
+{{ else if eq .chezmoi.os "linux" -}}
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+{{- end }}
+
+grep -q "^${HOMEBREW_PREFIX}/bin/zsh$" /etc/shells \
+  || echo "${HOMEBREW_PREFIX}/bin/zsh" | sudo tee -a /etc/shells
+sudo chsh -s "${HOMEBREW_PREFIX}/bin/zsh"
