@@ -1,0 +1,61 @@
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+[language-server.ruff]
+command = "ruff-lsp"
+[language-server.ruff.config.settings]
+args = ["--ignore", "E501"]
+
+[[language]]
+name = "python"
+language-servers = ["pyright", "ruff"]
+
+[language-server.biome]
+command = "biome"
+args = ["lsp-proxy"]
+
+[[language]]
+name = "javascript"
+language-servers = [
+    { name = "typescript-language-server", except-features = ["format"] },
+    "biome",
+]
+auto-format = true
+
+[[language]]
+name = "typescript"
+language-servers = [
+    { name = "typescript-language-server", except-features = ["format"] },
+    "biome",
+]
+auto-format = true
+
+[[language]]
+name = "jsx"
+language-servers = [
+    { name = "typescript-language-server", except-features = ["format"] },
+    "biome",
+]
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = [
+    { name = "typescript-language-server", except-features = ["format"] },
+    "biome",
+]
+auto-format = true
+
+[[language]]
+name = "json"
+language-servers = ["biome"]
+auto-format = true
+
+[language-server.yaml-language-server.config.yaml]
+format = { enable = true }
+validation = true
+[language-server.yaml-language-server.config.yaml.schemas]
+"https://json.schemastore.org/github-workflow.json" = ".github/workflows/*.{yml,yaml}"
+
+[[language]]
+name = "yaml"
+language-servers = ["yaml-language-server"]

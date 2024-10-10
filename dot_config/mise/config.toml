@@ -16,6 +16,7 @@ java = "corretto-21.0.4.7.1"
 "go:golang.org/x/tools/gopls" = "latest"
 
 "npm:@biomejs/biome" = "latest"
+"npm:pyright" = "latest"
 "npm:typescript-language-server" = "latest"
 "npm:yaml-language-server" = "latest"
 
