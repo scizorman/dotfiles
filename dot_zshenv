@@ -3,7 +3,7 @@
 unsetopt global_rcs
 
 # Directory of the startup files
-export ZDOTDIR="${HOME}/.zsh"
+export ZDOTDIR="${HOME}/.config/zsh"
 
 # Source setting files
 [[ -f "${ZDOTDIR}/.zshenv" ]] && source "${ZDOTDIR}/.zshenv"
