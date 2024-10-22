@@ -31,6 +31,7 @@ packages:
       - 'gh'
       - 'git'
       - 'helix'
+      - 'llvm'
       - 'make'
       - 'mise'
       - 'tfenv'
