@@ -24,6 +24,7 @@ export \
 
 path=( \
   ${VOLTA_HOME}/bin(N-/) \
+  ${XDG_DATA_HOME}/mise/shims(N-/) \
   ${HOMEBREW_PREFIX}/opt/*/libexec/gnubin(N-/) \
   ${HOME}/.local/bin(N-/) \
   $path \
@@ -38,7 +39,6 @@ mkdir -p "${ZDOTDIR}/site-functions"
 
 chezmoi completion zsh >! "${ZDOTDIR}/site-functions/_chezmoi"
 docker completion zsh >! "${ZDOTDIR}/site-functions/_docker"
-eval "$(mise activate zsh --shims)"
 deno completions zsh >! "${ZDOTDIR}/site-functions/_deno"
 rustup completions zsh rustup >! "${ZDOTDIR}/site-functions/_rustup"
 rustup completions zsh cargo >! "${ZDOTDIR}/site-functions/_cargo"
