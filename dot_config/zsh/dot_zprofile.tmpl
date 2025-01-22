@@ -3,7 +3,7 @@
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{ else if eq .chezmoi.os "darwin" }}
 eval "$(/opt/homebrew/bin/brew shellenv)"
-source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+export PATH="${HOME}/.rd/bin:${PATH}"
 export LDFLAGS="-L$(xcrun --show-sdk-path)/usr/lib"
 {{ end }}
 
