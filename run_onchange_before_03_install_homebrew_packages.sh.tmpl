@@ -5,7 +5,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{- end }}
 
-brew bundle --no-lock --file /dev/stdin <<EOF
+brew bundle --file /dev/stdin <<EOF
 {{ if eq .chezmoi.os "darwin" -}}
 {{   range .packages.darwin.brew -}}
 brew {{ . | quote }}
