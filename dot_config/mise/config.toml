@@ -27,6 +27,7 @@ java = "corretto-21"
 "cargo:sheldon" = "latest"
 
 1password-cli = "latest"
+aqua = "latest"
 awscli = "latest"
 aws-vault = "latest"
 bat = "latest"
