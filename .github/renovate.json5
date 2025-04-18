@@ -1,0 +1,13 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: [
+    "config:best-practices"
+  ],
+  labels: [
+    "renovate:{{depName}}",
+    "renovate:{{depName}}/{{newVersion}}",
+    "datasource:${{datasource}}",
+  ],
+  schedule: ["* 9-17 * * 1"],
+  timezone: "Asia/Tokyo",
+}
