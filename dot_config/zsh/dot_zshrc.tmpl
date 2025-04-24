@@ -153,8 +153,8 @@ complete -C "${XDG_DATA_HOME}/mise/shims/aws_completer" aws
 
 # Aliases
 function ghq-cd() {
-  local repository="$(ghq list | fzf +m)"
-  [[ -n "${repository}" ]] && cd "$(ghq root)/${repository}"
+  local dir="$(ghq list -p | fzf-tmux)"
+  [[ -n "${dir}" ]] && cd "${dir}"
 }
 
 alias \
