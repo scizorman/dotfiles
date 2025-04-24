@@ -181,8 +181,8 @@ alias \
 {{ if eq .chezmoi.os "linux" }}
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 alias \
-  pbcopy='clip.exe' \
-  pbpaste='powershell.exe -Command Get-Clipboard'
+  pbcopy='wl-copy' \
+  pbpaste='wl-paste'
 {{   else }}
 alias \
   pbcopy='xclip -selection c' \
