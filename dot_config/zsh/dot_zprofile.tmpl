@@ -39,6 +39,7 @@ manpath=( \
 # Shell Completion Setup
 mkdir -p "${ZDOTDIR}/site-functions"
 
+aqua completion zsh >! "${ZDOTDIR}/site-functions/_aqua"
 chezmoi completion zsh >! "${ZDOTDIR}/site-functions/_chezmoi"
 docker completion zsh >! "${ZDOTDIR}/site-functions/_docker"
 deno completions zsh >! "${ZDOTDIR}/site-functions/_deno"
