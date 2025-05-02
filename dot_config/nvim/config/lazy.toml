@@ -1,0 +1,29 @@
+[[plugins]]
+repo = "sheerun/vim-polyglot"
+on_event = "VimEnter"
+
+[[plugins]]
+repo = "cocopon/iceberg.vim"
+on_event = "VimEnter"
+hook_source = "colorscheme iceberg"
+
+[[plugins]]
+repo = "editorconfig/editorconfig-vim"
+on_event = "VimEnter"
+
+[[plugins]]
+repo = "cohama/lexima.vim"
+on_event = "InsertEnter"
+
+[[plugins]]
+repo = "nvim-lualine/lualine.nvim"
+on_event = "VimEnter"
+lua_source = """
+require("lualine").setup()
+"""
+
+[[plugins]]
+repo = "neovim/nvim-lspconfig"
+# lua_source = """
+# require("plugins.lspconfig").hook_source()
+# """

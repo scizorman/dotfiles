@@ -1,0 +1,74 @@
+[[plugins]]
+repo = "Shougo/ddc.vim"
+depends = ["denops.vim"]
+on_event = ["InsertEnter", "CursorHold"]
+lua_add = """
+require("plugins.ddc").hook_add()
+"""
+lua_source = """
+require("plugins.ddc").hook_source()
+"""
+
+[[plugins]]
+repo = "Shougo/pum.vim"
+
+[[plugins]]
+repo = "Shougo/ddc-ui-pum"
+depends = ["pum.vim"]
+on_source = "ddc.vim"
+
+[[plugins]]
+repo = "Shougo/ddc-source-around"
+on_source = "ddc.vim"
+
+[[plugins]]
+repo = "Shougo/ddc-source-line"
+on_source = "ddc.vim"
+
+[[plugins]]
+repo = "Shougo/ddc-source-rg"
+on_source = "ddc.vim"
+
+[[plugins]]
+repo = "Shougo/ddc-source-lsp"
+on_source = "ddc.vim"
+
+[[plugins]]
+repo = "Shougo/ddc-source-cmdline"
+on_source = "ddc.vim"
+
+[[plugins]]
+repo = "Shougo/ddc-source-cmdline-history"
+on_source = "ddc.vim"
+
+[[plugins]]
+repo = "LumaKernel/ddc-source-file"
+on_source = "ddc.vim"
+
+[[plugins]]
+repo = "Shougo/ddc-filter-matcher_head"
+on_source = "ddc.vim"
+
+[[plugins]]
+repo = "Shougo/ddc-filter-matcher_length"
+on_source = "ddc.vim"
+
+[[plugins]]
+repo = "Shougo/ddc-filter-matcher_prefix"
+on_source = "ddc.vim"
+
+[[plugins]]
+repo = "Shougo/ddc-filter-matcher_suffix"
+on_source = "ddc.vim"
+
+[[plugins]]
+repo = "Shougo/ddc-filter-sorter_rank"
+on_source = "ddc.vim"
+
+[[plugins]]
+repo = "Shougo/ddc-filter-sorter_head"
+on_source = "ddc.vim"
+
+[[plugins]]
+repo = "Shougo/ddc-filter-converter_remove_overlap"
+on_source = "ddc.vim"
