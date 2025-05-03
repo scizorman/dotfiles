@@ -43,7 +43,7 @@ local function setup()
       })
 
       local client = vim.lsp.get_client_by_id(event.data.client_id)
-      if client:supports_method("textDocument/completion") then
+      if client ~= nil and client:supports_method("textDocument/completion") then
         vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
       end
     end,
