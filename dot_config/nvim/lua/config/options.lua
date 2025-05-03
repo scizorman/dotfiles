@@ -15,6 +15,8 @@ function M.setup()
   vim.opt.colorcolumn = '120'
   vim.opt.cmdheight = 2
 
+  vim.opt.completeopt = { "menuone", "noselect", "popup" }
+
   vim.opt.linebreak = true
   vim.opt.showbreak = "\\"
   vim.opt.breakindent = true
