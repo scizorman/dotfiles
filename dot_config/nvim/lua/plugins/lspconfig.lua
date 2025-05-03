@@ -37,10 +37,6 @@ local function setup()
         buffer = event.buf,
         desc = "vim.lsp.buf.rename()",
       })
-      vim.keymap.set("n", "<Leader>d", vim.diagnostic.open_float, {
-        buffer = event.buf,
-        desc = "vim.diagnostic.open_float()",
-      })
 
       local client = vim.lsp.get_client_by_id(event.data.client_id)
       if client ~= nil and client:supports_method("textDocument/completion") then
