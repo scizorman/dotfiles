@@ -1,5 +1,5 @@
-require("keymaps").setup()
-require("options").setup()
-require("lsp").setup()
+vim.loader.enable()
 
-require("plugins.dpp").setup()
+require("config.keymaps").setup()
+require("config.options").setup()
+require("config.lazy").setup()
