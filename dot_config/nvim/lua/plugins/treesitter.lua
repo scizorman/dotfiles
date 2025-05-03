@@ -12,8 +12,4 @@ return {
       additional_vim_regex_highlighting = false,
     },
   },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    source = { "nvim-treesitter/nvim-treesitter" },
-  },
 }
