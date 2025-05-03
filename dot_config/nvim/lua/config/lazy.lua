@@ -24,6 +24,10 @@ require("lazy").setup({
       end,
     },
     {
+      "EdenEast/nightfox.nvim",
+      lazy = false,
+    },
+    {
       "nvim-lualine/lualine.nvim",
       dependencies = { "nvim-tree/nvim-web-devicons" },
       config = true,
