@@ -24,6 +24,15 @@ require("lazy").setup({
       end,
     },
     {
+      "nvim-lualine/lualine.nvim",
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+      config = true,
+    },
+    {
+      "lewis6991/gitsigns.nvim",
+      event = { "BufRead" },
+    },
+    {
       "windwp/nvim-autopairs",
       event = { "InsertEnter" },
       config = true,
