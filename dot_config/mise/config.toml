@@ -1,5 +1,6 @@
 [settings]
 experimental = true
+idiomatic_version_file_enable_tools = []
 pipx_uvx = true
 
 [tools]
@@ -46,6 +47,7 @@ gradle = "latest"
 grpcurl = "latest"
 jnv = "latest"
 jq = "latest"
+lua-language-server = "latest"
 neovim = "latest"
 protoc = "latest"
 ripgrep = "latest"
