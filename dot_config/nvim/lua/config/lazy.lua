@@ -48,6 +48,5 @@ require("lazy").setup({
     },
     { import = "plugins" },
   },
-  install = { colorschema = "iceberg" },
   checker = { enabled = true },
 })
