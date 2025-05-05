@@ -22,10 +22,10 @@ require("lazy").setup({
     },
     {
       "EdenEast/nightfox.nvim",
-      lazy = false,
       config = function()
         vim.cmd("colorscheme nightfox")
       end,
+      lazy = false,
     },
     {
       "nvim-lualine/lualine.nvim",
@@ -38,13 +38,13 @@ require("lazy").setup({
     },
     {
       "windwp/nvim-autopairs",
-      event = { "InsertEnter" },
       config = true,
+      event = { "InsertEnter" },
     },
     {
       "kylechui/nvim-surround",
-      event = { "BufRead", "BufNewFile" },
       config = true,
+      event = { "BufRead", "BufNewFile" },
     },
     { import = "plugins" },
   },
