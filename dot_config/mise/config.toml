@@ -11,7 +11,7 @@ node = "23.11.0"
 python = "3.13.3"
 rust = "1.86.0"
 
-java = "corretto-21"
+java = "corretto-21.0.7+6.0.LTS"
 
 "go:github.com/go-delve/delve/cmd/dlv" = "1.24.2"
 "go:golang.org/x/tools/gopls" = "0.18.1"
