@@ -1,14 +1,11 @@
-local function setup()
-  local builtin = require("telescope.builtin")
-
-  vim.keymap.set("n", "<Leader>ff", builtin.find_files)
-  vim.keymap.set("n", "<Leader>fg", builtin.live_grep)
-  vim.keymap.set("n", "<Leader>fb", builtin.buffers)
-  vim.keymap.set("n", "<Leader>fh", builtin.help_tags)
-end
-
+--- @type LazyPluginSpec
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
-  config = setup,
+  keys = {
+    { "<Leader>ff", "<Cmd>Telescope find_files<CR>" },
+    { "<Leader>fg", "<Cmd>Telescope live_grep<CR>" },
+    { "<Leader>fb", "<Cmd>Telescope buffers<CR>" },
+    { "<Leader>fh", "<Cmd>Telescope help_tags<CR>" },
+  },
 }
