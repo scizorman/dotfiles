@@ -39,15 +39,18 @@ manpath=( \
 # Shell Completion Setup
 mkdir -p "${ZDOTDIR}/site-functions"
 
+op completion zsh >! "${ZDOTDIR}/site-functions/_op"
 aqua completion zsh >! "${ZDOTDIR}/site-functions/_aqua"
+aws-vault --completion-script-zsh >! "${ZDOTDIR}/site-functions/_aws-vault"
+buf completion zsh >! "${ZDOTDIR}/site-functions/_buf"
 chezmoi completion zsh >! "${ZDOTDIR}/site-functions/_chezmoi"
-docker completion zsh >! "${ZDOTDIR}/site-functions/_docker"
 deno completions zsh >! "${ZDOTDIR}/site-functions/_deno"
+docker completion zsh >! "${ZDOTDIR}/site-functions/_docker"
+rg --generate complete-zsh >! "${ZDOTDIR}/site-functions/_rg"
 rustup completions zsh rustup >! "${ZDOTDIR}/site-functions/_rustup"
 rustup completions zsh cargo >! "${ZDOTDIR}/site-functions/_cargo"
-op completion zsh >! "${ZDOTDIR}/site-functions/_op"
-aws-vault --completion-script-zsh >! "${ZDOTDIR}/site-functions/_aws-vault"
-uv generate-shell-completion zsh >! "${ZDOTDIR}/site-functions/_uv"
 snow --show-completion >! "${ZDOTDIR}/site-functions/_snow"
+uv generate-shell-completion zsh >! "${ZDOTDIR}/site-functions/_uv"
+yq completion zsh >! ${ZDOTDIR}/site-functions/_yq
 
 chmod -R +x "${ZDOTDIR}/site-functions"
