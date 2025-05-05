@@ -56,6 +56,7 @@ local function setup()
     "lua_ls",
     "terraformls",
     "ts_ls",
+    "yamlls",
   })
 end
 
