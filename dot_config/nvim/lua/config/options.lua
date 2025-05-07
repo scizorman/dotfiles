@@ -13,6 +13,8 @@ vim.opt.colorcolumn = '120'
 vim.opt.cmdheight = 2
 
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
+vim.opt.pumheight = 20
+vim.opt.wildignorecase = true
 
 vim.opt.linebreak = true
 vim.opt.showbreak = "\\"
