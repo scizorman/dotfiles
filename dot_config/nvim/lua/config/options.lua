@@ -26,6 +26,17 @@ vim.opt.undofile = true
 vim.opt.mouse = "n"
 vim.opt.termguicolors = true
 
+vim.g.loaded_2html_plugin = false
+vim.g.loaded_netrwPlugin = false
+vim.g.loaded_gzip = false
+vim.g.loaded_remote_plugins = false
+vim.g.loaded_shada_plugin = false
+vim.g.loaded_spellfile_plugin = false
+vim.g.loaded_tar = false
+vim.g.loaded_tarPlugin = false
+vim.g.loaded_tutor_mode_plugin = false
+vim.g.loaded_zipPlugin = false
+
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python3_provider = 0
