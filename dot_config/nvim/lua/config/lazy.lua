@@ -18,14 +18,15 @@ require("lazy").setup({
   spec = {
     {
       "cocopon/iceberg.vim",
-      lazy = false,
     },
     {
       "EdenEast/nightfox.nvim",
       config = function()
         vim.cmd("colorscheme nightfox")
       end,
-      lazy = false,
+    },
+    {
+      "folke/tokyonight.nvim",
     },
     {
       "nvim-lualine/lualine.nvim",
