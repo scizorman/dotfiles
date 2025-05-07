@@ -60,6 +60,7 @@ local function setup()
   })
 end
 
+--- @type LazyPluginSpec
 return {
   "neovim/nvim-lspconfig",
   config = setup,
