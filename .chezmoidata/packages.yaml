@@ -15,6 +15,7 @@ packages:
       - 'gzip'
       - 'make'
       - 'mise'
+      - 'pinentry-mac'
       - 'reattach-to-user-namespace'
       - 'tmux'
       - 'volta'
