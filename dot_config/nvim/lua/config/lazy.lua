@@ -32,6 +32,7 @@ require("lazy").setup({
       "nvim-lualine/lualine.nvim",
       dependencies = { "nvim-tree/nvim-web-devicons" },
       config = true,
+      event = { "VeryLazy" },
     },
     {
       "lewis6991/gitsigns.nvim",
