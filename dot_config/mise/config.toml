@@ -23,7 +23,6 @@ java = "corretto-21"
 "npm:yaml-language-server" = "1.18.0"
 
 "pipx:ruff" = "0.11.8"
-"pipx:ruff-lsp" = "0.0.62"
 "pipx:snowflake-cli" = "3.7.1"
 
 "cargo:sheldon" = "0.8.1"
