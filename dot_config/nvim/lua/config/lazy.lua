@@ -48,7 +48,9 @@ require("lazy").setup({
       config = true,
       event = { "BufRead", "BufNewFile" },
     },
-    { import = "plugins" },
+    { import = "plugins/lspconfig" },
+    { import = "plugins/telescope" },
+    { import = "plugins/treesitter" },
   },
   checker = { enabled = true },
 })
