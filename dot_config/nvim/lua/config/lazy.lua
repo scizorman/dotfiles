@@ -53,4 +53,7 @@ require("lazy").setup({
     { import = "plugins/treesitter" },
   },
   checker = { enabled = true },
+  rocks = {
+    enabled = false,
+  },
 })
