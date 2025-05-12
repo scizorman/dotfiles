@@ -41,7 +41,6 @@ packages:
       - 'curl'
       - 'git'
       - 'git-lfs'
-      - 'llvm'
       - 'make'
       - 'mise'
       - 'tmux'
