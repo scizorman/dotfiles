@@ -10,7 +10,9 @@ return {
         if vim.fn.finddir(".git", ";") == "" then
           return require("telescope.builtin").find_files()
         end
-        return require("telescope.builtin").git_files()
+        return require("telescope.builtin").git_files({
+          show_untracked = true,
+        })
       end,
     },
     { "<Leader>fg", "<Cmd>Telescope live_grep<CR>" },
