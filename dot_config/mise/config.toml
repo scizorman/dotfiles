@@ -1,31 +1,14 @@
 [settings]
-experimental = true
 idiomatic_version_file_enable_tools = []
-pipx_uvx = true
 
 [tools]
 bun = "1.2.13"
 deno = "2.3.1"
 go = "1.24.3"
+java = "corretto-21"
 node = "23.11.0"
 python = "3.13.3"
 rust = "1.86.0"
-
-java = "corretto-21"
-
-"go:github.com/go-delve/delve/cmd/dlv" = "1.24.2"
-"go:golang.org/x/tools/gopls" = "0.18.1"
-
-"npm:@anthropic-ai/claude-code" = "0.2.100"
-"npm:@biomejs/biome" = "1.9.4"
-"npm:pyright" = "1.1.400"
-"npm:typescript-language-server" = "4.3.4"
-"npm:yaml-language-server" = "1.18.0"
-
-"pipx:ruff" = "0.11.8"
-"pipx:snowflake-cli" = "3.7.1"
-
-"cargo:sheldon" = "0.8.1"
 
 1password-cli = "2.30.3"
 aqua = "2.50.0"
@@ -62,3 +45,17 @@ uv = "0.7.3"
 yq = "4.45.4"
 zellij = "0.42.2"
 zoxide = "0.9.7"
+
+"go:github.com/go-delve/delve/cmd/dlv" = "1.24.2"
+"go:golang.org/x/tools/gopls" = "0.18.1"
+
+"npm:@anthropic-ai/claude-code" = "0.2.107"
+"npm:@biomejs/biome" = "1.9.4"
+"npm:pyright" = "1.1.400"
+"npm:typescript-language-server" = "4.3.4"
+"npm:yaml-language-server" = "1.18.0"
+
+"pipx:ruff" = "0.11.9"
+"pipx:snowflake-cli" = "3.7.2"
+
+"cargo:sheldon" = "0.8.1"
