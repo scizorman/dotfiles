@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: 'CI'
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  validation:
+    runs-on: '${{ matrix.os }}'
+    name: 'Validation (${{ matrix.os }})'
+    permissions:
+      contents: 'read'
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - 'ubuntu-latest'
+          - 'macos-latest'
+    timeout-minutes: 10
+    steps:
+      - uses: 'actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683' # v4
+        with:
+          ref: '${{ inputs.ref }}'
+          persist-credentials: false
+      - run: |
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --source .
