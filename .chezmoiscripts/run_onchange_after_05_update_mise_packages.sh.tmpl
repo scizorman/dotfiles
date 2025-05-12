@@ -6,5 +6,10 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{- end }}
 
 # dot_config/mise/config.toml hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
-mise plugins up
-mise up
+if [ -n "${CI}" ]; then
+  mise plugins up --raw --yes --verbose
+  mise up --raw --yes --verbose
+else
+  mise plugins up
+  mise up --yes
+fi
