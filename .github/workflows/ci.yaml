@@ -24,5 +24,14 @@ jobs:
         with:
           ref: '${{ inputs.ref }}'
           persist-credentials: false
+      - id: 'generate-token'
+        uses: 'actions/create-github-app-token@d72941d797fd3113feb6b93fd0dec494b13a2547' # v1
+        with:
+          app-id: '${{ secrets.DOTFILES_CI_TOKEN_PROVIDER_GITHUB_APP_ID }}'
+          private-key: '${{ secrets.DOTFILES_CI_TOKEN_PROVIDER_GITHUB_APP_PRIVATE_KEY }}'
+          permission-contents: 'read'
+          permission-metadata: 'read'
       - run: |
           sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --source .
+        env:
+          GITHUB_TOKEN: '${{ steps.generate-token.outputs.token }}'
