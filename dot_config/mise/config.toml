@@ -6,7 +6,7 @@ bun = "1.2.13"
 deno = "2.3.1"
 go = "1.24.3"
 java = "corretto-21"
-node = "23.11.0"
+node = "23.11.1"
 python = "3.13.3"
 rust = "1.86.0"
 
