@@ -49,13 +49,13 @@ zoxide = "0.9.7"
 "go:github.com/go-delve/delve/cmd/dlv" = "1.24.2"
 "go:golang.org/x/tools/gopls" = "0.18.1"
 
-"npm:@anthropic-ai/claude-code" = "0.2.107"
+"npm:@anthropic-ai/claude-code" = "1.0.5"
 "npm:@biomejs/biome" = "1.9.4"
-"npm:pyright" = "1.1.400"
+"npm:pyright" = "1.1.401"
 "npm:typescript-language-server" = "4.3.4"
 "npm:yaml-language-server" = "1.18.0"
 
 "pipx:ruff" = "0.11.9"
-"pipx:snowflake-cli" = "3.7.2"
+"pipx:snowflake-cli" = "3.8.3"
 
 "cargo:sheldon" = "0.8.1"
