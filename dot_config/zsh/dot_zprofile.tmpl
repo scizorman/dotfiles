@@ -23,10 +23,11 @@ export \
 export \
   VOLTA_HOME="${HOME}/.volta"
 
+eval "$(mise activate zsh)"
+
 path=( \
   ${VOLTA_HOME}/bin(N-/) \
   ${XDG_DATA_HOME}/aquaproj-aqua/bin(N-/) \
-  ${XDG_DATA_HOME}/mise/shims(N-/) \
   ${HOMEBREW_PREFIX}/opt/*/libexec/gnubin(N-/) \
   ${HOME}/.local/bin(N-/) \
   $path \
