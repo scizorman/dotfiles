@@ -2,7 +2,7 @@
 idiomatic_version_file_enable_tools = []
 
 [tools]
-bun = "1.2.13"
+bun = "1.2.15"
 deno = "2.3.4"
 go = "1.24.3"
 java = "corretto-21"
