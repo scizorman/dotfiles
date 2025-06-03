@@ -3,7 +3,7 @@ idiomatic_version_file_enable_tools = []
 
 [tools]
 bun = "1.2.15"
-deno = "2.3.4"
+deno = "2.3.5"
 go = "1.24.3"
 java = "corretto-21"
 node = "23.11.1"
