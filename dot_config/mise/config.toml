@@ -7,7 +7,7 @@ deno = "2.3.5"
 go = "1.24.3"
 java = "corretto-21"
 node = "23.11.1"
-python = "3.13.3"
+python = "3.13.4"
 rust = "1.87.0"
 
 1password-cli = "2.30.3"
