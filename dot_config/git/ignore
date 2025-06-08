@@ -49,3 +49,6 @@ Temporary Items
 ### macOS Patch ###
 # iCloud generated files
 *.icloud
+
+### Claude Code ###
+**/.claude/settings.local.json
