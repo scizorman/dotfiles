@@ -4,8 +4,28 @@
 
 ## 会話ガイドライン
 
-常に日本語で会話する。
-技術用語は英単語を使用しても構わない。
+- 常に日本語で会話する。技術用語は英単語を使用しても構わない。
+- 憶測で回答しない。
+- 調査した結果、わからなかったことはわからないと回答する。
+
+## 文章作成ガイドライン
+
+### 文体の統一
+
+基本的に常体を使用する。
+ただし、編集対象の文章が敬体の場合は、その文体に合わせる。
+
+### 見出しの表現
+
+- 数字の箇条書き（1. 2. 3.）で見出しを表現しない
+- **太字**で見出しを表現しない
+- Markdown の見出し記法（#, ##, ###）を適切に使用する
+
+### 避けるべき表現
+
+- 箇条書きで文章の流れを表現しない
+- 数字の箇条書きと通常の箇条書き（- または *）を同一階層で併用しない
+- 文章をコロン（:）で終わらせて箇条書きに続けない。文章は句点で終わらせる
 
 ## タスクガイドライン
 
@@ -17,7 +37,7 @@
 
 #### 1. Issueの作成
 
-まず、タイトルはユーザーが Claude Code に指示した問題の内容を簡潔にまとめたものにする。
+タイトルはユーザーが Claude Code に指示した問題の内容を簡潔にまとめる。
 プロジェクトに GitHub Issue template があればそれに従い、なければ以下の構造で description をまとめる。
 
 ```markdown
@@ -43,12 +63,12 @@
 #### 2. Branch 作成
 
 Git stage 上の変更を確認し、タスクに応じた適切な名前で branch を作成する。
-branch 名は kebab-case にする（例：`add-dbt-resources`）
+branch 名は kebab-case にする（例：`add-dbt-resources`）。
 
 #### 3. Git Commit
 
 Git stage 上の変更を確認し、タスクに応じた適切な commit message を作成する。
-commit message は、 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) に従う。
+commit message は [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) に従う。
 
 #### 4. Git Push
 
@@ -56,7 +76,7 @@ commit message は、 [Conventional Commits](https://www.conventionalcommits.org
 
 #### 5. Pull Request 作成
 
-タイトルはユーザーが Claude Code に指示したタスクの内容と実装した変更を簡潔にまとめたものにする。
+タイトルはユーザーが Claude Code に指示したタスクの内容と実装した変更を簡潔にまとめる。
 プロジェクトに Pull Request template があればそれに従い、なければ以下の構造で description をまとめる。
 
 ```markdown
