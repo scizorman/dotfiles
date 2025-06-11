@@ -51,7 +51,7 @@ zoxide = "0.9.7"
 
 "npm:@anthropic-ai/claude-code" = "1.0.18"
 "npm:@biomejs/biome" = "1.9.4"
-"npm:pyright" = "1.1.401"
+"npm:pyright" = "1.1.402"
 "npm:typescript-language-server" = "4.3.4"
 "npm:yaml-language-server" = "1.18.0"
 
