@@ -51,6 +51,7 @@ require("lazy").setup({
     { import = "plugins/lspconfig" },
     { import = "plugins/telescope" },
     { import = "plugins/treesitter" },
+    { import = "plugins/ddt" },
   },
   checker = { enabled = true },
   rocks = {
