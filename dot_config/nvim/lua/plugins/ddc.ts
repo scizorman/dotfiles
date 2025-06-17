@@ -65,7 +65,7 @@ export class Config extends BaseConfig {
         shell_history: {
           paths: [
             "~/.cache/nvim/ddt/ddt-shell-history",
-            "~/.cache/zsh/.zsh_history",
+            "~/.cache/zsh/zsh_history",
           ],
         },
         shell_native: {

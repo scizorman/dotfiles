@@ -38,21 +38,21 @@ manpath=( \
 )
 
 # Shell Completion Setup
-mkdir -p "${ZDOTDIR}/site-functions"
+mkdir -p "${XDG_CACHE_HOME}/zsh/site-functions"
 
-op completion zsh >! "${ZDOTDIR}/site-functions/_op"
-aqua completion zsh >! "${ZDOTDIR}/site-functions/_aqua"
-aws-vault --completion-script-zsh >! "${ZDOTDIR}/site-functions/_aws-vault"
-buf completion zsh >! "${ZDOTDIR}/site-functions/_buf"
-chezmoi completion zsh >! "${ZDOTDIR}/site-functions/_chezmoi"
-deno completions zsh >! "${ZDOTDIR}/site-functions/_deno"
-docker completion zsh >! "${ZDOTDIR}/site-functions/_docker"
-mise completion zsh >! "${ZDOTDIR}/site-functions/_mise"
-rg --generate complete-zsh >! "${ZDOTDIR}/site-functions/_rg"
-rustup completions zsh rustup >! "${ZDOTDIR}/site-functions/_rustup"
-rustup completions zsh cargo >! "${ZDOTDIR}/site-functions/_cargo"
-snow --show-completion >! "${ZDOTDIR}/site-functions/_snow"
-uv generate-shell-completion zsh >! "${ZDOTDIR}/site-functions/_uv"
-yq completion zsh >! ${ZDOTDIR}/site-functions/_yq
+op completion zsh >! "${XDG_CACHE_HOME}/zsh/site-functions/_op"
+aqua completion zsh >! "${XDG_CACHE_HOME}/zsh/site-functions/_aqua"
+aws-vault --completion-script-zsh >! "${XDG_CACHE_HOME}/zsh/site-functions/_aws-vault"
+buf completion zsh >! "${XDG_CACHE_HOME}/zsh/site-functions/_buf"
+chezmoi completion zsh >! "${XDG_CACHE_HOME}/zsh/site-functions/_chezmoi"
+deno completions zsh >! "${XDG_CACHE_HOME}/zsh/site-functions/_deno"
+docker completion zsh >! "${XDG_CACHE_HOME}/zsh/site-functions/_docker"
+mise completion zsh >! "${XDG_CACHE_HOME}/zsh/site-functions/_mise"
+rg --generate complete-zsh >! "${XDG_CACHE_HOME}/zsh/site-functions/_rg"
+rustup completions zsh rustup >! "${XDG_CACHE_HOME}/zsh/site-functions/_rustup"
+rustup completions zsh cargo >! "${XDG_CACHE_HOME}/zsh/site-functions/_cargo"
+snow --show-completion >! "${XDG_CACHE_HOME}/zsh/site-functions/_snow"
+uv generate-shell-completion zsh >! "${XDG_CACHE_HOME}/zsh/site-functions/_uv"
+yq completion zsh >! ${XDG_CACHE_HOME}/zsh/site-functions/_yq
 
-chmod -R +x "${ZDOTDIR}/site-functions"
+chmod -R +x "${XDG_CACHE_HOME}/zsh/site-functions"
