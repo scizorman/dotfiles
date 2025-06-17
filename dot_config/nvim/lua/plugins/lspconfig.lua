@@ -44,14 +44,14 @@ local function setup()
         end,
       })
 
-      local client = vim.lsp.get_client_by_id(event.data.client_id)
-      if client ~= nil and client:supports_method("textDocument/completion") then
-        vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
-      end
+      vim.lsp.config("*", {
+        capabilities = require("ddc_source_lsp").make_client_capabilities(),
+      })
     end,
   })
 
   vim.lsp.enable({
+    "denols",
     "gopls",
     "lua_ls",
     "terraformls",
@@ -63,6 +63,7 @@ end
 --- @type LazyPluginSpec
 return {
   "neovim/nvim-lspconfig",
+  dependencies = { "Shougo/ddc-source-lsp", lazy = true },
   config = setup,
   event = { "BufReadPre", "BufNewFile" },
 }

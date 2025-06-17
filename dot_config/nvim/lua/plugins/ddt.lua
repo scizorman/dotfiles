@@ -19,12 +19,21 @@ local function configure_global()
   })
 end
 
-local function configure_ddt_ui_shell_keymapsn()
+local function configure_ddt_ui_shell_keymaps()
   vim.keymap.set({ "n", "i" }, "<CR>", [[<Cmd>call ddt#ui#do_action("executeLine")<CR>]], { buffer = true })
   vim.keymap.set("i", "<C-C>", [[<Cmd>call ddt#ui#do_action("terminate")<CR>]], { buffer = true })
   vim.keymap.set("n", "<C-N>", [[<Cmd>call ddt#ui#do_action("nextPrompt")<CR>]], { buffer = true })
   vim.keymap.set("n", "<C-Y>", [[<Cmd>call ddt#ui#do_action("pastePrompt")<CR>]], { buffer = true })
   vim.keymap.set("n", "<C-P>", [[<Cmd>call ddt#ui#do_action("previousPrompt")<CR>]], { buffer = true })
+
+  vim.keymap.set("i", "<Tab>", function()
+    if vim.fn["pum#visible"]() then
+      return [[<Cmd>call pum#map#insert_relative(1, "empty")<CR>]]
+    end
+    return vim.fn["ddc#map#manual_complete"]({ sources = { "shell_history" } })
+  end, { expr = true, buffer = true })
+  vim.keymap.set("i", "<C-N>", [[<Cmd>call pum#map#select_relative(1)<CR>]], { buffer = true })
+  vim.keymap.set("i", "<C-P>", [[<Cmd>call pum#map#select_relative(-1)<CR>]], { buffer = true })
 end
 
 local function setup()
@@ -34,7 +43,7 @@ local function setup()
   vim.api.nvim_create_autocmd("FileType", {
     group = "ddt-ui-shell",
     pattern = "ddt-shell",
-    callback = configure_ddt_ui_shell_keymapsn,
+    callback = configure_ddt_ui_shell_keymaps,
   })
 end
 
