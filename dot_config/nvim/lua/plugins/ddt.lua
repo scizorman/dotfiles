@@ -36,14 +36,21 @@ local function configure_ddt_ui_shell_keymaps()
   vim.keymap.set("i", "<C-P>", [[<Cmd>call pum#map#select_relative(-1)<CR>]], { buffer = true })
 end
 
+local function configure_ddt_ui_terminal_keymaps()
+  vim.keymap.set("n", "<Leader>tt", [[<Cmd>close<CR>]], { buffer = true })
+end
+
 local function setup()
   configure_global()
 
-  vim.api.nvim_create_augroup("ddt-ui-shell", { clear = true })
   vim.api.nvim_create_autocmd("FileType", {
-    group = "ddt-ui-shell",
     pattern = "ddt-shell",
     callback = configure_ddt_ui_shell_keymaps,
+  })
+
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "ddt-terminal",
+    callback = configure_ddt_ui_terminal_keymaps,
   })
 end
 
