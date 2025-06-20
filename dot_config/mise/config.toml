@@ -47,7 +47,7 @@ zellij = "0.42.2"
 zoxide = "0.9.7"
 
 "go:github.com/go-delve/delve/cmd/dlv" = "1.25.0"
-"go:golang.org/x/tools/gopls" = "0.19.0"
+"go:golang.org/x/tools/gopls" = "0.19.1"
 
 "npm:@anthropic-ai/claude-code" = "1.0.29"
 "npm:@biomejs/biome" = "2.0.0"
