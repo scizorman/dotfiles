@@ -1,6 +1,6 @@
 {
   "model": "sonnet",
   "env": {
-    "DISABLE_AUTOUPDATER": 1
+    "DISABLE_AUTOUPDATER": "1"
   }
 }
