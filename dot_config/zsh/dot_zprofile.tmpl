@@ -20,13 +20,9 @@ export \
 {{   end }}
 {{ end }}
 
-export \
-  VOLTA_HOME="${HOME}/.volta"
-
-eval "$(mise activate zsh)"
+eval "$(mise activate zsh --shims)"
 
 path=( \
-  ${VOLTA_HOME}/bin(N-/) \
   ${XDG_DATA_HOME}/aquaproj-aqua/bin(N-/) \
   ${HOMEBREW_PREFIX}/opt/*/libexec/gnubin(N-/) \
   ${HOME}/.local/bin(N-/) \

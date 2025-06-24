@@ -18,7 +18,6 @@ packages:
       - 'pinentry-mac'
       - 'reattach-to-user-namespace'
       - 'tmux'
-      - 'volta'
       - 'zsh'
   linux:
     apt:
@@ -44,5 +43,4 @@ packages:
       - 'make'
       - 'mise'
       - 'tmux'
-      - 'volta'
       - 'zsh'
