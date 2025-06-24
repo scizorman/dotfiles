@@ -50,7 +50,7 @@ zoxide = "0.9.7"
 "go:github.com/go-delve/delve/cmd/dlv" = "1.25.0"
 "go:golang.org/x/tools/gopls" = "0.19.1"
 
-"npm:@anthropic-ai/claude-code" = "1.0.31"
+"npm:@anthropic-ai/claude-code" = "1.0.33"
 "npm:@biomejs/biome" = "2.0.0"
 "npm:pyright" = "1.1.402"
 "npm:typescript-language-server" = "4.3.4"
