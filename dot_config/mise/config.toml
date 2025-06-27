@@ -57,7 +57,7 @@ zoxide = "0.9.7"
 "npm:typescript-language-server" = "4.3.4"
 "npm:yaml-language-server" = "1.18.0"
 
-"pipx:ruff" = "0.12.0"
+"pipx:ruff" = "0.12.1"
 "pipx:snowflake-cli" = "3.9.1"
 
 "cargo:sheldon" = "0.8.1"
