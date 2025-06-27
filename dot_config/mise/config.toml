@@ -9,7 +9,7 @@ go = "1.24.4"
 java = "corretto-21"
 node = "lts"
 python = "3.13.5"
-rust = "1.87.0"
+rust = "1.88.0"
 
 1password-cli = "2.30.3"
 aqua = "2.50.0"
