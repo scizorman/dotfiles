@@ -52,7 +52,7 @@ zoxide = "0.9.7"
 
 "npm:@anthropic-ai/claude-code" = "1.0.38"
 "npm:@biomejs/biome" = "2.0.6"
-"npm:@google/gemini-cli" = "0.1.7"
+"npm:@google/gemini-cli" = "0.1.9"
 "npm:pyright" = "1.1.402"
 "npm:typescript-language-server" = "4.3.4"
 "npm:yaml-language-server" = "1.18.0"
