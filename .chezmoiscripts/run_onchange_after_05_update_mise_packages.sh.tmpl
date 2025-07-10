@@ -6,9 +6,5 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{- end }}
 
 # dot_config/mise/config.toml hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
-if [ -n "${CI}" ]; then
-  echo "CI environment detected. Skipping mise packages update."
-  exit 0
-fi
 mise plugins up
 mise up
