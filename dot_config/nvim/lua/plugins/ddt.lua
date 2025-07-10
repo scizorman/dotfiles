@@ -30,7 +30,7 @@ local function configure_ddt_ui_shell_keymaps()
     if vim.fn["pum#visible"]() then
       return [[<Cmd>call pum#map#insert_relative(1, "empty")<CR>]]
     end
-    return vim.fn["ddc#map#manual_complete"]({ sources = { "shell_history" } })
+    return vim.fn["ddc#map#manual_complete"]({ sources = { "shell_native", "shell_history" } })
   end, { expr = true, buffer = true })
   vim.keymap.set("i", "<C-N>", [[<Cmd>call pum#map#select_relative(1)<CR>]], { buffer = true })
   vim.keymap.set("i", "<C-P>", [[<Cmd>call pum#map#select_relative(-1)<CR>]], { buffer = true })
