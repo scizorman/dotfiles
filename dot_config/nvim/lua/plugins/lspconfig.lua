@@ -53,6 +53,7 @@ local function setup()
   vim.lsp.enable({
     "denols",
     "gopls",
+    "jsonls",
     "lua_ls",
     "terraformls",
     "ts_ls",

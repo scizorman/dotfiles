@@ -83,6 +83,9 @@ export class Config extends BaseConfig {
     for (
       const filetype of [
         "go",
+        "json",
+        "json5",
+        "jsonc",
         "lua",
         "terraform",
         "typescript",
