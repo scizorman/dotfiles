@@ -15,10 +15,6 @@ github = 'zsh-users/zsh-completions'
 github = "zdharma-continuum/fast-syntax-highlighting"
 apply = ["defer"]
 
-[plugins.history-search-multi-word]
-github = "zdharma-continuum/history-search-multi-word"
-apply = ["defer"]
-
 [plugins.pure]
 github = "sindresorhus/pure"
 use = ["async.zsh", "pure.zsh"]
