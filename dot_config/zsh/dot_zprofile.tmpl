@@ -9,7 +9,7 @@ export LDFLAGS="-L$(xcrun --show-sdk-path)/usr/lib"
 
 export \
   EDITOR='nvim' \
-  PAGER='bat' \
+  PAGER='less' \
   GPG_TTY="$(tty)"
 
 {{ if eq .chezmoi.os "linux" -}}
