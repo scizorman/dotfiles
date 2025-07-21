@@ -87,6 +87,7 @@ export class Config extends BaseConfig {
         "json5",
         "jsonc",
         "lua",
+        "python",
         "terraform",
         "typescript",
         "typescriptreact",

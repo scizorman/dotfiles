@@ -55,6 +55,7 @@ local function setup()
     "gopls",
     "jsonls",
     "lua_ls",
+    "pyright",
     "terraformls",
     "ts_ls",
     "yamlls",
