@@ -47,7 +47,7 @@ shellcheck = "0.10.0"
 "aqua:x-motemen/ghq" = "1.8.0"
 "aqua:zellij-org/zellij" = "0.42.2"
 
-"go:github.com/go-delve/delve/cmd/dlv" = "1.25.0"
+"go:github.com/go-delve/delve/cmd/dlv" = "1.25.1"
 "go:golang.org/x/tools/gopls" = "0.19.1"
 
 "npm:@anthropic-ai/claude-code" = "1.0.56"
