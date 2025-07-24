@@ -58,4 +58,4 @@ shellcheck = "0.10.0"
 "npm:vscode-langservers-extracted" = "4.10.0"
 "npm:yaml-language-server" = "1.18.0"
 
-"pipx:snowflake-cli" = "3.9.1"
+"pipx:snowflake-cli" = "3.10.0"
