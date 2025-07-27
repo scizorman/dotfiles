@@ -8,6 +8,6 @@
     "renovate:{{depName}}/{{newVersion}}",
     "datasource:${{datasource}}",
   ],
-  schedule: ["* 9-17 * * 1-5"],
+  schedule: ["* 9-17 * * *"],
   timezone: "Asia/Tokyo",
 }
