@@ -18,7 +18,7 @@ eza = "0.22.0"
 gcloud = "520.0.0"
 gradle = "8.14"
 protoc = "31.1"
-shellcheck = "0.10.0"
+shellcheck = "0.11.0"
 
 "aqua:99designs/aws-vault" = "7.2.0"
 "aqua:BurntSushi/ripgrep" = "14.1.1"
