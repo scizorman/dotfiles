@@ -10,8 +10,12 @@ end
 --- @type vim.lsp.Config
 return {
   settings = {
+    pyright = {
+      dissableOrganizeImports = true,
+    },
     python = {
       pythonPath = configure_python_path(),
+      ignore = { "*" },
     },
   },
 }

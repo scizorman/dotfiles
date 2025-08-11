@@ -47,6 +47,14 @@ local function setup()
       vim.lsp.config("*", {
         capabilities = require("ddc_source_lsp").make_client_capabilities(),
       })
+
+      local client = vim.lsp.get_client_by_id(event.data.client_id)
+      if client == nil then
+        return
+      end
+      if client.name == "ruff" then
+        client.server_capabilities.hoverProvider = false
+      end
     end,
   })
 
@@ -56,7 +64,7 @@ local function setup()
     "jsonls",
     "lua_ls",
     "pyright",
-    "ruff_lsp",
+    "ruff",
     "terraformls",
     "ts_ls",
     "yamlls",
