@@ -143,13 +143,13 @@ export FZF_DEFAULT_OPTS='
   --reverse
 '
 
-eval "$(sheldon source)"
-eval "$(tv init zsh)"
-eval "$(zoxide init zsh)"
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 complete -C "${XDG_DATA_HOME}/mise/shims/aws_completer" aws
 [[ -f "${XDG_DATA_HOME}/mise/installs/gcloud/latest/completion.zsh.inc" ]] && source "${XDG_DATA_HOME}/mise/installs/gcloud/latest/completion.zsh.inc"
+eval "$(sheldon source)"
+eval "$(tv init zsh)"
+eval "$(zoxide init zsh)"
 
 # Aliases
 function ghq-cd() {
