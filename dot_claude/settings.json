@@ -1,6 +1,6 @@
 {
   "includeCoAuthoreBy": false,
-  "model": "sonnet",
+  "model": "opusplan",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
