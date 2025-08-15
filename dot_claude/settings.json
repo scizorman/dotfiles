@@ -1,5 +1,5 @@
 {
-  "includeCoAuthoreBy": false,
+  "includeCoAuthoredBy": false,
   "model": "opusplan",
   "statusLine": {
     "type": "command",
