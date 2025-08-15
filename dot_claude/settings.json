@@ -1,8 +1,8 @@
 {
-  "includeCoAuthoredBy": false,
-  "model": "opusplan",
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.sh"
-  }
+        "includeCoAuthoredBy": false,
+        "model": "opusplan",
+        "statusLine": {
+                "type": "command",
+                "command": "~/.claude/statusline.sh"
+        }
 }
