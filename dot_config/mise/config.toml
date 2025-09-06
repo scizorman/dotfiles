@@ -43,7 +43,7 @@ shellcheck = "0.11.0"
 "aqua:neovim/neovim" = "0.11.4"
 "aqua:rossmacarthur/sheldon" = "0.8.5"
 "aqua:sharkdp/bat" = "0.25.0"
-"aqua:sharkdp/fd" = "10.2.0"
+"aqua:sharkdp/fd" = "10.3.0"
 "aqua:x-motemen/ghq" = "1.8.0"
 "aqua:zellij-org/zellij" = "0.43.1"
 
