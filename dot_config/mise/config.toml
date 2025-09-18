@@ -3,7 +3,7 @@ experimental = true
 idiomatic_version_file_enable_tools = ["python"]
 
 [tools]
-bun = "1.2.21"
+bun = "1.2.22"
 deno = "2.5.0"
 go = "1.25.1"
 java = "corretto-21"
