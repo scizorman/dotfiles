@@ -52,7 +52,7 @@ shellcheck = "0.11.0"
 "go:github.com/go-delve/delve/cmd/dlv" = "1.25.2"
 "go:golang.org/x/tools/gopls" = "0.20.0"
 
-"npm:@anthropic-ai/claude-code" = "1.0.115"
+"npm:@anthropic-ai/claude-code" = "1.0.117"
 "npm:@biomejs/biome" = "2.2.4"
 "npm:@google/gemini-cli" = "0.4.1"
 "npm:pyright" = "1.1.405"
