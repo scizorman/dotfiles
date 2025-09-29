@@ -61,4 +61,4 @@ shellcheck = "0.11.0"
 "npm:yaml-language-server" = "1.19.1"
 
 "pipx:git+https://github.com/github/spec-kit.git" = "v0.0.54"
-"pipx:snowflake-cli" = "3.11.0"
+"pipx:snowflake-cli" = "3.12.0"
