@@ -59,4 +59,6 @@ sheldon completions --shell zsh >! "${XDG_CACHE_HOME}/zsh/site-functions/_sheldo
 bat --completion zsh >! "${XDG_CACHE_HOME}/zsh/site-functions/_bat"
 zellij setup --generate-completion zsh >! "${XDG_CACHE_HOME}/zsh/site-functions/_zellij"
 
+codex completion zsh >! "${XDG_CACHE_HOME}/zsh/site-functions/_codex"
+
 chmod -R +x "${XDG_CACHE_HOME}/zsh/site-functions"
