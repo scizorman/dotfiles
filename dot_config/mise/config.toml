@@ -61,5 +61,5 @@ shellcheck = "0.11.0"
 "npm:vscode-langservers-extracted" = "4.10.0"
 "npm:yaml-language-server" = "1.19.1"
 
-"pipx:git+https://github.com/github/spec-kit.git" = "v0.0.55"
+"pipx:git+https://github.com/github/spec-kit.git" = "v0.0.56"
 "pipx:snowflake-cli" = "3.12.0"
