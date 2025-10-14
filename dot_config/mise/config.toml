@@ -4,7 +4,7 @@ idiomatic_version_file_enable_tools = ["python"]
 
 [tools]
 bun = "1.2.23"
-deno = "2.5.3"
+deno = "2.5.4"
 go = "1.25.2"
 java = "corretto-25.0.0.36.2"
 node = "lts"
