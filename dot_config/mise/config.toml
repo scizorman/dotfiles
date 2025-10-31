@@ -54,7 +54,7 @@ shellcheck = "0.11.0"
 
 "npm:@anthropic-ai/claude-code" = "2.0.28"
 "npm:@biomejs/biome" = "2.3.1"
-"npm:@github/copilot" = "0.0.351"
+"npm:@github/copilot" = "0.0.353"
 "npm:@google/gemini-cli" = "0.10.0"
 "npm:@openai/codex" = "0.50.0"
 "npm:pyright" = "1.1.407"
