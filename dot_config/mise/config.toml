@@ -53,7 +53,7 @@ shellcheck = "0.11.0"
 "go:golang.org/x/tools/gopls" = "0.20.0"
 
 "npm:@anthropic-ai/claude-code" = "2.0.32"
-"npm:@biomejs/biome" = "2.3.2"
+"npm:@biomejs/biome" = "2.3.3"
 "npm:@github/copilot" = "0.0.353"
 "npm:@google/gemini-cli" = "0.11.3"
 "npm:@openai/codex" = "0.53.0"
