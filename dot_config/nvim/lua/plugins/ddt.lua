@@ -38,6 +38,8 @@ end
 
 local function configure_ddt_ui_terminal_keymaps()
   vim.keymap.set("n", "<Leader>tt", [[<Cmd>close<CR>]], { buffer = true })
+  vim.keymap.set("n", "<Up>", [[:resize +10<CR>]], { buffer = true, silent = true })
+  vim.keymap.set("n", "<Down>", [[:resize -10<CR>]], { buffer = true, silent = true })
 end
 
 local function setup()
