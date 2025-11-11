@@ -21,12 +21,12 @@ require("lazy").setup({
     },
     {
       "EdenEast/nightfox.nvim",
-      config = function()
-        vim.cmd("colorscheme nightfox")
-      end,
     },
     {
       "folke/tokyonight.nvim",
+      config = function()
+        vim.cmd("colorscheme tokyonight-storm")
+      end,
     },
     {
       "nvim-lualine/lualine.nvim",
