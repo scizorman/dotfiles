@@ -1,19 +1,19 @@
 {
-        "general": {
-                "disableAutoUpdate": true,
-                "checkpointing": {
-                        "enabled": true
-                }
-        },
-        "privacy": {
-                "usageStatisticsEnabled": false
-        },
-        "tools": {
-                "sandbox": true
-        },
-        "security": {
-                "auth": {
-                        "selectedType": "oauth-personal"
-                }
-        }
+  "general": {
+    "disableAutoUpdate": true,
+    "checkpointing": {
+      "enabled": true
+    }
+  },
+  "privacy": {
+    "usageStatisticsEnabled": false
+  },
+  "tools": {
+    "sandbox": true
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  }
 }

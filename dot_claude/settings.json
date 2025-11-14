@@ -1,10 +1,11 @@
 {
-        "env": {
-                "DISABLE_AUTOUPDATER": "1"
-        },
-        "includeCoAuthoredBy": false,
-        "statusLine": {
-                "type": "command",
-                "command": "~/.claude/statusline.sh"
-        }
+  "env": {
+    "DISABLE_AUTOUPDATER": "1"
+  },
+  "includeCoAuthoredBy": false,
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
+  "alwaysThinkingEnabled": false
 }
