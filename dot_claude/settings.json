@@ -3,9 +3,5 @@
     "DISABLE_AUTOUPDATER": "1"
   },
   "includeCoAuthoredBy": false,
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.sh"
-  },
-  "alwaysThinkingEnabled": false
+  "alwaysThinkingEnabled": true
 }
