@@ -36,7 +36,7 @@ Claude Code が生成する文章（Markdown 出力、Issue、Pull Request の�
 
 #### 1. Issueの作成
 
-タイトルはユーザーが Claude Code に指示した問題の内容を簡潔にまとめる。
+タイトルは commit message の形式（例: chore(update): xxx）ではなく、ユーザーが Claude Code に指示した問題の内容を自然な文章で簡潔にまとめる。
 プロジェクトに GitHub Issue template があればそれに従い、なければ以下の構造で description をまとめる。
 
 ```markdown
@@ -75,7 +75,7 @@ commit message は [Conventional Commits](https://www.conventionalcommits.org/en
 
 #### 5. Pull Request 作成
 
-タイトルはユーザーが Claude Code に指示したタスクの内容と実装した変更を簡潔にまとめる。
+タイトルは commit message の形式（例: chore(update): xxx）ではなく、ユーザーが Claude Code に指示したタスクの内容と実装した変更を自然な文章で簡潔にまとめる。
 プロジェクトに Pull Request template があればそれに従い、なければ以下の構造で description をまとめる。
 
 ```markdown
@@ -101,3 +101,13 @@ GitHub Issue に紐づけない場合はリンクは記載しない。
 Pull Request のコード内容と、ユーザーが Claude Code に指示したタスクの内容をもとに、実装内容をまとめる。
 細かいコードの変更内容ではなく、背景と目的を踏まえた上での実装の概要をまとめる。
 ```
+
+#### Git 操作の禁止事項
+
+以下の Git 操作は絶対に行ってはならない。
+
+- `git commit --amend` による commit の修正
+- `git push --force` や `git push -f` による強制 push
+
+これらの操作は履歴を書き換えるため、他の開発者との協調作業において重大な問題を引き起こす可能性がある。
+一度 push した commit は原則として変更せず、新しい commit で対応する。
