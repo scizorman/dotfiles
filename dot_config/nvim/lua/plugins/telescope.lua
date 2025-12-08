@@ -22,6 +22,7 @@ return {
       "<Leader>fc",
       function()
         require("telescope.builtin").find_files({
+          prompt_title = "Git Repositories",
           find_command = { "ghq", "list", "-p" },
           attach_mappings = function(_, map)
             map("i", "<CR>", function(prompt_bufnr)
