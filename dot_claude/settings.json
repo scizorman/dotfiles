@@ -11,7 +11,11 @@
       "Bash(gh pr checks:*)",
       "Bash(gh pr view:*)",
       "Bash(gh run list:*)",
-      "Bash(gh run view:*)"
+      "Bash(gh run view:*)",
+      "Skill(git-operator)",
+      "Skill(github-issue-creator)",
+      "Skill(github-pr-creator)",
+      "Skill(github-sub-issue-creator)"
     ],
     "ask": [
       "Bash(git commit:*)",
