@@ -27,6 +27,5 @@
       "Bash(gh pr create:*)",
       "Bash(gh pr comment)"
     ]
-  },
-  "alwaysThinkingEnabled": true
+  }
 }
