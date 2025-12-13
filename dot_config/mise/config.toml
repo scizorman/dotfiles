@@ -21,7 +21,7 @@ shellcheck = "0.11.0"
 
 "aqua:99designs/aws-vault" = "7.2.0"
 "aqua:BurntSushi/ripgrep" = "15.1.0"
-"aqua:LuaLS/lua-language-server" = "3.16.0"
+"aqua:LuaLS/lua-language-server" = "3.16.1"
 "aqua:ajeetdsouza/zoxide" = "0.9.8"
 "aqua:alexpasmantier/television" = "0.13.12"
 "aqua:astral-sh/ruff" = "0.14.8"
