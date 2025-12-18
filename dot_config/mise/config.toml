@@ -16,7 +16,7 @@ aqua = "2.50.0"
 awscli = "2.32.16"
 gcloud = "520.0.0"
 gradle = "8.14"
-protoc = "33.1"
+protoc = "33.2"
 shellcheck = "0.11.0"
 
 "aqua:99designs/aws-vault" = "7.2.0"
