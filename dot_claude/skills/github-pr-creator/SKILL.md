@@ -21,11 +21,19 @@ If the user specified which Issue to link, use that Issue.
 
 If the user explicitly indicated no Issue linking is needed, proceed without linking.
 
-If the user did not specify, ask the user which Issue this PR should be linked to, or whether Issue linking is not needed for this PR. Provide context by briefly summarizing what the PR implements to help the user decide.
+If the user did not specify, ask the user which Issue this PR should be linked to, or whether Issue linking is not needed for this PR.
+Provide context by briefly summarizing what the PR implements to help the user decide.
+
+## Issue Link Format
+
+Regardless of whether a PR template exists, always use the full URL format for Issue linking.
+
+`- https://github.com/{owner}/{repo}/issues/xxx`
 
 ## Template Detection
 
 Check for PR templates.
+
 ```bash
 if [ -f ".github/PULL_REQUEST_TEMPLATE.md" ]; then
     cat .github/PULL_REQUEST_TEMPLATE.md
@@ -44,4 +52,5 @@ Do not use commit message format (e.g., "chore(update): xxx").
 
 ## Language
 
-Write PR content in Japanese by default. If the user explicitly requests English, write in English.
+Write PR content in Japanese by default.
+If the user explicitly requests English, write in English.
