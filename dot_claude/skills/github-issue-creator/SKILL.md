@@ -1,49 +1,46 @@
 ---
 name: github-issue-creator
-description: Creates GitHub issues using gh CLI. Use when creating new issues, filing bug reports, or requesting features.
+description: Creates GitHub issues using gh CLI. Use when creating new issues.
 ---
 
 # GitHub Issue Creator
 
-This skill defines rules and procedures for creating GitHub issues.
+Creates GitHub Issues using GitHub CLI.
 
-## Workflow
+## Procedure
 
-1. Understand the user's intent: bug report, feature request, or other type. Check if labels, assignees, or milestones are specified.
-1. Check if the repository has issue templates.
-1. Select the appropriate template (see Template Selection).
-1. Create the issue with `gh issue create`.
-1. Report the issue URL to the user.
+### Confirm Issue Type
 
-## Template Detection
+Understand the user's intent: bug report, feature request, or other type.
+Check if labels, assignees, or milestones are specified.
 
-Check for templates.
+### Detect Templates
 
-```bash
-if [ -d ".github/ISSUE_TEMPLATE" ]; then
-    ls .github/ISSUE_TEMPLATE/
-elif [ -f ".github/ISSUE_TEMPLATE.md" ]; then
-    echo "Legacy single template found"
-fi
-```
+Detect Issue templates. Filenames are case-insensitive.
 
-## Template Selection
+Single file template locations (in priority order):
 
-When templates exist, determine which one to use.
+- `.github/issue_template.md`
+- `issue_template.md` (repository root)
+- `docs/issue_template.md`
 
-If the user specified a template, use it directly.
+Multiple templates directory locations:
 
-If a single template exists, use that template.
+- `.github/ISSUE_TEMPLATE/`
+- `ISSUE_TEMPLATE/` (repository root)
+- `docs/ISSUE_TEMPLATE/`
 
-If multiple templates exist and the user did not specify one, read the template names and descriptions from their frontmatter. When the issue context clearly matches one template (e.g., user describes a bug and there's a bug_report.md), select it and inform the user which template is being used. When the match is ambiguous, present the available templates to the user and ask which one to use.
-
-After selecting a template, read its content with `cat` and follow its structure.
-
+If a single file template is found, read and use it.
+If a templates directory is found, list available templates and ask the user which one to use.
 If no templates exist, use [templates/default.md](templates/default.md).
+
+### Create Issue
+
+Create the Issue with `gh issue create` and report the Issue URL to the user.
 
 ## Title Guidelines
 
-The title should be a natural language sentence summarizing the issue.
+The title should be a natural language sentence summarising the issue.
 Do not use commit message format (e.g., "fix(auth): bug").
 
 Good examples:
