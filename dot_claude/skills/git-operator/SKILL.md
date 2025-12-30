@@ -95,7 +95,7 @@ Follow Conventional Commits format.
 
 ### Procedure
 
-Analyze staged changes to create a message focusing on "why" rather than "what".
+Analyse staged changes to create a message focusing on "why" rather than "what".
 
 ```bash
 git diff --cached           # Review staged changes
