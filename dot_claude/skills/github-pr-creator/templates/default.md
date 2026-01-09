@@ -1,19 +1,19 @@
 ### 概要
 
-<!-- Write a concise paragraph (3-5 sentences) that a busy reviewer can read to understand the PR without reading other sections. Cover: what problem exists, what this PR does to solve it, and what changes as a result. -->
+<!-- 忙しいレビュアーが他のセクションを読まずに PR を理解できるよう、3〜5 文で簡潔に要約する。どのような問題があり、この PR で何を解決し、結果として何が変わるかを書く。 -->
 
 ### 背景
 
-<!-- If linking to an Issue, use the full URL format as shown below. Then summarise the background based on the Issue. -->
+<!-- Issue に紐づける場合、以下のようにフル URL 形式を使用する。Issue の内容に基づいて背景を要約する。 -->
 
 - https://github.com/OWNER/REPO/issues/NUMBER
 
-<!-- If no Issue is linked, describe the problem that led to this PR. -->
+<!-- Issue に紐づけない場合、この PR に至った問題を記述する。 -->
 
 ### 目的
 
-<!-- Describe the purpose based on the related Issue, or the purpose of this PR if no Issue is linked. -->
+<!-- 関連する Issue に基づいて目的を記述する。Issue がない場合は、この PR 自体の目的を記述する。 -->
 
 ### 実装内容
 
-<!-- Describe what functionality was implemented in this PR. Focus on the feature or capability added, not individual file changes or code modifications. -->
+<!-- この PR で実装した機能を記述する。個々のファイル変更やコード修正ではなく、追加された機能や能力に焦点を当てる。 -->
