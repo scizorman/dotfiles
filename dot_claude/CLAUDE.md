@@ -37,6 +37,20 @@
 Issue で問題を整理し、解決のための具体的なアクション（課題）を定義する。
 その課題の単位が Pull Request である。
 
+### コマンド実行
+
+プロジェクトに Makefile がある場合は、lint, fmt, test などのコマンドを make 経由で実行する。
+実行前に Makefile を読み、利用可能なターゲットとその内容を把握する。
+`cd` でディレクトリを移動せず、`-C` オプションを使用する。
+
+```bash
+# 良い例
+make -C /path/to/project test
+
+# 悪い例
+cd /path/to/project && make test
+```
+
 ### コードレビュー・設計レビューの観点
 
 - 正しさ・バグの可能性
