@@ -39,15 +39,25 @@ Issue で問題を整理し、解決のための具体的なアクション（�
 
 ### コマンド実行
 
+working directory がすでに対象ディレクトリにある場合は、パスの指定やディレクトリの移動を行わない。
+
 プロジェクトに Makefile がある場合は、lint, fmt, test などのコマンドを make 経由で実行する。
 実行前に Makefile を読み、利用可能なターゲットとその内容を把握する。
-`cd` でディレクトリを移動せず、`-C` オプションを使用する。
+working directory 外から実行する場合は `make -C <ディレクトリ>` でディレクトリを指定する。
 
 ```bash
-# 良い例
+# 良い例（working directory がプロジェクトルートの場合）
+make test
+git status
+
+# 悪い例（冗長なパス指定）
+make -C /path/to/project test
+git -C /path/to/project status
+
+# 良い例（working directory 外から実行する場合）
 make -C /path/to/project test
 
-# 悪い例
+# 悪い例（cd で移動）
 cd /path/to/project && make test
 ```
 
