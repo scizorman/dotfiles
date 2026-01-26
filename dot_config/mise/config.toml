@@ -14,7 +14,7 @@ rust = "1.92.0"
 
 1password-cli = "2.31.1"
 aqua = "2.50.0"
-awscli = "2.33.4"
+awscli = "2.33.5"
 gcloud = "520.0.0"
 gradle = "8.14"
 protoc = "33.4"
