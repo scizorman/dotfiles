@@ -51,7 +51,7 @@ protoc = "33.5"
 
 "npm:@anthropic-ai/claude-code" = "2.1.31"
 "npm:@biomejs/biome" = "2.3.14"
-"npm:@fission-ai/openspec" = "0.23.0"
+"npm:@fission-ai/openspec" = "1.1.1"
 "npm:@github/copilot" = "0.0.402"
 "npm:@google/gemini-cli" = "0.26.0"
 "npm:@openai/codex" = "0.93.0"
