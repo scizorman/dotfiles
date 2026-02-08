@@ -9,7 +9,7 @@ dotnet = "10.0.102"
 go = "1.25.6"
 java = "corretto-25"
 node = "lts"
-python = "3.14.2"
+python = "3.14.3"
 rust = "1.93.0"
 
 1password-cli = "2.31.1"
