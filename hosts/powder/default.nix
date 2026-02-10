@@ -19,6 +19,10 @@ in
   home-manager.useUserPackages = true;
   home-manager.extraSpecialArgs = {
     user = {
+      clipboard = {
+        copy = "${pkgs.wl-clipboard}/bin/wl-copy";
+        paste = "${pkgs.wl-clipboard}/bin/wl-paste --no-newline | ${pkgs.coreutils}/bin/tr -d '\\r'";
+      };
       ssh = {
         identityAgent = "${homeDir}/.1password/agent.sock";
       };
@@ -34,6 +38,6 @@ in
     };
   };
   home-manager.users.${username} = {
-    imports = [ ../../home ];
+    imports = [ ../../modules/home-manager ];
   };
 }
