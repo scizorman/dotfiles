@@ -6,9 +6,7 @@ in
 {
   programs.git = {
     enable = true;
-    userName = user.git.name;
-    userEmail = user.git.email;
-    extraConfig = {
+    settings = {
       commit.gpgsign = true;
       core.sshCommand = user.git.sshCommand;
       gpg.format = "ssh";
@@ -18,9 +16,14 @@ in
       pull.rebase = true;
       push.autoSetupRemote = true;
       tag.gpgsign = true;
-      user.signingKey = user.git.signing.key;
+      user = {
+        name = user.git.name;
+        email = user.git.email;
+        signingKey = user.git.signing.key;
+      };
     };
   };
 
-  xdg.configFile."git/ignore".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/git/ignore";
+  xdg.configFile."git/ignore".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/git/ignore";
 }

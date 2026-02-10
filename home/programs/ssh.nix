@@ -7,11 +7,13 @@
 
   programs.ssh = {
     enable = true;
-    extraConfig = ''
-      Host *
-        IdentityAgent "${user.ssh.identityAgent}"
-    '';
+    enableDefaultConfig = false;
     matchBlocks = {
+      "*" = {
+        extraOptions = {
+          IdentityAgent = user.ssh.identityAgent;
+        };
+      };
       "github.com" = {
         hostname = "github.com";
         user = "git";

@@ -11,7 +11,7 @@ in
 
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     defaultKeymap = "viins";
 
     autosuggestion = {
@@ -81,7 +81,7 @@ in
       "NO_BEEP"
     ];
 
-    initExtra = ''
+    initContent = ''
       source "${dotfilesDir}/config/zsh/keymaps.zsh"
       source "${dotfilesDir}/config/zsh/completions.zsh"
 
