@@ -20,6 +20,8 @@
 
   home.packages = with pkgs; [
     fd
+    gnumake
+    nkf
   ];
   home.stateVersion = "26.05";
 }
