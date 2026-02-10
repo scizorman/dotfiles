@@ -67,7 +67,7 @@ local function setup()
     "pyright",
     "ruff",
     "terraformls",
-    "ts_ls",
+    "vtsls",
     "yamlls",
   })
 end
