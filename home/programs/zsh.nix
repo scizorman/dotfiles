@@ -14,6 +14,14 @@ in
     dotDir = "${config.xdg.configHome}/zsh";
     defaultKeymap = "viins";
 
+    shellAliases = {
+      mv = "mv -i";
+      rm = "rm -i";
+      cp = "nocorrect cp -i";
+      mkdir = "nocorrect mkdir";
+      sudo = "nocorrect sudo";
+    };
+
     autosuggestion = {
       enable = true;
       strategy = [ "history" ];

@@ -10,4 +10,8 @@
       navigate = true;
     };
   };
+
+  programs.zsh.shellAliases = {
+    diff = "delta";
+  };
 }
