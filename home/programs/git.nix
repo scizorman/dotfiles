@@ -22,5 +22,5 @@ in
     };
   };
 
-  xdg.configFile."git".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/git";
+  xdg.configFile."git/ignore".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/git/ignore";
 }
