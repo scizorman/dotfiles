@@ -9,6 +9,7 @@
     ./fzf.nix
     ./gh.nix
     ./git.nix
+    ./mise.nix
     ./neovim.nix
     ./ripgrep.nix
     ./ssh.nix
