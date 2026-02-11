@@ -9,10 +9,15 @@ in
   wsl.defaultUser = username;
   networking.hostName = "powder";
 
+  users.mutableUsers = false;
   users.users.${username} = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "docker" ];
+    extraGroups = [
+      "wheel"
+      "docker"
+    ];
+    hashedPassword = "";
   };
 
   home-manager.useGlobalPkgs = true;
