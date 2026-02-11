@@ -3,4 +3,7 @@ npm.package_manager = "pnpm"
 
 [tools]
 "npm:@anthropic-ai/claude-code" = "2.1.34"
+"npm:@github/copilot" = "0.0.402"
+"npm:@google/gemini-cli" = "0.26.0"
+"npm:@openai/codex" = "0.93.0"
 "npm:@fission-ai/openspec" = "0.23.0"
