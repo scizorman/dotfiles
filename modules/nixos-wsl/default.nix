@@ -2,6 +2,7 @@
 
 {
   wsl.enable = true;
+  wsl.interop.register = true;
 
   nix.settings.experimental-features = [
     "nix-command"
