@@ -1,8 +1,13 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   wsl.enable = true;
   wsl.interop.register = true;
+
+  # Ensure binfmt registration is re-applied after nixos-rebuild
+  systemd.services.systemd-binfmt.restartTriggers = [
+    config.environment.etc."binfmt.d/nixos.conf".source
+  ];
 
   security.sudo.wheelNeedsPassword = false;
 
