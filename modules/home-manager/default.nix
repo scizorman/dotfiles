@@ -21,9 +21,12 @@
   xdg.enable = true;
 
   home.packages = with pkgs; [
-    fd
     gnumake
     nkf
+    ghq
+    fd
+    jq
+    yq
   ];
   home.stateVersion = "26.05";
 }
