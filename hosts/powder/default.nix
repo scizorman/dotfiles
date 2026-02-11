@@ -13,6 +13,7 @@ in
   users.users.${username} = {
     isNormalUser = true;
     shell = pkgs.zsh;
+    linger = true;
     extraGroups = [
       "wheel"
       "docker"
