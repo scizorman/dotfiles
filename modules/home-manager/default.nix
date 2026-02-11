@@ -12,6 +12,7 @@
     ./fzf.nix
     ./gemini.nix
     ./gh.nix
+    ./ghq.nix
     ./git.nix
     ./mise.nix
     ./neovim.nix
@@ -27,7 +28,6 @@
   home.packages = with pkgs; [
     gnumake
     nkf
-    ghq
     fd
     jq
     yq
