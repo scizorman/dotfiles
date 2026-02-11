@@ -61,4 +61,4 @@ protoc = "33.5"
 "npm:yaml-language-server" = "1.19.2"
 
 "pipx:git+https://github.com/github/spec-kit.git" = "v0.0.90"
-"pipx:snowflake-cli" = { version = "3.14.0", uvx_args = "--python 3.13.7" }
+"pipx:snowflake-cli" = { version = "3.15.0", uvx_args = "--python 3.13.7" }
