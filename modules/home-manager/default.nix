@@ -3,10 +3,13 @@
 {
   imports = [
     ./bat.nix
+    ./claude.nix
     ./clipboard.nix
+    ./codex.nix
     ./delta.nix
     ./eza.nix
     ./fzf.nix
+    ./gemini.nix
     ./gh.nix
     ./git.nix
     ./mise.nix
