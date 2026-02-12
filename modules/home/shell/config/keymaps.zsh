@@ -23,15 +23,12 @@ bindkey -M vicmd \
   '^W' backward-kill-word \
   '^U' backward-kill-line
 
-autoload -Uz is-at-least
-if is-at-least 5.0.8; then
-  autoload -Uz surround
-  zle -N delete-surround surround
-  zle -N change-surround surround
-  zle -N add-surround surround
-  bindkey -a \
-    cs change-surround \
-    ds delete-surround \
-    ys add-surround
-  bindkey -M visual S add-surround
-fi
+autoload -Uz surround
+zle -N delete-surround surround
+zle -N change-surround surround
+zle -N add-surround surround
+bindkey -a \
+  cs change-surround \
+  ds delete-surround \
+  ys add-surround
+bindkey -M visual S add-surround

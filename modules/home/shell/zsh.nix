@@ -90,8 +90,8 @@ in
     ];
 
     initContent = ''
-      source "${dotfilesDir}/config/zsh/keymaps.zsh"
-      source "${dotfilesDir}/config/zsh/completions.zsh"
+      source "${dotfilesDir}/modules/home/shell/config/keymaps.zsh"
+      source "${dotfilesDir}/modules/home/shell/config/completions.zsh"
 
       # Utilities
       autoload -Uz zcalc
