@@ -46,6 +46,15 @@
     };
   };
 
+  # lazy.nvim hardcodes GIT_SSH_COMMAND="ssh -oBatchMode=yes" as a default,
+  # which overrides core.sshCommand and uses Linux ssh instead of ssh.exe.
+  # Setting this via the neovim wrapper ensures 1Password SSH agent is used.
+  programs.neovim.extraWrapperArgs = [
+    "--set"
+    "GIT_SSH_COMMAND"
+    "ssh.exe"
+  ];
+
   home.sessionVariables = {
     BROWSER = "wslview";
   };
