@@ -6,7 +6,6 @@
     ./codex.nix
     ./copilot.nix
     ./gemini.nix
-    ./gh.nix
     ./git.nix
     ./mise.nix
     ./neovim.nix

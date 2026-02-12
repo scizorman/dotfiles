@@ -1,19 +1,51 @@
-{ config, ... }:
+{ ... }:
 
-let
-  dotfilesDir = "${config.home.homeDirectory}/dotfiles";
-in
 {
   programs.git = {
     enable = true;
     lfs.enable = true;
+    ignores = [
+      # Claude Code
+      "**/.claude/settings.local.json"
+      "**/CLAUDE.local.md"
+
+      # direnv
+      ".direnv"
+      ".envrc"
+
+      # Linux
+      "*~"
+      ".fuse_hidden*"
+      ".directory"
+      ".Trash-*"
+      ".nfs*"
+
+      # macOS
+      ".DS_Store"
+      ".AppleDouble"
+      ".LSOverride"
+      "Icon\r\r"
+      "._*"
+      ".DocumentRevisions-V100"
+      ".fseventsd"
+      ".Spotlight-V100"
+      ".TemporaryItems"
+      ".Trashes"
+      ".VolumeIcon.icns"
+      ".com.apple.timemachine.donotpresent"
+      ".AppleDB"
+      ".AppleDesktop"
+      "Network Trash Folder"
+      "Temporary Items"
+      ".apdisk"
+      "*.icloud"
+    ];
     settings = {
-      user.name = "UEDA Tetsutaro";
-      user.email = "tueda1207@gmail.com";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       pull.rebase = true;
       merge.conflictStyle = "diff3";
+      url."git@github.com:".insteadOf = "https://github.com/";
     };
   };
 
@@ -27,10 +59,14 @@ in
     };
   };
 
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "ssh";
+    };
+  };
+
   programs.zsh.shellAliases = {
     diff = "delta";
   };
-
-  xdg.configFile."git/ignore".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/git/ignore";
 }
