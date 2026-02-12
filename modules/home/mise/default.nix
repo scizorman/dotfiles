@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  dotfilesDir = "${config.home.homeDirectory}/dotfiles";
-in
 {
   home.packages = with pkgs; [
     nodejs
@@ -15,5 +12,5 @@ in
   };
 
   xdg.configFile."mise/config.toml".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/mise/config.toml";
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/home/mise/config.toml";
 }

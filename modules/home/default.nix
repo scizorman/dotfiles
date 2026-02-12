@@ -7,7 +7,7 @@
     ./copilot.nix
     ./gemini.nix
     ./git.nix
-    ./mise.nix
+    ./mise
     ./neovim.nix
     ./shell
     ./ssh.nix
