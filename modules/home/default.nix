@@ -2,10 +2,7 @@
 
 {
   imports = [
-    ./claude.nix
-    ./codex.nix
-    ./copilot.nix
-    ./gemini.nix
+    ./coding-agent
     ./git.nix
     ./mise
     ./neovim
