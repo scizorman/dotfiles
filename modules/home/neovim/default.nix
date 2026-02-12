@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  dotfilesDir = "${config.home.homeDirectory}/dotfiles";
-in
 {
   programs.neovim = {
     enable = true;
@@ -24,5 +21,6 @@ in
     ];
   };
 
-  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/nvim";
+  xdg.configFile."nvim".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/home/neovim/config";
 }

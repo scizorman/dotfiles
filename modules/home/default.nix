@@ -8,7 +8,7 @@
     ./gemini.nix
     ./git.nix
     ./mise
-    ./neovim.nix
+    ./neovim
     ./shell
     ./ssh.nix
   ];
