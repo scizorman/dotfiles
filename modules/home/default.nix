@@ -2,21 +2,22 @@
 
 {
   imports = [
-    ./coding-agent
-    ./git.nix
-    ./mise
-    ./neovim
-    ./shell
     ./ssh.nix
+    ./git.nix
+    ./shell
+    ./neovim
+    ./mise
+    ./coding-agent
   ];
 
   xdg.enable = true;
 
   home.packages = with pkgs; [
     gnumake
-    nkf
     jq
+    nkf
     yq
   ];
+
   home.stateVersion = "26.05";
 }
