@@ -6,7 +6,6 @@
     ./claude.nix
     ./codex.nix
     ./copilot.nix
-    ./delta.nix
     ./eza.nix
     ./fzf.nix
     ./gemini.nix
