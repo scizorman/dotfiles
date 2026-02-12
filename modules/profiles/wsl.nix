@@ -41,6 +41,9 @@
       key = gitSigningKey;
       signByDefault = true;
     };
+    settings = {
+      core.sshCommand = "ssh.exe";
+    };
   };
 
   home.sessionVariables = {

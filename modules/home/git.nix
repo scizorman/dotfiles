@@ -41,6 +41,8 @@
       "*.icloud"
     ];
     settings = {
+      user.name = "UEDA Tetsutaro";
+      user.email = "tueda1207@gmail.com";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       pull.rebase = true;
