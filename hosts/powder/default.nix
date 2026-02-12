@@ -44,7 +44,7 @@ in
   };
   home-manager.users.${username} = {
     imports = [
-      ../../modules/home-manager
+      ../../modules/home
       ../../modules/profiles/wsl.nix
     ];
   };
