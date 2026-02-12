@@ -4,7 +4,6 @@
   imports = [
     ./bat.nix
     ./claude.nix
-    ./clipboard.nix
     ./codex.nix
     ./copilot.nix
     ./delta.nix

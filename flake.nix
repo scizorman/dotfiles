@@ -34,18 +34,16 @@
         system = "x86_64-linux";
         modules = [
           nixos-wsl.nixosModules.default
-          ./modules/nixos-wsl
-          ./hosts/powder
           home-manager.nixosModules.home-manager
+          ./hosts/powder
         ];
       };
 
       darwinConfigurations."groomed" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
-          ./modules/darwin
-          ./hosts/groomed
           home-manager.darwinModules.home-manager
+          ./hosts/groomed
         ];
       };
 

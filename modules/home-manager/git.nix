@@ -1,4 +1,4 @@
-{ config, user, ... }:
+{ config, ... }:
 
 let
   dotfilesDir = "${config.home.homeDirectory}/dotfiles";
@@ -8,20 +8,12 @@ in
     enable = true;
     lfs.enable = true;
     settings = {
-      commit.gpgsign = true;
-      core.sshCommand = user.git.sshCommand;
-      gpg.format = "ssh";
-      "gpg \"ssh\"".program = user.git.signing.program;
+      user.name = "UEDA Tetsutaro";
+      user.email = "tueda1207@gmail.com";
       init.defaultBranch = "main";
-      merge.conflictStyle = "diff3";
-      pull.rebase = true;
       push.autoSetupRemote = true;
-      tag.gpgsign = true;
-      user = {
-        name = user.git.name;
-        email = user.git.email;
-        signingKey = user.git.signing.key;
-      };
+      pull.rebase = true;
+      merge.conflictStyle = "diff3";
     };
   };
 

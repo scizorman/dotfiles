@@ -1,49 +1,53 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   username = "scizorman";
-  homeDir = "/home/${username}";
-  windowsUsername = "tueda";
 in
 {
-  wsl.defaultUser = username;
   networking.hostName = "powder";
 
+  wsl.enable = true;
+  wsl.defaultUser = username;
+  wsl.interop.register = true;
+
+  # Ensure binfmt registration is re-applied after nixos-rebuild
+  systemd.services.systemd-binfmt.restartTriggers = [
+    config.environment.etc."binfmt.d/nixos.conf".source
+  ];
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  security.sudo.wheelNeedsPassword = false;
   users.mutableUsers = false;
+  programs.zsh.enable = true;
+  virtualisation.docker.enable = true;
+
   users.users.${username} = {
     isNormalUser = true;
+    hashedPassword = "";
     shell = pkgs.zsh;
-    linger = true;
     extraGroups = [
       "wheel"
       "docker"
     ];
-    hashedPassword = "";
+    linger = true;
   };
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.extraSpecialArgs = {
-    user = {
-      clipboard = {
-        copy = "${pkgs.wl-clipboard}/bin/wl-copy";
-        paste = "${pkgs.wl-clipboard}/bin/wl-paste --no-newline | ${pkgs.coreutils}/bin/tr -d '\\r'";
-      };
-      ssh = {
-        identityAgent = "${homeDir}/.1password/agent.sock";
-      };
-      git = {
-        name = "Tetsutaro Ueda";
-        email = "tueda1207@gmail.com";
-        sshCommand = "ssh.exe";
-        signing = {
-          program = "/mnt/c/Users/${windowsUsername}/AppData/Local/Microsoft/WindowsApps/op-ssh-sign.exe";
-          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIENZsRA5UEd0JQLH8AdGnYlqpj2mG9oCUluMXsjLiZ6T";
-        };
-      };
-    };
+    windowsUsername = "tueda";
+    gitSigningKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIENZsRA5UEd0JQLH8AdGnYlqpj2mG9oCUluMXsjLiZ6T";
   };
   home-manager.users.${username} = {
-    imports = [ ../../modules/home-manager ];
+    imports = [
+      ../../modules/home-manager
+      ../../modules/profiles/wsl.nix
+    ];
   };
+
+  system.stateVersion = "25.05";
 }
