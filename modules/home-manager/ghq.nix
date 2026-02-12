@@ -4,7 +4,7 @@
     ghq
   ];
 
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     function ghq-cd() {
       local dir="$(ghq list -p | fzf)"
       [[ -n "''${dir}" ]] && cd "''${dir}"
