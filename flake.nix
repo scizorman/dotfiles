@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,6 +25,7 @@
       self,
       nixpkgs,
       nixos-wsl,
+      nix-darwin,
       home-manager,
       ...
     }:
@@ -31,6 +37,15 @@
           ./modules/nixos-wsl
           ./hosts/powder
           home-manager.nixosModules.home-manager
+        ];
+      };
+
+      darwinConfigurations."groomed" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./modules/darwin
+          ./hosts/groomed
+          home-manager.darwinModules.home-manager
         ];
       };
 
