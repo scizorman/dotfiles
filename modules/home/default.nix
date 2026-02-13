@@ -7,6 +7,7 @@
     ./shell
     ./neovim
     ./mise
+    ./cloud.nix
     ./coding-agent
   ];
 
