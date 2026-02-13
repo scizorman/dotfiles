@@ -56,7 +56,7 @@ in
 
   programs.git.signing = {
     format = "ssh";
-    signer = "/mnt/c/Users/${windowsUsername}/AppData/Local/Microsoft/WindowsApps/op-ssh-sign.exe";
+    signer = "/mnt/c/Users/${windowsUsername}/AppData/Local/Microsoft/WindowsApps/op-ssh-sign-wsl.exe";
     key = gitSigningKey;
     signByDefault = true;
   };
