@@ -2,23 +2,43 @@
 
 let
   configDir = "${config.home.homeDirectory}/dotfiles/modules/home/coding-agent/config";
+
+  mkSkillLinks =
+    prefix:
+    let
+      skills = [
+        "git-operator"
+        "github-issue-creator"
+        "github-pr-creator"
+        "github-sub-issue-creator"
+      ];
+    in
+    builtins.listToAttrs (
+      map (name: {
+        name = "${prefix}/skills/${name}";
+        value.source = config.lib.file.mkOutOfStoreSymlink "${configDir}/skills/${name}";
+      }) skills
+    );
 in
 {
   home.file = {
     ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
     ".claude/settings.json".source =
       config.lib.file.mkOutOfStoreSymlink "${configDir}/claude/settings.json";
-    ".claude/commands".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/claude/commands";
-    ".claude/skills".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/skills";
+    ".claude/commands/gemini-web-search.md".source =
+      config.lib.file.mkOutOfStoreSymlink "${configDir}/claude/commands/gemini-web-search.md";
+    ".claude/commands/self-critique.md".source =
+      config.lib.file.mkOutOfStoreSymlink "${configDir}/claude/commands/self-critique.md";
 
     ".codex/AGENTS.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
     ".codex/config.toml".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/config.toml";
-    ".codex/skills".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/skills";
 
     ".gemini/GEMINI.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
     ".gemini/settings.json".source =
       config.lib.file.mkOutOfStoreSymlink "${configDir}/gemini/settings.json";
-  };
+  }
+  // mkSkillLinks ".claude"
+  // mkSkillLinks ".codex";
 
   xdg.configFile."copilot/config.json".source =
     config.lib.file.mkOutOfStoreSymlink "${configDir}/copilot/config.json";
