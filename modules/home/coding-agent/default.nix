@@ -25,17 +25,12 @@ in
     ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
     ".claude/settings.json".source =
       config.lib.file.mkOutOfStoreSymlink "${configDir}/claude/settings.json";
-    ".claude/commands/gemini-web-search.md".source =
-      config.lib.file.mkOutOfStoreSymlink "${configDir}/claude/commands/gemini-web-search.md";
     ".claude/commands/self-critique.md".source =
       config.lib.file.mkOutOfStoreSymlink "${configDir}/claude/commands/self-critique.md";
 
     ".codex/AGENTS.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
     ".codex/config.toml".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/config.toml";
 
-    ".gemini/GEMINI.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
-    ".gemini/settings.json".source =
-      config.lib.file.mkOutOfStoreSymlink "${configDir}/gemini/settings.json";
   }
   // mkSkillLinks ".claude"
   // mkSkillLinks ".codex";
