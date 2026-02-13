@@ -22,6 +22,7 @@ in
 
   security.sudo.wheelNeedsPassword = false;
   users.mutableUsers = false;
+  programs.nix-ld.enable = true;
   programs.zsh.enable = true;
   virtualisation.docker.enable = true;
 
