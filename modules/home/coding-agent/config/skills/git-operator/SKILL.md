@@ -5,46 +5,7 @@ description: Rules and procedures for Git operations (add, branch, commit, push)
 
 # Git Operator
 
-This skill defines rules and procedures for Git operations.
-
-## Prohibited Operations
-
-The following operations must never be performed.
-
-### git commit --amend
-
-Do not modify commits once created. Address issues with new commits.
-
-```bash
-# Prohibited
-git commit --amend
-git commit --amend -m "..."
-```
-
-### git push --force
-
-Force push is prohibited.
-
-```bash
-# Prohibited
-git push --force
-git push -f
-git push --force-with-lease
-```
-
-### Other History-Rewriting Operations
-
-The following operations are also prohibited.
-
-- `git rebase` operations that rewrite history
-- `git reset --hard` operations that erase history
-- Any other operations that modify pushed commits
-
-These operations rewrite Git history and cause problems in collaborative work: other developers' work may be lost, history integrity may be compromised, and merge conflicts become more likely.
-
-Once a commit is pushed, fix issues with new commits instead of modifying history.
-
----
+This skill defines procedures for Git operations.
 
 ## Staging
 

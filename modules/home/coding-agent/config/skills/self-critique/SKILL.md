@@ -1,4 +1,5 @@
 ---
+name: self-critique
 description: Analyze your own previous response with rigorous self-critique
 ---
 

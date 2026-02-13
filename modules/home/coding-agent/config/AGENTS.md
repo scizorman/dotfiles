@@ -37,6 +37,16 @@
 Issue で問題を整理し、解決のための具体的なアクション（課題）を定義する。
 その課題の単位が Pull Request である。
 
+### Git 操作の禁止事項
+
+以下の操作は禁止する。
+一度 push したコミットは新しいコミットで修正する。
+
+- `git commit --amend`
+- `git push --force`（`--force-with-lease` を含む）
+- `git rebase`（履歴書き換え）
+- `git reset --hard`
+
 ### コマンド実行
 
 working directory がすでに対象ディレクトリにある場合は、パスの指定やディレクトリの移動を行わない。

@@ -11,6 +11,7 @@ let
         "github-issue-creator"
         "github-pr-creator"
         "github-sub-issue-creator"
+        "self-critique"
       ];
     in
     builtins.listToAttrs (
@@ -25,8 +26,6 @@ in
     ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
     ".claude/settings.json".source =
       config.lib.file.mkOutOfStoreSymlink "${configDir}/claude/settings.json";
-    ".claude/commands/self-critique.md".source =
-      config.lib.file.mkOutOfStoreSymlink "${configDir}/claude/commands/self-critique.md";
 
     ".codex/AGENTS.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
     ".codex/config.toml".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/config.toml";
