@@ -3,7 +3,8 @@
     "disableAutoUpdate": true,
     "checkpointing": {
       "enabled": true
-    }
+    },
+    "enableAutoUpdate": false
   },
   "privacy": {
     "usageStatisticsEnabled": false
