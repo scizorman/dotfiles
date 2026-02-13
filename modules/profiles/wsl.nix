@@ -1,11 +1,42 @@
 {
   pkgs,
+  config,
   windowsUsername,
   gitSigningKey,
   ...
 }:
 
+let
+  wsl2-ssh-agent = pkgs.stdenv.mkDerivation {
+    pname = "wsl2-ssh-agent";
+    version = "0.9.7";
+    src = pkgs.fetchurl {
+      url = "https://github.com/mame/wsl2-ssh-agent/releases/download/v0.9.7/wsl2-ssh-agent";
+      hash = "sha256-KBxk9geVmN4aRVKS1TPzriGDeYCj0wEgdLwUrWlTJdg=";
+    };
+    dontUnpack = true;
+    installPhase = ''
+      install -Dm755 $src $out/bin/wsl2-ssh-agent
+    '';
+  };
+
+  sshAgentSocket = "${config.home.homeDirectory}/.ssh/wsl2-ssh-agent.sock";
+in
 {
+  # WSL2 SSH Agent Bridge
+  # Bridges Windows SSH agent (1Password) to Linux via socket
+  systemd.user.services.wsl2-ssh-agent = {
+    Unit = {
+      Description = "WSL2 SSH Agent Bridge";
+      ConditionUser = "!root";
+    };
+    Install.WantedBy = [ "default.target" ];
+    Service = {
+      ExecStart = "${wsl2-ssh-agent}/bin/wsl2-ssh-agent --foreground --socket=${sshAgentSocket}";
+      Restart = "on-failure";
+    };
+  };
+
   # WSLg Wayland socket
   # WSL does not place the Wayland socket under $XDG_RUNTIME_DIR,
   # so we symlink it for wl-clipboard to work.
@@ -17,6 +48,17 @@
       RemainAfterExit = true;
       ExecStart = "${pkgs.coreutils}/bin/ln -sf /mnt/wslg/runtime-dir/wayland-0 %t/wayland-0";
     };
+  };
+
+  programs.ssh.matchBlocks."*".extraOptions = {
+    IdentityAgent = sshAgentSocket;
+  };
+
+  programs.git.signing = {
+    format = "ssh";
+    signer = "/mnt/c/Users/${windowsUsername}/AppData/Local/Microsoft/WindowsApps/op-ssh-sign.exe";
+    key = gitSigningKey;
+    signByDefault = true;
   };
 
   home.packages =
@@ -34,28 +76,8 @@
       pkgs.wslu
     ];
 
-  programs.git = {
-    signing = {
-      format = "ssh";
-      signer = "/mnt/c/Users/${windowsUsername}/AppData/Local/Microsoft/WindowsApps/op-ssh-sign.exe";
-      key = gitSigningKey;
-      signByDefault = true;
-    };
-    settings = {
-      core.sshCommand = "ssh.exe";
-    };
-  };
-
-  # lazy.nvim hardcodes GIT_SSH_COMMAND="ssh -oBatchMode=yes" as a default,
-  # which overrides core.sshCommand and uses Linux ssh instead of ssh.exe.
-  # Setting this via the neovim wrapper ensures 1Password SSH agent is used.
-  programs.neovim.extraWrapperArgs = [
-    "--set"
-    "GIT_SSH_COMMAND"
-    "ssh.exe"
-  ];
-
   home.sessionVariables = {
     BROWSER = "wslview";
+    SSH_AUTH_SOCK = sshAgentSocket;
   };
 }
