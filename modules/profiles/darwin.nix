@@ -1,4 +1,9 @@
-{ pkgs, gitSigningKey, ... }:
+{
+  config,
+  pkgs,
+  gitSigningKey,
+  ...
+}:
 
 let
   onePasswordAgent = "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
@@ -10,13 +15,6 @@ in
     docker-client
     docker-credential-helpers
   ];
-
-  programs.docker-cli = {
-    enable = true;
-    settings = {
-      credsStore = "osxkeychain";
-    };
-  };
 
   programs.git.signing = {
     format = "ssh";
@@ -30,7 +28,7 @@ in
   };
 
   home.sessionVariables = {
-    DOCKER_HOST = "unix://\${HOME}/.colima/default/docker.sock";
+    DOCKER_HOST = "unix://${config.xdg.configHome}/colima/default/docker.sock";
     SSH_AUTH_SOCK = onePasswordAgent;
   };
 }
