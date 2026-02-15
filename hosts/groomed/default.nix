@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   username = "ca01216";
@@ -8,6 +8,12 @@ in
     "nix-command"
     "flakes"
   ];
+
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "1password-cli"
+    ];
 
   programs.zsh.enable = true;
 
@@ -26,6 +32,11 @@ in
       ../../modules/home
       ../../modules/profiles/darwin.nix
     ];
+
+    xdg.configFile."1Password/ssh/agent.toml".text = ''
+      [[ssh-keys]]
+      vault = "CARTA HOLDINGS"
+    '';
   };
 
   system.stateVersion = 6;
