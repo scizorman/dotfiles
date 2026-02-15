@@ -7,6 +7,7 @@ in
   home.packages = with pkgs; [
     _1password-cli
     colima
+    docker-client
     docker-credential-helpers
   ];
 
