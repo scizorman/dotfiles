@@ -44,7 +44,8 @@
           {
             nixpkgs.overlays = [
               (final: prev: {
-                op-aws-credential-process = op-aws-credential-process.packages.${prev.stdenv.hostPlatform.system}.default;
+                op-aws-credential-process =
+                  op-aws-credential-process.packages.${prev.stdenv.hostPlatform.system}.default;
               })
             ];
           }
@@ -59,7 +60,8 @@
           {
             nixpkgs.overlays = [
               (final: prev: {
-                op-aws-credential-process = op-aws-credential-process.packages.${prev.stdenv.hostPlatform.system}.default;
+                op-aws-credential-process =
+                  op-aws-credential-process.packages.${prev.stdenv.hostPlatform.system}.default;
               })
             ];
           }
