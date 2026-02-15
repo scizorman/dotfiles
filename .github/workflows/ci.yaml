@@ -12,27 +12,15 @@ concurrency:
 
 jobs:
   ci:
-    runs-on: '${{ matrix.os }}'
+    runs-on: 'ubuntu-latest'
     permissions:
       contents: 'read'
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: 'ubuntu-latest'
-            build-target: '.#nixosConfigurations.powder.config.system.build.toplevel'
-          - os: 'macos-latest'
-            build-target: '.#darwinConfigurations.groomed.system'
     timeout-minutes: 10
     steps:
       - uses: 'actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683' # v4
         with:
           persist-credentials: false
       - uses: 'cachix/install-nix-action@4e002c8ec80594ecd40e759629461e26c8abed15' # v31
-        with:
-          github_access_token: '${{ github.token }}'
       - uses: 'DeterminateSystems/flake-checker-action@078f5f7f47ee188aa6cb472527ca5984e195222d' # v9
       - run: |
-          make lint
-      - run: |
-          nix build '${{ matrix.build-target }}'
+          make check

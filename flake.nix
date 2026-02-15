@@ -23,6 +23,11 @@
       url = "github:scizorman/op-aws-credential-process";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -32,8 +37,26 @@
       nix-darwin,
       home-manager,
       op-aws-credential-process,
+      treefmt-nix,
+      self,
       ...
     }:
+    let
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
+
+      forAllSystems = f: nixpkgs.lib.genAttrs systems f;
+
+      treefmtEval = forAllSystems (
+        system:
+        treefmt-nix.lib.evalModule nixpkgs.legacyPackages.${system} {
+          projectRootFile = "flake.nix";
+          programs.nixfmt.enable = true;
+        }
+      );
+    in
     {
       nixosConfigurations."powder" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -68,7 +91,10 @@
         ];
       };
 
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-tree;
+      formatter = forAllSystems (system: treefmtEval.${system}.config.build.wrapper);
+
+      checks = forAllSystems (system: {
+        formatting = treefmtEval.${system}.config.build.check self;
+      });
     };
 }

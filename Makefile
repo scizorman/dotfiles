@@ -21,9 +21,9 @@ clean: gc
 gc:
 	nix-collect-garbage --delete-old
 
-.PHONY: lint
-lint:
-	nix fmt -- --fail-on-change
+.PHONY: check
+check:
+	nix flake check
 
 .PHONY: fmt
 fmt:
