@@ -14,6 +14,13 @@ in
     colima
     docker-client
     docker-credential-helpers
+    coreutils
+    diffutils
+    findutils
+    gawk
+    gnugrep
+    gnused
+    gnutar
   ];
 
   programs.git.signing = {
