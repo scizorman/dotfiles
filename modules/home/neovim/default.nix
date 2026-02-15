@@ -11,14 +11,14 @@
       deno
       # LSP servers
       gopls
+      vtsls
       lua-language-server
       nixd
       pyright
       ruff
-      terraform-ls
       vscode-langservers-extracted
-      vtsls
       yaml-language-server
+      terraform-ls
     ];
   };
 

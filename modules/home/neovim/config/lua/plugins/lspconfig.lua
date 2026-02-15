@@ -59,16 +59,16 @@ local function setup()
   })
 
   vim.lsp.enable({
-    "denols",
     "gopls",
-    "jsonls",
+    "vtsls",
+    "denols",
     "lua_ls",
     "nixd",
     "pyright",
     "ruff",
-    "terraformls",
-    "vtsls",
+    "jsonls",
     "yamlls",
+    "terraformls",
   })
 end
 
