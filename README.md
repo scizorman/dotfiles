@@ -2,14 +2,68 @@
 
 ## Overview
 
-This is dotfiles for **Zsh**, **Tmux**, and **Neovim**.
+Personal dotfiles managed with Nix flakes for reproducible development environments across NixOS and macOS.
 
-## Installation
+## Setup
 
-Open a new terminal and enter:
+### NixOS (WSL)
 
-```console
-sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "${HOME}/.local/bin"
-"${HOME}/.local/bin/chezmoi init https://github.com/scizorman/dotfiles.git"
-"${HOME}/.local/bin/chezmoi apply -v
+Update the channel and clone the repository:
+
+```bash
+sudo nix-channel --update
+nix-shell -p git
+git clone <repo-url> ~/dotfiles
+```
+
+Apply the configuration with `boot` and restart WSL:
+
+```bash
+sudo nixos-rebuild boot --flake ~/dotfiles#<hostname>
+```
+
+From PowerShell:
+
+```powershell
+wsl -t NixOS
+wsl -d NixOS --user root exit
+wsl -t NixOS
+```
+
+After restart, clone the repository again as the new user and apply the configuration:
+
+```bash
+nix-shell -p git
+git clone <repo-url> ~/dotfiles
+make switch
+```
+
+### macOS
+
+Install Nix:
+
+```bash
+curl -L https://nixos.org/nix/install | sh
+```
+
+Clone the repository and apply the initial configuration:
+
+```bash
+git clone <repo-url> ~/dotfiles
+cd ~/dotfiles
+nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake .#<hostname>
+```
+
+## Usage
+
+Apply configuration changes:
+
+```bash
+make switch
+```
+
+View available targets:
+
+```bash
+make
 ```
