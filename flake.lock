@@ -100,11 +100,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771141867,
-        "narHash": "sha256-sifH5Gnh/Phv8rV1e+85SZaYDRHRqkhLoOFVHqmfsn0=",
+        "lastModified": 1771149366,
+        "narHash": "sha256-LvSW1GBikiDZhKqmuNgffrrf3Ms82u1+hRsIja3o+2Y=",
         "owner": "scizorman",
         "repo": "op-aws-credential-process",
-        "rev": "1c47dcde5dc98d7ce047590789947878c6649608",
+        "rev": "4140a8f92ef235681b0afbd961759e6b0d52dcdf",
         "type": "github"
       },
       "original": {
