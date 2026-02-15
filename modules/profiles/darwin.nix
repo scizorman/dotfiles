@@ -30,6 +30,7 @@ in
   };
 
   home.sessionVariables = {
+    DOCKER_HOST = "unix://\${HOME}/.colima/default/docker.sock";
     SSH_AUTH_SOCK = onePasswordAgent;
   };
 }
