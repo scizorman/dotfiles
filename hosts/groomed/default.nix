@@ -36,6 +36,14 @@ in
       KeepAlive.SuccessfulExit = false;
     };
   };
+  launchd.user.agents.ghostty = {
+    serviceConfig = {
+      Label = "org.ghostty.ghostty";
+      ProgramArguments = [ "${pkgs.ghostty-bin}/bin/ghostty" ];
+      RunAtLoad = true;
+      KeepAlive = false;
+    };
+  };
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
