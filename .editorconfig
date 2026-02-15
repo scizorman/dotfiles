@@ -10,7 +10,6 @@ insert_final_newline = true
 
 [{Makefile,*.mk}]
 indent_style = tab
-indent_size = tab
 
 [*.md]
 trim_trailing_whitespace = false
