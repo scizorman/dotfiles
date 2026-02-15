@@ -19,13 +19,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    op-aws-credential-process = {
-      url = "github:scizorman/op-aws-credential-process";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
+    op-aws-credential-process = {
+      url = "github:scizorman/op-aws-credential-process";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
