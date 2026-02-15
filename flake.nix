@@ -18,6 +18,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    op-aws-credential-process = {
+      url = "github:scizorman/op-aws-credential-process";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -27,6 +32,7 @@
       nixos-wsl,
       nix-darwin,
       home-manager,
+      op-aws-credential-process,
       ...
     }:
     {
@@ -35,6 +41,13 @@
         modules = [
           nixos-wsl.nixosModules.default
           home-manager.nixosModules.home-manager
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                op-aws-credential-process = op-aws-credential-process.packages.${prev.stdenv.hostPlatform.system}.default;
+              })
+            ];
+          }
           ./hosts/powder
         ];
       };
@@ -43,6 +56,13 @@
         system = "aarch64-darwin";
         modules = [
           home-manager.darwinModules.home-manager
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                op-aws-credential-process = op-aws-credential-process.packages.${prev.stdenv.hostPlatform.system}.default;
+              })
+            ];
+          }
           ./hosts/groomed
         ];
       };

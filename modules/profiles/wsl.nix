@@ -69,10 +69,14 @@ in
       pbpaste = pkgs.writeShellScriptBin "pbpaste" ''
         ${pkgs.wl-clipboard}/bin/wl-paste --no-newline "$@" | ${pkgs.coreutils}/bin/tr -d '\r'
       '';
+      op = pkgs.writeShellScriptBin "op" ''
+        exec op.exe "$@"
+      '';
     in
     [
       pbcopy
       pbpaste
+      op
       pkgs.wslu
     ];
 
