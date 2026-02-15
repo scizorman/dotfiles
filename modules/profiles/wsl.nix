@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  windowsUsername,
   gitSigningKey,
   ...
 }:
@@ -56,7 +55,7 @@ in
 
   programs.git.signing = {
     format = "ssh";
-    signer = "/mnt/c/Users/${windowsUsername}/AppData/Local/Microsoft/WindowsApps/op-ssh-sign-wsl.exe";
+    signer = "op-ssh-sign-wsl.exe";
     key = gitSigningKey;
     signByDefault = true;
   };
