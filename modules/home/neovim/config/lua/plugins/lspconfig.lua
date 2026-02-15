@@ -59,11 +59,11 @@ local function setup()
   })
 
   vim.lsp.enable({
-    "biome",
     "denols",
     "gopls",
     "jsonls",
     "lua_ls",
+    "nixd",
     "pyright",
     "ruff",
     "terraformls",

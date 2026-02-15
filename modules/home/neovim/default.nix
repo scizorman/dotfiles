@@ -12,6 +12,7 @@
       # LSP servers
       gopls
       lua-language-server
+      nixd
       pyright
       ruff
       terraform-ls
