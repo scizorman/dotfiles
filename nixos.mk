@@ -1,12 +1,17 @@
 CONFIG ?= $(shell hostname -s)
 
-rebuild := nixos-rebuild
-current_system := /run/current-system
+.PHONY: build
+build:
+	nixos-rebuild build --flake '.#$(CONFIG)'
+
+.PHONY: diff
+diff: build
+	nix store diff-closures /run/current-system ./result
 
 .PHONY: test
 test:
-	sudo $(rebuild) test --flake '.#$(CONFIG)'
+	sudo nixos-rebuild test --flake '.#$(CONFIG)'
 
 .PHONY: switch
 switch:
-	sudo $(rebuild) switch --flake '.#$(CONFIG)'
+	sudo nixos-rebuild switch --flake '.#$(CONFIG)'

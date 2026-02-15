@@ -1,8 +1,13 @@
 CONFIG ?= groomed
 
-rebuild := darwin-rebuild
-current_system := /run/current-system
+.PHONY: build
+build:
+	darwin-rebuild build --flake '.#$(CONFIG)'
+
+.PHONY: diff
+diff: build
+	nix store diff-closures /run/current-system ./result
 
 .PHONY: switch
 switch:
-	sudo $(rebuild) switch --flake '.#$(CONFIG)'
+	sudo darwin-rebuild switch --flake '.#$(CONFIG)'

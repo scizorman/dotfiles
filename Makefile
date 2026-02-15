@@ -2,18 +2,11 @@
 all:
 	@more $(MAKEFILE_LIST)
 
-uname := $(shell uname -s)
-ifeq ($(uname),Linux)
-ifneq ($(wildcard /etc/NIXOS),)
-manager := nixos
+ifneq ($(shell command -v nixos-rebuild 2>/dev/null),)
+include nixos.mk
+else ifneq ($(shell command -v darwin-rebuild 2>/dev/null),)
+include darwin.mk
 endif
-else ifeq ($(uname),Darwin)
-manager := darwin
-else
-$(error Unsupported OS: $(uname))
-endif
-
-include $(manager).mk
 
 .PHONY: clean gc
 clean: gc
@@ -21,22 +14,14 @@ clean: gc
 gc:
 	nix-collect-garbage --delete-old
 
-.PHONY: check
-check:
-	nix flake check
-
 .PHONY: fmt
 fmt:
 	nix fmt
 
+.PHONY: check
+check:
+	nix flake check
+
 .PHONY: update
 update:
 	nix flake update
-
-.PHONY: build
-build:
-	$(rebuild) build --flake '.#$(CONFIG)'
-
-.PHONY: diff
-diff: build
-	nix store diff-closures $(current_system) ./result
