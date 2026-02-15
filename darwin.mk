@@ -5,4 +5,4 @@ current_system := /run/current-system
 
 .PHONY: switch
 switch:
-	$(rebuild) switch --flake '.#$(CONFIG)'
+	sudo $(rebuild) switch --flake '.#$(CONFIG)'
