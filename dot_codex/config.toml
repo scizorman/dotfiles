@@ -1,5 +1,0 @@
-model = "gpt-5-codex"
-sandbox_mode = "workspace-write"
-
-[tool]
-web_search = true

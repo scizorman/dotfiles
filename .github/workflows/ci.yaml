@@ -2,36 +2,25 @@
 name: 'CI'
 
 on:
-  pull_request:
-    branches:
-      - 'main'
+  - 'pull_request'
+
+permissions: {}
+
+concurrency:
+  group: '${{ github.workflow }}-${{ github.head_ref }}'
+  cancel-in-progress: true
 
 jobs:
-  validation:
-    runs-on: '${{ matrix.os }}'
-    name: 'Validation (${{ matrix.os }})'
+  ci:
+    runs-on: 'ubuntu-latest'
     permissions:
       contents: 'read'
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-          - 'ubuntu-latest'
-          - 'macos-latest'
     timeout-minutes: 10
     steps:
       - uses: 'actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683' # v4
         with:
-          ref: '${{ github.ref }}'
           persist-credentials: false
-      - id: 'generate-token'
-        uses: 'actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e' # v2
-        with:
-          app-id: '${{ secrets.DOTFILES_CI_TOKEN_PROVIDER_GITHUB_APP_ID }}'
-          private-key: '${{ secrets.DOTFILES_CI_TOKEN_PROVIDER_GITHUB_APP_PRIVATE_KEY }}'
-          permission-contents: 'read'
-          permission-metadata: 'read'
+      - uses: 'cachix/install-nix-action@4e002c8ec80594ecd40e759629461e26c8abed15' # v31
+      - uses: 'DeterminateSystems/flake-checker-action@078f5f7f47ee188aa6cb472527ca5984e195222d' # v9
       - run: |
-          sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --source .
-        env:
-          GITHUB_TOKEN: '${{ steps.generate-token.outputs.token }}'
+          make check
