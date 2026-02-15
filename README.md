@@ -54,6 +54,19 @@ cd ~/dotfiles
 nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake .#<hostname>
 ```
 
+If the activation fails due to unexpected files in `/etc`, rename them and try again:
+
+```bash
+sudo mv /etc/bashrc /etc/bashrc.before-nix-darwin
+sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
+```
+
+After the initial setup, use `darwin-rebuild` directly for subsequent configuration changes:
+
+```bash
+sudo darwin-rebuild switch --flake ~/dotfiles#<hostname>
+```
+
 ## Usage
 
 Apply configuration changes:
