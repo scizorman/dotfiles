@@ -27,7 +27,6 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       nixos-wsl,
       nix-darwin,
