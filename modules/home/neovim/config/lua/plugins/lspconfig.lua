@@ -59,6 +59,7 @@ local function setup()
   })
 
   vim.lsp.enable({
+    "roslyn_ls",
     "gopls",
     "vtsls",
     "denols",
