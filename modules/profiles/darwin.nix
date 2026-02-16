@@ -34,7 +34,7 @@ in
       quick-terminal-position = "top";
       quick-terminal-animation-duration = 0;
       theme = "nightfox";
-      font-family = "FiraCode Nerd Font Mono";
+      font-family = "FiraCode Nerd Font Mono Ret";
       font-size = 12;
     };
     enableZshIntegration = true;
