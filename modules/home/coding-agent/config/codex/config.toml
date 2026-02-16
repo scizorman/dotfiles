@@ -2,6 +2,12 @@
 personality = "pragmatic"
 approval_policy = "on-failure"
 sandbox_mode = "workspace-write"
+profile = "quick"
+
+[tui]
+animations = false
+[notice.model_migrations]
+"gpt-5.1-codex-mini" = "gpt-5.3-codex"
 
 [features]
 unified_exec = true
@@ -14,6 +20,5 @@ model_reasoning_effort = "xhigh"
 model_reasoning_summary = "detailed"
 
 [profiles.quick]
-model = "gpt-4.1"
+model = "gpt-5.1-codex-mini"
 model_reasoning_effort = "low"
-model_reasoning_summary = "concise"
