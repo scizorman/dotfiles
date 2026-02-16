@@ -1,21 +1,24 @@
-local function configure_python_path()
-  local venv_path = vim.fn.getcwd() .. "/.venv"
-
-  if vim.fn.isdirectory(venv_path) == 1 then
-    return venv_path .. "/bin/python"
-  end
-  return "python"
-end
-
 --- @type vim.lsp.Config
 return {
+  on_init = function(client)
+    local venv_python = vim.fs.joinpath(client.root_dir, ".venv", "bin", "python")
+    if vim.uv.fs_stat(venv_python) then
+      client.settings = vim.tbl_deep_extend("force", client.settings, {
+        python = { pythonPath = venv_python },
+      })
+      client:notify("workspace/didChangeConfiguration", {
+        settings = client.settings,
+      })
+    end
+  end,
   settings = {
     pyright = {
-      dissableOrganizeImports = true,
+      disableOrganizeImports = true,
     },
     python = {
-      pythonPath = configure_python_path(),
-      ignore = { "*" },
+      analysis = {
+        ignore = { "*" },
+      },
     },
   },
 }

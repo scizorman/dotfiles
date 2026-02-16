@@ -16,6 +16,7 @@
       nixd
       pyright
       ruff
+      ty
       vscode-langservers-extracted
       yaml-language-server
       terraform-ls

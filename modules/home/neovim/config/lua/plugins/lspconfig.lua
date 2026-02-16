@@ -52,7 +52,7 @@ local function setup()
       if client == nil then
         return
       end
-      if client.name == "ruff" then
+      if client.name == "ruff" or client.name == "ty" then
         client.server_capabilities.hoverProvider = false
       end
     end,
@@ -66,6 +66,7 @@ local function setup()
     "nixd",
     "pyright",
     "ruff",
+    "ty",
     "jsonls",
     "yamlls",
     "terraformls",
