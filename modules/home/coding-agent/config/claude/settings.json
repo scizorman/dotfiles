@@ -16,7 +16,6 @@
       "Bash(gh run list:*)",
       "Bash(gh run view:*)",
       "Read(~/.claude/skills/**)",
-      "Skill(git-operator)",
       "Skill(github-issue-creator)",
       "Skill(github-pr-creator)",
       "Skill(github-sub-issue-creator)"

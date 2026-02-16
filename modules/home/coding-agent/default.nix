@@ -7,7 +7,6 @@ let
     prefix:
     let
       skills = [
-        "git-operator"
         "github-issue-creator"
         "github-pr-creator"
         "github-sub-issue-creator"
