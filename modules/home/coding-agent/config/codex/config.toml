@@ -6,6 +6,7 @@ profile = "quick"
 
 [tui]
 animations = false
+
 [notice.model_migrations]
 "gpt-5.1-codex-mini" = "gpt-5.3-codex"
 
@@ -13,12 +14,11 @@ animations = false
 unified_exec = true
 shell_snapshot = true
 
+[profiles.quick]
+model = "gpt-5.1-codex-mini"
+
 [profiles.deep]
 model = "gpt-5.3-codex"
 approval_policy = "on-request"
 model_reasoning_effort = "xhigh"
 model_reasoning_summary = "detailed"
-
-[profiles.quick]
-model = "gpt-5.1-codex-mini"
-model_reasoning_effort = "low"
