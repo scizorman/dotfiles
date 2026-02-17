@@ -21,6 +21,6 @@ jobs:
         with:
           persist-credentials: false
       - uses: 'cachix/install-nix-action@4e002c8ec80594ecd40e759629461e26c8abed15' # v31
-      - uses: 'DeterminateSystems/flake-checker-action@078f5f7f47ee188aa6cb472527ca5984e195222d' # v9
+      - uses: 'DeterminateSystems/flake-checker-action@3164002371bc90729c68af0e24d5aacf20d7c9f6' # v12
       - run: |
           make check
