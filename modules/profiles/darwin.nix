@@ -52,6 +52,27 @@ in
     IdentityAgent = ''"${onePasswordAgent}"'';
   };
 
+  launchd.agents.colima = {
+    enable = true;
+    config = {
+      ProgramArguments = [
+        "${pkgs.colima}/bin/colima"
+        "start"
+        "--foreground"
+      ];
+      KeepAlive = {
+        SuccessfulExit = true;
+      };
+      RunAtLoad = true;
+      StandardOutPath = "/tmp/colima.stdout.log";
+      StandardErrorPath = "/tmp/colima.stderr.log";
+      EnvironmentVariables = {
+        PATH = "${pkgs.docker-client}/bin:/usr/bin:/bin:/usr/sbin:/sbin";
+        XDG_CONFIG_HOME = config.xdg.configHome;
+      };
+    };
+  };
+
   home.sessionVariables = {
     DOCKER_HOST = "unix://${config.xdg.configHome}/colima/default/docker.sock";
     SSH_AUTH_SOCK = onePasswordAgent;

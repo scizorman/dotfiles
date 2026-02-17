@@ -24,18 +24,6 @@ in
 
   system.primaryUser = username;
 
-  launchd.user.agents.colima = {
-    serviceConfig = {
-      Label = "com.github.abiosoft.colima";
-      ProgramArguments = [
-        "${pkgs.colima}/bin/colima"
-        "start"
-        "--foreground"
-      ];
-      RunAtLoad = true;
-      KeepAlive.SuccessfulExit = false;
-    };
-  };
   launchd.user.agents.ghostty = {
     serviceConfig = {
       Label = "org.ghostty.ghostty";
