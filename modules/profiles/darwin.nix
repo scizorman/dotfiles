@@ -21,21 +21,22 @@ in
     gnugrep
     gnused
     gnutar
-    nerd-fonts.fira-code
   ];
 
   programs.ghostty = {
     enable = true;
     package = pkgs.ghostty-bin;
     settings = {
-      initial-window = false;
-      keybind = "global:alt+space=toggle_quick_terminal";
-      quick-terminal-size = "100%, 100%";
-      quick-terminal-position = "top";
-      quick-terminal-animation-duration = 0;
-      theme = "nightfox";
-      font-family = "FiraCode Nerd Font Mono Ret";
       font-size = 12;
+      theme = "nightfox";
+      background-opacity = 0.75;
+      working-directory = "home";
+      keybind = "global:alt+space=toggle_quick_terminal";
+      window-inherit-working-directory = false;
+      initial-window = false;
+      quick-terminal-position = "top";
+      quick-terminal-size = "100%, 100%";
+      quick-terminal-animation-duration = 0;
     };
     enableZshIntegration = true;
   };
