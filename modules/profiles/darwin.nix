@@ -33,6 +33,7 @@ in
       working-directory = "home";
       keybind = "global:alt+space=toggle_quick_terminal";
       window-inherit-working-directory = false;
+      window-save-state = "never";
       initial-window = false;
       quick-terminal-position = "top";
       quick-terminal-size = "100%, 100%";
@@ -70,14 +71,6 @@ in
         PATH = "${pkgs.docker-client}/bin:/usr/bin:/bin:/usr/sbin:/sbin";
         XDG_CONFIG_HOME = config.xdg.configHome;
       };
-    };
-  };
-
-  launchd.agents.ghostty = {
-    enable = true;
-    config = {
-      ProgramArguments = [ "${config.programs.ghostty.package}/bin/ghostty" ];
-      RunAtLoad = true;
     };
   };
 
