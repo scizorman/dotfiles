@@ -62,6 +62,9 @@ in
 
   home.packages =
     let
+      xdg-open = pkgs.writeShellScriptBin "xdg-open" ''
+        exec ${pkgs.wslu}/bin/wslview "$@"
+      '';
       pbcopy = pkgs.writeShellScriptBin "pbcopy" ''
         ${pkgs.wl-clipboard}/bin/wl-copy "$@"
       '';
@@ -73,6 +76,7 @@ in
       '';
     in
     [
+      xdg-open
       pbcopy
       pbpaste
       op
