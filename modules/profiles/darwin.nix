@@ -73,6 +73,14 @@ in
     };
   };
 
+  launchd.agents.ghostty = {
+    enable = true;
+    config = {
+      ProgramArguments = [ "${config.programs.ghostty.package}/bin/ghostty" ];
+      RunAtLoad = true;
+    };
+  };
+
   home.sessionVariables = {
     DOCKER_HOST = "unix://${config.xdg.configHome}/colima/default/docker.sock";
     SSH_AUTH_SOCK = onePasswordAgent;
