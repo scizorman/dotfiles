@@ -17,15 +17,15 @@ vim.opt.rtp:prepend(lazy_path)
 require("lazy").setup({
   spec = {
     {
-      "cocopon/iceberg.vim",
-    },
-    {
       "EdenEast/nightfox.nvim",
-    },
-    {
-      "folke/tokyonight.nvim",
-      config = function()
-        vim.cmd("colorscheme tokyonight-storm")
+      opts = {
+        options = {
+          transparent = true,
+        },
+      },
+      config = function(_, opts)
+        require("nightfox").setup(opts)
+        vim.cmd("colorscheme nightfox")
       end,
     },
     {
