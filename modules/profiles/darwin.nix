@@ -29,7 +29,7 @@ in
     settings = {
       font-size = 12;
       theme = "nightfox";
-      background-opacity = 0.75;
+      background-opacity = 0.90;
       working-directory = "home";
       keybind = "global:alt+space=toggle_quick_terminal";
       window-inherit-working-directory = false;
