@@ -2,7 +2,7 @@
 npm.package_manager = "pnpm"
 
 [tools]
-"npm:@anthropic-ai/claude-code" = "2.1.49"
+"npm:@anthropic-ai/claude-code" = "2.1.50"
 "npm:@github/copilot" = "0.0.412"
 "npm:@openai/codex" = "0.104.0"
 "npm:@fission-ai/openspec" = "1.1.1"
