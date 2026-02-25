@@ -11,6 +11,10 @@ let
         "github-issue-creator"
         "github-pr-creator"
         "github-sub-issue-creator"
+        "project-charter-creator"
+        "project-plan-creator"
+        "rfi-creator"
+        "rfp-creator"
         "self-critique"
       ];
     in
