@@ -1,6 +1,6 @@
 #:schema https://developers.openai.com/codex/config-schema.json
 personality = "pragmatic"
-approval_policy = "on-failure"
+approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 profile = "quick"
 
