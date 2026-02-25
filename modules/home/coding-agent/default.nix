@@ -8,8 +8,11 @@ let
     let
       skills = [
         "git-operator"
+        "github-issue-commenter"
         "github-issue-creator"
         "github-pr-creator"
+        "github-project-operator"
+        "github-project-reporter"
         "github-sub-issue-creator"
         "project-charter-creator"
         "project-plan-creator"
