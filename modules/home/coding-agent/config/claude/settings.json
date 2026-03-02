@@ -1,5 +1,5 @@
 {
-  "schema": "https://json.schemastore.org/claude-code-settings.json",
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
     "ANTHOROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4-5-20251101",
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
@@ -30,5 +30,8 @@
       "Bash(gh pr create:*)",
       "Bash(gh pr comment:*)"
     ]
+  },
+  "enabledPlugins": {
+    "document-skills@anthropic-agent-skills": true
   }
 }
