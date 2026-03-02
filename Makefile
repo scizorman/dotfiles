@@ -10,7 +10,7 @@ endif
 
 .PHONY: clean gc
 clean: gc
-	rm -f result
+	$(RM) -r result
 gc:
 	nix-collect-garbage --delete-old
 
