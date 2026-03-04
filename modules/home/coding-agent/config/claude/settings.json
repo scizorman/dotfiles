@@ -33,6 +33,7 @@
   "model": "opusplan",
   "enabledPlugins": {
     "document-skills@anthropic-agent-skills": true,
-    "slack@claude-plugins-official": true
+    "slack@claude-plugins-official": true,
+    "cekernel@clonable-eden-plugins": true
   }
 }
