@@ -50,7 +50,7 @@ in
   };
 
   programs.ssh.matchBlocks."*".extraOptions = {
-    IdentityAgent = ''"${onePasswordAgent}"'';
+    IdentityAgent = onePasswordAgent;
   };
 
   launchd.agents.colima = {
