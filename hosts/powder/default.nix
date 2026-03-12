@@ -15,6 +15,8 @@ in
     config.environment.etc."binfmt.d/nixos.conf".source
   ];
 
+  boot.tmp.cleanOnBoot = true;
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
