@@ -13,7 +13,7 @@ local function configure_global()
       terminal = {
         command = { "zsh" },
         split = "horizontal",
-        winHeight = 20,
+        winHeight = 30,
       },
     },
   })
