@@ -18,6 +18,7 @@
     grpcurl
     jq
     nkf
+    poppler-utils
     unzip
     yq
   ];
