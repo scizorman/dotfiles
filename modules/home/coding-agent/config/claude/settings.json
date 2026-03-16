@@ -2,7 +2,6 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "DISABLE_AUTOUPDATER": "1"
   },
   "permissions": {
@@ -35,5 +34,19 @@
     "document-skills@anthropic-agent-skills": true,
     "slack@claude-plugins-official": true,
     "cekernel@clonable-eden-plugins": true
+  },
+  "extraKnownMarketplaces": {
+    "anthropic-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      }
+    },
+    "clonable-eden-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "clonable-eden/plugins"
+      }
+    }
   }
 }
