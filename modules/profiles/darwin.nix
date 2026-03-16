@@ -6,7 +6,7 @@
 }:
 
 let
-  onePasswordAgent = "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+  onePasswordAgent = "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
 in
 {
   home.packages = with pkgs; [
@@ -50,7 +50,10 @@ in
   };
 
   programs.ssh.matchBlocks."*".extraOptions = {
-    IdentityAgent = onePasswordAgent;
+    # The path contains a space ("Group Containers"), so it must be quoted in
+    # ssh_config. Home Manager writes extraOptions values verbatim, so we embed
+    # the surrounding double-quotes in the Nix string itself.
+    IdentityAgent = "\"${onePasswordAgent}\"";
   };
 
   launchd.agents.colima = {
