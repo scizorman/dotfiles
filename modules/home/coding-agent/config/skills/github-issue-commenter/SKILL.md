@@ -47,22 +47,24 @@ Use [templates/default.md](templates/default.md) as the base structure. Adapt se
 
 ### Step 4: Post the Comment
 
-Use the Write tool to save the comment body to `/tmp/gh-comment.md`, then pass it via `--body-file`. This avoids shell escaping issues and permission prompts caused by `#`-prefixed lines in the content.
+Use the Write tool to save the comment body to a temporary file (absolute path), then pass it via `--body-file`. This avoids shell escaping issues and permission prompts caused by `#`-prefixed lines in the content.
+
+For issue comments, write to `/tmp/gh-issue-comment.md`:
 
 ```bash
-gh issue comment <ISSUE_NUMBER> --body-file /tmp/gh-comment.md
+gh issue comment <ISSUE_NUMBER> --body-file /tmp/gh-issue-comment.md
 ```
 
 For repositories other than the current directory:
 
 ```bash
-gh issue comment <ISSUE_NUMBER> -R OWNER/REPO --body-file /tmp/gh-comment.md
+gh issue comment <ISSUE_NUMBER> -R OWNER/REPO --body-file /tmp/gh-issue-comment.md
 ```
 
-For PR comments:
+For PR comments, write to `/tmp/gh-pr-comment.md`:
 
 ```bash
-gh pr comment <PR_NUMBER> --body-file /tmp/gh-comment.md
+gh pr comment <PR_NUMBER> --body-file /tmp/gh-pr-comment.md
 ```
 
 ### Step 5: Confirm

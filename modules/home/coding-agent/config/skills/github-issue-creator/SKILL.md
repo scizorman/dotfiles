@@ -36,7 +36,13 @@ If no templates exist, use [templates/default.md](templates/default.md).
 
 ### Create Issue
 
-Create the Issue with `gh issue create` and report the Issue URL to the user.
+Use the Write tool to save the issue body to `/tmp/gh-issue-body.md` (absolute path), then create the issue with `--body-file`. This avoids permission prompts caused by `#`-prefixed lines in the content.
+
+```bash
+gh issue create --title "<title>" --body-file /tmp/gh-issue-body.md
+```
+
+Report the Issue URL to the user.
 
 ## Title Guidelines
 
@@ -61,5 +67,5 @@ Write issue content in Japanese by default. If the user explicitly requests Engl
 Use the `-R` flag to create an issue in a repository different from the current directory.
 
 ```bash
-gh issue create -R OWNER/REPO --title "<title>" --body "<body>"
+gh issue create -R OWNER/REPO --title "<title>" --body-file /tmp/gh-issue-body.md
 ```
