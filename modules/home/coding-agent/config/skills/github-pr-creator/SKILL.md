@@ -53,7 +53,13 @@ PR テンプレートを検出する。
 
 ### PR 作成
 
-`gh pr create` で Pull Request を作成し、PR URL をユーザーに報告する。
+Write tool で PR の body を `/tmp/gh-pr-body.md` に書き出し、`--body-file` で渡す。`--body` に直接渡すと `#` を含む Markdown 見出しが permission prompt を引き起こすため、必ずこの手順を使用する。
+
+```bash
+gh pr create --title "..." --body-file /tmp/gh-pr-body.md
+```
+
+PR URL をユーザーに報告する。
 
 ## Issue Link Format
 

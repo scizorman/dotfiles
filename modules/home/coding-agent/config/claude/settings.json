@@ -78,7 +78,8 @@
       "Skill(github-sub-issue-creator)",
       "Skill(github-project-operator)",
       "Skill(github-project-reporter)",
-      "Read(~/.claude/skills/**)"
+      "Read(~/.claude/skills/**)",
+      "Write(/tmp/*)"
     ],
     "ask": [
       "Bash(gh issue close:*)",
