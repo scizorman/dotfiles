@@ -63,6 +63,10 @@ in
         "${pkgs.colima}/bin/colima"
         "start"
         "--foreground"
+        "--cpus"
+        "4"
+        "--memory"
+        "8"
       ];
       KeepAlive = {
         SuccessfulExit = true;
