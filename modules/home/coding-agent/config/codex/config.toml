@@ -1,24 +1,29 @@
 #:schema https://developers.openai.com/codex/config-schema.json
 personality = "pragmatic"
+model_verbosity = "low"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
+check_for_update_on_startup = false
+web_search = "cached"
 profile = "quick"
 
 [tui]
 animations = false
 
-[notice.model_migrations]
-"gpt-5.1-codex-mini" = "gpt-5.3-codex"
+[analytics]
+enabled = false
 
-[features]
-unified_exec = true
-shell_snapshot = true
+[feedback]
+enabled = false
 
 [profiles.quick]
-model = "gpt-5.1-codex-mini"
+model = "gpt-5.4-mini"
 
 [profiles.deep]
-model = "gpt-5.3-codex"
-approval_policy = "on-request"
+model = "gpt-5.4"
 model_reasoning_effort = "xhigh"
 model_reasoning_summary = "detailed"
+model_verbosity = "high"
+
+[otel]
+metrics_exporter = "none"
