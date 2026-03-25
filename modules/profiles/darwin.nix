@@ -60,13 +60,17 @@ in
     enable = true;
     config = {
       ProgramArguments = [
-        "${pkgs.colima}/bin/colima"
-        "start"
-        "--foreground"
-        "--cpus"
-        "4"
-        "--memory"
-        "8"
+        "/bin/sh"
+        "-c"
+        ''
+          shutdown() {
+            ${pkgs.colima}/bin/colima stop
+            exit 0
+          }
+          trap shutdown SIGTERM SIGINT
+          ${pkgs.colima}/bin/colima start --foreground --cpus 4 --memory 8 &
+          wait $!
+        ''
       ];
       KeepAlive = {
         SuccessfulExit = true;
