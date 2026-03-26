@@ -1,8 +1,8 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: ["config:best-practices"],
+  ignorePresets: ["security:minimumReleaseAgeNpm"],
   automerge: true,
-  minimumReleaseAge: null,
   labels: ["dependencies"],
   nix: {
     enabled: false,
