@@ -3,7 +3,7 @@
   extends: ["config:best-practices"],
   automerge: true,
   minimumReleaseAge: null,
-  labels: ["renovate"],
+  labels: ["dependencies"],
   nix: {
     enabled: false,
   },
