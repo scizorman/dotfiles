@@ -11,6 +11,7 @@ return {
       "css",
       "terraform",
       "nix",
+      "starlark",
       "json",
       "yaml",
       "toml",
