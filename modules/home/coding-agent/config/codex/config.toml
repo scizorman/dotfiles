@@ -7,6 +7,9 @@ check_for_update_on_startup = false
 web_search = "cached"
 profile = "quick"
 
+[sandbox_workspace_write]
+network_access = true
+
 [tui]
 animations = false
 

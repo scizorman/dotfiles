@@ -1,0 +1,131 @@
+prefix_rule(
+    pattern = ["git", "commit", "--amend"],
+    decision = "forbidden",
+    justification = "Rewriting history is not allowed",
+)
+prefix_rule(
+    pattern = ["git", "push", ["--force", "--force-with-lease"]],
+    decision = "forbidden",
+    justification = "Force push is not allowed",
+)
+prefix_rule(
+    pattern = ["git", "rebase"],
+    decision = "forbidden",
+    justification = "Rewriting history is not allowed",
+)
+prefix_rule(
+    pattern = ["git", "reset", "--hard"],
+    decision = "forbidden",
+    justification = "Hard reset is not allowed",
+)
+prefix_rule(
+    pattern = ["git", ["status", "log", "diff", "branch", "fetch", "stash", "add", "switch", "commit", "push"]],
+    decision = "allow",
+)
+prefix_rule(
+    pattern = ["gh", "pr", "merge"],
+    decision = "forbidden",
+    justification = "Merging PRs is not allowed",
+)
+prefix_rule(
+    pattern = ["gh", "issue", ["delete", "transfer"]],
+    decision = "forbidden",
+    justification = "Deleting or transferring issues is not allowed",
+)
+prefix_rule(
+    pattern = ["gh", "repo", ["delete", "archive", "rename", "create"]],
+    decision = "forbidden",
+    justification = "Destructive repo operations are not allowed",
+)
+prefix_rule(
+    pattern = ["gh", "release", "delete"],
+    decision = "forbidden",
+    justification = "Deleting releases is not allowed",
+)
+prefix_rule(
+    pattern = ["gh", "project", ["delete", "field-delete", "item-delete"]],
+    decision = "forbidden",
+    justification = "Deleting project resources is not allowed",
+)
+prefix_rule(
+    pattern = ["gh", "label", "delete"],
+    decision = "forbidden",
+    justification = "Deleting labels is not allowed",
+)
+prefix_rule(
+    pattern = ["gh", "run", "delete"],
+    decision = "forbidden",
+    justification = "Deleting runs is not allowed",
+)
+prefix_rule(
+    pattern = ["gh", "secret"],
+    decision = "forbidden",
+    justification = "Secret management is not allowed",
+)
+prefix_rule(
+    pattern = ["gh", "ssh-key"],
+    decision = "forbidden",
+    justification = "SSH key management is not allowed",
+)
+prefix_rule(
+    pattern = ["gh", "gpg-key"],
+    decision = "forbidden",
+    justification = "GPG key management is not allowed",
+)
+prefix_rule(
+    pattern = ["gh", "auth"],
+    decision = "forbidden",
+    justification = "Auth management is not allowed",
+)
+prefix_rule(
+    pattern = ["gh", "issue", ["close", "reopen"]],
+    decision = "prompt",
+)
+prefix_rule(
+    pattern = ["gh", "pr", ["close", "reopen", "review"]],
+    decision = "prompt",
+)
+prefix_rule(
+    pattern = ["gh", "label", ["create", "edit"]],
+    decision = "prompt",
+)
+prefix_rule(
+    pattern = ["gh", "run", ["cancel", "rerun"]],
+    decision = "prompt",
+)
+prefix_rule(
+    pattern = ["gh", "workflow", "run"],
+    decision = "prompt",
+)
+prefix_rule(
+    pattern = ["gh", "issue", ["view", "list", "status", "create", "comment", "edit"]],
+    decision = "allow",
+)
+prefix_rule(
+    pattern = ["gh", "pr", ["view", "list", "status", "checks", "diff", "create", "comment", "edit", "ready"]],
+    decision = "allow",
+)
+prefix_rule(
+    pattern = ["gh", "run", ["list", "view", "watch", "download"]],
+    decision = "allow",
+)
+prefix_rule(
+    pattern = ["gh", "search"],
+    decision = "allow",
+)
+prefix_rule(
+    pattern = ["gh", "project", ["list", "view", "field-list", "item-list", "item-add", "item-edit", "item-create", "item-archive", "field-create", "edit", "close"]],
+    decision = "allow",
+)
+prefix_rule(
+    pattern = ["gh", "repo", "view"],
+    decision = "allow",
+)
+prefix_rule(
+    pattern = ["gh", "label", "list"],
+    decision = "allow",
+)
+prefix_rule(
+    pattern = ["gh", "release", ["list", "view"]],
+    decision = "allow",
+)
