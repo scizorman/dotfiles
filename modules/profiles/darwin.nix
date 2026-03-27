@@ -63,11 +63,9 @@ in
       isService = true;
       setDockerHost = true;
       settings = {
+        runtime = "docker";
         cpu = 4;
-        memory = 8;
-        vmType = "vz";
-        rosetta = true;
-        mountType = "virtiofs";
+        memory = 12;
       };
     };
   };
