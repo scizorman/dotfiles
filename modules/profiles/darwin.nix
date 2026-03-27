@@ -11,7 +11,6 @@ in
 {
   home.packages = with pkgs; [
     _1password-cli
-    colima
     docker-client
     docker-credential-helpers
     coreutils
@@ -56,37 +55,24 @@ in
     IdentityAgent = "\"${onePasswordAgent}\"";
   };
 
-  launchd.agents.colima = {
+  services.colima = {
     enable = true;
-    config = {
-      ProgramArguments = [
-        "/bin/sh"
-        "-c"
-        ''
-          shutdown() {
-            ${pkgs.colima}/bin/colima stop
-            exit 0
-          }
-          trap shutdown SIGTERM SIGINT
-          ${pkgs.colima}/bin/colima start --foreground --cpus 4 --memory 8 &
-          wait $!
-        ''
-      ];
-      KeepAlive = {
-        SuccessfulExit = true;
-      };
-      RunAtLoad = true;
-      StandardOutPath = "/tmp/colima.stdout.log";
-      StandardErrorPath = "/tmp/colima.stderr.log";
-      EnvironmentVariables = {
-        PATH = "${pkgs.docker-client}/bin:/usr/bin:/bin:/usr/sbin:/sbin";
-        XDG_CONFIG_HOME = config.xdg.configHome;
+    colimaHomeDir = "${config.xdg.configHome}/colima";
+    profiles.default = {
+      isActive = true;
+      isService = true;
+      setDockerHost = true;
+      settings = {
+        cpu = 4;
+        memory = 8;
+        vmType = "vz";
+        rosetta = true;
+        mountType = "virtiofs";
       };
     };
   };
 
   home.sessionVariables = {
-    DOCKER_HOST = "unix://${config.xdg.configHome}/colima/default/docker.sock";
     SSH_AUTH_SOCK = onePasswordAgent;
   };
 }
