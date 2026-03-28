@@ -36,7 +36,8 @@ in
 
     ".codex/AGENTS.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
     ".codex/config.toml".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/config.toml";
-    ".codex/rules/default.rules".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/rules/default.rules";
+    ".codex/rules/default.rules".source =
+      config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/rules/default.rules";
 
   }
   // mkSkillLinks ".claude"
