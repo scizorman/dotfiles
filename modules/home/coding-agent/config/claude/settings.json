@@ -81,18 +81,6 @@
       "Read(~/.claude/skills/**)",
       "Write(/tmp/*)"
     ],
-    "ask": [
-      "Bash(gh issue close:*)",
-      "Bash(gh issue reopen:*)",
-      "Bash(gh pr close:*)",
-      "Bash(gh pr reopen:*)",
-      "Bash(gh pr review:*)",
-      "Bash(gh label create:*)",
-      "Bash(gh label edit:*)",
-      "Bash(gh run cancel:*)",
-      "Bash(gh run rerun:*)",
-      "Bash(gh workflow run:*)"
-    ],
     "deny": [
       "Bash(git commit --amend:*)",
       "Bash(git push --force:*)",
@@ -116,6 +104,18 @@
       "Bash(gh ssh-key:*)",
       "Bash(gh gpg-key:*)",
       "Bash(gh auth:*)"
+    ],
+    "ask": [
+      "Bash(gh issue close:*)",
+      "Bash(gh issue reopen:*)",
+      "Bash(gh pr close:*)",
+      "Bash(gh pr reopen:*)",
+      "Bash(gh pr review:*)",
+      "Bash(gh label create:*)",
+      "Bash(gh label edit:*)",
+      "Bash(gh run cancel:*)",
+      "Bash(gh run rerun:*)",
+      "Bash(gh workflow run:*)"
     ]
   },
   "model": "opusplan",
@@ -135,6 +135,12 @@
       "source": {
         "source": "github",
         "repo": "clonable-eden/plugins"
+      }
+    },
+    "hashicorp": {
+      "source": {
+        "source": "github",
+        "repo": "hashicorp/agent-skills"
       }
     }
   }
