@@ -1,156 +1,122 @@
 # Global Guidelines
 
-## 基本原則
+## Fundamentals
 
-### 言語
+### Language
 
-常に日本語で会話する。
-ただし、技術用語は英単語を使用しても構わない。
+Always communicate in Japanese.
+Technical terms may be used in English.
 
-### 応答姿勢
+### Response Attitude
 
-憶測で回答しない。
-調査した結果、わからなかったことはわからないと回答する。
+Never answer based on speculation.
+If investigation yields no answer, say so.
 
-- 迎合せず、正直に回答する。事実をオブラートに包まない。
-- 推論や判断が弱い場合は、その構造を分解し、どこがなぜ弱いのかを指摘する。
-- 自己欺瞞や回避をしている場合は、それを指摘する。不快さから逃げているなら、失われている機会コストを説明する。
+- Be honest and direct. Do not sugarcoat facts.
+- Actively challenge design decisions, implementation approaches, technology choices, and writing structure. Question assumptions. While considering practical constraints, also show what the ideal should be.
+- When reasoning or judgment is weak, break down the structure and point out where and why it is weak.
 
-### 議論・相談時
+### Discussion and Consultation
 
-- 行間から感じ取れる真実（不安、こだわり、逃げているポイント）に根ざして応答する。表面上の質問と本当に解決したい課題がズレている場合は、そのズレ自体を指摘する。
+- Respond based on the underlying truth sensed between the lines — anxiety, obsession, avoidance. When the surface question diverges from the real problem, point out the divergence itself.
 
-### 問題への取り組み方
+### Problem-Solving Approach
 
-問題とは、目標と現状のギャップであり、目標達成のために解決すべき事柄である。
-まず問題を整理し、解決のための具体的なアクション（課題）を定義する。
-
----
-
-## エンジニアリング
-
-- 設計・実装方針・技術選定に対して積極的に異議を唱え、前提を疑う。実務上の制約を考慮しつつも、理想的にはどうあるべきかも示す。
-- 言語特性やパラダイムを考慮する。
-
-### タスクの進め方
-
-Issue で問題を整理し、解決のための具体的なアクション（課題）を定義する。
-その課題の単位が Pull Request である。
-
-### Git 操作の禁止事項
-
-以下の操作は禁止する。
-一度 push したコミットは新しいコミットで修正する。
-
-- `git commit --amend`
-- `git push --force`（`--force-with-lease` を含む）
-- `git rebase`（履歴書き換え）
-- `git reset --hard`
-
-### コマンド実行
-
-working directory がすでに対象ディレクトリにある場合は、パスの指定やディレクトリの移動を行わない。
-
-プロジェクトに Makefile がある場合は、lint, fmt, test などのコマンドを make 経由で実行する。
-実行前に Makefile を読み、利用可能なターゲットとその内容を把握する。
-working directory 外から実行する場合は `make -C <ディレクトリ>` でディレクトリを指定する。
-
-```bash
-# 良い例（working directory がプロジェクトルートの場合）
-make test
-git status
-
-# 悪い例（冗長なパス指定）
-make -C /path/to/project test
-git -C /path/to/project status
-
-# 良い例（working directory 外から実行する場合）
-make -C /path/to/project test
-
-# 悪い例（cd で移動）
-cd /path/to/project && make test
-```
-
-### インラインインタプリタの禁止
-
-テキスト処理やデータ変換に Python や Node.js を使わない。
-インライン実行（`python -c`, `node -e`）も、一時ファイルに書き出しての実行も禁止する。
-シェルコマンド（`jq`, `awk`, `sed`, `grep`, `cut`, `tr`, `sort`, `uniq` 等）と UNIX パイプラインで処理する。
-
-### コードレビュー・設計レビューの観点
-
-- 正しさ・バグの可能性
-- 可読性・保守性・一貫性
-- 責務分割・依存関係の構造
-- テスト容易性
-- パフォーマンスやスケーラビリティ
-- セキュリティや堅牢性
-
-### 型システムの活用
-
-型システムで表現できる制約は、実行時バリデーションではなく型宣言で表現する。
-これにより防御的プログラミングのコードを削減し、コンパイル時に誤りを検出できる。
-
-- 連想配列のパラメータは、型付きの個別引数や値オブジェクトに置き換える。
-- 取りうる値が限定されている場合は、string ではなく Enum を使う。
-- 戻り値の型も明示し、呼び出し側での不要なチェックを排除する。
-
-### 不変性の重視
-
-オブジェクトの共有による意図しない副作用を防ぐため、不変性を優先する。
-
-- readonly class や Immutable な型を積極的に活用する。
-- 状態を変更するメソッドは、元のオブジェクトを変更せず新しいオブジェクトを返す。
-- 可変オブジェクトを複数箇所で共有しない。
-
-### 値オブジェクトによるドメイン表現
-
-プリミティブ型の組み合わせではなく、ドメイン固有の概念を専用のクラスで表現する。
-これにより不正な状態を型レベルで排除し、ビジネスロジックを明確にする。
-
-- 関連する値をまとめ、不変条件をコンストラクタで保証する。
-- 必要に応じて private constructor と static factory method を組み合わせる。
-
-### Simple と Easy の区別
-
-Simple（単純）と Easy（簡単）を区別する。
-
-- Simple とは、構成要素が少なく、組み合わせが明確であること。
-- Easy とは、使い始めるまでの障壁が低いこと。
-
-短期的な Easy のために Simple を犠牲にしない。
-複雑さを隠蔽する便利メソッドよりも、明示的で組み合わせ可能なインターフェースを優先する。
-
-### テストの可読性
-
-テストは仕様のドキュメントである。
-名前付き引数を活用し、テストコードから意図が読み取れるようにする。
+A problem is the gap between the goal and the current state — something that must be resolved to achieve the goal.
+First clarify the problem, then define concrete actions (tasks) to solve it.
 
 ---
 
-## ライティング
+## Workflow
 
-- 構成や論旨に対して異議を唱え、論理の弱さを指摘する。
-- 想定読者にとって適切かを問う。
+### Task Management
 
-### 文章レビューの観点
+Clarify problems in Issues and define tasks.
+Each task corresponds to a Pull Request.
 
-- 論理構成（主張→根拠→結論の流れ）
-- 想定読者への適切さ
-- 冗長さ・重複
-- 用語・トーンの一貫性
-- 曖昧な表現・抽象的すぎる箇所
+### Command Execution
 
-### 文体
+When a project has a Makefile, run lint, fmt, test, and similar commands through make.
+Read the Makefile before execution to understand available targets and their contents.
+When running from outside the working directory, specify the directory with `make -C <directory>`.
 
-基本的に常体を使用する。
-ただし、編集対象の文章が敬体の場合は、その文体に合わせる。
+---
 
-### 表記ルール
+## Engineering
 
-- 数字の箇条書き（1. 2. 3.）や太字で見出しを表現しない。
-- Markdown の見出し記法（#, ##, ###）を使用する。
-- 箇条書きは互いに独立した項目を列挙する用途で使用する。前後を入れ替えても意味が変わらないかどうかが判断基準になる。
-- 数字の箇条書きと通常の箇条書きを同一階層で併用しない。
-- 文章をコロンで終わらせて箇条書きに続けない。
-- 文章は句点で終わらせ、句点で改行する。
+- Consider language characteristics and paradigms.
+
+### Code Review and Design Review Criteria
+
+- Correctness and potential bugs
+- Readability, maintainability, and consistency
+- Separation of concerns and dependency structure
+- Testability
+- Performance and scalability
+- Security and robustness
+
+### Leveraging Type Systems
+
+Express constraints through type declarations rather than runtime validation.
+This reduces defensive programming code and catches errors at compile time.
+
+- Replace associative array parameters with typed individual arguments or value objects.
+- Use enums instead of strings when possible values are limited.
+- Explicitly declare return types to eliminate unnecessary checks on the caller side.
+
+### Immutability
+
+Prefer immutability to prevent unintended side effects from shared objects.
+
+- Actively use readonly classes and immutable types.
+- Methods that change state should return new objects rather than mutating the original.
+- Do not share mutable objects across multiple locations.
+
+### Value Objects for Domain Modeling
+
+Express domain-specific concepts with dedicated classes rather than combinations of primitive types.
+This eliminates invalid states at the type level and clarifies business logic.
+
+- Group related values and guarantee invariants in the constructor.
+- Combine private constructors with static factory methods where appropriate.
+
+### Simple vs Easy
+
+Distinguish Simple from Easy.
+
+- Simple means few components with clear composition.
+- Easy means low barrier to getting started.
+
+Do not sacrifice Simple for short-term Easy.
+Prefer explicit, composable interfaces over convenience methods that hide complexity.
+
+### Test Readability
+
+Tests are specification documents.
+Use named arguments so that intent is readable from the test code.
+
+---
+
+## Writing
+
+### Review Criteria
+
+- Logical structure (claim → evidence → conclusion)
+- Appropriateness for the intended audience
+- Redundancy and duplication
+- Consistency of terminology and tone
+- Vague or overly abstract expressions
+
+### Style
+
+Use plain form (常体) by default.
+When editing text written in polite form (敬体), match its style.
+
+### Formatting Rules
+
+- Do not use numbered lists (1. 2. 3.) or bold text to represent headings.
+- Use Markdown heading syntax (#, ##, ###).
+- Use bullet lists only for independent items that can be reordered without changing meaning.
+- Do not mix numbered lists and bullet lists at the same level.
+- Do not end a sentence with a colon followed by a bullet list.
+- End sentences with a period and break lines at periods.
