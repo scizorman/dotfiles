@@ -7,6 +7,7 @@
   "permissions": {
     "allow": [
       "Bash(ls *)",
+      "Bash(find *)",
       "Bash(mkdir *)",
       "Bash(cat *)",
       "Bash(head *)",
@@ -80,7 +81,7 @@
       "Skill(github-project-operator)",
       "Skill(github-project-reporter)",
       "Read(~/.claude/skills/**)",
-      "Read(/tmp/*)",
+      "Read(*)",
       "Write(/tmp/*)"
     ],
     "deny": [
