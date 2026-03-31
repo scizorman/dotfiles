@@ -79,6 +79,7 @@
       "Skill(github-project-operator)",
       "Skill(github-project-reporter)",
       "Read(~/.claude/skills/**)",
+      "Read(/tmp/*)",
       "Write(/tmp/*)"
     ],
     "deny": [
