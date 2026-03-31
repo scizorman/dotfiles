@@ -18,6 +18,7 @@
       "Bash(basename *)",
       "Bash(dirname *)",
       "Bash(jq *)",
+      "Bash(grep *)",
       "Bash(wc *)",
       "Bash(pwd)",
       "Bash(which *)",
