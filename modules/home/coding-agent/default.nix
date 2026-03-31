@@ -6,20 +6,8 @@ let
   mkSkillLinks =
     prefix:
     let
-      skills = [
-        "git-operator"
-        "github-issue-commenter"
-        "github-issue-creator"
-        "github-pr-creator"
-        "github-project-operator"
-        "github-project-reporter"
-        "github-sub-issue-creator"
-        "project-charter-creator"
-        "project-plan-creator"
-        "rfi-creator"
-        "rfp-creator"
-        "self-critique"
-      ];
+      skillsDir = builtins.readDir ./config/skills;
+      skills = builtins.filter (name: skillsDir.${name} == "directory") (builtins.attrNames skillsDir);
     in
     builtins.listToAttrs (
       map (name: {
