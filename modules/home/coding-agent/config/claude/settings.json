@@ -103,7 +103,13 @@
       "Bash(gh secret:*)",
       "Bash(gh ssh-key:*)",
       "Bash(gh gpg-key:*)",
-      "Bash(gh auth:*)"
+      "Bash(gh auth:*)",
+      "Bash(python -c:*)",
+      "Bash(python3 -c:*)",
+      "Bash(node -e:*)",
+      "Bash(node --eval:*)",
+      "Bash(node -p:*)",
+      "Bash(node --print:*)"
     ],
     "ask": [
       "Bash(gh issue close:*)",

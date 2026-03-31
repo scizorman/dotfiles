@@ -71,6 +71,12 @@ make -C /path/to/project test
 cd /path/to/project && make test
 ```
 
+### インラインインタプリタの禁止
+
+テキスト処理やデータ変換に Python や Node.js を使わない。
+インライン実行（`python -c`, `node -e`）も、一時ファイルに書き出しての実行も禁止する。
+シェルコマンド（`jq`, `awk`, `sed`, `grep`, `cut`, `tr`, `sort`, `uniq` 等）と UNIX パイプラインで処理する。
+
 ### コードレビュー・設計レビューの観点
 
 - 正しさ・バグの可能性
