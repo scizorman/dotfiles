@@ -81,6 +81,7 @@ in
       pbpaste
       op
       pkgs.wslu
+      pkgs.bubblewrap
     ];
 
   home.sessionVariables = {
