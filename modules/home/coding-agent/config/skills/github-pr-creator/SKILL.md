@@ -21,7 +21,7 @@ GitHub CLI を使用して Pull Request を作成する。
 - 変更がコミット済み
 - 変更がリモートに push 済み
 
-上記が満たされていない場合、git-operator skill を参照して Git 操作を完了させる。
+上記が満たされていない場合、必要な Git 操作を先に完了させる。
 
 ## Procedure
 

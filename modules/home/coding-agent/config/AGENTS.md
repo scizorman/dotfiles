@@ -40,6 +40,11 @@ When a project has a Makefile, run lint, fmt, test, and similar commands through
 Read the Makefile before execution to understand available targets and their contents.
 When running from outside the working directory, specify the directory with `make -C <directory>`.
 
+### Git
+
+Use kebab-case for branch names.
+Write commit messages in Conventional Commits format.
+
 ---
 
 ## Engineering

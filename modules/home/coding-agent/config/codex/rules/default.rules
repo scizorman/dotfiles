@@ -1,4 +1,9 @@
 prefix_rule(
+    pattern = ["git", "add", [".", "-A"]],
+    decision = "forbidden",
+    justification = "Stage files explicitly instead of using broad add patterns",
+)
+prefix_rule(
     pattern = ["git", "commit", "--amend"],
     decision = "forbidden",
     justification = "Rewriting history is not allowed",
