@@ -4,9 +4,23 @@
   ignorePresets: ["security:minimumReleaseAgeNpm"],
   automerge: true,
   labels: ["dependencies"],
-  nix: {
-    enabled: false,
+  lockFileMaintenance: {
+    enabled: true,
   },
+  nix: {
+    enabled: true,
+  },
+  packageRules: [
+    {
+      matchManagers: ["nix"],
+      enabled: false,
+    },
+    {
+      matchManagers: ["nix"],
+      matchUpdateTypes: ["lockFileMaintenance"],
+      enabled: true,
+    },
+  ],
   mise: {
     managerFilePatterns: ["modules/home/mise/config/config.toml"],
   },
