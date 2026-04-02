@@ -9,6 +9,9 @@
       "**/.claude/settings.local.json"
       "**/CLAUDE.local.md"
 
+      # Codex
+      ".codex"
+
       # direnv
       ".direnv"
       ".envrc"
