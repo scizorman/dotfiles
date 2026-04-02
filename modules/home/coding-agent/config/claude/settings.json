@@ -107,7 +107,6 @@
       "Bash(gh ssh-key *)",
       "Bash(gh gpg-key *)",
       "Bash(gh auth *)",
-      "Bash(cd *)",
       "Bash(python -c *)",
       "Bash(python3 -c *)",
       "Bash(node -e *)",
@@ -135,8 +134,11 @@
         "hooks": [
           {
             "type": "command",
-            "if": "Bash(git -C *)",
-            "command": "echo 'Do not use git -C. Operate from the current working directory.' >&2; exit 2"
+            "command": "cmd=$(cat | jq -r '.tool_input.command') && if echo \"$cmd\" | grep -qE '^cd(\\s|$)'; then echo 'Do not use cd. Use absolute paths instead.' >&2; exit 2; fi"
+          },
+          {
+            "type": "command",
+            "command": "cmd=$(cat | jq -r '.tool_input.command') && if echo \"$cmd\" | grep -qE '(^|[;&|(])\\s*git\\s+-C\\b'; then echo 'Do not use git -C. Operate from the current working directory.' >&2; exit 2; fi"
           }
         ]
       }
