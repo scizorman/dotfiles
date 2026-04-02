@@ -75,7 +75,7 @@ For the full flag reference by field type, see [references/field-operations.md](
 
 ## Workflow: Create a Sub-task
 
-Use the `github-sub-issue-creator` skill to create a sub-issue linked to a parent issue, then add it to the project following the same steps as above.
+Use the `github-issue-creator` skill with the parent issue number to create and link the sub-issue, then add it to the project following the same steps as above.
 
 ## Workflow: Add Existing Issue or PR to Project
 

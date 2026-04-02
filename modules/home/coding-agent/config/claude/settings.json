@@ -76,7 +76,6 @@
       "Skill(github-issue-creator)",
       "Skill(github-issue-commenter)",
       "Skill(github-pr-creator)",
-      "Skill(github-sub-issue-creator)",
       "Skill(github-project-operator)",
       "Skill(github-project-reporter)",
       "Read(~/.claude/skills/**)",
