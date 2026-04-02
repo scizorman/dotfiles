@@ -1,30 +1,35 @@
 ---
-name: github-issue-creator
-description: Create GitHub issues with gh CLI, including standard issues and sub-issues linked to a parent issue. Use when creating a new issue, breaking down a larger issue into child issues, or establishing a parent-child relationship between issues. Detect repository issue templates, apply title and body conventions, and create the issue with gh CLI.
-compatibility: Requires gh CLI authenticated to GitHub with permission to access the target repository.
+name: 'github-issue-creator'
+description: >-
+  Create GitHub issues with gh CLI, including standard issues and sub-issues linked to a parent issue.
+  Use when creating a new issue, breaking down a larger issue into child issues,
+  or establishing a parent-child relationship between issues.
+  Detect repository issue templates, apply title and body conventions, and create the issue with gh CLI.
+compatibility: 'Requires gh CLI authenticated to GitHub with permission to access the target repository.'
 metadata:
-  short-description: Create GitHub issues and sub-issues with gh CLI
+  short-description: 'Create GitHub issues and sub-issues with gh CLI'
 ---
 
 # GitHub Issue Creator
 
-Create GitHub issues with GitHub CLI.
-When the user specifies a parent issue, create the issue first and then link it as a sub-issue.
+This skill handles the full lifecycle of creating a GitHub issue: gathering inputs, detecting repository templates, and creating the issue with `gh` CLI.
+When a parent issue is specified, the workflow extends to link the created issue as a sub-issue.
+If any required information is missing, ask the user before proceeding.
 
 ## Confirm Inputs
 
-Confirm:
+Confirm the following before creating the issue, because creating an issue in the wrong repository or under the wrong parent is tedious to undo.
 
 - target repository
 - issue title and purpose
 - labels, assignees, and milestone when specified
 - parent issue number when the new issue should become a sub-issue
 
-When a parent issue is specified, treat the request as a sub-issue workflow.
-
 ## Detect Templates
 
-Detect issue templates. Filenames are case-insensitive.
+Detect issue templates in the target repository.
+Following the repository's established template keeps the issue readable and consistent for maintainers.
+Filenames are case-insensitive.
 
 Single-file template locations in priority order:
 
@@ -41,6 +46,7 @@ Multiple-template directory locations:
 If a single-file template exists, read and follow it.
 If a templates directory exists, list the available templates and ask the user which one to use.
 If no template exists, use [templates/default.md](templates/default.md).
+Note that this default template is written in Japanese.
 
 ## Create the Issue
 
@@ -60,22 +66,24 @@ gh issue create -R OWNER/REPO --title "<title>" --body-file /tmp/gh-issue-body.m
 
 Record the created issue URL.
 
-## Link a Parent Issue
+### Title format
 
-If a parent issue is specified, continue with the sub-issue workflow after creating the issue.
-Use [references/sub-issues.md](references/sub-issues.md) for the exact commands.
-Report the created issue URL after the link succeeds.
-
-## Title Guidelines
-
-The title should be a natural-language sentence summarising the issue.
-Do not use commit-message format (for example, `fix(auth): bug`).
+Write the title as a natural-language sentence describing the issue.
+This keeps issue lists and search results readable.
+Commit-message format (e.g., `fix(auth): bug`) is meaningless outside of a git log and makes issues harder to scan.
 
 Good examples:
+
 - ログイン時にセッションタイムアウトが発生する
 - ダークモード切り替え機能を追加したい
 - Login session timeout occurs unexpectedly
 
 Bad examples:
+
 - fix(auth): session timeout bug
 - Bug
+
+## Link a Parent Issue
+
+When a parent issue is specified, read [references/github-sub-issue-link.md](references/github-sub-issue-link.md) for the exact commands to link the created issue as a sub-issue.
+Report the created issue URL after the link succeeds.
