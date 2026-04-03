@@ -74,7 +74,7 @@
       "Bash(git commit *)",
       "Bash(git push *)",
       "Skill(github-issue-creator)",
-      "Skill(github-issue-commenter)",
+      "Skill(github-issue-pr-commenter)",
       "Skill(github-pr-creator)",
       "Skill(github-project-operator)",
       "Skill(github-project-reporter)",

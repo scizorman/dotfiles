@@ -30,3 +30,6 @@ model_verbosity = "high"
 
 [otel]
 metrics_exporter = "none"
+
+[projects."/home/scizorman/dotfiles"]
+trust_level = "trusted"
