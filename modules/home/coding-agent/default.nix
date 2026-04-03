@@ -27,12 +27,11 @@ in
     ".codex/rules/default.rules".source =
       config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/rules/default.rules";
 
+    ".copilot/config.json".source =
+      config.lib.file.mkOutOfStoreSymlink "${configDir}/copilot/config.json";
+    ".copilot/copilot-instructions.md".source =
+      config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
   }
   // mkSkillLinks ".claude"
   // mkSkillLinks ".codex";
-
-  xdg.configFile."copilot/config.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${configDir}/copilot/config.json";
-  xdg.configFile."copilot/copilot-instructions.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
 }
