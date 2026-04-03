@@ -145,6 +145,7 @@
     ]
   },
   "model": "opusplan",
+  "effortLevel": "high",
   "enabledPlugins": {
     "document-skills@anthropic-agent-skills": true,
     "slack@claude-plugins-official": true,
