@@ -1,99 +1,114 @@
 ---
-name: github-pr-creator
-description: GitHub 上の変更を Pull Request として提出する skill。Issue の確認、branch 名の決定、`ghq` 配下の git worktree 作成または再利用、commit と push、PR テンプレートの選択、`gh pr create` による PR 作成までを一貫して扱う。ユーザーが「PR 作って」「プルリクを出して」「この Issue に着手したい」「作業ブランチを切って進めたい」など、PR 前後の GitHub workflow を依頼した時に使う。
+name: 'github-pr-creator'
+description: >-
+  Submit changes as a GitHub Pull Request with gh CLI.
+  Covers the full workflow: issue confirmation, branch naming, ghq-based git worktree creation or reuse,
+  commit and push, PR template detection, and PR creation with gh pr create.
+  Use when creating a pull request, opening a PR, starting work on an issue, or cutting a working branch.
+compatibility: 'Requires gh CLI authenticated to GitHub, git, and ghq for worktree management.'
+metadata:
+  short-description: 'Create GitHub Pull Requests with gh CLI using ghq worktrees'
 ---
 
 # GitHub Pull Request Creator
 
-GitHub 上の 1 変更を Pull Request として提出可能な状態まで進める。
-PR 作成だけでなく、その前段の git workflow も扱う。
-作業単位は branch とし、worktree はその branch を扱う標準の作業場所として扱う。
+This skill handles the full workflow of submitting changes as a GitHub Pull Request: confirming the related issue, preparing a branch and worktree, committing and pushing, detecting PR templates, and creating the PR with `gh` CLI.
+The unit of work is a branch, and a worktree is the standard workspace for that branch.
+If any required information is missing, ask the user before proceeding.
 
-## Workflow
+## Confirm Issue
 
-### Issue の確認
+Confirm the issue to link before starting work, because a PR without a clear issue link makes the purpose of the change harder to trace after the fact.
 
-ユーザーが Issue を指定した場合、その Issue を使用する。
+- If the user specified an issue, use it.
+- If the user explicitly says no issue is needed, proceed without linking.
+- If unspecified, summarize the implementation and ask which issue to link, or whether to skip linking.
 
-ユーザーが「Issue 不要」と明示した場合、Issue 紐づけなしで進める。
+## Branch and Worktree
 
-ユーザーが指定していない場合、PR の実装内容を簡潔に要約し、どの Issue に紐づけるか、または紐づけ不要かを確認する。
+Create a dedicated branch and worktree for each task, because mixing unrelated changes in a single branch or the main worktree makes PRs harder to review and revert.
+Never create a worktree inside the repository root.
 
-### Branch と Worktree
-
-新規タスクでは、専用 branch と専用 worktree を作ることを標準とする。
-repo 直下に worktree を作ってはならない。
-
-worktree の canonical path は次とする。
+The canonical worktree path is:
 
 ```text
 $(ghq root)/.worktrees/<host>/<owner>/<repo>/<branch>
 ```
 
-`<host>/<owner>/<repo>` は `origin` remote から決定する。
-branch 名は repository またはユーザーの規約に従う。
-明示的な規約がない場合は kebab-case を使う。
+`<host>/<owner>/<repo>` is derived from the `origin` remote.
+Branch names follow the repository or user conventions; default to kebab-case when no convention is specified.
 
-対象 branch の worktree が既にある場合は再利用する。
-branch だけが存在する場合は、その branch を指す worktree を canonical path に作る。
-現在の作業場所が既に対象 branch の worktree なら、そのまま続行してよい。
+- If a worktree for the target branch already exists, reuse it.
+- If only the branch exists without a worktree, create a worktree at the canonical path for that branch.
+- If the current location is already the target branch's worktree, continue in place.
+- If the repository is not managed by `ghq` and the canonical path cannot be used, ask the user rather than silently deviating to a different layout.
+- If the main worktree or another task's worktree has unrelated changes, do not mix them in. Ask whether to create a dedicated worktree or which changes to include.
 
-repo が `ghq` 管理外にあり canonical path をそのまま使えない場合は、勝手に別ルールへ逸脱せずユーザーに確認する。
+## Commit and Push
 
-main worktree や他タスクの worktree に unrelated changes がある場合は混ぜない。
-専用 worktree を作るか、どの変更を対象にするかを確認する。
+Verify that all target changes are committed and pushed before creating the PR, because `gh pr create` requires an up-to-date remote branch to succeed.
 
-### Commit と Push
+- If any target changes are uncommitted, commit them first.
+- If the branch has not been pushed to the remote, push it. Set the upstream on the first push.
+- Even when the user asks only to create a PR, fill in any missing commit or push steps rather than stopping.
 
-PR 作成前に、対象変更が commit 済みか確認する。
-未 commit なら、必要な commit を先に行う。
+## Detect Templates
 
-対象 branch が remote に push 済みか確認する。
-upstream が未設定なら、初回 push で upstream を設定する。
+Detect PR templates in the target repository.
+Following the repository's established template keeps pull requests readable and consistent for reviewers.
+Filenames are case-insensitive.
 
-ユーザーの依頼が PR 作成だけでも、commit や push が不足していればそこで止めず補ってから進める。
-
-### テンプレート検出
-
-PR テンプレートを検出する。
-ファイル名は大文字小文字を区別しない。
-
-単一ファイルテンプレートは以下の順序で検索し、最初に見つかったものを使用する。
+Single-file template locations in priority order:
 
 - `.github/pull_request_template.md`
-- `pull_request_template.md`
+- `pull_request_template.md` (repository root)
 - `docs/pull_request_template.md`
 
-複数テンプレートディレクトリは以下の場所を確認する。
+Multiple-template directory locations:
 
 - `.github/PULL_REQUEST_TEMPLATE/`
-- `PULL_REQUEST_TEMPLATE/`
+- `PULL_REQUEST_TEMPLATE/` (repository root)
 - `docs/PULL_REQUEST_TEMPLATE/`
 
-単一ファイルが見つかった場合は読み込んで使用する。
-ディレクトリが見つかった場合は利用可能なテンプレート一覧を示し、ユーザーに選択を求める。
-テンプレートが存在しない場合は [templates/default.md](templates/default.md) を使用する。
+If a single-file template exists, read and follow it.
+If a templates directory exists, list the available templates and ask the user which one to use.
+If no template exists, use [templates/default.md](templates/default.md).
+Note that this default template is written in Japanese.
 
-### PR 作成
+## Create the Pull Request
 
-PR の body は `/tmp/gh-pr-body.md` に書き出し、`--body-file` で渡す。
-`--body` に直接渡してはならない。
+Write the final PR body to `/tmp/gh-pr-body.md`, then create the PR with `--body-file`.
+This avoids shell parsing problems caused by headings or HTML comments in the body.
+If `gh` is unavailable, unauthenticated, or lacks access to the target repository, stop and report the failure clearly.
 
 ```bash
 gh pr create --title "..." --body-file /tmp/gh-pr-body.md
 ```
 
-PR URL をユーザーに報告する。
+Record and report the created PR URL to the user.
 
-## Issue Link Format
+### Issue link format
 
-PR テンプレートの有無に関わらず、Issue 紐づけには常にフル URL 形式を使用する。
+Always use the full URL form when linking an issue, regardless of whether a PR template is used.
+Full URLs work correctly from any repository context and leave no ambiguity.
 
 ```text
 - https://github.com/{owner}/{repo}/issues/xxx
 ```
 
-## Title Guidelines
+### Title format
 
-タイトルはタスクと実装内容を要約した自然言語の文にする。
-コミットメッセージ形式は使用しない。
+Write the title as a natural-language sentence summarizing the task and the change.
+This keeps PR lists and search results readable.
+Commit-message format (e.g., `fix(auth): bug`) is meaningless outside of a git log and makes PRs harder to scan.
+
+Good examples:
+
+- ログイン画面のセッション管理を修正する
+- ダッシュボードにエクスポート機能を追加する
+- Fix session management on the login page
+
+Bad examples:
+
+- fix(auth): session timeout bug
+- WIP
