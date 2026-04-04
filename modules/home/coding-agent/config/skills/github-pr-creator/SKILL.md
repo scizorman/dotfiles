@@ -2,18 +2,17 @@
 name: 'github-pr-creator'
 description: >-
   Submit changes as a GitHub Pull Request with gh CLI.
-  Covers the full workflow: issue confirmation, branch naming, ghq-based git worktree creation or reuse,
+  Covers the full workflow: issue confirmation, branch naming, implementation delegation,
   commit and push, PR template detection, and PR creation with gh pr create.
   Use when creating a pull request, opening a PR, starting work on an issue, or cutting a working branch.
-compatibility: 'Requires gh CLI authenticated to GitHub, git, and ghq for worktree management.'
+compatibility: 'Requires gh CLI authenticated to GitHub and git.'
 metadata:
-  short-description: 'Create GitHub Pull Requests with gh CLI using ghq worktrees'
+  short-description: 'Create GitHub Pull Requests with gh CLI'
 ---
 
 # GitHub Pull Request Creator
 
-This skill handles the full workflow of submitting changes as a GitHub Pull Request: confirming the related issue, preparing a branch and worktree, committing and pushing, detecting PR templates, and creating the PR with `gh` CLI.
-The unit of work is a branch, and a worktree is the standard workspace for that branch.
+This skill handles the full workflow of submitting changes as a GitHub Pull Request: confirming the related issue, preparing a branch, and creating the PR.
 If any required information is missing, ask the user before proceeding.
 
 ## Confirm Issue
@@ -24,25 +23,48 @@ Confirm the issue to link before starting work, because a PR without a clear iss
 - If the user explicitly says no issue is needed, proceed without linking.
 - If unspecified, summarize the implementation and ask which issue to link, or whether to skip linking.
 
-## Branch and Worktree
+## Branch Name
 
-Create a dedicated branch and worktree for each task, because mixing unrelated changes in a single branch or the main worktree makes PRs harder to review and revert.
-Never create a worktree inside the repository root.
+Determine the branch name for the task.
 
-The canonical worktree path is:
+Branch names use kebab-case (e.g. `add-export-feature`, `fix-session-timeout`).
+Do not use prefix-slash patterns like `feature/xxx` or `fix/xxx`.
 
-```text
-$(ghq root)/.worktrees/<host>/<owner>/<repo>/<branch>
-```
+## Delegate to Agent (Claude Code only)
 
-`<host>/<owner>/<repo>` is derived from the `origin` remote.
-Branch names follow the repository or user conventions; default to kebab-case when no convention is specified.
+When the task requires implementation (the user specifies an issue or describes work to do), use the Agent tool with `isolation: "worktree"` to delegate all remaining work to a subagent, but only when the current workspace does not already contain task-local work that should be continued in place.
 
-- If a worktree for the target branch already exists, reuse it.
-- If only the branch exists without a worktree, create a worktree at the canonical path for that branch.
-- If the current location is already the target branch's worktree, continue in place.
-- If the repository is not managed by `ghq` and the canonical path cannot be used, ask the user rather than silently deviating to a different layout.
-- If the main worktree or another task's worktree has unrelated changes, do not mix them in. Ask whether to create a dedicated worktree or which changes to include.
+The subagent is responsible for the complete implementation-to-PR workflow.
+
+- Create the branch with `git switch -c <branch-name>`
+- Implement the changes
+- Commit and push the branch
+- Detect PR templates in the repository (see template detection rules below)
+- Write the PR body to `/tmp/gh-pr-body.md`
+- Create the PR with `gh pr create --title "..." --body-file /tmp/gh-pr-body.md`
+- Report the PR URL
+
+Pass the subagent a prompt that includes the following.
+
+- The issue number, title, and a summary of the issue body
+- The kebab-case branch name to create
+- The template detection rules and PR creation rules from this skill (copy them verbatim into the prompt)
+
+After the subagent completes, extract the PR URL from its output and report it to the user.
+
+### When to skip agent delegation
+
+Skip agent delegation and continue in the current workspace when any of the following apply.
+
+- The user already has changes on a branch and only wants to create a PR.
+- The current workspace has staged changes or unstaged changes.
+- The repository is in the middle of a merge, rebase, cherry-pick, revert, or bisect.
+- `HEAD` is detached.
+- The current branch is not the default branch and already appears to contain work for the same task. Treat this as true when the branch is ahead of its upstream branch. If the relationship between the existing branch work and the current task is unclear, ask before delegating.
+
+In these cases, follow the Commit and Push, Detect Templates, and Create the Pull Request sections directly instead of creating a fresh delegated worktree.
+
+---
 
 ## Commit and Push
 
