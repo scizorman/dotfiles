@@ -1,0 +1,16 @@
+prefix_rule(
+    pattern = ["make", ["fmt", "check", "build", "diff"]],
+    decision = "allow",
+)
+prefix_rule(
+    pattern = ["nix", ["eval", "repl"]],
+    decision = "allow",
+)
+prefix_rule(
+    pattern = ["nvim", "--headless"],
+    decision = "allow",
+)
+prefix_rule(
+    pattern = ["make", ["clean", "update", "test", "switch"]],
+    decision = "prompt",
+)
