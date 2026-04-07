@@ -82,6 +82,7 @@ in
       op
       pkgs.wslu
       pkgs.bubblewrap
+      pkgs.socat
     ];
 
   home.sessionVariables = {
