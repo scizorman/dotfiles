@@ -20,12 +20,14 @@ in
     gnugrep
     gnused
     gnutar
+    hackgen-nf-font
   ];
 
   programs.ghostty = {
     enable = true;
     package = pkgs.ghostty-bin;
     settings = {
+      font-family = "HackGen Console NF";
       font-size = 12;
       theme = "nightfox";
       background-opacity = 0.90;
