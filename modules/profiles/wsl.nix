@@ -63,7 +63,7 @@ in
   home.packages =
     let
       xdg-open = pkgs.writeShellScriptBin "xdg-open" ''
-        exec ${pkgs.wslu}/bin/wslview "$@"
+        exec powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Start \"$1\""
       '';
       pbcopy = pkgs.writeShellScriptBin "pbcopy" ''
         ${pkgs.wl-clipboard}/bin/wl-copy "$@"
@@ -80,13 +80,12 @@ in
       pbcopy
       pbpaste
       op
-      pkgs.wslu
       pkgs.bubblewrap
       pkgs.socat
     ];
 
   home.sessionVariables = {
-    BROWSER = "wslview";
+    BROWSER = "xdg-open";
     SSH_AUTH_SOCK = sshAgentSocket;
   };
 }
