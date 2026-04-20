@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   programs.neovim = {
@@ -28,4 +33,5 @@
 
   xdg.configFile."nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/home/neovim/config";
+  xdg.configFile."nvim/init.lua" = lib.mkForce { enable = false; };
 }
