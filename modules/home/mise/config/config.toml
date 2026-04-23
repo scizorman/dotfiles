@@ -4,6 +4,6 @@ npm.package_manager = "pnpm"
 [tools]
 "npm:@anthropic-ai/claude-code" = "2.1.118"
 "npm:@github/copilot" = "1.0.34"
-"npm:@openai/codex" = "0.123.0"
+"npm:@openai/codex" = "0.124.0"
 "npm:@fission-ai/openspec" = "1.3.1"
 "pipx:snowflake-cli" = "3.16.0"
