@@ -6,21 +6,13 @@
   },
   "permissions": {
     "allow": [
-      "Bash(ls *)",
-      "Bash(find *)",
       "Bash(mkdir *)",
-      "Bash(cat *)",
-      "Bash(head *)",
-      "Bash(tail *)",
       "Bash(file *)",
-      "Bash(stat *)",
       "Bash(realpath *)",
       "Bash(readlink *)",
       "Bash(basename *)",
       "Bash(dirname *)",
       "Bash(jq *)",
-      "Bash(grep *)",
-      "Bash(wc *)",
       "Bash(pwd)",
       "Bash(which *)",
       "Bash(whoami)",
@@ -28,10 +20,6 @@
       "Bash(date *)",
       "Bash(env)",
       "Bash(printenv *)",
-      "Bash(git status *)",
-      "Bash(git log *)",
-      "Bash(git diff *)",
-      "Bash(git branch *)",
       "Bash(git fetch *)",
       "Bash(git stash *)",
       "Bash(git add *)",
@@ -79,8 +67,13 @@
       "Skill(github-project-operator)",
       "Skill(github-project-reporter)",
       "Read(~/.claude/skills/**)",
-      "Read(/tmp/*)",
-      "Write(/tmp/*)"
+      "Read(//tmp/**)",
+      "Write(//tmp/**)",
+      "WebSearch",
+      "WebFetch(domain:*.github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:*.claude.com)",
+      "WebFetch(domain:*.openai.com)"
     ],
     "deny": [
       "Bash(git add .)",
@@ -171,5 +164,6 @@
     }
   },
   "language": "Japanese",
-  "effortLevel": "high"
+  "effortLevel": "high",
+  "verbose": true
 }
