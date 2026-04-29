@@ -127,6 +127,7 @@
       "Bash(gh workflow run *)"
     ]
   },
+  "model": "opusplan",
   "hooks": {
     "PreToolUse": [
       {
@@ -144,8 +145,6 @@
       }
     ]
   },
-  "model": "opusplan",
-  "effortLevel": "high",
   "enabledPlugins": {
     "document-skills@anthropic-agent-skills": true,
     "slack@claude-plugins-official": true,
@@ -170,5 +169,7 @@
         "repo": "hashicorp/agent-skills"
       }
     }
-  }
+  },
+  "language": "Japanese",
+  "effortLevel": "high"
 }
