@@ -5,7 +5,7 @@ approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 check_for_update_on_startup = false
 web_search = "cached"
-profile = "quick"
+profile = "work"
 
 [sandbox_workspace_write]
 network_access = true
@@ -21,13 +21,18 @@ enabled = false
 
 [profiles.quick]
 model = "gpt-5.4-mini"
+model_reasoning_effort = "low"
+
+[profiles.work]
+model = "gpt-5.4"
+model_reasoning_effort = "medium"
+model_verbosity = "low"
 
 [profiles.deep]
-model = "gpt-5.4"
+model = "gpt-5.5"
 model_reasoning_effort = "xhigh"
 model_reasoning_summary = "detailed"
 model_verbosity = "high"
 
 [otel]
 metrics_exporter = "none"
-
