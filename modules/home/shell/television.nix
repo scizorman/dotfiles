@@ -4,6 +4,75 @@
   programs.television = {
     enable = true;
     enableZshIntegration = true;
+    settings = {
+      shell_integration = {
+        channel_triggers = {
+          # environment
+          "env" = [
+            "export"
+            "unset"
+          ];
+          # filesystem
+          "dirs" = [
+            "cd"
+            "ls"
+            "rmdir"
+            "z"
+          ];
+          "files" = [
+            "bat"
+            "cat"
+            "chmod"
+            "chown"
+            "cp"
+            "gzip"
+            "gunzip"
+            "head"
+            "less"
+            "ln"
+            "mv"
+            "nano"
+            "rm"
+            "tail"
+            "tar"
+            "touch"
+            "unzip"
+            "vim"
+            "xz"
+            "zip"
+          ];
+          # git
+          "git-files" = [
+            "git blame"
+            "git show"
+          ];
+          "git-diff" = [
+            "git add"
+            "git restore"
+          ];
+          "git-branch" = [
+            "git checkout"
+            "git switch"
+            "git branch"
+            "git merge"
+            "git rebase"
+            "git pull"
+            "git push"
+          ];
+          "git-log" = [ "git log" ];
+          "git-repos" = [
+            "code"
+            "git clone"
+            "hx"
+            "nvim"
+          ];
+          "git-worktrees" = [ "git worktree" ];
+          # containers
+          "docker-images" = [ "docker run" ];
+        };
+      };
+    };
+
     channels = {
       git-files = {
         metadata = {
