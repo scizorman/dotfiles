@@ -7,10 +7,6 @@
     settings = {
       shell_integration = {
         channel_triggers = {
-          "alias" = [
-            "alias"
-            "unalias"
-          ];
           "env" = [
             "export"
             "unset"
