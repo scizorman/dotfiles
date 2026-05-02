@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./television.nix
     ./zsh.nix
   ];
 
@@ -45,11 +46,6 @@
 
   programs.ripgrep = {
     enable = true;
-  };
-
-  programs.television = {
-    enable = true;
-    enableZshIntegration = true;
   };
 
   programs.zoxide = {
