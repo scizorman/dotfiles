@@ -12,27 +12,12 @@ Technical terms may be used in English.
 Never answer based on speculation.
 If investigation yields no answer, say so.
 
-- Be honest and direct. Do not sugarcoat facts.
-- Actively challenge design decisions, implementation approaches, technology choices, and writing structure. Question assumptions. While considering practical constraints, also show what the ideal should be.
-- When reasoning or judgment is weak, break down the structure and point out where and why it is weak.
-
-### Discussion and Consultation
-
-- Respond based on the underlying truth sensed between the lines — anxiety, obsession, avoidance. When the surface question diverges from the real problem, point out the divergence itself.
-
-### Problem-Solving Approach
-
-A problem is the gap between the goal and the current state — something that must be resolved to achieve the goal.
-First clarify the problem, then define concrete actions (tasks) to solve it.
+- Do not accept user claims at face value. Investigate before acting on a correction.
+- State the *why* alongside any non-trivial decision or config change.
 
 ---
 
 ## Workflow
-
-### Task Management
-
-Clarify problems in Issues and define tasks.
-Each task corresponds to a Pull Request.
 
 ### Command Execution
 
@@ -40,77 +25,41 @@ When a project has a Makefile, run lint, fmt, test, and similar commands through
 Read the Makefile before execution to understand available targets and their contents.
 When running from outside the working directory, specify the directory with `make -C <directory>`.
 
+Avoid `cd`. Pass absolute paths or use `make -C <dir>`. The same applies to subagents.
+
+Use shell + standard UNIX tooling (jq / awk / sed / xargs) for scripting. Do not use Python or Node for ad-hoc scripts, including from subagents.
+
+Parallelize bulk operations with `xargs -P` when iterating over many independent items.
+
+Do not run install / curl / wget side-effects while in plan mode or before the user has approved the action.
+
+Compute dates with `TZ=Asia/Tokyo`. Resolve relative dates ("today" / "yesterday") to absolute JST dates before recording them.
+
 ### Git
 
 Use kebab-case for branch names.
 Write commit messages in Conventional Commits format.
 
----
+### GitHub Issue / PR
 
-## Engineering
+Write issue bodies as desired end-states in passive voice.
+Do not include implementation steps, commands, file paths, resource names, or backwards-compatibility discussion.
 
-- Consider language characteristics and paradigms.
+The "Overview" section is a 1–2 sentence summary, distinct from "Goal" / "Purpose".
 
-### Code Review and Design Review Criteria
+Do not write checkboxes (`- [ ]`) in issue or PR bodies.
+Do not edit existing checkboxes on the user's behalf.
 
-- Correctness and potential bugs
-- Readability, maintainability, and consistency
-- Separation of concerns and dependency structure
-- Testability
-- Performance and scalability
-- Security and robustness
+Keep issue comments within the original issue's scope.
 
-### Leveraging Type Systems
+Reference files via GitHub URLs in summaries and comments, not local paths.
 
-Express constraints through type declarations rather than runtime validation.
-This reduces defensive programming code and catches errors at compile time.
-
-- Replace associative array parameters with typed individual arguments or value objects.
-- Use enums instead of strings when possible values are limited.
-- Explicitly declare return types to eliminate unnecessary checks on the caller side.
-
-### Immutability
-
-Prefer immutability to prevent unintended side effects from shared objects.
-
-- Actively use readonly classes and immutable types.
-- Methods that change state should return new objects rather than mutating the original.
-- Do not share mutable objects across multiple locations.
-
-### Value Objects for Domain Modeling
-
-Express domain-specific concepts with dedicated classes rather than combinations of primitive types.
-This eliminates invalid states at the type level and clarifies business logic.
-
-- Group related values and guarantee invariants in the constructor.
-- Combine private constructors with static factory methods where appropriate.
-
-### Simple vs Easy
-
-Distinguish Simple from Easy.
-
-- Simple means few components with clear composition.
-- Easy means low barrier to getting started.
-
-Do not sacrifice Simple for short-term Easy.
-Prefer explicit, composable interfaces over convenience methods that hide complexity.
-
-### Test Readability
-
-Tests are specification documents.
-Use named arguments so that intent is readable from the test code.
+For project activity summaries, prefer `gh` CLI (Issues / PRs / Projects) over `git log`.
+Issue/PR/Project history reflects activity better than commits.
 
 ---
 
 ## Writing
-
-### Review Criteria
-
-- Logical structure (claim → evidence → conclusion)
-- Appropriateness for the intended audience
-- Redundancy and duplication
-- Consistency of terminology and tone
-- Vague or overly abstract expressions
 
 ### Style
 
@@ -119,9 +68,17 @@ When editing text written in polite form (敬体), match its style.
 
 ### Formatting Rules
 
-- Do not use numbered lists (1. 2. 3.) or bold text to represent headings.
-- Use Markdown heading syntax (#, ##, ###).
-- Use bullet lists only for independent items that can be reordered without changing meaning.
+- Put a single half-width space between Japanese text and ASCII characters.
+- Do not put a space after Japanese punctuation. Use `。` and `、` as punctuation marks.
+- Do not end a sentence with a colon. This applies to introductions for bullet lists and headings as well.
+- Use Markdown heading syntax (`#`, `##`, `###`). Do not use numbered lists or bold text as heading substitutes.
+- Use semantic line breaks — break at sentence boundaries, not column width.
+- Use bullet lists (`-`) only for independent items that can be reordered without changing meaning.
+- Use numbered lists only when order matters. Write `1.` for every item (minimizes diff on reorder).
 - Do not mix numbered lists and bullet lists at the same level.
-- Do not end a sentence with a colon followed by a bullet list.
-- End sentences with a period and break lines at periods.
+- Indent nested lists with 2 spaces.
+- Wrap inline code in backticks. Add a language tag to every code fence.
+- Limit `**bold**` to genuinely important content. Do not use it as a heading substitute.
+- Mark notes with `Note:`. Do not use `※` or `注:`.
+- Mermaid node names use snake_case. Do not use abbreviations (e.g. MKT / OPP / ESC). No decorative colors (`classDef` / `style ... fill:`), emoji, or bold labels.
+- Use HTML tags only for functional requirements (e.g. collapsibles). Not for decoration.
