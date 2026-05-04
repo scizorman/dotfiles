@@ -6,6 +6,10 @@
   },
   "permissions": {
     "allow": [
+      "Bash(* --help)",
+      "Bash(* --help *)",
+      "Bash(* --version)",
+      "Bash(* --version *)",
       "Bash(mkdir *)",
       "Bash(file *)",
       "Bash(realpath *)",
@@ -21,9 +25,13 @@
       "Bash(env)",
       "Bash(printenv *)",
       "Bash(git fetch *)",
+      "Bash(git -C * fetch *)",
       "Bash(git stash *)",
+      "Bash(git -C * stash *)",
       "Bash(git add *)",
+      "Bash(git -C * add *)",
       "Bash(git switch *)",
+      "Bash(git -C * switch *)",
       "Bash(gh issue view *)",
       "Bash(gh issue list *)",
       "Bash(gh issue status *)",
@@ -60,7 +68,9 @@
       "Bash(gh project edit *)",
       "Bash(gh project close *)",
       "Bash(git commit *)",
+      "Bash(git -C * commit *)",
       "Bash(git push *)",
+      "Bash(git -C * push *)",
       "Skill(github-issue-creator)",
       "Skill(github-issue-pr-commenter)",
       "Skill(github-pr-creator)",
@@ -76,13 +86,25 @@
       "WebFetch(domain:*.openai.com)"
     ],
     "deny": [
-      "Bash(git add .)",
-      "Bash(git add -A)",
+      "Bash(git add . *)",
+      "Bash(git -C * add . *)",
+      "Bash(git add -A *)",
+      "Bash(git -C * add -A *)",
       "Bash(git commit --amend *)",
+      "Bash(git -C * commit --amend *)",
       "Bash(git push --force *)",
+      "Bash(git -C * push --force *)",
       "Bash(git push --force-with-lease *)",
+      "Bash(git -C * push --force-with-lease *)",
       "Bash(git rebase *)",
+      "Bash(git -C * rebase *)",
       "Bash(git reset --hard *)",
+      "Bash(git -C * reset --hard *)",
+      "Bash(git * --no-verify)",
+      "Bash(git * --no-verify *)",
+      "Bash(git * --no-gpg-sign)",
+      "Bash(git * --no-gpg-sign *)",
+      "Bash(git -c commit.gpgsign=false *)",
       "Bash(gh pr merge *)",
       "Bash(gh issue delete *)",
       "Bash(gh issue transfer *)",
@@ -121,23 +143,6 @@
     ]
   },
   "model": "opusplan",
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cmd=$(cat | jq -r '.tool_input.command') && if echo \"$cmd\" | grep -qE '^cd(\\s|$)'; then echo 'Do not use cd. Use absolute paths instead.' >&2; exit 2; fi"
-          },
-          {
-            "type": "command",
-            "command": "cmd=$(cat | jq -r '.tool_input.command') && if echo \"$cmd\" | grep -qE '(^|[;&|(])\\s*git\\s+-C\\b'; then echo 'Do not use git -C. Operate from the current working directory.' >&2; exit 2; fi"
-          }
-        ]
-      }
-    ]
-  },
   "enabledPlugins": {
     "document-skills@anthropic-agent-skills": true,
     "slack@claude-plugins-official": true,

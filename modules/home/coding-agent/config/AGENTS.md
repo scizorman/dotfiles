@@ -25,8 +25,6 @@ When a project has a Makefile, run lint, fmt, test, and similar commands through
 Read the Makefile before execution to understand available targets and their contents.
 When running from outside the working directory, specify the directory with `make -C <directory>`.
 
-Avoid `cd`. Pass absolute paths or use `make -C <dir>`. The same applies to subagents.
-
 Use shell + standard UNIX tooling (jq / awk / sed / xargs) for scripting. Do not use Python or Node for ad-hoc scripts, including from subagents.
 
 Parallelize bulk operations with `xargs -P` when iterating over many independent items.
