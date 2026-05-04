@@ -9,6 +9,7 @@ in
   wsl.enable = true;
   wsl.defaultUser = username;
   wsl.interop.register = true;
+  wsl.ssh-agent.enable = true;
 
   # Ensure binfmt registration is re-applied after nixos-rebuild
   systemd.services.systemd-binfmt.restartTriggers = [
