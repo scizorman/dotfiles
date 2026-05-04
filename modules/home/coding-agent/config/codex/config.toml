@@ -12,6 +12,7 @@ network_access = true
 
 [tui]
 animations = false
+show_tooltips = false
 
 [analytics]
 enabled = false
