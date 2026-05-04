@@ -2,16 +2,33 @@ prefix_rule(
     pattern = ["git", "add", [".", "-A"]],
     decision = "forbidden",
     justification = "Stage files explicitly instead of using broad add patterns",
+    match = [
+        "git add .",
+        "git add -A",
+    ],
+    not_match = [
+        "git add modules/home/coding-agent/config/codex/rules/default.rules",
+    ],
 )
 prefix_rule(
     pattern = ["git", "commit", "--amend"],
     decision = "forbidden",
     justification = "Rewriting history is not allowed",
+    match = [
+        "git commit --amend",
+    ],
 )
 prefix_rule(
     pattern = ["git", "push", ["--force", "--force-with-lease"]],
     decision = "forbidden",
     justification = "Force push is not allowed",
+    match = [
+        "git push --force",
+        "git push --force-with-lease origin main",
+    ],
+    not_match = [
+        "git push origin main",
+    ],
 )
 prefix_rule(
     pattern = ["git", "rebase"],
@@ -31,6 +48,12 @@ prefix_rule(
     pattern = ["gh", "pr", "merge"],
     decision = "forbidden",
     justification = "Merging PRs is not allowed",
+    match = [
+        "gh pr merge 123",
+    ],
+    not_match = [
+        "gh pr view 123",
+    ],
 )
 prefix_rule(
     pattern = ["gh", "issue", ["delete", "transfer"]],
@@ -63,44 +86,41 @@ prefix_rule(
     justification = "Deleting runs is not allowed",
 )
 prefix_rule(
-    pattern = ["gh", "secret"],
+    pattern = ["gh", ["secret", "ssh-key", "gpg-key", "auth"]],
     decision = "forbidden",
-    justification = "Secret management is not allowed",
-)
-prefix_rule(
-    pattern = ["gh", "ssh-key"],
-    decision = "forbidden",
-    justification = "SSH key management is not allowed",
-)
-prefix_rule(
-    pattern = ["gh", "gpg-key"],
-    decision = "forbidden",
-    justification = "GPG key management is not allowed",
-)
-prefix_rule(
-    pattern = ["gh", "auth"],
-    decision = "forbidden",
-    justification = "Auth management is not allowed",
+    justification = "Credential and auth management is not allowed",
 )
 prefix_rule(
     pattern = ["gh", "issue", ["close", "reopen"]],
     decision = "prompt",
+    justification = "Issue state changes should be confirmed",
+    match = [
+        "gh issue close 123",
+        "gh issue reopen 123",
+    ],
+    not_match = [
+        "gh issue view 123",
+    ],
 )
 prefix_rule(
     pattern = ["gh", "pr", ["close", "reopen", "review"]],
     decision = "prompt",
+    justification = "PR state changes and reviews should be confirmed",
 )
 prefix_rule(
     pattern = ["gh", "label", ["create", "edit"]],
     decision = "prompt",
+    justification = "Label mutations should be confirmed",
 )
 prefix_rule(
     pattern = ["gh", "run", ["cancel", "rerun"]],
     decision = "prompt",
+    justification = "Workflow reruns and cancellations should be confirmed",
 )
 prefix_rule(
     pattern = ["gh", "workflow", "run"],
     decision = "prompt",
+    justification = "Starting workflows should be confirmed",
 )
 prefix_rule(
     pattern = ["gh", "issue", ["view", "list", "status", "create", "comment", "edit"]],
@@ -109,6 +129,13 @@ prefix_rule(
 prefix_rule(
     pattern = ["gh", "pr", ["view", "list", "status", "checks", "diff", "create", "comment", "edit", "ready"]],
     decision = "allow",
+    match = [
+        "gh pr view 123",
+        "gh pr checks 123",
+    ],
+    not_match = [
+        "gh pr merge 123",
+    ],
 )
 prefix_rule(
     pattern = ["gh", "run", ["list", "view", "watch", "download"]],
