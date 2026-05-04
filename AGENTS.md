@@ -1,83 +1,45 @@
 # dotfiles
 
-A repository managing dotfiles across multiple environments using Nix flake.
+Nix flake-based dotfiles for NixOS WSL and darwin hosts.
 
-## Architecture
+## Architecture Rules
 
-### Directory Structure
+`flake.nix` enumerates hosts and shared outputs only.
+Do not move host assembly logic into it.
 
-```
-flake.nix
-hosts/
-  {hostname}/default.nix    # system config + module assembly
-modules/
-  home/
-    default.nix              # imports only
-    {tool}.nix               # single-tool config (Nix-generated)
-    {tool}/                  # tool with config/ (mkOutOfStoreSymlink)
-      default.nix
-      config/
-  profiles/
-    {runtime}.nix            # environment-specific additions
-```
+`hosts/{hostname}/default.nix` is the only host entry point.
+Keep NixOS and darwin system configuration in host files until multiple machines share the same OS-level configuration.
 
-### Separation of Parts and Assembly
+`modules/home/` contains environment-independent Home Manager configuration.
+It defines what tools and base configuration are installed.
+Do not put OS-specific or runtime-specific behavior here.
 
-`modules/` holds reusable parts; `hosts/` is where parts are assembled. The structure mirrors NixOS's own `nixos/modules/`.
+`modules/profiles/` contains runtime-specific integrations, environment values, and supporting packages.
+It defines what common tools connect to in a given environment.
+Use profiles for WSL integration such as clipboard, credential helpers, agents, and browser bridges.
 
-`flake.nix` only enumerates hosts and contains no logic. Each host's `default.nix` is the sole entry point — no splitting into `home.nix` or similar.
+Keep OS concerns and runtime concerns separate.
+NixOS, Ubuntu, and darwin differ on the OS axis.
+WSL and native environments differ on the runtime axis.
 
-### Two Axes of Variation
+## File Placement
 
-Environment differences arise along two independent axes.
+Use `modules/home/{tool}.nix` for stable tool configuration that can be expressed declaratively through Home Manager or Nix.
 
-- **OS axis** (NixOS / Ubuntu / darwin) — differences in system management
-- **runtime axis** (WSL / native) — presence or absence of host OS integration layer
+Use `modules/home/{tool}/default.nix` with `modules/home/{tool}/config/` for tools whose configuration is managed through `mkOutOfStoreSymlink`.
+This applies to complex, frequently edited, or toolchain-integrated config such as Neovim, mise, and coding agent configuration.
 
-WSL-specific settings (clipboard, credential helper, IdentityAgent, BROWSER, etc.) are common regardless of OS. These two axes are orthogonal and must not be mixed.
-
-### modules/home/ — User Environment Common to All Environments
-
-Importing `default.nix` brings in all common settings independent of OS and runtime. No environment-specific files belong here.
-
-When depending on external commands, assume an environment-agnostic interface (e.g., `pbcopy` / `pbpaste`). This module has no knowledge of what provides the actual implementation.
-
-### modules/profiles/ — Environment-Specific Additions
-
-Modeled after NixOS's `nixos/modules/profiles/` (e.g., `qemu-guest.nix`), this directory holds configuration presets for specific runtime environments. Hosts explicitly choose which profiles to import.
-
-A profile's responsibilities are three: provide the concrete implementation of interfaces assumed by `home/`, inject environment-specific values into existing settings, and add environment-specific packages. All injection rides on Home Manager's module system merging.
-
-### Boundary Between home/ and profiles/
-
-`home/` is responsible for *what* gets installed; `profiles/` is responsible for *what it connects to*. Tool installation and base configuration go in `home/`; connections to secret stores and agents go in `profiles/`.
-
-### Handling System-Level Configuration
-
-NixOS and darwin system configuration is written directly in the host. Extracting shared modules is only considered once multiple machines share the same OS. `modules/nixos/` or `modules/darwin/` is added at that point.
-
-## Design Decisions
-
-### Follow Nix Naming Conventions
-
-`modules/` and `profiles/` are derived from NixOS's own directory structure. Avoid names tied to implementation details (`homeModules`, `nixosModules`) or invented concepts (`platform`, `system`, `common`).
-
-### File Splitting Criteria
-
-A single tool's config uses the tool name (`git.nix`, `ssh.nix`); a bundle of related tools uses the concern name (`shell/`, `coding-agent/`). `default.nix` contains only imports — no settings mixed in.
-
-Tools with config files managed via `mkOutOfStoreSymlink` become directories (`neovim/`, `mise/`, `coding-agent/`). Tools that are purely Nix-generated remain files (`git.nix`, `ssh.nix`). This keeps the Nix config and the actual config files co-located. Since Nix's `import` reads `default.nix` when given a directory, the `imports` list stays uniform.
-
-### Two File Management Strategies
-
-**Nix-generated** — Stable configurations expressible declaratively via Home Manager's `programs.*`. Managed as `.nix` files and applied with `home-manager switch`.
-
-**mkOutOfStoreSymlink** — Configurations with complex structure, frequent manual edits, or integration with toolchains outside Nix (Neovim Lua config, mise config, coding agent config, etc.). The actual files live in `config/` inside the tool directory and are symlinked directly to the repository. Edits take effect immediately.
-
-### Avoid Premature Abstraction
-
-There are at most 3–5 host variants. DI-style provider patterns and module option abstractions are introduced only when duplication or change costs become genuinely painful. Small duplication across profiles is acceptable.
+Keep `default.nix` files as import or module assembly points unless the existing local pattern requires settings there.
+Do not introduce `home.nix` splits, provider abstractions, or shared OS modules unless duplication has created real maintenance cost.
 
 ## Commands
 
-Run via Makefile. Run `make` with no arguments to see available targets.
+Use the Makefile for repository checks and host operations.
+Run `make` with no arguments to inspect available targets before using an unfamiliar target.
+
+Run `make fmt` for formatting.
+Run `make check` for flake checks.
+
+Use environment-specific host targets only when validating host-level changes.
+On NixOS hosts, `make build`, `make diff`, `make test`, and `make switch` are provided when `nixos-rebuild` is available.
+On darwin hosts, `make build`, `make diff`, and `make switch` are provided when `darwin-rebuild` is available.
