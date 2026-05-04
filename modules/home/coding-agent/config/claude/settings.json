@@ -161,6 +161,12 @@
         "repo": "clonable-eden/plugins"
       }
     },
+    "dbt-agent-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "dbt-labs/dbt-agent-skills"
+      }
+    },
     "hashicorp": {
       "source": {
         "source": "github",
