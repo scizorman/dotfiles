@@ -1,8 +1,7 @@
-{ config, lib, ... }:
+{ config, ... }:
 
 let
   configDir = "${config.home.homeDirectory}/dotfiles/modules/home/coding-agent/config";
-  codexConfigTemplate = ./config/codex/config.toml;
 
   mkSkillLinks =
     prefix:
@@ -17,13 +16,14 @@ let
       }) skills
     );
 in
-({
+{
   home.file = {
     ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
     ".claude/settings.json".source =
       config.lib.file.mkOutOfStoreSymlink "${configDir}/claude/settings.json";
 
     ".codex/AGENTS.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
+    ".codex/config.toml".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/config.toml";
     ".codex/rules/default.rules".source =
       config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/rules/default.rules";
 
@@ -34,13 +34,4 @@ in
   }
   // mkSkillLinks ".claude"
   // mkSkillLinks ".codex";
-
-  home.activation.codexConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    run mkdir -p ${lib.escapeShellArg "${config.home.homeDirectory}/.codex"}
-    # Replace the previous symlink so Codex can persist runtime state in a plain file.
-    run rm -f ${lib.escapeShellArg "${config.home.homeDirectory}/.codex/config.toml"}
-    run install -m 644 \
-      ${lib.escapeShellArg "${toString codexConfigTemplate}"} \
-      ${lib.escapeShellArg "${config.home.homeDirectory}/.codex/config.toml"}
-  '';
-})
+}
