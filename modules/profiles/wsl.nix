@@ -4,6 +4,15 @@
   wsl.enable = true;
   wsl.interop.register = true;
   wsl.ssh-agent.enable = true;
+  wsl.wslConf.network.generateResolvConf = false;
+
+  # WSL's DNS tunnel nameserver (10.255.255.254) has a known bug (https://github.com/microsoft/WSL/issues/13415)
+  # where it appends search suffixes to AAAA queries, causing ~20s timeouts.
+  # Bypass the proxy with a public DNS instead.
+  networking.nameservers = [
+    "1.1.1.1"
+    "8.8.8.8"
+  ];
 
   # Ensure binfmt registration is re-applied after nixos-rebuild switch.
   # systemd-binfmt is oneshot and won't rerun on its own when
