@@ -4,17 +4,11 @@ let
   username = "scizorman";
 in
 {
+  imports = [ ../../modules/profiles/wsl.nix ];
+
   networking.hostName = "powder";
 
-  wsl.enable = true;
   wsl.defaultUser = username;
-  wsl.interop.register = true;
-  wsl.ssh-agent.enable = true;
-
-  # Ensure binfmt registration is re-applied after nixos-rebuild
-  systemd.services.systemd-binfmt.restartTriggers = [
-    config.environment.etc."binfmt.d/nixos.conf".source
-  ];
 
   boot.tmp.cleanOnBoot = true;
 
@@ -25,8 +19,10 @@ in
 
   security.sudo.wheelNeedsPassword = false;
   users.mutableUsers = false;
+
   programs.nix-ld.enable = true;
   programs.zsh.enable = true;
+
   virtualisation.docker.enable = true;
 
   users.users.${username} = {
@@ -48,7 +44,6 @@ in
   home-manager.users.${username} = {
     imports = [
       ../../modules/home
-      ../../modules/profiles/wsl.nix
     ];
   };
 
