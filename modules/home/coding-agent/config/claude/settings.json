@@ -5,6 +5,7 @@
     "DISABLE_AUTOUPDATER": "1"
   },
   "permissions": {
+    "defaultMode": "auto",
     "allow": [
       "Bash(* --help)",
       "Bash(* --help *)",
@@ -175,6 +176,7 @@
     }
   },
   "language": "Japanese",
-  "effortLevel": "high",
+  "effortLevel": "xhigh",
+  "alwaysThinkingEnabled": true,
   "verbose": true
 }
