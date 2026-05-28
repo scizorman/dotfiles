@@ -24,6 +24,10 @@ in
 
     ".codex/AGENTS.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
     ".codex/config.toml".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/config.toml";
+    ".codex/quick.config.toml".source =
+      config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/quick.config.toml";
+    ".codex/deep.config.toml".source =
+      config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/deep.config.toml";
     ".codex/rules/default.rules".source =
       config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/rules/default.rules";
 
