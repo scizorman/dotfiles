@@ -6,7 +6,6 @@
     "DISABLE_AUTOUPDATER": "1"
   },
   "permissions": {
-    "defaultMode": "auto",
     "allow": [
       "Bash(* --help)",
       "Bash(* --help *)",
@@ -142,9 +141,10 @@
       "Bash(gh run cancel *)",
       "Bash(gh run rerun *)",
       "Bash(gh workflow run *)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
-  "model": "opusplan",
+  "model": "claude-fable-5[1m]",
   "enabledPlugins": {
     "document-skills@anthropic-agent-skills": true,
     "slack@claude-plugins-official": true,
@@ -177,7 +177,7 @@
     }
   },
   "language": "Japanese",
-  "effortLevel": "xhigh",
   "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
   "verbose": true
 }
