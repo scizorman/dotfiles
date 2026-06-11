@@ -33,6 +33,13 @@ Do not run install / curl / wget side-effects while in plan mode or before the u
 
 Compute dates with `TZ=Asia/Tokyo`. Resolve relative dates ("today" / "yesterday") to absolute JST dates before recording them.
 
+### MCP
+
+Do not use MCP for bulk or mechanical data retrieval.
+All fetched content passes through the model and consumes tokens heavily.
+Drop such work into shell scripts using official CLIs or direct API calls, and run it outside the agent.
+Use MCP only for exploring a few files, checking formats, and triage.
+
 ### Git
 
 Use kebab-case for branch names.
@@ -54,6 +61,19 @@ Reference files via GitHub URLs in summaries and comments, not local paths.
 
 For project activity summaries, prefer `gh` CLI (Issues / PRs / Projects) over `git log`.
 Issue/PR/Project history reflects activity better than commits.
+
+---
+
+## Development
+
+### Style
+
+Develop with TDD: explore → red → green → refactor.
+
+### Code Design
+
+- Define the contract layer (APIs and types) strictly; keep the implementation layer regenerable.
+- Encode statically checkable rules in the environment's linter or ast-grep, not in prompts.
 
 ---
 

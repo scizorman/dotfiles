@@ -18,7 +18,8 @@ let
 in
 {
   home.file = {
-    ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
+    ".claude/AGENTS.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
+    ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/claude/CLAUDE.md";
     ".claude/settings.json".source =
       config.lib.file.mkOutOfStoreSymlink "${configDir}/claude/settings.json";
 
