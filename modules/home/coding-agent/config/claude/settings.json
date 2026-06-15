@@ -144,7 +144,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5[1m]",
+  "model": "opusplan",
   "enabledPlugins": {
     "document-skills@anthropic-agent-skills": true,
     "slack@claude-plugins-official": true,
@@ -178,6 +178,6 @@
   },
   "language": "Japanese",
   "alwaysThinkingEnabled": true,
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
   "verbose": true
 }
