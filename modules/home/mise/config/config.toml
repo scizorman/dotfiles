@@ -2,7 +2,7 @@
 npm.package_manager = "pnpm"
 
 [tools]
-"npm:@anthropic-ai/claude-code" = { version = "2.1.191", pnpm_args = "--allow-build=@anthropic-ai/claude-code" }
+"npm:@anthropic-ai/claude-code" = { version = "2.1.193", pnpm_args = "--allow-build=@anthropic-ai/claude-code" }
 "npm:@github/copilot" = "1.0.65"
 "npm:@openai/codex" = "0.142.2"
 "npm:@fission-ai/openspec" = { version = "1.4.1", pnpm_args = "--allow-build=@fission-ai/openspec" }
