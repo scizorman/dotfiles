@@ -37,6 +37,6 @@ in
     ".copilot/copilot-instructions.md".source =
       config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
   }
-  // mkSkillLinks ".claude"
-  // mkSkillLinks ".codex";
+  // mkSkillLinks ".agents"
+  // mkSkillLinks ".claude";
 }
