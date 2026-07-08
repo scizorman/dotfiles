@@ -54,14 +54,8 @@ After the subagent completes, extract the PR URL from its output and report it t
 
 ### When to skip agent delegation
 
-Skip agent delegation and continue in the current workspace when any of the following apply.
-
-- The user already has changes on a branch and only wants to create a PR.
-- The current workspace has staged changes or unstaged changes.
-- The repository is in the middle of a merge, rebase, cherry-pick, revert, or bisect.
-- `HEAD` is detached.
-- The current branch is not the default branch and already appears to contain work for the same task. Treat this as true when the branch is ahead of its upstream branch. If the relationship between the existing branch work and the current task is unclear, ask before delegating.
-
+Skip agent delegation when the current workspace already contains task-local work that should continue in place — uncommitted changes, an in-progress git operation (merge, rebase, etc.), or a task branch that is already ahead of its upstream.
+If the relationship between existing branch work and the current task is unclear, ask before delegating.
 In these cases, follow the Commit and Push, Detect Templates, and Create the Pull Request sections directly instead of creating a fresh delegated worktree.
 
 ---

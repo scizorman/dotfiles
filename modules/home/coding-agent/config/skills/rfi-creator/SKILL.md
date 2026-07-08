@@ -1,6 +1,6 @@
 ---
 name: rfi-creator
-description: "Use this skill whenever the user wants to create, draft, or improve a Request for Information (RFI) document. Triggers include: any mention of 'RFI', 'Request for Information', 'information request to vendors', '情報提供依頼書', 'ベンダー情報収集', or requests to explore what vendors or solutions exist in a market before issuing an RFP. Also use when the user wants to compare vendor capabilities at an exploratory stage, gather market intelligence, or create a shortlist of potential suppliers. This skill covers RFIs for any domain: IT systems, SaaS, consulting, construction procurement, marketing, and more. Do NOT use this skill for RFPs (detailed proposal requests with requirements and pricing) or RFQs (pricing-only requests) — use the rfp skill for RFPs instead. If the user is unsure whether they need an RFI or RFP, help them decide based on how well-defined their requirements are."
+description: "Creates and improves Request for Information (RFI / 情報提供依頼書) documents for exploring vendors and solutions before an RFP. Use when the user mentions RFI, ベンダー情報収集, market exploration of vendor capabilities, or building a supplier shortlist, in any domain. Not for RFPs or RFQs — use the rfp-creator skill for detailed proposal requests; when the user is unsure which they need, help them decide by how well-defined their requirements are."
 ---
 
 # RFI (Request for Information) Creator

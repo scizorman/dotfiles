@@ -1,6 +1,6 @@
 ---
 name: rfp-creator
-description: "Use this skill whenever the user wants to create, draft, or improve a Request for Proposal (RFP) document. Triggers include: any mention of 'RFP', 'Request for Proposal', 'proposal request', 'vendor selection document', 'procurement document', or requests to create documents for soliciting bids from vendors/suppliers. Also use when the user mentions '提案依頼書' (Japanese RFP), 'ベンダー選定', or similar procurement-related document creation in any language. This skill covers RFPs for any domain: IT systems, construction, marketing, consulting, software development, MDM, ERP, and more. Use this skill even if the user just says 'help me write an RFP' or 'I need to compare vendors for a project'. Do NOT use for RFP *responses* (vendor-side proposal writing) or general report/memo creation."
+description: "Creates and improves Request for Proposal (RFP / 提案依頼書) documents for soliciting vendor bids. Use when the user mentions RFP, proposal request, ベンダー選定, vendor selection, or procurement documents, in any domain (IT systems, construction, consulting, services, products). Not for RFP responses (vendor-side proposal writing); for exploratory market research before an RFP, use the rfi-creator skill."
 ---
 
 # RFP (Request for Proposal) Creator
@@ -48,17 +48,13 @@ For **Product / Procurement** RFPs, emphasize: specifications, quantities, deliv
 
 ### Step 3: Draft the RFP
 
-Use the docx skill (`/mnt/skills/public/docx/SKILL.md`) to produce a professional Word document. RFPs should be delivered as .docx files because:
-- They are the industry standard for procurement documents
-- Vendors need to be able to reference specific sections
-- Internal stakeholders need to review and comment using tracked changes
+Write the RFP as a Markdown document.
 
-**Document formatting guidelines:**
-- Include a cover page with project name, issuing organization, date, and confidentiality notice
-- Include a table of contents
-- Use numbered sections (1, 1.1, 1.1.1) for precise cross-referencing
+- Use numbered sections (1, 1.1, 1.1.1) so vendors can reference them precisely
 - Use tables for structured data (requirements matrices, evaluation criteria, timeline milestones)
 - Keep the language clear, unambiguous, and free of jargon unless the audience is domain-specific
+
+If the user asks for a Word document, convert it with the docx skill, adding a cover page (project name, issuing organization, date, confidentiality notice) and a table of contents.
 
 ### Step 4: Review Checklist
 
@@ -92,7 +88,6 @@ For detailed guidance on each RFP section, including what to include, common mis
 
 ## Important Notes
 
-- Always produce the RFP as a .docx file using the docx skill
 - If the user provides reference materials (existing documents, specifications, etc.), incorporate them into the appropriate sections
 - If the user's input is insufficient for a complete RFP, produce a draft with clearly marked `[TBD]` placeholders and explain what information is still needed
 - For Japanese-language RFPs, follow the same structure but adapt formatting conventions (e.g., use 「」 for emphasis, 御中 for addressing, and appropriate keigo)
