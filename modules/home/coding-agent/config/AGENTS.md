@@ -80,7 +80,7 @@ Develop with TDD: explore → red → green → refactor.
 - Define the contract layer (APIs and types) strictly; keep the implementation layer regenerable.
 - Encode statically checkable rules in the environment's linter or ast-grep, not in prompts.
 - Do not abstract, split, or automate preemptively; extract shared config, split files, or add CI/CD only after duplication or real friction exists. Pilot new mechanisms locally first.
-- Do not write code comments by default; the why of a change belongs in the commit message. Comment only a constraint that a reader would otherwise wrongly "fix" and cannot recover from the code, commit history, or upstream docs.
+- Do not write code comments explaining what the code does or why the change was made — the why belongs in the commit message. The only admissible comment is a why-not: why a seemingly natural alternative would break, and only when that is not recoverable from the code, commit history, or upstream docs.
 - Write rules and conventions as general principles that cases can be derived from, not as lists of cases.
 - Partition state, modules, and scopes by change reason, blast cost, and one-way dependency direction — not by provider boundary or residual categories such as infra / foundation.
 
