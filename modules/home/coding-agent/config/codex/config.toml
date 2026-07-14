@@ -1,9 +1,9 @@
 #:schema https://developers.openai.com/codex/config-schema.json
 approval_policy = "on-request"
 check_for_update_on_startup = false
-model = "gpt-5.5"
+model = "gpt-5.6-terra"
 model_reasoning_effort = "medium"
-model_verbosity = "low"
+model_verbosity = "medium"
 personality = "pragmatic"
 plan_mode_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
