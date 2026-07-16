@@ -78,7 +78,7 @@
       "Skill(github-project-reporter)",
       "Read(~/.claude/skills/**)",
       "Read(//tmp/**)",
-      "Write(//tmp/**)",
+      "Edit(//tmp/**)",
       "WebSearch",
       "WebFetch(domain:*.github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
