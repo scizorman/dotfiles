@@ -4,13 +4,15 @@
   home.packages = with pkgs; [
     nodejs
     pnpm
-    # nixpkgs#522307: pipx-1.8.0's tests/test_package_specifier.py expects
-    # the pre-PEP 508 `name@ url` form but packaging now emits `name @ url`,
-    # which makes 7 tests fail. Drop this override once upstream is fixed.
+    # pipx-1.14.0's tests/test_inject.py passes argnames with a trailing comma
+    # (`"pkg_spec,"`), which pytest 9.1 reads as a tuple form and unpacks, failing
+    # at collection time. nixpkgs already excludes these tests via disabledTests,
+    # but that expands to -k and cannot suppress a collection error, so the whole
+    # file has to be ignored. Drop this override once nixpkgs ships pipx>=1.14.1
+    # (nixpkgs#536749).
     (pipx.overridePythonAttrs (old: {
-      disabledTests = (old.disabledTests or [ ]) ++ [
-        "test_fix_package_name"
-        "test_parse_specifier_for_metadata"
+      disabledTestPaths = (old.disabledTestPaths or [ ]) ++ [
+        "tests/test_inject.py"
       ];
     }))
   ];
