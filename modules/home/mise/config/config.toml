@@ -3,7 +3,7 @@ npm.package_manager = "pnpm"
 
 [tools]
 "npm:@anthropic-ai/claude-code" = { version = "2.1.220", pnpm_args = "--allow-build=@anthropic-ai/claude-code" }
-"npm:@github/copilot" = "1.0.76"
+"npm:@github/copilot" = "1.0.77"
 "npm:@openai/codex" = "0.146.0"
 "npm:@fission-ai/openspec" = { version = "1.7.0", pnpm_args = "--allow-build=@fission-ai/openspec" }
 "pipx:snowflake-cli" = "3.23.0"
