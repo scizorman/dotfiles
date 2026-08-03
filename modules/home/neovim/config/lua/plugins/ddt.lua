@@ -1,22 +1,7 @@
 local function configure_global()
-  local ddt_cache_dir = vim.fn.stdpath("cache") .. "/ddt"
-  vim.fn.mkdir(ddt_cache_dir, "p")
+  vim.fn.mkdir(vim.fn.stdpath("cache") .. "/ddt", "p")
 
-  vim.fn["ddt#custom#patch_global"]({
-    nvimServer = vim.fn.stdpath("cache") .. "/server.pipe",
-    uiParams = {
-      shell = {
-        noSaveHistoryCommands = { "exit" },
-        shellHistoryPath = ddt_cache_dir .. "/ddt-shell-history",
-        split = "floating",
-      },
-      terminal = {
-        command = { "zsh" },
-        split = "horizontal",
-        winHeight = 30,
-      },
-    },
-  })
+  vim.fn["ddt#custom#load_config"](string.format("%s/lua/plugins/ddt.ts", vim.fn.stdpath("config")))
 end
 
 local function configure_ddt_ui_shell_keymaps()
