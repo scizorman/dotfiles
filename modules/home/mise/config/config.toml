@@ -6,4 +6,4 @@ npm.package_manager = "pnpm"
 "npm:@github/copilot" = "1.0.78"
 "npm:@openai/codex" = "0.146.0"
 "npm:@fission-ai/openspec" = { version = "1.7.0", pnpm_args = "--allow-build=@fission-ai/openspec" }
-"pipx:snowflake-cli" = "3.23.0"
+"pipx:snowflake-cli" = "3.24.0"
