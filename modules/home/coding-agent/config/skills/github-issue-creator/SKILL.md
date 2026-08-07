@@ -48,6 +48,14 @@ If a templates directory exists, list the available templates and ask the user w
 If no template exists, use [templates/default.md](templates/default.md).
 Note that this default template is written in Japanese.
 
+## Body Conventions
+
+Write the body as desired end-states in passive voice, without implementation steps, commands, file paths, resource names, or backwards-compatibility discussion.
+An issue records what should become true; how to get there belongs in the PR that resolves it, where it can change without rewriting the issue.
+
+- The "Overview" section is a 1–2 sentence summary, distinct from "Goal" / "Purpose".
+- Do not write checkboxes (`- [ ]`).
+
 ## Create the Issue
 
 Write the final issue body to `/tmp/gh-issue-body.md`, then create the issue with `--body-file`.

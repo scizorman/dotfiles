@@ -1,6 +1,14 @@
 ---
-name: rfi-creator
-description: "Creates and improves Request for Information (RFI / 情報提供依頼書) documents for exploring vendors and solutions before an RFP. Use when the user mentions RFI, ベンダー情報収集, market exploration of vendor capabilities, or building a supplier shortlist, in any domain. Not for RFPs or RFQs — use the rfp-creator skill for detailed proposal requests; when the user is unsure which they need, help them decide by how well-defined their requirements are."
+name: 'rfi-creator'
+description: >-
+  Creates and improves Request for Information (RFI / 情報提供依頼書) documents
+  for exploring vendors and solutions before an RFP.
+  Use when the user mentions RFI, ベンダー情報収集, market exploration of vendor capabilities,
+  or building a supplier shortlist, in any domain.
+  Not for RFPs or RFQs — use the rfp-creator skill for detailed proposal requests;
+  when the user is unsure which they need, help them decide by how well-defined their requirements are.
+metadata:
+  short-description: 'Create and improve RFI documents'
 ---
 
 # RFI (Request for Information) Creator

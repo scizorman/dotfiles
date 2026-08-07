@@ -22,6 +22,7 @@ in
     ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/claude/CLAUDE.md";
     ".claude/settings.json".source =
       config.lib.file.mkOutOfStoreSymlink "${configDir}/claude/settings.json";
+    ".claude/hooks".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/hooks";
 
     ".codex/AGENTS.md".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
     ".codex/config.toml".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/config.toml";
@@ -31,9 +32,9 @@ in
       config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/deep.config.toml";
     ".codex/rules/default.rules".source =
       config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/rules/default.rules";
+    ".codex/hooks.json".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/codex/hooks.json";
+    ".codex/hooks".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/hooks";
 
-    ".copilot/config.json".source =
-      config.lib.file.mkOutOfStoreSymlink "${configDir}/copilot/config.json";
     ".copilot/copilot-instructions.md".source =
       config.lib.file.mkOutOfStoreSymlink "${configDir}/AGENTS.md";
   }

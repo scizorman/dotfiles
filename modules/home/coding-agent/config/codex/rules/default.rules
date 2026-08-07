@@ -41,6 +41,17 @@ prefix_rule(
     justification = "Hard reset is not allowed",
 )
 prefix_rule(
+    pattern = ["git", "-c", "commit.gpgsign=false"],
+    decision = "forbidden",
+    justification = "Disabling commit signing is not allowed",
+    match = [
+        "git -c commit.gpgsign=false commit -m 'feat: x'",
+    ],
+    not_match = [
+        "git -c core.pager=cat log",
+    ],
+)
+prefix_rule(
     pattern = ["git", ["status", "log", "diff", "branch", "fetch", "stash", "add", "switch", "commit", "push"]],
     decision = "allow",
 )
@@ -160,4 +171,28 @@ prefix_rule(
 prefix_rule(
     pattern = ["gh", "release", ["list", "view"]],
     decision = "allow",
+)
+prefix_rule(
+    pattern = [["python", "python3"], "-c"],
+    decision = "forbidden",
+    justification = "Use shell and standard UNIX tooling for scripting, not Python one-liners",
+    match = [
+        "python -c 'print(1)'",
+        "python3 -c 'print(1)'",
+    ],
+    not_match = [
+        "python3 script.py",
+    ],
+)
+prefix_rule(
+    pattern = ["node", ["-e", "--eval", "-p", "--print"]],
+    decision = "forbidden",
+    justification = "Use shell and standard UNIX tooling for scripting, not Node one-liners",
+    match = [
+        "node -e 'console.log(1)'",
+        "node -p '1 + 1'",
+    ],
+    not_match = [
+        "node script.js",
+    ],
 )

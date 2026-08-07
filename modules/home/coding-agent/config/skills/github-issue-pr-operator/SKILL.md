@@ -1,23 +1,32 @@
 ---
-name: 'github-issue-pr-commenter'
+name: 'github-issue-pr-operator'
 description: >-
-  Post structured comments to GitHub Issues and Pull Requests with gh CLI.
-  Use when reporting completed work, sharing progress, summarizing investigation results,
-  recording design decisions, proposing implementation plans, asking for feedback,
-  or adding supplementary context to a pull request conversation.
+  Comment on, close, reopen, and edit GitHub Issues and Pull Requests with gh CLI.
+  Use when commenting on an issue or PR, closing or reopening an issue or PR,
+  editing an issue or PR body, reporting completed work, sharing progress,
+  summarizing investigation results, recording design decisions, proposing implementation plans,
+  or changing the design or scope of work on an open PR.
   Do not use for inline pull request review comments on specific files or lines.
 compatibility: 'Requires gh CLI authenticated to GitHub with permission to comment on the target repository.'
 metadata:
-  short-description: 'Post structured comments to GitHub Issues and PRs'
+  short-description: 'Comment on, close, reopen, and edit GitHub Issues and PRs'
 ---
 
-# GitHub Issue/PR Commenter
+# GitHub Issue/PR Operator
 
-This skill handles posting structured comments to GitHub issue and pull request conversations.
+This skill handles operations on existing GitHub issues and pull requests: posting comments, closing, reopening, and editing bodies.
 It covers regular issue comments and PR timeline comments.
 It does not cover file-level review comments, pending reviews, or approval/request-changes workflows.
 Write comments in Japanese by default. If the issue or PR is written in English, write in English.
 If the target or the comment intent is ambiguous, ask the user before posting.
+
+## Shared Conventions
+
+These apply to every comment, body edit, and lifecycle operation.
+
+- Reference files via GitHub URLs, not local paths, so links work for every reader.
+- Do not write checkboxes (`- [ ]`) in issue or PR bodies or comments, and do not edit existing checkboxes on the user's behalf.
+- Keep issue comments within the original issue's scope; open a new issue for out-of-scope findings.
 
 ## Confirm the Comment Type
 
@@ -111,3 +120,31 @@ gh pr comment <PR_NUMBER> -R OWNER/REPO --body-file /tmp/gh-pr-comment.md
 ```
 
 Record the comment URL and report it to the user.
+
+## Close and Reopen
+
+Close issues with an explicit `--reason`, because the reason distinguishes finished work from abandoned work in later searches.
+
+```bash
+gh issue close <ISSUE_NUMBER> --reason completed
+gh issue close <ISSUE_NUMBER> --reason "not planned"
+```
+
+Choose `completed` when the described outcome was achieved, and `not planned` when the issue is abandoned or superseded.
+If neither clearly applies, ask the user.
+When closing after finishing work, post a work report comment first so the resolution is traceable.
+
+## Edit Bodies
+
+Edit issue or PR bodies with `--body-file` to avoid shell parsing problems.
+
+```bash
+gh issue edit <ISSUE_NUMBER> --body-file /tmp/gh-issue-body.md
+gh pr edit <PR_NUMBER> --body-file /tmp/gh-pr-body.md
+```
+
+Preserve the parts of the body you were not asked to change, including existing checkboxes and their states.
+
+## Design Changes on an Open PR
+
+Before implementing a design or scope change on an open PR, post the reasoning and approach as a PR comment first, so reviewers see the direction change before the diff changes under them.

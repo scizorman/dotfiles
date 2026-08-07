@@ -1,6 +1,13 @@
 ---
-name: rfp-creator
-description: "Creates and improves Request for Proposal (RFP / 提案依頼書) documents for soliciting vendor bids. Use when the user mentions RFP, proposal request, ベンダー選定, vendor selection, or procurement documents, in any domain (IT systems, construction, consulting, services, products). Not for RFP responses (vendor-side proposal writing); for exploratory market research before an RFP, use the rfi-creator skill."
+name: 'rfp-creator'
+description: >-
+  Creates and improves Request for Proposal (RFP / 提案依頼書) documents for soliciting vendor bids.
+  Use when the user mentions RFP, proposal request, ベンダー選定, vendor selection,
+  or procurement documents, in any domain (IT systems, construction, consulting, services, products).
+  Not for RFP responses (vendor-side proposal writing);
+  for exploratory market research before an RFP, use the rfi-creator skill.
+metadata:
+  short-description: 'Create and improve RFP documents'
 ---
 
 # RFP (Request for Proposal) Creator

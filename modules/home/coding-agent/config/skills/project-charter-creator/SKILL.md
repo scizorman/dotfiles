@@ -1,6 +1,12 @@
 ---
-name: project-charter-creator
-description: "Creates and improves Project Charters (プロジェクト憲章 / プロジェクト企画書) that formally authorize a project and align stakeholders on scope, objectives, and governance. Use when the user mentions a charter, プロジェクトの立ち上げ, kickoff or authorization documents, or needs sponsor approval to start a project, for any methodology and domain."
+name: 'project-charter-creator'
+description: >-
+  Creates and improves Project Charters (プロジェクト憲章 / プロジェクト企画書)
+  that formally authorize a project and align stakeholders on scope, objectives, and governance.
+  Use when the user mentions a charter, プロジェクトの立ち上げ, kickoff or authorization documents,
+  or needs sponsor approval to start a project, for any methodology and domain.
+metadata:
+  short-description: 'Create and improve Project Charters'
 ---
 
 # Project Charter

@@ -1,6 +1,12 @@
 ---
-name: project-plan-creator
-description: Creates project management plans in Markdown. Use when creating project plans, defining how to manage scope/schedule/risk/communication, or detailing project execution strategy. Primarily for internal projects that build systems, processes, or organizational capabilities.
+name: 'project-plan-creator'
+description: >-
+  Creates project management plans in Markdown.
+  Use when creating project plans, defining how to manage scope/schedule/risk/communication,
+  or detailing project execution strategy.
+  Primarily for internal projects that build systems, processes, or organizational capabilities.
+metadata:
+  short-description: 'Create project management plans in Markdown'
 ---
 
 # Project Plan Creator

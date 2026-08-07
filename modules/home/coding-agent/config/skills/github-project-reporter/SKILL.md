@@ -1,11 +1,22 @@
 ---
-name: github-project-reporter
-description: Reads and analyzes GitHub Projects v2 data using gh CLI. Use when listing items by status, extracting high-priority tasks, generating sprint progress summaries, detecting blockers or health issues (unassigned items, overdue items, WIP excess), or producing progress reports.
+name: 'github-project-reporter'
+description: >-
+  Read and analyze GitHub Projects v2 data and project activity with gh CLI.
+  Use when listing items by status, extracting high-priority tasks,
+  generating sprint progress summaries or project activity summaries,
+  detecting blockers or health issues (unassigned items, overdue items, WIP excess),
+  or producing progress reports.
+compatibility: 'Requires gh CLI authenticated to GitHub with access to the target project.'
+metadata:
+  short-description: 'Read and report on GitHub Projects v2 with gh CLI'
 ---
 
 # GitHub Project Reporter
 
 This skill defines rules and procedures for read operations, analysis, and report generation on GitHub Projects v2.
+
+For project activity summaries, prefer gh CLI data (Issues / PRs / Projects) over `git log`; issue and PR history reflects activity better than commits.
+Reference files via GitHub URLs in summaries, not local paths.
 
 ## Session Initialization: Project Selection
 

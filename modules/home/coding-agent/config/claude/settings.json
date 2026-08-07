@@ -73,7 +73,7 @@
       "Bash(git push *)",
       "Bash(git -C * push *)",
       "Skill(github-issue-creator)",
-      "Skill(github-issue-pr-commenter)",
+      "Skill(github-issue-pr-operator)",
       "Skill(github-pr-creator)",
       "Skill(github-project-reporter)",
       "Read(~/.claude/skills/**)",
@@ -142,6 +142,20 @@
       "Bash(gh workflow run *)"
     ],
     "defaultMode": "auto"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/git-guard.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
   },
   "model": "opusplan",
   "enabledPlugins": {
