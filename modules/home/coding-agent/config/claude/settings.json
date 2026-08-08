@@ -158,6 +158,10 @@
     ]
   },
   "model": "opusplan",
+  "skillOverrides": {
+    "rfi-creator": "off",
+    "rfp-creator": "off"
+  },
   "enabledPlugins": {
     "document-skills@anthropic-agent-skills": true,
     "slack@claude-plugins-official": true,

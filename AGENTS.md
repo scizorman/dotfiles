@@ -37,9 +37,4 @@ Do not introduce `home.nix` splits, provider abstractions, or shared OS modules 
 Use the Makefile for repository checks and host operations.
 Run `make` with no arguments to inspect available targets before using an unfamiliar target.
 
-Run `make fmt` for formatting.
-Run `make check` for flake checks.
-
 Use environment-specific host targets only when validating host-level changes.
-On NixOS hosts, `make build`, `make diff`, `make test`, and `make switch` are provided when `nixos-rebuild` is available.
-On darwin hosts, `make build`, `make diff`, and `make switch` are provided when `darwin-rebuild` is available.
