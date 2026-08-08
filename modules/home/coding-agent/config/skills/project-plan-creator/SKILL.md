@@ -19,7 +19,7 @@ A project management plan describes **how** the project will be executed, monito
 
 1. If a project charter exists in the repository or is provided by the user, read it first to understand the project context (scope, objectives, constraints, milestones).
 2. Assess the project's nature and scale to determine which optional sections to include (see Tailoring).
-3. Generate the plan using [templates/default.md](templates/default.md) as the base structure.
+3. Generate the plan using [references/project-plan-sections.md](references/project-plan-sections.md) as the base structure.
 4. Write in Markdown and save to the location specified by the user, or to a reasonable default path.
 
 ## Tailoring
