@@ -9,7 +9,8 @@ Technical terms may be used in English.
 
 - Verify shell / make / tool behavior with a minimal reproduction before asserting it; do not extrapolate from version or distribution knowledge.
 - Evaluate artifacts against best practices and their own requirements, not by consistency with sibling files.
-- When a team decision is still open, present options side by side with comparison material (flow, benefits, issues); add a recommendation only when asked or when direction is already agreed.
+- When a team decision is still open, present options side by side with comparison material (flow, benefits, issues), analyzing every option — including the user's favored one — at the same depth; add a recommendation only when asked or when direction is already agreed.
+- Check quantitative claims and citations from subagents or web research against the primary source before relying on them; sources get misattributed.
 
 ## Workflow
 
@@ -19,6 +20,8 @@ When a project has a Makefile, read it first and run lint, fmt, test, and simila
 
 Use shell + standard UNIX tooling (jq / awk / sed / xargs) for scripting, not Python or Node — including from subagents.
 
+Run one-off CLI tools through mise (`mise exec <tool> -- ...`), not npx or `nix run`.
+
 Resolve relative dates ("today" / "yesterday") to absolute JST dates before recording them.
 
 Never run state-changing operations against production environments (including DCL such as GRANT) without explicit confirmation; investigate via read-only means.
@@ -26,6 +29,7 @@ Never run state-changing operations against production environments (including D
 ### Scope
 
 Change only what was requested; do not touch items deferred as "decide after verification", and do not revert edits the user made by hand.
+Adjust incidental values (timeouts, quotas, defaults) only with measured evidence, never "just in case".
 
 ### MCP
 
@@ -36,6 +40,9 @@ For bulk or mechanical data retrieval, use official CLIs or direct API calls —
 
 Use kebab-case for branch names.
 Write commit messages in Conventional Commits format.
+Fix mistakes with a new commit; history rewrites (amend / force-push / rebase) only when explicitly asked, and never offered as an option.
+Do PR work in a dedicated worktree at `~/ghq/.worktrees/github.com/<owner>/<repo>/<branch>`, not in the main working tree.
+Keep user-local paths and private instructions (`~/.claude/*`) out of committed files and repo-facing artifacts; restate the rationale inline instead.
 
 ## Development
 
@@ -46,7 +53,8 @@ Develop with TDD: explore → red → green → refactor.
 - Define the contract layer (APIs and types) strictly; keep the implementation layer regenerable.
 - Encode statically checkable rules in the environment's linter or ast-grep, not in prompts.
 - Do not abstract, split, or automate preemptively; extract shared config, split files, or add CI/CD only after duplication or real friction exists.
-- Do not write code comments explaining what the code does or why the change was made. The only admissible comment is a why-not: why a seemingly natural alternative would break.
+- Leave the code and config you write uncommented except for why-nots: why a seemingly natural alternative would break, in about a line plus a reference. A comment that describes what the code does, or why the change was made, is not a why-not.
+- Write conditionals that state the exact condition being checked (`is None`, `len(x) == 0`), not truthy / falsy shortcuts.
 - Write rules and conventions as general principles that cases can be derived from, not as lists of cases.
 - Partition state, modules, and scopes by change reason, blast cost, and one-way dependency direction — not by provider boundary or residual categories such as infra / foundation.
 
@@ -63,8 +71,10 @@ Prefix recipe lines that expand secrets with `@` to suppress command echo.
 
 Use plain form (常体) by default; match polite form (敬体) when editing text written in it.
 
-Define the starting point of business flows and use cases by the triggering demand or event, not by actor.
-When actor differences matter, classify by demand certainty or information granularity.
+Name new categories and concepts with industry-general vocabulary; when a repo-internal definition conflicts with common usage, surface the conflict instead of following the internal definition.
+
+Avoid dash-insertion asides and hedging preambles.
+Define a technical term in plain language once at first use, then keep using the plain wording instead of repeating the term.
 
 ### Formatting Rules
 
