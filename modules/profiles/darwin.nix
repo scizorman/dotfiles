@@ -50,12 +50,7 @@ in
     signByDefault = true;
   };
 
-  programs.ssh.matchBlocks."*".extraOptions = {
-    # The path contains a space ("Group Containers"), so it must be quoted in
-    # ssh_config. Home Manager writes extraOptions values verbatim, so we embed
-    # the surrounding double-quotes in the Nix string itself.
-    IdentityAgent = "\"${onePasswordAgent}\"";
-  };
+  programs.ssh.settings."*".IdentityAgent = "\"${onePasswordAgent}\"";
 
   services.colima = {
     enable = true;
