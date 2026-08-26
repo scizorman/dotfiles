@@ -1,12 +1,26 @@
 {
   config,
   pkgs,
-  gitSigningKey,
+  lib,
   ...
 }:
 
 let
   onePasswordAgent = "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+
+  # ssh-keygen -Y sign takes no provider flag and SSH_SK_PROVIDER defaults to
+  # the built-in USB HID transport, so pin the Secure Enclave provider here.
+  # Apple's ssh-keygen is used because the provider is a system dylib.
+  sshKeygenSecureEnclave =
+    pkgs.runCommand "ssh-keygen-secure-enclave"
+      {
+        nativeBuildInputs = [ pkgs.makeWrapper ];
+        meta.mainProgram = "ssh-keygen-secure-enclave";
+      }
+      ''
+        makeWrapper /usr/bin/ssh-keygen $out/bin/ssh-keygen-secure-enclave \
+          --set SSH_SK_PROVIDER /usr/lib/ssh-keychain.dylib
+      '';
 in
 {
   home.packages = with pkgs; [
@@ -45,8 +59,8 @@ in
 
   programs.git.signing = {
     format = "ssh";
-    signer = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-    key = gitSigningKey;
+    signer = lib.getExe sshKeygenSecureEnclave;
+    key = "${config.home.homeDirectory}/.ssh/id_git_sign";
     signByDefault = true;
   };
 
