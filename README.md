@@ -84,8 +84,7 @@ mv id_ecdsa_sk_rk.pub ~/.ssh/id_git_sign.pub
 chmod 600 ~/.ssh/id_git_sign
 ```
 
-Register the contents of `~/.ssh/id_git_sign.pub` as a signing key on GitHub,
-and set the same value as `gitSigningKey` in `hosts/groomed/default.nix`.
+Register the contents of `~/.ssh/id_git_sign.pub` as a signing key on GitHub.
 
 To start over, find the identity's hash and delete it:
 

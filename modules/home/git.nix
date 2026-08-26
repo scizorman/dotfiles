@@ -1,8 +1,5 @@
-{ config, gitSigningKey, ... }:
+{ ... }:
 
-let
-  allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
-in
 {
   programs.git = {
     enable = true;
@@ -51,15 +48,8 @@ in
       pull.rebase = true;
       merge.conflictStyle = "diff3";
       url."git@github.com:".insteadOf = "https://github.com/";
-      gpg.ssh.allowedSignersFile = allowedSignersFile;
     };
   };
-
-  # Lets `git log --show-signature` verify this host's own commits against
-  # its signing key. Only the public key is stored here, so it is safe to
-  # keep in the world-readable Nix store.
-  xdg.configFile."git/allowed_signers".text =
-    "${config.programs.git.settings.user.email} ${gitSigningKey}\n";
 
   programs.delta = {
     enable = true;

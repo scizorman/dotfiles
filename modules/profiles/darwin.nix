@@ -8,12 +8,9 @@
 let
   onePasswordAgent = "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
 
-  # Apple's ssh-keygen is required: it can load /usr/lib/ssh-keychain.dylib
-  # as an SK provider, which nixpkgs openssh is not verified to do.
-  # "-Y sign" itself takes no provider flag (only "-K"/"-w", used when
-  # creating a key, do), and SSH_SK_PROVIDER's default is the built-in USB
-  # HID transport rather than the Secure Enclave. Pin it in a wrapper
-  # instead of depending on the caller's shell environment.
+  # ssh-keygen -Y sign takes no provider flag and SSH_SK_PROVIDER defaults to
+  # the built-in USB HID transport, so pin the Secure Enclave provider here.
+  # Apple's ssh-keygen is used because the provider is a system dylib.
   sshKeygenSecureEnclave =
     pkgs.runCommand "ssh-keygen-secure-enclave"
       {
