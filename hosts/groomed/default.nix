@@ -26,6 +26,11 @@ in
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+  home-manager.extraSpecialArgs = {
+    # Public key of the Secure Enclave-backed signing key, created by the
+    # bootstrap steps in README.md. Replace after running them.
+    gitSigningKey = "sk-ecdsa-sha2-nistp256@openssh.com REPLACE_ME_WITH_ID_GIT_SIGN_PUB";
+  };
   home-manager.users.${username} = {
     imports = [
       ../../modules/home

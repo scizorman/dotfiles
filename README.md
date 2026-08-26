@@ -67,6 +67,33 @@ After the initial setup, use `darwin-rebuild` directly for subsequent configurat
 sudo darwin-rebuild switch --flake ~/dotfiles#<hostname>
 ```
 
+#### Git commit signing key
+
+Commits are signed with a Secure Enclave-backed key (non-exportable), so this
+key must be created once per Mac before the first commit. `signByDefault` is
+enabled, so every commit fails until this is done.
+
+```bash
+sc_auth create-ctk-identity -l git-sign -k p-256-ne -t none
+
+# -K writes every resident key into the current directory, hence the temp dir.
+cd "$(mktemp -d)"
+SSH_SK_PROVIDER=/usr/lib/ssh-keychain.dylib ssh-keygen -K -N ""
+mv id_ecdsa_sk_rk ~/.ssh/id_git_sign
+mv id_ecdsa_sk_rk.pub ~/.ssh/id_git_sign.pub
+chmod 600 ~/.ssh/id_git_sign
+```
+
+Register the contents of `~/.ssh/id_git_sign.pub` as a signing key on GitHub,
+and set the same value as `gitSigningKey` in `hosts/groomed/default.nix`.
+
+To start over, find the identity's hash and delete it:
+
+```bash
+sc_auth list-ctk-identities
+sc_auth delete-ctk-identity -h <hash>
+```
+
 ## Usage
 
 Apply configuration changes:
