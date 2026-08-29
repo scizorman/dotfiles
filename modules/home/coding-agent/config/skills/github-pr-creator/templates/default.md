@@ -1,6 +1,6 @@
 ### 概要
 
-<!-- Summarize in 3-5 sentences so a busy reviewer can understand the PR without reading other sections. Describe what problem existed, what this PR solves, and what changes as a result. -->
+<!-- Summarize in 3-5 sentences so a busy reviewer can understand the PR without reading other sections. State the problem, the fix, and the resulting behavior change. -->
 
 ### 背景
 
@@ -8,12 +8,12 @@
 
 - https://github.com/OWNER/REPO/issues/NUMBER
 
-<!-- When not linking to an issue, describe the problem that led to this PR. -->
+<!-- When not linking to an issue, describe the problem that made this change necessary. -->
 
 ### 目的
 
-<!-- Describe the purpose based on the related issue. If there is no issue, describe the purpose of this PR itself. -->
+<!-- Describe the purpose based on the related issue. If there is no issue, describe the outcome to reach. -->
 
 ### 実装内容
 
-<!-- Describe the features implemented in this PR. Focus on added capabilities, not individual file changes or code modifications. -->
+<!-- Describe the capabilities this change adds. Focus on capabilities, not individual file changes or code modifications. -->

@@ -1,6 +1,6 @@
 ### 調査対象
 
-<!-- State the question or problem that was investigated and why it needed to be examined. -->
+<!-- State the question or problem you investigated and why it needed examining. -->
 
 ### 結論
 

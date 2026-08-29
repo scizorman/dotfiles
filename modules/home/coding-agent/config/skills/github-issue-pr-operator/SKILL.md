@@ -85,6 +85,8 @@ Write not only what happened or what is proposed, but why — the reasoning, con
 Without the why, reviewers cannot judge whether the conclusion is correct or suggest better alternatives.
 Make the requested decision, feedback, or follow-up explicit.
 
+Write the Japanese body in active voice with the subject left unstated, so each sentence reads as the author's own claim rather than a third party's description.
+
 Cross-reference related commits, PRs, or issues using `#123` for the same repository and full URLs for cross-repository references.
 Do not dump file-by-file implementation details unless they are necessary for the requested decision.
 When reporting blockers, state what is blocked, why it is blocked, and what is needed to unblock.

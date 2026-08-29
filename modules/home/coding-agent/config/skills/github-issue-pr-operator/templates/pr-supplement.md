@@ -1,6 +1,6 @@
 ### 補足の背景
 
-<!-- Explain why this comment is needed: what the PR description does not convey and why that context matters for review. Avoid repeating the PR body. -->
+<!-- Explain why this comment is needed. Focus on what the PR description does not convey and why that context matters for review. -->
 
 ### レビューで見てほしい点
 
@@ -8,7 +8,7 @@
 
 ### 確認状況
 
-<!-- Describe what has been verified and how. Note any areas that were not verified and why, so reviewers know what risk remains. Omit this section if the PR description already covers it. -->
+<!-- Describe what you verified and how. Note any areas you did not verify and why, so reviewers know what risk remains. Omit this section if the PR description already covers it. -->
 
 ### 既知の制約
 

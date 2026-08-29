@@ -1,14 +1,14 @@
 ### 概要
 
-<!-- Summarize in 2-3 sentences what was accomplished in this session or milestone. Focus on the outcome and why it matters, not on the list of actions taken. -->
+<!-- Summarize in 2-3 sentences what you accomplished in this session or milestone. Focus on the outcome and why it matters, not on the list of actions taken. -->
 
 ### 完了した内容
 
-<!-- List what was completed. For any non-obvious choice — approach taken, tool used, implementation strategy — briefly note the reasoning behind it. -->
+<!-- List what you completed. For any non-obvious choice — approach taken, tool used, implementation strategy — briefly note the reasoning behind it. -->
 
 ### 確認したこと
 
-<!-- Show the commands run and their results: include the command in a code block and the meaningful parts of the output (test counts, pass/fail status, error messages, lines that demonstrate expected behavior). Non-essential parts such as progress bars or repeated boilerplate may be omitted, but note when something has been cut. Add one sentence explaining what the result means — do not paste output without interpretation. -->
+<!-- Show the commands you ran and their results: include the command in a code block and the meaningful parts of the output (test counts, pass/fail status, error messages, lines that demonstrate expected behavior). You may omit non-essential parts such as progress bars or repeated boilerplate, but note what you cut. Add one sentence interpreting what the result means. -->
 
 ### 残課題・次のステップ
 

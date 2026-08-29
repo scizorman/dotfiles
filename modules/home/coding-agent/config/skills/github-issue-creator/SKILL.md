@@ -50,9 +50,10 @@ Note that this default template is written in Japanese.
 
 ## Body Conventions
 
-Write the body as desired end-states in passive voice, without implementation steps, commands, file paths, resource names, or backwards-compatibility discussion.
-An issue records what should become true; how to get there belongs in the PR that resolves it, where it can change without rewriting the issue.
+Write the body as the outcome to reach, without implementation steps, commands, file paths, resource names, or backwards-compatibility discussion.
+An issue records the outcome the work should reach; how to get there belongs in the PR that resolves it, where it can change without rewriting the issue.
 
+- Write the Japanese body in active voice with the subject left unstated, so each sentence reads as the author's own claim rather than a third party's description.
 - The "Overview" section is a 1–2 sentence summary, distinct from "Goal" / "Purpose".
 - Do not write checkboxes (`- [ ]`).
 

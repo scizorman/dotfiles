@@ -1,11 +1,11 @@
 ### 概要
 
-<!-- Write a concise paragraph (3-5 sentences) that a busy reader can understand without reading other sections. Cover: what the problem or need is, why it matters, and what outcome you expect. -->
+<!-- Write a concise paragraph (3-5 sentences) that a busy reader can understand without reading other sections. Cover: the problem or need, why it matters, and the outcome to reach. -->
 
 ### 背景
 
-<!-- Describe why this issue exists and what circumstances led to it. -->
+<!-- Describe the circumstances that made this issue necessary. -->
 
 ### 目的
 
-<!-- Describe what this issue aims to achieve. -->
+<!-- Describe the outcome to reach. -->

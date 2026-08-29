@@ -95,6 +95,7 @@ Note that this default template is written in Japanese.
 
 Write the final PR body to `/tmp/gh-pr-body.md`, then create the PR with `--body-file`.
 This avoids shell parsing problems caused by headings or HTML comments in the body.
+Write the Japanese body in active voice with the subject left unstated, so each sentence reads as the author's own claim rather than a third party's description.
 Do not write checkboxes (`- [ ]`) in the PR body.
 If `gh` is unavailable, unauthenticated, or lacks access to the target repository, stop and report the failure clearly.
 
