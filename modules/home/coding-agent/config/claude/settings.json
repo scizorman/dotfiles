@@ -155,7 +155,8 @@
   "enabledPlugins": {
     "document-skills@anthropic-agent-skills": true,
     "slack@claude-plugins-official": true,
-    "cekernel@clonable-eden-plugins": true
+    "cekernel@clonable-eden-plugins": true,
+    "mattpocock-skills@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "anthropic-agent-skills": {
