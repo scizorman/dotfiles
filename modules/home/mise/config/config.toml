@@ -2,7 +2,7 @@
 npm.package_manager = "pnpm"
 
 [tools]
-"npm:@anthropic-ai/claude-code" = { version = "2.1.278", pnpm_args = "--allow-build=@anthropic-ai/claude-code" }
+"npm:@anthropic-ai/claude-code" = { version = "2.1.280", pnpm_args = "--allow-build=@anthropic-ai/claude-code" }
 "npm:@github/copilot" = "1.0.87"
 "npm:@openai/codex" = "0.155.1"
 "pipx:snowflake-cli" = "3.27.0"
