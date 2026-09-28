@@ -1,7 +1,7 @@
 #:schema https://developers.openai.com/codex/config-schema.json
 approval_policy = "on-request"
 check_for_update_on_startup = false
-model = "gpt-5.6-terra"
+model = "gpt-6-sol"
 model_reasoning_effort = "medium"
 model_verbosity = "medium"
 personality = "pragmatic"
@@ -9,10 +9,8 @@ plan_mode_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 web_search = "cached"
 
-# terra for read-heavy delegation; sol-class subagents would double cost without
-# improving exploration (https://learn.chatgpt.com/docs/agent-configuration/subagents)
 [agents]
-default_subagent_model = "gpt-5.6-terra"
+default_subagent_model = "gpt-6-luna"
 default_subagent_reasoning_effort = "medium"
 
 [analytics]
@@ -30,3 +28,4 @@ network_access = true
 [tui]
 animations = false
 show_tooltips = false
+screen_reader_detection_done = true
