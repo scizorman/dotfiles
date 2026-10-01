@@ -146,7 +146,7 @@
       }
     ]
   },
-  "model": "opusplan",
+  "model": "claude-opus-5-5",
   "skillOverrides": {
     "rfi-creator": "off",
     "rfp-creator": "off"
