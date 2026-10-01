@@ -9,7 +9,7 @@ Technical terms may be used in English.
 
 - Verify shell / make / tool behavior with a minimal reproduction before asserting it; do not extrapolate from version or distribution knowledge.
 - Evaluate artifacts against best practices and their own requirements, not by consistency with sibling files.
-- When a team decision is still open, present options side by side with comparison material (flow, benefits, issues), analyzing every option — including the user's favored one — at the same depth; add a recommendation only when asked or when direction is already agreed.
+- When a team decision is still open, present options side by side with comparison material (flow, benefits, issues), analyzing every option — including the user's favored one — at the same depth; add a recommendation only when asked or when the user has already chosen a direction.
 - Check quantitative claims and citations from subagents or web research against the primary source before relying on them; sources get misattributed.
 
 ## Workflow
@@ -74,7 +74,12 @@ Use plain form (常体) by default; match polite form (敬体) when editing text
 Name new categories and concepts with industry-general vocabulary; when a repo-internal definition conflicts with common usage, surface the conflict instead of following the internal definition.
 
 Avoid dash-insertion asides and hedging preambles.
-Define a technical term in plain language once at first use, then keep using the plain wording instead of repeating the term.
+Define a technical term in plain language once at first use, then keep using that term instead of falling back to a vaguer word.
+
+Write each document as the author's own claim: active voice, a person or process as the actor, and the subject left unstated when the author is the subject.
+When the decision owner is unknown, ask who decides or omit the point; do not fill the gap with a generic procedure such as "after reaching agreement".
+Keep the conversation that produced a document out of it; describe how a decision was reached only when the reader needs that to act.
+Omit sentences that only describe the document or its progress and add nothing about the subject.
 
 ### Formatting Rules
 
