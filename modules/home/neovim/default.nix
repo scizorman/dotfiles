@@ -17,7 +17,6 @@
       # denops.vim runtime
       deno
       # LSP servers
-      roslyn-ls
       gopls
       vtsls
       lua-language-server
