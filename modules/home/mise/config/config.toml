@@ -1,6 +1,3 @@
-[settings]
-npm.package_manager = "pnpm"
-
 [tools]
 "npm:@anthropic-ai/claude-code" = { version = "2.1.293", allow_builds = ["@anthropic-ai/claude-code"] }
 "npm:@github/copilot" = "1.0.93"
