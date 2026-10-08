@@ -1,5 +1,5 @@
 [tools]
 "npm:@anthropic-ai/claude-code" = { version = "2.1.293", allow_builds = ["@anthropic-ai/claude-code"] }
 "npm:@github/copilot" = "1.0.93"
-"npm:@openai/codex" = "0.160.1"
+"npm:@openai/codex" = "0.161.0"
 "pipx:snowflake-cli" = "3.28.0"
