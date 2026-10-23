@@ -1,3 +1,6 @@
+[settings]
+pipx.uvx = false
+
 [tools]
 "npm:@anthropic-ai/claude-code" = { version = "2.1.308", allow_builds = ["@anthropic-ai/claude-code"] }
 "npm:@github/copilot" = "1.0.103"
