@@ -75,10 +75,6 @@
       "WebFetch(domain:*.openai.com)"
     ],
     "deny": [
-      "Bash(git add . *)",
-      "Bash(git -C * add . *)",
-      "Bash(git add -A *)",
-      "Bash(git -C * add -A *)",
       "Bash(git commit --amend *)",
       "Bash(git -C * commit --amend *)",
       "Bash(git push --force *)",

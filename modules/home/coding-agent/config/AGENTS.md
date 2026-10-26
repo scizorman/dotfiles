@@ -26,6 +26,8 @@ Resolve relative dates ("today" / "yesterday") to absolute JST dates before reco
 
 Never run state-changing operations against production environments (including DCL such as GRANT) without explicit confirmation; investigate via read-only means.
 
+Read a file with the Read tool before editing it with Edit or Write; reading it through Bash (cat / sed) does not satisfy the edit precondition.
+
 ### Scope
 
 Change only what was requested; do not touch items deferred as "decide after verification", and do not revert edits the user made by hand.

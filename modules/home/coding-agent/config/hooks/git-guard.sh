@@ -2,6 +2,7 @@
 set -eu
 
 readonly KEBAB_CASE='^[a-z0-9]+(-[a-z0-9]+)*$'
+readonly BULK_ADD='git([[:space:]]+-C[[:space:]]+[^[:space:]]+)?[[:space:]]+add([[:space:]]+[^;&|[:space:]]+)*[[:space:]]+(-A|--all|\.)([[:space:]]|$|[;&|])'
 
 deny() {
   jq -n --arg reason "$1" '{
@@ -50,11 +51,17 @@ check_branch_name() {
     deny "Branch name \"$branch\" is not kebab-case; use add-export-feature style, not feat/xxx."
 }
 
+check_bulk_staging() {
+  printf '%s\n' "$1" | grep -Eq "$BULK_ADD" || return 0
+  deny 'Stage files by explicit path (git add <file>...); staging everything with -A, --all, or . is not allowed.'
+}
+
 main() {
   cmd=$(jq -r '.tool_input.command // empty')
   [ -n "$cmd" ] || return 0
   check_dangerous_flags "$cmd"
   check_branch_name "$cmd"
+  check_bulk_staging "$cmd"
 }
 
 main
