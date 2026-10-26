@@ -155,6 +155,7 @@
     "document-skills@anthropic-agent-skills": true,
     "slack@claude-plugins-official": true,
     "cekernel@clonable-eden-plugins": true,
+    "cclens@cclens": true,
     "mattpocock-skills@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
@@ -162,6 +163,12 @@
       "source": {
         "source": "github",
         "repo": "anthropics/skills"
+      }
+    },
+    "cclens": {
+      "source": {
+        "source": "github",
+        "repo": "lambdalisue/cclens"
       }
     },
     "clonable-eden-plugins": {
