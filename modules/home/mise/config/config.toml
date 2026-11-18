@@ -2,7 +2,7 @@
 pipx.uvx = false
 
 [tools]
-"npm:@anthropic-ai/claude-code" = { version = "2.1.326", allow_builds = ["@anthropic-ai/claude-code"] }
+"npm:@anthropic-ai/claude-code" = { version = "2.1.327", allow_builds = ["@anthropic-ai/claude-code"] }
 "npm:@github/copilot" = "1.0.113"
 "npm:@openai/codex" = "0.169.0"
 "pipx:snowflake-cli" = "3.34.0"
