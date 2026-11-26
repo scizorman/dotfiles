@@ -23,6 +23,7 @@
     noto-fonts-cjk-sans
     openssl
     poppler-utils
+    postgresql
     unzip
     yq
   ];
